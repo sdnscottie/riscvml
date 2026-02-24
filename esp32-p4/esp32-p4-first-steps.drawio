@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-02-24T00:00:00.000Z" version="21.0.0" type="device">
+  <diagram name="ESP32-P4 First Steps" id="esp32p4-setup">
+    <mxGraphModel dx="1400" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="&lt;b&gt;ESP32-P4 Olimex Board — First Steps Setup&lt;/b&gt;" style="text;html=1;fontSize=20;fontColor=#333333;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="350" y="10" width="500" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- ===== COLUMN 1: Prerequisites ===== -->
+        <mxCell id="col1_header" value="&lt;b&gt;1. Prerequisites&lt;/b&gt;" style="text;html=1;fontSize=16;fontColor=#6c8ebf;align=center;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="250" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="install_idf" value="&lt;b&gt;Install ESP-IDF&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;git clone --recursive&lt;br&gt;espressif/esp-idf&lt;br&gt;Run install.sh&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="100" width="250" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="install_deps" value="&lt;b&gt;Linux Packages&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;sudo apt install git wget flex bison&lt;br&gt;gperf python3 python3-venv cmake&lt;br&gt;ninja-build ccache libffi-dev&lt;br&gt;libssl-dev dfu-util libusb-1.0-0&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="200" width="250" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="serial_perms" value="&lt;b&gt;Serial Port Permissions&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;sudo usermod -aG dialout $USER&lt;br&gt;(logout/login to take effect)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="310" width="250" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="plug_board" value="&lt;b&gt;Connect Olimex ESP32-P4-PC&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;USB-C cable to board&lt;br&gt;USB-Serial/JTAG interface&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="400" width="250" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows column 1 -->
+        <mxCell id="e_c1_1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;html=1;" edge="1" source="install_idf" target="install_deps" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_c1_2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;html=1;" edge="1" source="install_deps" target="serial_perms" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_c1_3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;html=1;" edge="1" source="serial_perms" target="plug_board" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ===== COLUMN 2: Find Device & Configure ===== -->
+        <mxCell id="col2_header" value="&lt;b&gt;2. Find Device &amp;amp; Configure&lt;/b&gt;" style="text;html=1;fontSize=16;fontColor=#82b366;align=center;" vertex="1" parent="1">
+          <mxGeometry x="410" y="60" width="280" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="find_device" value="&lt;b&gt;Find USB Device&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;ls /dev/ttyACM* /dev/ttyUSB*&lt;br&gt;— or —&lt;br&gt;dmesg | grep tty&lt;br&gt;&lt;br&gt;&lt;b&gt;Olimex P4 = /dev/ttyACM0&lt;/b&gt;&lt;br&gt;(USB-Serial/JTAG → ACM device)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="410" y="100" width="280" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="activate_idf" value="&lt;b&gt;Activate ESP-IDF (every terminal)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;source ~/path-to/esp-idf/export.sh&lt;br&gt;&lt;br&gt;Adds idf.py, toolchain, Python&lt;br&gt;venv to current shell PATH.&lt;br&gt;&lt;b&gt;Does NOT persist across sessions!&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="410" y="230" width="280" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="set_target" value="&lt;b&gt;Set Target &amp;amp; Flash Size&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;idf.py set-target esp32p4&lt;br&gt;&lt;br&gt;sdkconfig.defaults:&lt;br&gt;CONFIG_IDF_TARGET=&quot;esp32p4&quot;&lt;br&gt;CONFIG_ESPTOOLPY_FLASHSIZE_16MB=y&lt;br&gt;CONFIG_ESPTOOLPY_FLASHSIZE=&quot;16MB&quot;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="410" y="350" width="280" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows column 2 -->
+        <mxCell id="e_c1_to_c2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;html=1;strokeColor=#999999;dashed=1;" edge="1" source="plug_board" target="find_device" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_c2_1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;html=1;" edge="1" source="find_device" target="activate_idf" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_c2_2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;html=1;" edge="1" source="activate_idf" target="set_target" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ===== COLUMN 3: Build, Flash, Verify ===== -->
+        <mxCell id="col3_header" value="&lt;b&gt;3. Build, Flash, Verify&lt;/b&gt;" style="text;html=1;fontSize=16;fontColor=#d6b656;align=center;" vertex="1" parent="1">
+          <mxGeometry x="790" y="60" width="250" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="build" value="&lt;b&gt;Build&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;cd hello_p4&lt;br&gt;idf.py build&lt;br&gt;&lt;br&gt;Output: ~197 KB binary&lt;br&gt;81% partition free&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="790" y="100" width="250" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flash" value="&lt;b&gt;Flash&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;idf.py -p /dev/ttyACM0 flash&lt;br&gt;&lt;br&gt;Writes: bootloader (0x2000)&lt;br&gt;partition table (0x8000)&lt;br&gt;app binary (0x10000)&lt;br&gt;Auto-resets board after flash&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="790" y="210" width="250" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="monitor" value="&lt;b&gt;Monitor&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;idf.py -p /dev/ttyACM0 monitor&lt;br&gt;&lt;br&gt;Serial output at 115200 baud&lt;br&gt;Ctrl+] to exit&lt;br&gt;&lt;b&gt;Requires interactive terminal!&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="790" y="340" width="250" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="verify" value="&lt;b&gt;Expected Output&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;SPI Flash Size : 16MB&lt;br&gt;cpu freq: 360000000 Hz&lt;br&gt;Hello from ESP32-P4!&lt;br&gt;Chip: esp32p4, 2 core(s)&lt;br&gt;Flash size: 16MB (external)&lt;br&gt;Free heap: 601380 bytes&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="790" y="460" width="250" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows column 3 -->
+        <mxCell id="e_c2_to_c3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;html=1;strokeColor=#999999;dashed=1;" edge="1" source="set_target" target="build" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_c3_1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;html=1;" edge="1" source="build" target="flash" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_c3_2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;html=1;" edge="1" source="flash" target="monitor" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_c3_3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;html=1;" edge="1" source="monitor" target="verify" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ===== GOTCHAS BOX (bottom) ===== -->
+        <mxCell id="gotchas_header" value="&lt;b&gt;Common Gotchas&lt;/b&gt;" style="text;html=1;fontSize=16;fontColor=#b85450;align=center;" vertex="1" parent="1">
+          <mxGeometry x="60" y="520" width="630" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="gotcha1" value="&lt;b&gt;idf.py: command not found&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;You forgot to source export.sh&lt;br&gt;Must run in EVERY new terminal&lt;br&gt;Tip: alias get_idf=&apos;source .../export.sh&apos;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="555" width="200" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="gotcha2" value="&lt;b&gt;Flash size mismatch warning&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Default sdkconfig = 2MB&lt;br&gt;Olimex board = 16MB flash&lt;br&gt;Fix: set FLASHSIZE_16MB&lt;br&gt;in sdkconfig.defaults, then&lt;br&gt;delete sdkconfig &amp;amp; rebuild&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="275" y="555" width="200" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="gotcha3" value="&lt;b&gt;Device is /dev/ttyACM0&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;NOT /dev/ttyUSB0!&lt;br&gt;P4 uses USB-Serial/JTAG&lt;br&gt;which enumerates as ACM&lt;br&gt;Check: dmesg | grep tty&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="490" y="555" width="200" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="gotcha4" value="&lt;b&gt;Don't press RST1 during monitor!&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;RST1 resets USB-Serial/JTAG&lt;br&gt;controller, disconnecting USB.&lt;br&gt;Error: &amp;quot;device reports readiness&lt;br&gt;to read but returned no data&amp;quot;&lt;br&gt;&lt;br&gt;Flash auto-resets via RTS pin.&lt;br&gt;If it happens: wait or Ctrl+]&lt;br&gt;and restart monitor.&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="660" width="310" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="gotcha5" value="&lt;b&gt;Port busy when flashing&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Error: &amp;quot;Could not exclusively&lt;br&gt;lock port /dev/ttyACM0&amp;quot;&lt;br&gt;&lt;br&gt;Monitor is still holding the port.&lt;br&gt;Close it first (Ctrl+]) then flash.&lt;br&gt;Or use combined command:&lt;br&gt;&lt;b&gt;idf.py -p /dev/ttyACM0 flash monitor&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="385" y="660" width="310" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- ===== VS CODE box (bottom right) ===== -->
+        <mxCell id="vscode_header" value="&lt;b&gt;VS Code Integration (Optional)&lt;/b&gt;" style="text;html=1;fontSize=14;fontColor=#6c8ebf;align=center;" vertex="1" parent="1">
+          <mxGeometry x="790" y="595" width="280" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="vscode_box" value="&lt;font style=&quot;font-size:10px&quot;&gt;Extension: &lt;b&gt;espressif.esp-idf-extension&lt;/b&gt;&lt;br&gt;&lt;br&gt;• One-click Build / Flash / Monitor&lt;br&gt;• GUI menuconfig (Ctrl+E G)&lt;br&gt;• IntelliSense via compile_commands.json&lt;br&gt;• F5 = OpenOCD + GDB debugging&lt;br&gt;• Serial port selector in status bar&lt;br&gt;• No need to source export.sh manually&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="790" y="625" width="280" height="130" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
