@@ -16,7 +16,7 @@ Conference submission for RISC-V Summit Europe 2026 in Bologna, Italy (June 8–
 - **Name:** Scottie von Bruchhausen
 - **Affiliation:** RISCVML — riscvml.org
 - **Email:** scottie@riscvml.org
-- **Location:** Munich, Bavaria, Germany
+- **Location:** Bad Schwalbach/Wiesbaden, Germany (originally from Biloxi, Mississippi)
 
 ## Submission Details
 
@@ -24,7 +24,9 @@ Conference submission for RISC-V Summit Europe 2026 in Bologna, Italy (June 8–
 - **Topic:** RISC-V related educational activities
 - **Also request talk consideration:** Yes (check the box — poster is default)
 - **Title:** RISCVML: Teaching RISC-V Embedded ML with Rust — From ESP32-C3 to ESP32-P4
-- **Abstract:** 232 words (max 250) — see `RISCVML-Abstract-250-words.md`
+- **Abstract:** 206 portal-words (max 250) — see `RISCVML-Abstract-250-words.md`
+- **Short description:** 237 portal-words (max 250) — see `RISCVML-Abstract-250-words.md`
+- **Author bio:** 148 words (max 150) — see `RISCVML-Abstract-250-words.md`
 - **Extended abstract PDF:** 2 pages, A4 — see `RISCVML-Summit-Europe-2026-Submission.pdf`
 - **Templates:** https://github.com/riscv-europe/riscv-europe-summit-templates
 
