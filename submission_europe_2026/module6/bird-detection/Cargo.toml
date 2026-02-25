@@ -1,0 +1,22 @@
+[package]
+name = "bird-detection"
+version = "0.1.0"
+edition = "2021"
+description = "RISCVML Capstone: Bird Detection Pipeline on ESP32-P4"
+authors = ["Scottie von Bruchhausen <scottie@riscvml.org>"]
+license = "MIT"
+
+[dependencies]
+embassy-executor = { version = "0.7", features = ["defmt"] }
+embassy-time = "0.4"
+esp-hal = { version = "0.23", features = ["esp32p4"] }
+esp-idf-hal = { version = "0.45", features = ["esp32p4"] }
+esp-idf-sys = { version = "0.36" }
+esp-idf-svc = { version = "0.50" }
+defmt = "0.3"
+defmt-rtt = "0.4"
+rusqlite = { version = "0.32", features = ["bundled"] }
+heapless = "0.8"
+
+[build-dependencies]
+embuild = "0.32"
