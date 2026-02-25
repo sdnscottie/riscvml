@@ -23,40 +23,48 @@
           <mxGeometry x="55" y="95" width="130" height="20" as="geometry"/>
         </mxCell>
 
-        <!-- Step 1: Sensor Input -->
-        <mxCell id="g-sensor" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot; style=&quot;font-size:12px&quot;&gt;Sensor Input&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#bdbdbd&quot; style=&quot;font-size:10px&quot;&gt;Camera, mic,&lt;br&gt;ADC, radar…&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#212121;arcSize=12;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="60" y="120" width="140" height="70" as="geometry"/>
-        </mxCell>
+        <!-- Step 1: Sensor Input → camera.rs -->
+        <UserObject label="&lt;b&gt;&lt;font color=&quot;#ffffff&quot; style=&quot;font-size:12px&quot;&gt;Sensor Input&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#bdbdbd&quot; style=&quot;font-size:10px&quot;&gt;Camera, mic,&lt;br&gt;ADC, radar…&lt;/font&gt;" link="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/camera.rs" id="g-sensor">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#212121;arcSize=12;shadow=1;" vertex="1" parent="1">
+            <mxGeometry x="60" y="120" width="140" height="70" as="geometry"/>
+          </mxCell>
+        </UserObject>
 
         <!-- Arrow -->
         <mxCell id="g-arrow1" value="" style="shape=mxgraph.arrows2.arrow;dy=0.6;dx=20;notch=0;fillColor=#E8302B;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="210" y="142" width="40" height="26" as="geometry"/>
         </mxCell>
 
-        <!-- Step 2: ML Classification -->
-        <mxCell id="g-ml" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot; style=&quot;font-size:12px&quot;&gt;ML Classification&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#ffcdd2&quot; style=&quot;font-size:10px&quot;&gt;esp-dl inference&lt;br&gt;→ class ID + confidence&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#E8302B;strokeWidth=2;arcSize=12;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="260" y="120" width="170" height="70" as="geometry"/>
-        </mxCell>
+        <!-- Step 2: ML Classification → inference.rs -->
+        <UserObject label="&lt;b&gt;&lt;font color=&quot;#ffffff&quot; style=&quot;font-size:12px&quot;&gt;ML Classification&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#ffcdd2&quot; style=&quot;font-size:10px&quot;&gt;esp-dl inference&lt;br&gt;→ class ID + confidence&lt;/font&gt;" link="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/inference.rs" id="g-ml">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#E8302B;strokeWidth=2;arcSize=12;shadow=1;" vertex="1" parent="1">
+            <mxGeometry x="260" y="120" width="170" height="70" as="geometry"/>
+          </mxCell>
+        </UserObject>
 
         <!-- Arrow -->
         <mxCell id="g-arrow2" value="" style="shape=mxgraph.arrows2.arrow;dy=0.6;dx=20;notch=0;fillColor=#E8302B;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="440" y="142" width="40" height="26" as="geometry"/>
         </mxCell>
 
-        <!-- Step 3: DB Lookup + Color Map -->
-        <mxCell id="g-db" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot; style=&quot;font-size:12px&quot;&gt;SQLite Lookup&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#ef9a9a&quot; style=&quot;font-size:10px&quot;&gt;class → RGB color&lt;br&gt;+ log detection&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=6;fillColor=#E8302B;strokeColor=#B71C1C;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="490" y="115" width="150" height="80" as="geometry"/>
-        </mxCell>
+        <!-- Step 3: DB Lookup → detect_db.rs -->
+        <UserObject label="&lt;b&gt;&lt;font color=&quot;#ffffff&quot; style=&quot;font-size:12px&quot;&gt;SQLite Lookup&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#ef9a9a&quot; style=&quot;font-size:10px&quot;&gt;class → RGB color&lt;br&gt;+ log detection&lt;/font&gt;" link="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/detect_db.rs" id="g-db">
+          <mxCell style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=6;fillColor=#E8302B;strokeColor=#B71C1C;shadow=1;" vertex="1" parent="1">
+            <mxGeometry x="490" y="115" width="150" height="80" as="geometry"/>
+          </mxCell>
+        </UserObject>
 
         <!-- Arrow -->
         <mxCell id="g-arrow3" value="" style="shape=mxgraph.arrows2.arrow;dy=0.6;dx=20;notch=0;fillColor=#E8302B;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="650" y="142" width="40" height="26" as="geometry"/>
         </mxCell>
 
-        <!-- Step 4: RGB LED -->
-        <mxCell id="g-led" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot; style=&quot;font-size:12px&quot;&gt;RGB LED&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#ffebee&quot; style=&quot;font-size:10px&quot;&gt;Visual class ID&lt;br&gt;at a glance&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8302B;strokeColor=#B71C1C;arcSize=12;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="700" y="120" width="130" height="70" as="geometry"/>
-        </mxCell>
+        <!-- Step 4: RGB LED → led.rs -->
+        <UserObject label="&lt;b&gt;&lt;font color=&quot;#ffffff&quot; style=&quot;font-size:12px&quot;&gt;RGB LED&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#ffebee&quot; style=&quot;font-size:10px&quot;&gt;Visual class ID&lt;br&gt;at a glance&lt;/font&gt;" link="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/led.rs" id="g-led">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8302B;strokeColor=#B71C1C;arcSize=12;shadow=1;" vertex="1" parent="1">
+            <mxGeometry x="700" y="120" width="130" height="70" as="geometry"/>
+          </mxCell>
+        </UserObject>
         <!-- RGB dots -->
         <mxCell id="g-dot-r" value="" style="ellipse;fillColor=#ff1744;strokeColor=none;shadow=1;" vertex="1" parent="1">
           <mxGeometry x="733" y="178" width="10" height="10" as="geometry"/>
@@ -73,10 +81,12 @@
           <mxGeometry x="840" y="142" width="40" height="26" as="geometry"/>
         </mxCell>
 
-        <!-- Step 5: Reaction -->
-        <mxCell id="g-react" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot; style=&quot;font-size:12px&quot;&gt;Reaction&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#bdbdbd&quot; style=&quot;font-size:10px&quot;&gt;Servo, alert, log,&lt;br&gt;record, actuate…&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#212121;arcSize=12;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="890" y="120" width="160" height="70" as="geometry"/>
-        </mxCell>
+        <!-- Step 5: Reaction → servo.rs -->
+        <UserObject label="&lt;b&gt;&lt;font color=&quot;#ffffff&quot; style=&quot;font-size:12px&quot;&gt;Reaction&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#bdbdbd&quot; style=&quot;font-size:10px&quot;&gt;Servo, alert, log,&lt;br&gt;record, actuate…&lt;/font&gt;" link="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/servo.rs" id="g-react">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#212121;arcSize=12;shadow=1;" vertex="1" parent="1">
+            <mxGeometry x="890" y="120" width="160" height="70" as="geometry"/>
+          </mxCell>
+        </UserObject>
 
         <!-- ============================================ -->
         <!-- CONCRETE USE CASES (rows below) -->
@@ -93,27 +103,35 @@
           <mxGeometry x="50" y="275" width="70" height="18" as="geometry"/>
         </mxCell>
 
-        <mxCell id="uc1-sensor" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;MIPI-CSI&lt;br&gt;Camera&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#212121;arcSize=12;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="60" y="300" width="140" height="55" as="geometry"/>
-        </mxCell>
+        <UserObject label="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;MIPI-CSI&lt;br&gt;Camera&lt;/font&gt;&lt;/b&gt;" link="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/camera.rs" id="uc1-sensor">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#212121;arcSize=12;shadow=1;" vertex="1" parent="1">
+            <mxGeometry x="60" y="300" width="140" height="55" as="geometry"/>
+          </mxCell>
+        </UserObject>
         <mxCell id="uc1-a1" value="" style="shape=mxgraph.arrows2.arrow;dy=0.6;dx=16;notch=0;fillColor=#E8302B;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="212" y="317" width="35" height="20" as="geometry"/>
         </mxCell>
-        <mxCell id="uc1-ml" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;Bird Species&lt;br&gt;Detection&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#E8302B;strokeWidth=2;arcSize=12;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="260" y="300" width="170" height="55" as="geometry"/>
-        </mxCell>
+        <UserObject label="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;Bird Species&lt;br&gt;Detection&lt;/font&gt;&lt;/b&gt;" link="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/inference.rs" id="uc1-ml">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#E8302B;strokeWidth=2;arcSize=12;shadow=1;" vertex="1" parent="1">
+            <mxGeometry x="260" y="300" width="170" height="55" as="geometry"/>
+          </mxCell>
+        </UserObject>
         <mxCell id="uc1-a2" value="" style="shape=mxgraph.arrows2.arrow;dy=0.6;dx=16;notch=0;fillColor=#E8302B;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="442" y="317" width="35" height="20" as="geometry"/>
         </mxCell>
-        <mxCell id="uc1-db" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;bird_led_colors&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#ef9a9a&quot; style=&quot;font-size:9px&quot;&gt;Robin→Green&lt;br&gt;Hawk→Red&lt;br&gt;Finch→Blue&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=5;fillColor=#E8302B;strokeColor=#B71C1C;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="490" y="290" width="150" height="75" as="geometry"/>
-        </mxCell>
+        <UserObject label="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;bird_led_colors&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#ef9a9a&quot; style=&quot;font-size:9px&quot;&gt;Robin→Green&lt;br&gt;Hawk→Red&lt;br&gt;Finch→Blue&lt;/font&gt;" link="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/detect_db.rs" id="uc1-db">
+          <mxCell style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=5;fillColor=#E8302B;strokeColor=#B71C1C;shadow=1;" vertex="1" parent="1">
+            <mxGeometry x="490" y="290" width="150" height="75" as="geometry"/>
+          </mxCell>
+        </UserObject>
         <mxCell id="uc1-a3" value="" style="shape=mxgraph.arrows2.arrow;dy=0.6;dx=16;notch=0;fillColor=#E8302B;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="652" y="317" width="35" height="20" as="geometry"/>
         </mxCell>
-        <mxCell id="uc1-led" value="&lt;font color=&quot;#ffffff&quot;&gt;&lt;b&gt;RGB LED&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Glow species color&lt;/font&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8302B;strokeColor=#B71C1C;arcSize=12;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="700" y="300" width="130" height="55" as="geometry"/>
-        </mxCell>
+        <UserObject label="&lt;font color=&quot;#ffffff&quot;&gt;&lt;b&gt;RGB LED&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Glow species color&lt;/font&gt;&lt;/font&gt;" link="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/led.rs" id="uc1-led">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8302B;strokeColor=#B71C1C;arcSize=12;shadow=1;" vertex="1" parent="1">
+            <mxGeometry x="700" y="300" width="130" height="55" as="geometry"/>
+          </mxCell>
+        </UserObject>
         <mxCell id="uc1-d1" value="" style="ellipse;fillColor=#00e676;strokeColor=none;shadow=1;" vertex="1" parent="1">
           <mxGeometry x="738" y="348" width="8" height="8" as="geometry"/>
         </mxCell>
@@ -126,36 +144,46 @@
         <mxCell id="uc1-a4" value="" style="shape=mxgraph.arrows2.arrow;dy=0.6;dx=16;notch=0;fillColor=#E8302B;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="842" y="317" width="35" height="20" as="geometry"/>
         </mxCell>
-        <mxCell id="uc1-react" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;Servo Track&lt;br&gt;H.264 Record&lt;br&gt;MQTT Alert&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#212121;arcSize=12;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="890" y="295" width="160" height="60" as="geometry"/>
-        </mxCell>
+        <UserObject label="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;Servo Track&lt;br&gt;H.264 Record&lt;br&gt;MQTT Alert&lt;/font&gt;&lt;/b&gt;" link="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/servo.rs" id="uc1-react">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#212121;arcSize=12;shadow=1;" vertex="1" parent="1">
+            <mxGeometry x="890" y="295" width="160" height="60" as="geometry"/>
+          </mxCell>
+        </UserObject>
 
         <!-- ====== USE CASE 2: Object / Obstacle Detection ====== -->
         <mxCell id="uc2-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#9e9e9e;arcSize=6;" vertex="1" parent="1">
           <mxGeometry x="40" y="385" width="1040" height="100" as="geometry"/>
         </mxCell>
 
-        <mxCell id="uc2-sensor" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;Camera /&lt;br&gt;LiDAR&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#212121;arcSize=12;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="60" y="405" width="140" height="55" as="geometry"/>
-        </mxCell>
+        <UserObject label="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;Camera /&lt;br&gt;LiDAR&lt;/font&gt;&lt;/b&gt;" link="https://github.com/sdnscottie/riscvml/blob/master/module6/object-detection/src/main.rs" id="uc2-sensor">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#212121;arcSize=12;shadow=1;" vertex="1" parent="1">
+            <mxGeometry x="60" y="405" width="140" height="55" as="geometry"/>
+          </mxCell>
+        </UserObject>
         <mxCell id="uc2-a1" value="" style="shape=mxgraph.arrows2.arrow;dy=0.6;dx=16;notch=0;fillColor=#757575;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="212" y="422" width="35" height="20" as="geometry"/>
         </mxCell>
-        <mxCell id="uc2-ml" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;Object / Obstacle&lt;br&gt;Classification&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#757575;strokeWidth=2;arcSize=12;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="260" y="405" width="170" height="55" as="geometry"/>
-        </mxCell>
+        <UserObject label="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;Object / Obstacle&lt;br&gt;Classification&lt;/font&gt;&lt;/b&gt;" link="https://github.com/sdnscottie/riscvml/blob/master/module6/object-detection/src/main.rs" id="uc2-ml">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#757575;strokeWidth=2;arcSize=12;shadow=1;" vertex="1" parent="1">
+            <mxGeometry x="260" y="405" width="170" height="55" as="geometry"/>
+          </mxCell>
+        </UserObject>
         <mxCell id="uc2-a2" value="" style="shape=mxgraph.arrows2.arrow;dy=0.6;dx=16;notch=0;fillColor=#757575;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="442" y="422" width="35" height="20" as="geometry"/>
         </mxCell>
-        <mxCell id="uc2-db" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;object_led_colors&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#bdbdbd&quot; style=&quot;font-size:9px&quot;&gt;Person→Yellow&lt;br&gt;Vehicle→Cyan&lt;br&gt;Animal→Magenta&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=5;fillColor=#616161;strokeColor=#424242;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="490" y="395" width="150" height="75" as="geometry"/>
-        </mxCell>
+        <UserObject label="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;object_led_colors&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#bdbdbd&quot; style=&quot;font-size:9px&quot;&gt;Person→Yellow&lt;br&gt;Vehicle→Cyan&lt;br&gt;Animal→Magenta&lt;/font&gt;" link="https://github.com/sdnscottie/riscvml/blob/master/module6/object-detection/src/detect_db.rs" id="uc2-db">
+          <mxCell style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=5;fillColor=#616161;strokeColor=#424242;shadow=1;" vertex="1" parent="1">
+            <mxGeometry x="490" y="395" width="150" height="75" as="geometry"/>
+          </mxCell>
+        </UserObject>
         <mxCell id="uc2-a3" value="" style="shape=mxgraph.arrows2.arrow;dy=0.6;dx=16;notch=0;fillColor=#757575;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="652" y="422" width="35" height="20" as="geometry"/>
         </mxCell>
-        <mxCell id="uc2-led" value="&lt;font color=&quot;#ffffff&quot;&gt;&lt;b&gt;RGB LED&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Threat-level color&lt;/font&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#616161;strokeColor=#424242;arcSize=12;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="700" y="405" width="130" height="55" as="geometry"/>
-        </mxCell>
+        <UserObject label="&lt;font color=&quot;#ffffff&quot;&gt;&lt;b&gt;RGB LED&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Threat-level color&lt;/font&gt;&lt;/font&gt;" link="https://github.com/sdnscottie/riscvml/blob/master/module6/object-detection/src/led.rs" id="uc2-led">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#616161;strokeColor=#424242;arcSize=12;shadow=1;" vertex="1" parent="1">
+            <mxGeometry x="700" y="405" width="130" height="55" as="geometry"/>
+          </mxCell>
+        </UserObject>
         <mxCell id="uc2-d1" value="" style="ellipse;fillColor=#ffea00;strokeColor=none;shadow=1;" vertex="1" parent="1">
           <mxGeometry x="738" y="453" width="8" height="8" as="geometry"/>
         </mxCell>
@@ -177,27 +205,35 @@
           <mxGeometry x="40" y="500" width="1040" height="100" as="geometry"/>
         </mxCell>
 
-        <mxCell id="uc3-sensor" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;Camera /&lt;br&gt;Multispectral&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#212121;arcSize=12;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="60" y="520" width="140" height="55" as="geometry"/>
-        </mxCell>
+        <UserObject label="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;Camera /&lt;br&gt;Multispectral&lt;/font&gt;&lt;/b&gt;" link="https://github.com/sdnscottie/riscvml/blob/master/module6/plant-health/src/main.rs" id="uc3-sensor">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#212121;arcSize=12;shadow=1;" vertex="1" parent="1">
+            <mxGeometry x="60" y="520" width="140" height="55" as="geometry"/>
+          </mxCell>
+        </UserObject>
         <mxCell id="uc3-a1" value="" style="shape=mxgraph.arrows2.arrow;dy=0.6;dx=16;notch=0;fillColor=#757575;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="212" y="537" width="35" height="20" as="geometry"/>
         </mxCell>
-        <mxCell id="uc3-ml" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;Plant Health&lt;br&gt;Assessment&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#757575;strokeWidth=2;arcSize=12;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="260" y="520" width="170" height="55" as="geometry"/>
-        </mxCell>
+        <UserObject label="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;Plant Health&lt;br&gt;Assessment&lt;/font&gt;&lt;/b&gt;" link="https://github.com/sdnscottie/riscvml/blob/master/module6/plant-health/src/main.rs" id="uc3-ml">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#757575;strokeWidth=2;arcSize=12;shadow=1;" vertex="1" parent="1">
+            <mxGeometry x="260" y="520" width="170" height="55" as="geometry"/>
+          </mxCell>
+        </UserObject>
         <mxCell id="uc3-a2" value="" style="shape=mxgraph.arrows2.arrow;dy=0.6;dx=16;notch=0;fillColor=#757575;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="442" y="537" width="35" height="20" as="geometry"/>
         </mxCell>
-        <mxCell id="uc3-db" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;health_led_colors&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#bdbdbd&quot; style=&quot;font-size:9px&quot;&gt;Healthy→Green&lt;br&gt;Stressed→Yellow&lt;br&gt;Diseased→Red&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=5;fillColor=#616161;strokeColor=#424242;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="490" y="510" width="150" height="75" as="geometry"/>
-        </mxCell>
+        <UserObject label="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;health_led_colors&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#bdbdbd&quot; style=&quot;font-size:9px&quot;&gt;Healthy→Green&lt;br&gt;Stressed→Yellow&lt;br&gt;Diseased→Red&lt;/font&gt;" link="https://github.com/sdnscottie/riscvml/blob/master/module6/plant-health/src/detect_db.rs" id="uc3-db">
+          <mxCell style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=5;fillColor=#616161;strokeColor=#424242;shadow=1;" vertex="1" parent="1">
+            <mxGeometry x="490" y="510" width="150" height="75" as="geometry"/>
+          </mxCell>
+        </UserObject>
         <mxCell id="uc3-a3" value="" style="shape=mxgraph.arrows2.arrow;dy=0.6;dx=16;notch=0;fillColor=#757575;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="652" y="537" width="35" height="20" as="geometry"/>
         </mxCell>
-        <mxCell id="uc3-led" value="&lt;font color=&quot;#ffffff&quot;&gt;&lt;b&gt;RGB LED&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Health status color&lt;/font&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#616161;strokeColor=#424242;arcSize=12;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="700" y="520" width="130" height="55" as="geometry"/>
-        </mxCell>
+        <UserObject label="&lt;font color=&quot;#ffffff&quot;&gt;&lt;b&gt;RGB LED&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Health status color&lt;/font&gt;&lt;/font&gt;" link="https://github.com/sdnscottie/riscvml/blob/master/module6/plant-health/src/led.rs" id="uc3-led">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#616161;strokeColor=#424242;arcSize=12;shadow=1;" vertex="1" parent="1">
+            <mxGeometry x="700" y="520" width="130" height="55" as="geometry"/>
+          </mxCell>
+        </UserObject>
         <mxCell id="uc3-d1" value="" style="ellipse;fillColor=#00e676;strokeColor=none;shadow=1;" vertex="1" parent="1">
           <mxGeometry x="738" y="568" width="8" height="8" as="geometry"/>
         </mxCell>
@@ -219,27 +255,35 @@
           <mxGeometry x="40" y="615" width="1040" height="100" as="geometry"/>
         </mxCell>
 
-        <mxCell id="uc4-sensor" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;I2S / PDM&lt;br&gt;Microphone&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#212121;arcSize=12;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="60" y="635" width="140" height="55" as="geometry"/>
-        </mxCell>
+        <UserObject label="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;I2S / PDM&lt;br&gt;Microphone&lt;/font&gt;&lt;/b&gt;" link="https://github.com/sdnscottie/riscvml/blob/master/module6/sound-classification/src/main.rs" id="uc4-sensor">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#212121;arcSize=12;shadow=1;" vertex="1" parent="1">
+            <mxGeometry x="60" y="635" width="140" height="55" as="geometry"/>
+          </mxCell>
+        </UserObject>
         <mxCell id="uc4-a1" value="" style="shape=mxgraph.arrows2.arrow;dy=0.6;dx=16;notch=0;fillColor=#757575;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="212" y="652" width="35" height="20" as="geometry"/>
         </mxCell>
-        <mxCell id="uc4-ml" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;Sound / Voice&lt;br&gt;Classification&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#757575;strokeWidth=2;arcSize=12;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="260" y="635" width="170" height="55" as="geometry"/>
-        </mxCell>
+        <UserObject label="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;Sound / Voice&lt;br&gt;Classification&lt;/font&gt;&lt;/b&gt;" link="https://github.com/sdnscottie/riscvml/blob/master/module6/sound-classification/src/main.rs" id="uc4-ml">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#757575;strokeWidth=2;arcSize=12;shadow=1;" vertex="1" parent="1">
+            <mxGeometry x="260" y="635" width="170" height="55" as="geometry"/>
+          </mxCell>
+        </UserObject>
         <mxCell id="uc4-a2" value="" style="shape=mxgraph.arrows2.arrow;dy=0.6;dx=16;notch=0;fillColor=#757575;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="442" y="652" width="35" height="20" as="geometry"/>
         </mxCell>
-        <mxCell id="uc4-db" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;sound_led_colors&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#bdbdbd&quot; style=&quot;font-size:9px&quot;&gt;Glass break→Red&lt;br&gt;Doorbell→White&lt;br&gt;Dog bark→Orange&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=5;fillColor=#616161;strokeColor=#424242;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="490" y="625" width="150" height="75" as="geometry"/>
-        </mxCell>
+        <UserObject label="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;sound_led_colors&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#bdbdbd&quot; style=&quot;font-size:9px&quot;&gt;Glass break→Red&lt;br&gt;Doorbell→White&lt;br&gt;Dog bark→Orange&lt;/font&gt;" link="https://github.com/sdnscottie/riscvml/blob/master/module6/sound-classification/src/detect_db.rs" id="uc4-db">
+          <mxCell style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=5;fillColor=#616161;strokeColor=#424242;shadow=1;" vertex="1" parent="1">
+            <mxGeometry x="490" y="625" width="150" height="75" as="geometry"/>
+          </mxCell>
+        </UserObject>
         <mxCell id="uc4-a3" value="" style="shape=mxgraph.arrows2.arrow;dy=0.6;dx=16;notch=0;fillColor=#757575;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="652" y="652" width="35" height="20" as="geometry"/>
         </mxCell>
-        <mxCell id="uc4-led" value="&lt;font color=&quot;#ffffff&quot;&gt;&lt;b&gt;RGB LED&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Event type color&lt;/font&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#616161;strokeColor=#424242;arcSize=12;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="700" y="635" width="130" height="55" as="geometry"/>
-        </mxCell>
+        <UserObject label="&lt;font color=&quot;#ffffff&quot;&gt;&lt;b&gt;RGB LED&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Event type color&lt;/font&gt;&lt;/font&gt;" link="https://github.com/sdnscottie/riscvml/blob/master/module6/sound-classification/src/led.rs" id="uc4-led">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#616161;strokeColor=#424242;arcSize=12;shadow=1;" vertex="1" parent="1">
+            <mxGeometry x="700" y="635" width="130" height="55" as="geometry"/>
+          </mxCell>
+        </UserObject>
         <mxCell id="uc4-d1" value="" style="ellipse;fillColor=#ff1744;strokeColor=none;shadow=1;" vertex="1" parent="1">
           <mxGeometry x="738" y="683" width="8" height="8" as="geometry"/>
         </mxCell>
@@ -257,11 +301,13 @@
         </mxCell>
 
         <!-- ============================================ -->
-        <!-- Bottom: shared infrastructure -->
+        <!-- Bottom: shared infrastructure → main.rs -->
         <!-- ============================================ -->
-        <mxCell id="infra-bar" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot; style=&quot;font-size:12px&quot;&gt;Shared Infrastructure: &amp;nbsp; ESP32-P4 RISC-V &amp;nbsp;|&amp;nbsp; esp-dl + 128-bit Vector ISA &amp;nbsp;|&amp;nbsp; SQLite3 (riscvml_detect.db) &amp;nbsp;|&amp;nbsp; Rust + Embassy Async &amp;nbsp;|&amp;nbsp; GPIO PWM → RGB LED&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1a1a1a;strokeColor=#E8302B;strokeWidth=2;arcSize=20;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="40" y="740" width="1040" height="40" as="geometry"/>
-        </mxCell>
+        <UserObject label="&lt;b&gt;&lt;font color=&quot;#ffffff&quot; style=&quot;font-size:12px&quot;&gt;Shared Infrastructure: &amp;nbsp; ESP32-P4 RISC-V &amp;nbsp;|&amp;nbsp; esp-dl + 128-bit Vector ISA &amp;nbsp;|&amp;nbsp; SQLite3 (riscvml_detect.db) &amp;nbsp;|&amp;nbsp; Rust + Embassy Async &amp;nbsp;|&amp;nbsp; GPIO PWM → RGB LED&lt;/font&gt;&lt;/b&gt;" link="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/main.rs" id="infra-bar">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1a1a1a;strokeColor=#E8302B;strokeWidth=2;arcSize=20;shadow=1;" vertex="1" parent="1">
+            <mxGeometry x="40" y="740" width="1040" height="40" as="geometry"/>
+          </mxCell>
+        </UserObject>
 
         <!-- Vertical dashed lines connecting generic to concrete -->
         <mxCell id="vline1" value="" style="endArrow=none;strokeColor=#e0e0e0;strokeWidth=1;dashed=1;dashPattern=4 4;" edge="1" parent="1">

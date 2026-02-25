@@ -24,10 +24,12 @@
           <mxGeometry x="25" y="445" width="90" height="40" as="geometry"/>
         </mxCell>
 
-        <!-- Layer 1: Application Logic -->
-        <mxCell id="layer1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8302B;strokeColor=#B71C1C;arcSize=8;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="130" y="80" width="780" height="75" as="geometry"/>
-        </mxCell>
+        <!-- Layer 1: Application Logic → main.rs -->
+        <UserObject label="" link="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/main.rs" id="layer1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8302B;strokeColor=#B71C1C;arcSize=8;shadow=1;" vertex="1" parent="1">
+            <mxGeometry x="130" y="80" width="780" height="75" as="geometry"/>
+          </mxCell>
+        </UserObject>
         <mxCell id="layer1-title" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot; style=&quot;font-size:15px&quot;&gt;Application Logic&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="150" y="85" width="160" height="30" as="geometry"/>
         </mxCell>
@@ -38,10 +40,12 @@
           <mxGeometry x="840" y="90" width="50" height="22" as="geometry"/>
         </mxCell>
 
-        <!-- Layer 2: Rust HAL -->
-        <mxCell id="layer2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c62828;strokeColor=#b71c1c;arcSize=8;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="130" y="175" width="780" height="75" as="geometry"/>
-        </mxCell>
+        <!-- Layer 2: Rust HAL → hal.rs -->
+        <UserObject label="" link="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/hal.rs" id="layer2">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c62828;strokeColor=#b71c1c;arcSize=8;shadow=1;" vertex="1" parent="1">
+            <mxGeometry x="130" y="175" width="780" height="75" as="geometry"/>
+          </mxCell>
+        </UserObject>
         <mxCell id="layer2-title" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot; style=&quot;font-size:15px&quot;&gt;Rust HAL Layer&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="150" y="180" width="150" height="30" as="geometry"/>
         </mxCell>
@@ -52,18 +56,22 @@
           <mxGeometry x="840" y="185" width="50" height="22" as="geometry"/>
         </mxCell>
 
-        <!-- Layer 3: FFI Boundary -->
-        <mxCell id="ffi-boundary" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#E8302B;strokeWidth=3;dashed=1;dashPattern=8 4;" vertex="1" parent="1">
-          <mxGeometry x="130" y="265" width="780" height="30" as="geometry"/>
-        </mxCell>
+        <!-- Layer 3: FFI Boundary → ffi.rs -->
+        <UserObject label="" link="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/ffi.rs" id="ffi-boundary">
+          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#E8302B;strokeWidth=3;dashed=1;dashPattern=8 4;" vertex="1" parent="1">
+            <mxGeometry x="130" y="265" width="780" height="30" as="geometry"/>
+          </mxCell>
+        </UserObject>
         <mxCell id="ffi-label" value="&lt;b&gt;&lt;font color=&quot;#E8302B&quot; style=&quot;font-size:12px&quot;&gt;▸ FFI BOUNDARY ◂ &amp;nbsp;&amp;nbsp; Safe Rust wrappers around unsafe C calls&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="250" y="267" width="430" height="28" as="geometry"/>
         </mxCell>
 
-        <!-- Layer 4: ESP-IDF C Drivers -->
-        <mxCell id="layer4" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#212121;arcSize=8;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="130" y="310" width="780" height="75" as="geometry"/>
-        </mxCell>
+        <!-- Layer 4: ESP-IDF C Drivers → camera.rs (FFI wrappers) -->
+        <UserObject label="" link="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/camera.rs" id="layer4">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#212121;arcSize=8;shadow=1;" vertex="1" parent="1">
+            <mxGeometry x="130" y="310" width="780" height="75" as="geometry"/>
+          </mxCell>
+        </UserObject>
         <mxCell id="layer4-title" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot; style=&quot;font-size:15px&quot;&gt;ESP-IDF C Drivers&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="150" y="315" width="170" height="30" as="geometry"/>
         </mxCell>
@@ -74,10 +82,12 @@
           <mxGeometry x="840" y="320" width="50" height="22" as="geometry"/>
         </mxCell>
 
-        <!-- Layer 5: Hardware -->
-        <mxCell id="layer5" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1a1a1a;strokeColor=#424242;arcSize=8;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="130" y="405" width="780" height="75" as="geometry"/>
-        </mxCell>
+        <!-- Layer 5: Hardware → Cargo.toml (target config) -->
+        <UserObject label="" link="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/Cargo.toml" id="layer5">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1a1a1a;strokeColor=#424242;arcSize=8;shadow=1;" vertex="1" parent="1">
+            <mxGeometry x="130" y="405" width="780" height="75" as="geometry"/>
+          </mxCell>
+        </UserObject>
         <mxCell id="layer5-title" value="&lt;b&gt;&lt;font color=&quot;#E8302B&quot; style=&quot;font-size:15px&quot;&gt;ESP32-P4 RISC-V Hardware&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="150" y="410" width="240" height="30" as="geometry"/>
         </mxCell>
@@ -88,7 +98,7 @@
           <mxGeometry x="840" y="415" width="50" height="22" as="geometry"/>
         </mxCell>
 
-        <!-- Right side annotation -->
+        <!-- Right side annotations -->
         <mxCell id="annotation-brace-top" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;flipH=1;size=0.5;strokeColor=#2e7d32;strokeWidth=2;" vertex="1" parent="1">
           <mxGeometry x="920" y="80" width="20" height="170" as="geometry"/>
         </mxCell>
