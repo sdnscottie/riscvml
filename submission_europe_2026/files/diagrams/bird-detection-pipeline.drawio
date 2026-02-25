@@ -6,33 +6,35 @@
         <mxCell id="1" parent="0"/>
 
         <!-- Title -->
-        <mxCell id="title" value="&lt;b&gt;Capstone: Bird Detection Pipeline on ESP32-P4&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontColor=#1a1a1a;" vertex="1" parent="1">
+        <mxCell id="title" value="Capstone: Bird Detection Pipeline on ESP32-P4" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontColor=#1a1a1a;fontStyle=1;fontFamily=Helvetica;" vertex="1" parent="1">
           <mxGeometry x="250" y="15" width="500" height="40" as="geometry"/>
         </mxCell>
 
         <!-- Legend -->
         <mxCell id="legend-rust" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8302B;strokeColor=#B71C1C;arcSize=20;" vertex="1" parent="1">
-          <mxGeometry x="730" y="20" width="20" height="14" as="geometry"/>
+          <mxGeometry x="750" y="22" width="16" height="12" as="geometry"/>
         </mxCell>
-        <mxCell id="legend-rust-label" value="&lt;font style=&quot;font-size:10px&quot;&gt;Rust-owned&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="755" y="15" width="80" height="25" as="geometry"/>
+        <mxCell id="legend-rust-label" value="Rust-owned" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="770" y="16" width="75" height="25" as="geometry"/>
         </mxCell>
         <mxCell id="legend-ffi" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#212121;arcSize=20;" vertex="1" parent="1">
-          <mxGeometry x="840" y="20" width="20" height="14" as="geometry"/>
+          <mxGeometry x="850" y="22" width="16" height="12" as="geometry"/>
         </mxCell>
-        <mxCell id="legend-ffi-label" value="&lt;font style=&quot;font-size:10px&quot;&gt;ESP-IDF via FFI&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="865" y="15" width="100" height="25" as="geometry"/>
+        <mxCell id="legend-ffi-label" value="ESP-IDF via FFI" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="870" y="16" width="100" height="25" as="geometry"/>
         </mxCell>
 
-        <!-- Phase 1: Camera → ISP → Display -->
-        <mxCell id="phase1-label" value="&lt;b&gt;&lt;font color=&quot;#B71C1C&quot; style=&quot;font-size:12px&quot;&gt;PHASE 1 — Capture &amp; Preview&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+        <!-- ========== PHASE 1: Capture & Preview ========== -->
+        <mxCell id="phase1-label" value="PHASE 1 — Capture &amp; Preview" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;fontColor=#B71C1C;fontStyle=1;fontFamily=Helvetica;" vertex="1" parent="1">
           <mxGeometry x="60" y="60" width="220" height="25" as="geometry"/>
         </mxCell>
 
-        <mxCell id="camera" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;MIPI-CSI Camera&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#ffcdd2&quot; style=&quot;font-size:10px&quot;&gt;Camera Controller Driver&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#212121;arcSize=12;shadow=1;" vertex="1" parent="1">
+        <!-- Camera -->
+        <mxCell id="camera" value="&lt;b style=&quot;color:#ffffff;font-size:12px&quot;&gt;MIPI-CSI Camera&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;color:#ffcdd2;font-size:10px&quot;&gt;Camera Controller Driver&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#212121;arcSize=12;shadow=1;fontFamily=Helvetica;" vertex="1" parent="1">
           <mxGeometry x="60" y="95" width="200" height="55" as="geometry"/>
         </mxCell>
 
+        <!-- Arrow: Camera → ISP -->
         <mxCell id="arrow-cam-isp" value="" style="endArrow=block;endFill=1;strokeColor=#E8302B;strokeWidth=2;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="160" y="150" as="sourcePoint"/>
@@ -40,28 +42,34 @@
           </mxGeometry>
         </mxCell>
 
-        <mxCell id="isp" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;ISP Pipeline&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#ffcdd2&quot; style=&quot;font-size:10px&quot;&gt;White balance, Auto-exposure&lt;br&gt;Demosaicing, Color correction&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#212121;arcSize=12;shadow=1;" vertex="1" parent="1">
+        <!-- ISP -->
+        <mxCell id="isp" value="&lt;b style=&quot;color:#ffffff;font-size:12px&quot;&gt;ISP Pipeline&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;color:#ffcdd2;font-size:10px&quot;&gt;White balance, Auto-exposure&lt;br/&gt;Demosaicing, Color correction&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#212121;arcSize=12;shadow=1;fontFamily=Helvetica;" vertex="1" parent="1">
           <mxGeometry x="60" y="180" width="200" height="65" as="geometry"/>
         </mxCell>
 
-        <mxCell id="arrow-isp-dma" value="&lt;font style=&quot;font-size:9px&quot; color=&quot;#666666&quot;&gt;DMA transfer&lt;/font&gt;" style="endArrow=block;endFill=1;strokeColor=#E8302B;strokeWidth=2;" edge="1" parent="1">
+        <!-- Arrow: ISP → Display -->
+        <mxCell id="arrow-isp-display" value="" style="endArrow=block;endFill=1;strokeColor=#E8302B;strokeWidth=2;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="160" y="245" as="sourcePoint"/>
             <mxPoint x="160" y="280" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
+        <mxCell id="arrow-isp-display-label" value="DMA transfer" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#666666;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="170" y="252" width="72" height="20" as="geometry"/>
+        </mxCell>
 
-        <mxCell id="display" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;MIPI-DSI Display&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#ef9a9a&quot; style=&quot;font-size:10px&quot;&gt;Live preview (30–60 FPS)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8302B;strokeColor=#B71C1C;arcSize=12;shadow=1;" vertex="1" parent="1">
+        <!-- Display -->
+        <mxCell id="display" value="&lt;b style=&quot;color:#ffffff;font-size:12px&quot;&gt;MIPI-DSI Display&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;color:#ffebee;font-size:10px&quot;&gt;Live preview (30–60 FPS)&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8302B;strokeColor=#B71C1C;arcSize=12;shadow=1;fontFamily=Helvetica;" vertex="1" parent="1">
           <mxGeometry x="60" y="280" width="200" height="50" as="geometry"/>
         </mxCell>
 
-        <!-- Phase 2: ML Inference -->
-        <mxCell id="phase2-label" value="&lt;b&gt;&lt;font color=&quot;#B71C1C&quot; style=&quot;font-size:12px&quot;&gt;PHASE 2 — ML Inference&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+        <!-- ========== PHASE 2: ML Inference ========== -->
+        <mxCell id="phase2-label" value="PHASE 2 — ML Inference" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;fontColor=#B71C1C;fontStyle=1;fontFamily=Helvetica;" vertex="1" parent="1">
           <mxGeometry x="370" y="60" width="200" height="25" as="geometry"/>
         </mxCell>
 
-        <!-- Branch arrow from ISP to PPA -->
-        <mxCell id="arrow-isp-ppa" value="&lt;font style=&quot;font-size:9px&quot; color=&quot;#666666&quot;&gt;frame fork&lt;/font&gt;" style="endArrow=block;endFill=1;strokeColor=#E8302B;strokeWidth=2;" edge="1" parent="1">
+        <!-- Arrow: ISP → PPA (frame fork) -->
+        <mxCell id="arrow-isp-ppa" value="" style="endArrow=block;endFill=1;strokeColor=#E8302B;strokeWidth=2;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="260" y="212" as="sourcePoint"/>
             <mxPoint x="370" y="122" as="targetPoint"/>
@@ -71,11 +79,16 @@
             </Array>
           </mxGeometry>
         </mxCell>
+        <mxCell id="arrow-isp-ppa-label" value="frame fork" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#666666;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="270" y="160" width="62" height="20" as="geometry"/>
+        </mxCell>
 
-        <mxCell id="ppa" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;PPA — Downscale&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#ffcdd2&quot; style=&quot;font-size:10px&quot;&gt;Hardware-accelerated resize&lt;br&gt;to model input resolution&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#212121;arcSize=12;shadow=1;" vertex="1" parent="1">
+        <!-- PPA Downscale -->
+        <mxCell id="ppa" value="&lt;b style=&quot;color:#ffffff;font-size:12px&quot;&gt;PPA — Downscale&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;color:#ffcdd2;font-size:10px&quot;&gt;Hardware-accelerated resize&lt;br/&gt;to model input resolution&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#212121;arcSize=12;shadow=1;fontFamily=Helvetica;" vertex="1" parent="1">
           <mxGeometry x="370" y="95" width="210" height="65" as="geometry"/>
         </mxCell>
 
+        <!-- Arrow: PPA → esp-dl -->
         <mxCell id="arrow-ppa-ml" value="" style="endArrow=block;endFill=1;strokeColor=#E8302B;strokeWidth=2;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="475" y="160" as="sourcePoint"/>
@@ -83,10 +96,12 @@
           </mxGeometry>
         </mxCell>
 
-        <mxCell id="espdl" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot; style=&quot;font-size:13px&quot;&gt;esp-dl Inference&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#ffcdd2&quot; style=&quot;font-size:10px&quot;&gt;Quantized object detection&lt;br&gt;128-bit vector acceleration&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#E8302B;strokeWidth=2;arcSize=12;shadow=1;" vertex="1" parent="1">
+        <!-- esp-dl Inference -->
+        <mxCell id="espdl" value="&lt;b style=&quot;color:#ffffff;font-size:13px&quot;&gt;esp-dl Inference&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;color:#ffcdd2;font-size:10px&quot;&gt;Quantized object detection&lt;br/&gt;128-bit vector acceleration&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#E8302B;strokeWidth=2;arcSize=12;shadow=1;fontFamily=Helvetica;" vertex="1" parent="1">
           <mxGeometry x="370" y="195" width="210" height="70" as="geometry"/>
         </mxCell>
 
+        <!-- Arrow: esp-dl → PPA Overlay -->
         <mxCell id="arrow-ml-overlay" value="" style="endArrow=block;endFill=1;strokeColor=#E8302B;strokeWidth=2;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="475" y="265" as="sourcePoint"/>
@@ -94,17 +109,75 @@
           </mxGeometry>
         </mxCell>
 
-        <mxCell id="overlay" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;PPA Alpha Blend&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#ef9a9a&quot; style=&quot;font-size:10px&quot;&gt;Bounding box overlay on display&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8302B;strokeColor=#B71C1C;arcSize=12;shadow=1;" vertex="1" parent="1">
+        <!-- PPA Alpha Blend -->
+        <mxCell id="overlay" value="&lt;b style=&quot;color:#ffffff;font-size:12px&quot;&gt;PPA Alpha Blend&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;color:#ffebee;font-size:10px&quot;&gt;Bounding box overlay on display&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8302B;strokeColor=#B71C1C;arcSize=12;shadow=1;fontFamily=Helvetica;" vertex="1" parent="1">
           <mxGeometry x="370" y="300" width="210" height="50" as="geometry"/>
         </mxCell>
 
-        <!-- Phase 3: Tracking & Recording -->
-        <mxCell id="phase3-label" value="&lt;b&gt;&lt;font color=&quot;#B71C1C&quot; style=&quot;font-size:12px&quot;&gt;PHASE 3 — Track &amp; Record&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+        <!-- Arrow: esp-dl → SQLite -->
+        <mxCell id="arrow-ml-sqlite" value="" style="endArrow=block;endFill=1;strokeColor=#E8302B;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="475" y="350" as="sourcePoint"/>
+            <mxPoint x="475" y="395" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow-ml-sqlite-label" value="detection results" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#666666;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="490" y="362" width="92" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- SQLite Database -->
+        <mxCell id="sqlite" value="&lt;b style=&quot;color:#ffffff;font-size:11px&quot;&gt;riscvml_detect.db&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;color:#ffebee;font-size:9px&quot;&gt;&lt;b&gt;detections&lt;/b&gt;: species, confidence,&lt;br/&gt;bbox, timestamp&lt;br/&gt;&lt;b&gt;bird_led_colors&lt;/b&gt;: species → RGB&lt;/span&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#E8302B;strokeColor=#B71C1C;shadow=1;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="370" y="395" width="210" height="85" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrow: esp-dl → RGB LED (species ID) -->
+        <mxCell id="arrow-ml-led" value="" style="endArrow=block;endFill=1;strokeColor=#E8302B;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="370" y="240" as="sourcePoint"/>
+            <mxPoint x="260" y="365" as="targetPoint"/>
+            <Array as="points">
+              <mxPoint x="290" y="240"/>
+              <mxPoint x="290" y="365"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow-ml-led-label" value="species ID" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#666666;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="230" y="290" width="60" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- RGB LED Indicator -->
+        <mxCell id="led-box" value="&lt;b style=&quot;color:#ffffff;font-size:12px&quot;&gt;RGB LED Indicator&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;color:#ffebee;font-size:10px;font-style:italic&quot;&gt;Visual species identification&lt;br/&gt;Color mapped per bird type&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8302B;strokeColor=#B71C1C;arcSize=12;shadow=1;fontFamily=Helvetica;verticalAlign=top;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="350" width="200" height="75" as="geometry"/>
+        </mxCell>
+        <!-- RGB dots -->
+        <mxCell id="led-dot-r" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ff1744;strokeColor=none;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="113" y="408" width="12" height="12" as="geometry"/>
+        </mxCell>
+        <mxCell id="led-dot-g" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#00e676;strokeColor=none;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="133" y="408" width="12" height="12" as="geometry"/>
+        </mxCell>
+        <mxCell id="led-dot-b" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#2979ff;strokeColor=none;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="153" y="408" width="12" height="12" as="geometry"/>
+        </mxCell>
+
+        <!-- Dashed arrow: LED → SQLite (color lookup) -->
+        <mxCell id="arrow-led-db" value="" style="endArrow=block;endFill=1;strokeColor=#E8302B;strokeWidth=2;dashed=1;dashPattern=6 4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="260" y="405" as="sourcePoint"/>
+            <mxPoint x="370" y="435" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow-led-db-label" value="bird_led_colors" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#666666;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="270" y="425" width="88" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== PHASE 3: Track & Record ========== -->
+        <mxCell id="phase3-label" value="PHASE 3 — Track &amp; Record" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;fontColor=#B71C1C;fontStyle=1;fontFamily=Helvetica;" vertex="1" parent="1">
           <mxGeometry x="700" y="60" width="210" height="25" as="geometry"/>
         </mxCell>
 
-        <!-- Arrow from esp-dl to servo -->
-        <mxCell id="arrow-ml-servo" value="&lt;font style=&quot;font-size:9px&quot; color=&quot;#666666&quot;&gt;detection coords&lt;/font&gt;" style="endArrow=block;endFill=1;strokeColor=#E8302B;strokeWidth=2;" edge="1" parent="1">
+        <!-- Arrow: esp-dl → Servos -->
+        <mxCell id="arrow-ml-servo" value="" style="endArrow=block;endFill=1;strokeColor=#E8302B;strokeWidth=2;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="580" y="215" as="sourcePoint"/>
             <mxPoint x="700" y="115" as="targetPoint"/>
@@ -114,29 +187,38 @@
             </Array>
           </mxGeometry>
         </mxCell>
+        <mxCell id="arrow-ml-servo-label" value="detection coords" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#666666;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="590" y="190" width="92" height="20" as="geometry"/>
+        </mxCell>
 
-        <mxCell id="servo" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;PCA9685 Servos&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#ef9a9a&quot; style=&quot;font-size:10px&quot;&gt;Pan/tilt camera tracking&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8302B;strokeColor=#B71C1C;arcSize=12;shadow=1;" vertex="1" parent="1">
+        <!-- PCA9685 Servos -->
+        <mxCell id="servo" value="&lt;b style=&quot;color:#ffffff;font-size:12px&quot;&gt;PCA9685 Servos&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;color:#ffebee;font-size:10px&quot;&gt;Pan/tilt camera tracking&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8302B;strokeColor=#B71C1C;arcSize=12;shadow=1;fontFamily=Helvetica;" vertex="1" parent="1">
           <mxGeometry x="700" y="95" width="200" height="50" as="geometry"/>
         </mxCell>
 
-        <!-- Arrow from ISP to H.264 -->
-        <mxCell id="arrow-isp-h264" value="&lt;font style=&quot;font-size:9px&quot; color=&quot;#666666&quot;&gt;full-res frames&lt;/font&gt;" style="endArrow=block;endFill=1;strokeColor=#E8302B;strokeWidth=2;" edge="1" parent="1">
+        <!-- Arrow: ISP → H.264 (full-res frames, routed below) -->
+        <mxCell id="arrow-isp-h264" value="" style="endArrow=block;endFill=1;strokeColor=#E8302B;strokeWidth=2;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="260" y="200" as="sourcePoint"/>
             <mxPoint x="700" y="200" as="targetPoint"/>
             <Array as="points">
-              <mxPoint x="320" y="200"/>
-              <mxPoint x="320" y="385"/>
-              <mxPoint x="650" y="385"/>
-              <mxPoint x="650" y="200"/>
+              <mxPoint x="310" y="200"/>
+              <mxPoint x="310" y="500"/>
+              <mxPoint x="660" y="500"/>
+              <mxPoint x="660" y="200"/>
             </Array>
           </mxGeometry>
         </mxCell>
+        <mxCell id="arrow-isp-h264-label" value="full-res frames" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontColor=#666666;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="440" y="502" width="86" height="20" as="geometry"/>
+        </mxCell>
 
-        <mxCell id="h264" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;H.264 Hardware Encoder&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#ffcdd2&quot; style=&quot;font-size:10px&quot;&gt;1080p@30fps, zero-copy&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#212121;arcSize=12;shadow=1;" vertex="1" parent="1">
+        <!-- H.264 Encoder -->
+        <mxCell id="h264" value="&lt;b style=&quot;color:#ffffff;font-size:12px&quot;&gt;H.264 Hardware Encoder&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;color:#ffcdd2;font-size:10px&quot;&gt;1080p@30fps, zero-copy&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#212121;arcSize=12;shadow=1;fontFamily=Helvetica;" vertex="1" parent="1">
           <mxGeometry x="700" y="180" width="200" height="50" as="geometry"/>
         </mxCell>
 
+        <!-- Arrow: H.264 → C6 -->
         <mxCell id="arrow-h264-c6" value="" style="endArrow=block;endFill=1;strokeColor=#E8302B;strokeWidth=2;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="800" y="230" as="sourcePoint"/>
@@ -144,10 +226,12 @@
           </mxGeometry>
         </mxCell>
 
-        <mxCell id="c6-companion" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;ESP32-C6 Companion&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#ef9a9a&quot; style=&quot;font-size:10px&quot;&gt;Wi-Fi 6 via ESP-Hosted/SDIO&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8302B;strokeColor=#B71C1C;arcSize=12;shadow=1;" vertex="1" parent="1">
+        <!-- ESP32-C6 Companion -->
+        <mxCell id="c6-companion" value="&lt;b style=&quot;color:#ffffff;font-size:12px&quot;&gt;ESP32-C6 Companion&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;color:#ffebee;font-size:10px&quot;&gt;Wi-Fi 6 via ESP-Hosted/SDIO&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8302B;strokeColor=#B71C1C;arcSize=12;shadow=1;fontFamily=Helvetica;" vertex="1" parent="1">
           <mxGeometry x="700" y="265" width="200" height="50" as="geometry"/>
         </mxCell>
 
+        <!-- Arrow: C6 → MQTT/RTSP -->
         <mxCell id="arrow-c6-cloud" value="" style="endArrow=block;endFill=1;strokeColor=#E8302B;strokeWidth=2;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="800" y="315" as="sourcePoint"/>
@@ -155,73 +239,14 @@
           </mxGeometry>
         </mxCell>
 
-        <mxCell id="cloud" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;MQTT Alerts + RTSP Stream&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8302B;strokeColor=#B71C1C;arcSize=12;shadow=1;" vertex="1" parent="1">
+        <!-- MQTT / RTSP -->
+        <mxCell id="cloud" value="&lt;b style=&quot;color:#ffffff;font-size:12px&quot;&gt;MQTT Alerts + RTSP Stream&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8302B;strokeColor=#B71C1C;arcSize=12;shadow=1;fontFamily=Helvetica;" vertex="1" parent="1">
           <mxGeometry x="700" y="350" width="200" height="40" as="geometry"/>
         </mxCell>
 
-        <!-- SQLite Database -->
-        <mxCell id="arrow-ml-sqlite" value="&lt;font style=&quot;font-size:9px&quot; color=&quot;#666666&quot;&gt;detection results&lt;/font&gt;" style="endArrow=block;endFill=1;strokeColor=#E8302B;strokeWidth=2;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="475" y="350" as="sourcePoint"/>
-            <mxPoint x="475" y="390" as="targetPoint"/>
-          </mxGeometry>
-        </mxCell>
-
-        <mxCell id="sqlite" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;riscvml_detect.db&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#ef9a9a&quot; style=&quot;font-size:10px&quot;&gt;SQLite3 — detections table:&lt;br&gt;species, confidence, bbox, timestamp&lt;br&gt;bird_led_colors table:&lt;br&gt;species → RGB mapping&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=8;fillColor=#E8302B;strokeColor=#B71C1C;arcSize=12;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="370" y="390" width="210" height="85" as="geometry"/>
-        </mxCell>
-
-        <!-- RGB LED indicator -->
-        <mxCell id="arrow-sqlite-led" value="&lt;font style=&quot;font-size:9px&quot; color=&quot;#666666&quot;&gt;color lookup&lt;/font&gt;" style="endArrow=block;endFill=1;strokeColor=#E8302B;strokeWidth=2;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="160" y="370" as="sourcePoint"/>
-            <mxPoint x="160" y="410" as="targetPoint"/>
-          </mxGeometry>
-        </mxCell>
-
-        <!-- Arrow from esp-dl to LED area -->
-        <mxCell id="arrow-ml-led" value="&lt;font style=&quot;font-size:9px&quot; color=&quot;#666666&quot;&gt;species ID&lt;/font&gt;" style="endArrow=block;endFill=1;strokeColor=#E8302B;strokeWidth=2;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="370" y="240" as="sourcePoint"/>
-            <mxPoint x="260" y="350" as="targetPoint"/>
-            <Array as="points">
-              <mxPoint x="290" y="240"/>
-              <mxPoint x="290" y="350"/>
-            </Array>
-          </mxGeometry>
-        </mxCell>
-
-        <mxCell id="led-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8302B;strokeColor=#B71C1C;arcSize=12;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="60" y="350" width="200" height="70" as="geometry"/>
-        </mxCell>
-        <mxCell id="led-title" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;RGB LED Indicator&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="95" y="352" width="130" height="25" as="geometry"/>
-        </mxCell>
-        <mxCell id="led-detail" value="&lt;font color=&quot;#ffebee&quot; style=&quot;font-size:10px&quot;&gt;&lt;i&gt;Visual species identification&lt;br&gt;Color mapped per bird type&lt;/i&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="80" y="378" width="170" height="35" as="geometry"/>
-        </mxCell>
-        <!-- RGB dots to visually indicate LED colors -->
-        <mxCell id="led-dot-r" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ff1744;strokeColor=none;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="113" y="413" width="12" height="12" as="geometry"/>
-        </mxCell>
-        <mxCell id="led-dot-g" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#00e676;strokeColor=none;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="133" y="413" width="12" height="12" as="geometry"/>
-        </mxCell>
-        <mxCell id="led-dot-b" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#2979ff;strokeColor=none;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="153" y="413" width="12" height="12" as="geometry"/>
-        </mxCell>
-
-        <!-- Arrow from LED to SQLite for color lookup -->
-        <mxCell id="arrow-led-db" value="&lt;font style=&quot;font-size:9px&quot; color=&quot;#666666&quot;&gt;bird_led_colors&lt;/font&gt;" style="endArrow=block;endFill=1;strokeColor=#E8302B;strokeWidth=2;dashed=1;dashPattern=4 4;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="260" y="400" as="sourcePoint"/>
-            <mxPoint x="370" y="430" as="targetPoint"/>
-          </mxGeometry>
-        </mxCell>
-
-        <!-- Async Rust bar at bottom -->
-        <mxCell id="async-bar" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot; style=&quot;font-size:12px&quot;&gt;Embassy Async Runtime — Rust Ownership Model — Zero-Copy Buffer Flow&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1a1a1a;strokeColor=#E8302B;strokeWidth=2;arcSize=20;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="60" y="500" width="840" height="35" as="geometry"/>
+        <!-- ========== Bottom bar ========== -->
+        <mxCell id="async-bar" value="Embassy Async Runtime  —  Rust Ownership Model  —  Zero-Copy Buffer Flow" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1a1a1a;strokeColor=#E8302B;strokeWidth=2;arcSize=20;shadow=1;fontSize=12;fontColor=#ffffff;fontStyle=1;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="60" y="530" width="840" height="35" as="geometry"/>
         </mxCell>
 
       </root>
