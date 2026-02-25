@@ -38,3 +38,9 @@ End to end pipeline. From bare metal firmware to Tauri desktop apps, and from mi
 Character driven engagement. The platform's mascot, Count Rusty von Risc-V, embodies the technology stack — making complex terminology approachable for younger learners and career changers entering the ecosystem.
 
 RISCVML also serves as implicit ecosystem testing: exercises against Espressif's esp-rs toolchains generate upstream bug reports. Primary audiences are embedded engineers evaluating ARM to RISC-V transition, university educators seeking structured coursework, IoT hobbyists, younger learners drawn by the character driven approach, and ecosystem companies interested in educational partnerships.
+
+---
+
+**Author Bio (150 words):**
+
+Scottie von Bruchhausen is the founder of RISCVML, an educational platform teaching Rust-based embedded systems development on RISC-V hardware. Originally from Biloxi, Mississippi, he has called Germany home since 1994 and is based in the Bad Schwalbach/Wiesbaden area. A fully remote DevOps engineer and CCNP-certified network specialist, Scottie works across Rust, Go, and Python with deep expertise in Cisco datacenter routing and switching, VXLAN fabrics, vulnerability assessment, and Checkpoint security (CCSA). His experience with AI/ML and LLMs, combined with years of network automation and strategic infrastructure insight, sparked the vision for RISCVML — bridging the gap between RISC-V hardware availability and developer education. When not pushing the limits of network automation or crushing Cisco bugs, Scottie is an avid outdoorsman and licensed skipper, sailing the Danish coast — occasionally with a Cisco ISE instance authenticating IoT devices aboard his 28-foot sailboat.
