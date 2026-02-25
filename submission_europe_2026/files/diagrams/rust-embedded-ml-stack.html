@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Rust Embedded ML Stack — RISCVML</title>
+<style>
+  body { margin: 0; background: #f5f5f5; font-family: Helvetica, Arial, sans-serif; }
+  .container { max-width: 1100px; margin: 20px auto; background: #fff; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+  h1 { font-size: 16px; color: #333; margin: 0 0 10px; }
+  img { display: block; width: 100%; height: auto; }
+  a.overlay { position: absolute; display: block; cursor: pointer; border: 2px solid transparent; border-radius: 6px; transition: border-color 0.2s, background 0.2s; }
+  a.overlay:hover { border-color: #E8302B; background: rgba(232,48,43,0.08); }
+  .map-wrapper { position: relative; display: inline-block; width: 100%; }
+  .legend { font-size: 12px; color: #666; margin-top: 12px; }
+  .legend a { color: #E8302B; text-decoration: none; }
+  .legend a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Rust Safety in the Embedded ML Stack — Click any layer to view Rust source</h1>
+  <div class="map-wrapper" id="map">
+    <img src="rust-embedded-ml-stack.png" alt="Rust Embedded ML Stack" id="diagram">
+  </div>
+  <div class="legend">
+    <strong>Stack layers:</strong>
+    <a href="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/main.rs">Application Logic (main.rs)</a> ·
+    <a href="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/hal.rs">Rust HAL (hal.rs)</a> ·
+    <a href="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/ffi.rs">FFI Boundary (ffi.rs)</a> ·
+    <a href="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/camera.rs">ESP-IDF Drivers (camera.rs)</a> ·
+    <a href="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/Cargo.toml">Hardware (Cargo.toml)</a>
+  </div>
+</div>
+
+<script>
+const links = [
+  { x: 130, y: 80, w: 780, h: 75, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/main.rs", title: "Application Logic — main.rs" },
+  { x: 130, y: 175, w: 780, h: 75, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/hal.rs", title: "Rust HAL Layer — hal.rs" },
+  { x: 130, y: 265, w: 780, h: 30, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/ffi.rs", title: "FFI Boundary — ffi.rs" },
+  { x: 130, y: 310, w: 780, h: 75, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/camera.rs", title: "ESP-IDF C Drivers — camera.rs" },
+  { x: 130, y: 405, w: 780, h: 75, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/Cargo.toml", title: "ESP32-P4 Hardware — Cargo.toml" },
+];
+
+const canvasW = 1100, canvasH = 850;
+
+function createOverlays() {
+  const wrapper = document.getElementById("map");
+  const img = document.getElementById("diagram");
+  wrapper.querySelectorAll("a.overlay").forEach(a => a.remove());
+  const imgW = img.clientWidth, imgH = img.clientHeight;
+  links.forEach(l => {
+    const a = document.createElement("a");
+    a.className = "overlay";
+    a.href = l.href;
+    a.target = "_blank";
+    a.title = l.title;
+    a.style.left   = (l.x / canvasW * imgW) + "px";
+    a.style.top    = (l.y / canvasH * imgH) + "px";
+    a.style.width  = (l.w / canvasW * imgW) + "px";
+    a.style.height = (l.h / canvasH * imgH) + "px";
+    wrapper.appendChild(a);
+  });
+}
+window.addEventListener("load", createOverlays);
+window.addEventListener("resize", createOverlays);
+</script>
+</body>
+</html>

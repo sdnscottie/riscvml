@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bird Detection Pipeline — RISCVML</title>
+<style>
+  body { margin: 0; background: #f5f5f5; font-family: Helvetica, Arial, sans-serif; }
+  .container { max-width: 1100px; margin: 20px auto; background: #fff; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+  h1 { font-size: 16px; color: #333; margin: 0 0 10px; }
+  img { display: block; width: 100%; height: auto; }
+  a.overlay { position: absolute; display: block; cursor: pointer; border: 2px solid transparent; border-radius: 6px; transition: border-color 0.2s, background 0.2s; }
+  a.overlay:hover { border-color: #E8302B; background: rgba(232,48,43,0.08); }
+  .map-wrapper { position: relative; display: inline-block; width: 100%; }
+  .legend { font-size: 12px; color: #666; margin-top: 12px; }
+  .legend a { color: #E8302B; text-decoration: none; }
+  .legend a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Capstone: Bird Detection Pipeline on ESP32-P4 — Click any block to view Rust source</h1>
+  <div class="map-wrapper" id="map">
+    <img src="bird-detection-pipeline.png" alt="Bird Detection Pipeline" id="diagram">
+  </div>
+  <div class="legend">
+    <strong>Source files:</strong>
+    <a href="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/main.rs">main.rs</a> ·
+    <a href="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/camera.rs">camera.rs</a> ·
+    <a href="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/isp.rs">isp.rs</a> ·
+    <a href="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/display.rs">display.rs</a> ·
+    <a href="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/ppa.rs">ppa.rs</a> ·
+    <a href="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/inference.rs">inference.rs</a> ·
+    <a href="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/detect_db.rs">detect_db.rs</a> ·
+    <a href="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/led.rs">led.rs</a> ·
+    <a href="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/servo.rs">servo.rs</a> ·
+    <a href="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/encoder.rs">encoder.rs</a> ·
+    <a href="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/companion.rs">companion.rs</a> ·
+    <a href="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/network.rs">network.rs</a>
+  </div>
+</div>
+
+<script>
+// Overlay link regions mapped to drawio geometry (x, y, w, h) on the 1100x850 canvas.
+// Coordinates are percentages of the image dimensions.
+const links = [
+  // Phase 1
+  { x: 60, y: 95, w: 200, h: 55, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/camera.rs", title: "camera.rs" },
+  { x: 60, y: 180, w: 200, h: 65, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/isp.rs", title: "isp.rs" },
+  { x: 60, y: 280, w: 200, h: 50, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/display.rs", title: "display.rs" },
+  // Phase 2
+  { x: 370, y: 95, w: 210, h: 65, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/ppa.rs", title: "ppa.rs" },
+  { x: 370, y: 195, w: 210, h: 70, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/inference.rs", title: "inference.rs" },
+  { x: 370, y: 300, w: 210, h: 50, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/ppa.rs", title: "ppa.rs (blend)" },
+  { x: 370, y: 395, w: 210, h: 85, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/detect_db.rs", title: "detect_db.rs" },
+  { x: 60, y: 350, w: 200, h: 75, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/led.rs", title: "led.rs" },
+  // Phase 3
+  { x: 700, y: 95, w: 200, h: 50, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/servo.rs", title: "servo.rs" },
+  { x: 700, y: 180, w: 200, h: 50, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/encoder.rs", title: "encoder.rs" },
+  { x: 700, y: 265, w: 200, h: 50, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/companion.rs", title: "companion.rs" },
+  { x: 700, y: 350, w: 200, h: 40, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/network.rs", title: "network.rs" },
+  // Bottom bar
+  { x: 60, y: 530, w: 840, h: 35, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/main.rs", title: "main.rs" },
+];
+
+// Canvas size from drawio pageWidth/pageHeight
+const canvasW = 1100, canvasH = 850;
+
+function createOverlays() {
+  const wrapper = document.getElementById("map");
+  const img = document.getElementById("diagram");
+  // Remove old overlays
+  wrapper.querySelectorAll("a.overlay").forEach(a => a.remove());
+
+  const imgW = img.clientWidth;
+  const imgH = img.clientHeight;
+
+  links.forEach(l => {
+    const a = document.createElement("a");
+    a.className = "overlay";
+    a.href = l.href;
+    a.target = "_blank";
+    a.title = l.title;
+    a.style.left   = (l.x / canvasW * imgW) + "px";
+    a.style.top    = (l.y / canvasH * imgH) + "px";
+    a.style.width  = (l.w / canvasW * imgW) + "px";
+    a.style.height = (l.h / canvasH * imgH) + "px";
+    wrapper.appendChild(a);
+  });
+}
+
+window.addEventListener("load", createOverlays);
+window.addEventListener("resize", createOverlays);
+</script>
+</body>
+</html>

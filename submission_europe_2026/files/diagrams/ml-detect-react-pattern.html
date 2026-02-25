@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ML Detect → Visualize → React Pattern — RISCVML</title>
+<style>
+  body { margin: 0; background: #f5f5f5; font-family: Helvetica, Arial, sans-serif; }
+  .container { max-width: 1400px; margin: 20px auto; background: #fff; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+  h1 { font-size: 16px; color: #333; margin: 0 0 10px; }
+  img { display: block; width: 100%; height: auto; }
+  a.overlay { position: absolute; display: block; cursor: pointer; border: 2px solid transparent; border-radius: 6px; transition: border-color 0.2s, background 0.2s; }
+  a.overlay:hover { border-color: #E8302B; background: rgba(232,48,43,0.08); }
+  .map-wrapper { position: relative; display: inline-block; width: 100%; }
+  .legend { font-size: 12px; color: #666; margin-top: 12px; line-height: 1.8; }
+  .legend a { color: #E8302B; text-decoration: none; }
+  .legend a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>ML Detect → Visualize → React Pattern — Click any block to view Rust source</h1>
+  <div class="map-wrapper" id="map">
+    <img src="ml-detect-react-pattern.png" alt="ML Detect React Pattern" id="diagram">
+  </div>
+  <div class="legend">
+    <strong>Generic pattern (bird detection reference):</strong>
+    <a href="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/camera.rs">Sensor (camera.rs)</a> ·
+    <a href="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/inference.rs">ML (inference.rs)</a> ·
+    <a href="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/detect_db.rs">SQLite (detect_db.rs)</a> ·
+    <a href="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/led.rs">LED (led.rs)</a> ·
+    <a href="https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/servo.rs">Reaction (servo.rs)</a><br>
+    <strong>Use cases:</strong>
+    <a href="https://github.com/sdnscottie/riscvml/tree/master/module6/bird-detection/src">Bird Detection</a> ·
+    <a href="https://github.com/sdnscottie/riscvml/tree/master/module6/object-detection/src">Object Detection</a> ·
+    <a href="https://github.com/sdnscottie/riscvml/tree/master/module6/plant-health/src">Plant Health</a> ·
+    <a href="https://github.com/sdnscottie/riscvml/tree/master/module6/sound-classification/src">Sound Classification</a>
+  </div>
+</div>
+
+<script>
+const links = [
+  // Generic pattern row
+  { x: 60, y: 120, w: 140, h: 70, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/camera.rs", title: "Sensor Input — camera.rs" },
+  { x: 260, y: 120, w: 170, h: 70, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/inference.rs", title: "ML Classification — inference.rs" },
+  { x: 490, y: 115, w: 150, h: 80, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/detect_db.rs", title: "SQLite Lookup — detect_db.rs" },
+  { x: 700, y: 120, w: 130, h: 70, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/led.rs", title: "RGB LED — led.rs" },
+  { x: 890, y: 120, w: 160, h: 70, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/servo.rs", title: "Reaction — servo.rs" },
+  // UC1: Bird Detection
+  { x: 60, y: 300, w: 140, h: 55, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/camera.rs", title: "Bird — camera.rs" },
+  { x: 260, y: 300, w: 170, h: 55, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/inference.rs", title: "Bird — inference.rs" },
+  { x: 490, y: 290, w: 150, h: 75, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/detect_db.rs", title: "Bird — detect_db.rs" },
+  { x: 700, y: 300, w: 130, h: 55, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/led.rs", title: "Bird — led.rs" },
+  { x: 890, y: 295, w: 160, h: 60, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/servo.rs", title: "Bird — servo.rs" },
+  // UC2: Object Detection
+  { x: 60, y: 405, w: 140, h: 55, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/object-detection/src/main.rs", title: "Object — main.rs" },
+  { x: 260, y: 405, w: 170, h: 55, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/object-detection/src/main.rs", title: "Object — main.rs" },
+  { x: 490, y: 395, w: 150, h: 75, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/object-detection/src/detect_db.rs", title: "Object — detect_db.rs" },
+  { x: 700, y: 405, w: 130, h: 55, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/object-detection/src/led.rs", title: "Object — led.rs" },
+  // UC3: Plant Health
+  { x: 60, y: 520, w: 140, h: 55, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/plant-health/src/main.rs", title: "Plant — main.rs" },
+  { x: 260, y: 520, w: 170, h: 55, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/plant-health/src/main.rs", title: "Plant — main.rs" },
+  { x: 490, y: 510, w: 150, h: 75, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/plant-health/src/detect_db.rs", title: "Plant — detect_db.rs" },
+  { x: 700, y: 520, w: 130, h: 55, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/plant-health/src/led.rs", title: "Plant — led.rs" },
+  // UC4: Sound Classification
+  { x: 60, y: 635, w: 140, h: 55, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/sound-classification/src/main.rs", title: "Sound — main.rs" },
+  { x: 260, y: 635, w: 170, h: 55, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/sound-classification/src/main.rs", title: "Sound — main.rs" },
+  { x: 490, y: 625, w: 150, h: 75, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/sound-classification/src/detect_db.rs", title: "Sound — detect_db.rs" },
+  { x: 700, y: 635, w: 130, h: 55, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/sound-classification/src/led.rs", title: "Sound — led.rs" },
+  // Bottom bar
+  { x: 40, y: 740, w: 1040, h: 40, href: "https://github.com/sdnscottie/riscvml/blob/master/module6/bird-detection/src/main.rs", title: "Shared Infrastructure — main.rs" },
+];
+
+// Canvas size from drawio
+const canvasW = 1400, canvasH = 1000;
+
+function createOverlays() {
+  const wrapper = document.getElementById("map");
+  const img = document.getElementById("diagram");
+  wrapper.querySelectorAll("a.overlay").forEach(a => a.remove());
+  const imgW = img.clientWidth, imgH = img.clientHeight;
+  links.forEach(l => {
+    const a = document.createElement("a");
+    a.className = "overlay";
+    a.href = l.href;
+    a.target = "_blank";
+    a.title = l.title;
+    a.style.left   = (l.x / canvasW * imgW) + "px";
+    a.style.top    = (l.y / canvasH * imgH) + "px";
+    a.style.width  = (l.w / canvasW * imgW) + "px";
+    a.style.height = (l.h / canvasH * imgH) + "px";
+    wrapper.appendChild(a);
+  });
+}
+window.addEventListener("load", createOverlays);
+window.addEventListener("resize", createOverlays);
+</script>
+</body>
+</html>
