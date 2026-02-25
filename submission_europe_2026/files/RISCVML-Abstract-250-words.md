@@ -21,4 +21,4 @@ The curriculum uses commercially available Espressif RISC-V SoCs as its teaching
 
 These subsystems converge in a real-world capstone: an on-device bird-detection pipeline that captures frames via MIPI-CSI, runs quantized object detection through esp-dl, drives pan/tilt servos for tracking, and records H.264 video — all orchestrated in async Rust with ESP-IDF drivers integrated via FFI where hardware support requires it.
 
-By pairing Rust's memory-safety guarantees with production-ready toolchains (esp-hal, esp-idf-hal) on affordable, widely available hardware, RISCVML lowers the barrier for engineers, students, and hobbyists entering the RISC-V ecosystem — directly supporting Europe's push for open-standard, sovereign silicon literacy.
+By pairing Rust's memory-safety guarantees with production-ready toolchains (esp-hal, esp-idf-hal) on affordable hardware, and using a character-driven mascot to make complex terminology visually approachable for younger learners, RISCVML lowers the barrier for the next generation of RISC-V developers — supporting Europe's push for open-standard, sovereign silicon literacy.

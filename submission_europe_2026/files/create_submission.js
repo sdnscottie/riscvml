@@ -14,7 +14,7 @@ const title = "RISCVML: Teaching RISC-V Embedded ML with Rust \u2014 From ESP32-
 const authors = "Scottie von Bruchhausen";
 const affiliation = "RISCVML \u2014 riscvml.org \u2014 scottie@riscvml.org";
 
-const abstractText = `The rapid deployment of RISC-V in embedded systems, IoT, and edge AI has outpaced developer education: most existing tutorials target C/C++ and cover only basic microcontroller tasks, leaving a gap for engineers who need to build machine-learning-capable systems with modern toolchains. RISCVML addresses this gap with a structured, Rust-first curriculum spanning 172 chapters across seven modules, progressing from entry-level hardware to on-device ML inference.\n\nThe curriculum uses commercially available Espressif RISC-V SoCs as its teaching platform: the ESP32-C3 (single-core, BLE 5.0, ~\u20AC3) and ESP32-C6 (Wi-Fi 6, Thread/Matter, ~\u20AC4) introduce embedded Rust fundamentals \u2014 GPIO, sensors, power management, and wireless protocols. The ESP32-P4 (dual-core 400 MHz, AI extensions, 128-bit vector ISA, ~\u20AC25 dev board) anchors an advanced module covering its ISP camera pipeline, hardware-accelerated 2D rendering, H.264 video encoding, DMA orchestration, and vector-accelerated ML inference.\n\nThese subsystems converge in a real-world capstone: an on-device bird-detection pipeline that captures frames via MIPI-CSI, runs quantized object detection through esp-dl, drives pan/tilt servos for tracking, and records H.264 video \u2014 all orchestrated in async Rust with ESP-IDF drivers integrated via FFI where hardware support requires it.\n\nBy pairing Rust\u2019s memory-safety guarantees with production-ready toolchains (esp-hal, esp-idf-hal) on affordable, widely available hardware, RISCVML lowers the barrier for engineers, students, and hobbyists entering the RISC-V ecosystem \u2014 directly supporting Europe\u2019s push for open-standard, sovereign silicon literacy.`;
+const abstractText = `The rapid deployment of RISC-V in embedded systems, IoT, and edge AI has outpaced developer education: most existing tutorials target C/C++ and cover only basic microcontroller tasks, leaving a gap for engineers who need to build machine-learning-capable systems with modern toolchains. RISCVML addresses this gap with a structured, Rust-first curriculum spanning 172 chapters across seven modules, progressing from entry-level hardware to on-device ML inference.\n\nThe curriculum uses commercially available Espressif RISC-V SoCs as its teaching platform: the ESP32-C3 (single-core, BLE 5.0, ~\u20AC3) and ESP32-C6 (Wi-Fi 6, Thread/Matter, ~\u20AC4) introduce embedded Rust fundamentals \u2014 GPIO, sensors, power management, and wireless protocols. The ESP32-P4 (dual-core 400 MHz, AI extensions, 128-bit vector ISA, ~\u20AC25 dev board) anchors an advanced module covering its ISP camera pipeline, hardware-accelerated 2D rendering, H.264 video encoding, DMA orchestration, and vector-accelerated ML inference.\n\nThese subsystems converge in a real-world capstone: an on-device bird-detection pipeline that captures frames via MIPI-CSI, runs quantized object detection through esp-dl, drives pan/tilt servos for tracking, and records H.264 video \u2014 all orchestrated in async Rust with ESP-IDF drivers integrated via FFI where hardware support requires it.\n\nBy pairing Rust\u2019s memory-safety guarantees with production-ready toolchains (esp-hal, esp-idf-hal) on affordable hardware, and using a character-driven mascot to make complex terminology visually approachable for younger learners, RISCVML lowers the barrier for the next generation of RISC-V developers \u2014 supporting Europe\u2019s push for open-standard, sovereign silicon literacy.`;
 
 // ---- Helper functions ----
 
@@ -254,7 +254,7 @@ const bodySection = {
     // 2. IMPORTANCE FOR COMMUNITY
     heading1("2. Importance for the Community"),
 
-    bodyPara("The RISC-V ecosystem faces an asymmetric growth challenge: hardware availability has scaled rapidly — over 20 billion cores projected by 2025 — but developer education has not kept pace. Industry surveys consistently identify the software ecosystem as the primary barrier to RISC-V adoption. RISCVML addresses this with three differentiators:"),
+    bodyPara("The RISC-V ecosystem faces an asymmetric growth challenge: hardware availability has scaled rapidly — over 20 billion cores projected by 2025 — but developer education has not kept pace. Industry surveys consistently identify the software ecosystem as the primary barrier to RISC-V adoption. RISCVML addresses this with four differentiators:"),
 
     bodyParaMulti([
       { text: "Rust-first approach: ", bold: true },
@@ -271,6 +271,11 @@ const bodySection = {
       { text: "From bare-metal firmware to Tauri desktop applications, and from minimal IoT nodes (C3) to multimedia edge computing (P4 with MIPI displays and cameras), RISCVML spans the full embedded spectrum." },
     ]),
 
+    bodyParaMulti([
+      { text: "Character-driven engagement: ", bold: true },
+      { text: "The platform\u2019s mascot, Count Rusty von Risc-V (\u201CRusty-V\u201D), embodies the technology stack \u2014 a Rust crab body, RISC-V chip chest, ML neural-network brain dome \u2014 making complex terminology visually approachable for younger learners and career-changers entering the ecosystem." },
+    ]),
+
     // 3. FOSTERING THE ECOSYSTEM
     heading1("3. Ecosystem Contribution"),
 
@@ -279,7 +284,7 @@ const bodySection = {
     // 4. TARGET AUDIENCE
     heading1("4. Target Audience"),
 
-    bodyPara("The primary audiences are: embedded engineers evaluating ARM-to-RISC-V transition with Rust; university educators seeking structured RISC-V coursework on affordable hardware; IoT/LoRa hobbyists wanting guided RISC-V learning paths; and ecosystem companies interested in educational partnerships or curriculum licensing."),
+    bodyPara("The primary audiences are: embedded engineers evaluating ARM-to-RISC-V transition with Rust; university educators seeking structured RISC-V coursework on affordable hardware; IoT/LoRa hobbyists wanting guided RISC-V learning paths; younger learners and career-changers drawn in by the platform\u2019s character-driven, visually engaging approach; and ecosystem companies interested in educational partnerships or curriculum licensing."),
 
     bodyPara("The poster presentation will include QR codes linking to the live platform, sample chapter previews, and demonstrations of the firmware-to-desktop pipeline running on ESP32-C6 and ESP32-P4 hardware with MIPI display output.", true),
 
