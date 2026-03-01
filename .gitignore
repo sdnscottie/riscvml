@@ -1,5 +1,8 @@
 # ESP-IDF build artifacts
 build/
+
+# Rust build artifacts
+target/
 sdkconfig
 sdkconfig.old
 

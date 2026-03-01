@@ -1,8 +1,8 @@
-# svbprj.md — rs_solar_cntrl (Free Edition)
+# svbprj.md — rs_riscvml_embed_solar_cntrl (Free Edition)
 
 ## Project Overview
 
-**rs_solar_cntrl** — A Rust solar controller for an ESP32-P4 (RISC-V) that manages a 12-panel TrinaSolar TSM-620NEG19RC.20 array on a wintergarden/greenhouse roof with actuator-driven variable tilt. Part of the RISCVML educational curriculum.
+**rs_riscvml_embed_solar_cntrl** — A Rust solar controller for an ESP32-P4 (RISC-V) that manages a 12-panel TrinaSolar TSM-620NEG19RC.20 array on a wintergarden/greenhouse roof with actuator-driven variable tilt. Part of the RISCVML educational curriculum.
 
 This is the **free scaffolded edition**. The architecture, types, and hardware abstraction are provided — your task is to implement the core logic in the TODO stubs.
 
@@ -51,10 +51,10 @@ Implement the TODO stubs in these modules (run `cargo test` to check progress):
 ## Project Structure
 
 - `src/` — Rust source files (your workspace)
-- `docs_about__rs_solar_cntrl__free/` — simplified diagrams (see full version for detailed wiring)
+- `docs_about__rs_riscvml_embed__solar_cntrl__free/` — simplified diagrams (see full version for detailed wiring)
 
 ## Conventions
 
 - Commits use: `Co-Contributed-By: Claude Opus 4.6 <noreply@anthropic.com>`
 - Follow RISCVML patterns: SQLite for telemetry, embedded-hal traits for hardware
-- Diagrams go in `docs_about__rs_solar_cntrl__free/` directory
+- Diagrams go in `docs_about__rs_riscvml_embed__solar_cntrl__free/` directory

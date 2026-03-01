@@ -1,5 +1,5 @@
 [package]
-name = "rs_solar_cntrl_free"
+name = "rs_riscvml_embed_solar_cntrl_free"
 version = "0.1.0"
 edition = "2024"
 

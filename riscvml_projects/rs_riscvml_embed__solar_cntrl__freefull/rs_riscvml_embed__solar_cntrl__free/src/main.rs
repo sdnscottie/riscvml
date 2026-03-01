@@ -1,4 +1,4 @@
-//! rs_solar_cntrl — ESP32-P4 Solar Controller (Free Edition)
+//! rs_riscvml_embed_solar_cntrl — ESP32-P4 Solar Controller (Free Edition)
 //!
 //! Manages a 12-panel TrinaSolar TSM-620NEG19RC.20 array on a wintergarden
 //! roof with actuator-driven variable tilt (8 deg - 24 deg). Part of the
@@ -25,7 +25,7 @@ mod telemetry_db;
 mod types;
 
 fn main() {
-    println!("=== rs_solar_cntrl — Solar Controller (Free Edition) ===");
+    println!("=== rs_riscvml_embed_solar_cntrl — Solar Controller (Free Edition) ===");
     println!(
         "Site: {:.1} N, {:.1} E (Bad Schwalbach, Germany)",
         config::SITE_LATITUDE_DEG,

@@ -1,4 +1,4 @@
-//! System configuration constants for the rs_solar_cntrl solar controller.
+//! System configuration constants for the rs_riscvml_embed_solar_cntrl solar controller.
 //!
 //! All physical, electrical, and hardware parameters in one place.
 
