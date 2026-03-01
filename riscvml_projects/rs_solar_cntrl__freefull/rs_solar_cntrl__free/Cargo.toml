@@ -1,0 +1,28 @@
+[package]
+name = "rs_solar_cntrl_free"
+version = "0.1.0"
+edition = "2024"
+
+[features]
+default = []
+esp32p4 = [
+    "dep:esp-idf-sys",
+    "dep:embassy-executor",
+    "dep:embassy-time",
+    "dep:embassy-sync",
+    "dep:defmt",
+    "dep:defmt-rtt",
+]
+
+[dependencies]
+libm = "0.2"
+heapless = "0.8"
+rusqlite = { version = "0.32", features = ["bundled"] }
+
+# ESP32-P4 target dependencies (enable with: cargo build --features esp32p4)
+esp-idf-sys = { version = "0.35", optional = true }
+embassy-executor = { version = "0.7", optional = true }
+embassy-time = { version = "0.4", optional = true }
+embassy-sync = { version = "0.6", optional = true }
+defmt = { version = "0.3", optional = true }
+defmt-rtt = { version = "0.4", optional = true }

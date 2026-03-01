@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>rs_solar_cntrl — Wintergarden Solar Array (Free Edition)</title>
+<style>
+  :root {
+    --blue-dark: #0D47A1;
+    --blue-mid: #1565C0;
+    --blue-light: #1976D2;
+    --green: #2E7D32;
+    --orange: #E65100;
+    --bg: #FAFAFA;
+    --text: #212121;
+    --link: #1565C0;
+    --cta-bg: #E3F2FD;
+    --cta-border: #1565C0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); }
+  header { background: var(--blue-dark); color: #fff; padding: 1rem 2rem; }
+  header h1 { font-size: 1.4rem; font-weight: 600; }
+  header p { font-size: 0.85rem; opacity: 0.85; margin-top: 0.25rem; }
+  .tabs { display: flex; gap: 0; background: #E3F2FD; border-bottom: 2px solid var(--blue-dark); }
+  .tab { padding: 0.6rem 1.5rem; cursor: pointer; font-size: 0.9rem; font-weight: 500; border: none; background: transparent; color: var(--blue-dark); transition: background 0.2s; }
+  .tab:hover { background: #BBDEFB; }
+  .tab.active { background: #fff; border-bottom: 3px solid var(--blue-dark); margin-bottom: -2px; font-weight: 700; }
+  .slide { display: none; padding: 1rem 2rem 2rem; }
+  .slide.active { display: block; }
+  .diagram-wrapper { position: relative; display: inline-block; max-width: 100%; border: 1px solid #E0E0E0; border-radius: 4px; overflow: hidden; background: #fff; }
+  .diagram-wrapper img { display: block; max-width: 100%; height: auto; }
+  .overlay-link { position: absolute; cursor: pointer; border: 2px solid transparent; border-radius: 4px; transition: all 0.2s; z-index: 2; }
+  .overlay-link:hover { border-color: var(--blue-dark); background: rgba(13,71,161,0.08); }
+  .overlay-link.cta-overlay { border: 2px dashed var(--cta-border); }
+  .overlay-link.cta-overlay:hover { border-color: var(--blue-dark); background: rgba(21,101,192,0.15); }
+  .overlay-link .tooltip { display: none; position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background: #333; color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; white-space: nowrap; margin-bottom: 4px; }
+  .overlay-link:hover .tooltip { display: block; }
+  .links-panel { margin-top: 1.5rem; }
+  .links-panel h3 { font-size: 1rem; margin-bottom: 0.75rem; color: var(--blue-dark); border-bottom: 1px solid #E0E0E0; padding-bottom: 0.4rem; }
+  .link-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.5rem; }
+  .source-link { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.75rem; background: #fff; border: 1px solid #E0E0E0; border-radius: 4px; text-decoration: none; color: var(--text); font-size: 0.85rem; transition: all 0.15s; }
+  .source-link:hover { border-color: var(--blue-dark); background: #E3F2FD; }
+  .source-link .file { font-weight: 600; color: var(--link); }
+  .source-link .desc { color: #616161; font-size: 0.8rem; }
+  .cta-link { display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem; background: var(--cta-bg); border: 2px solid var(--cta-border); border-radius: 6px; text-decoration: none; color: var(--blue-dark); font-size: 0.95rem; font-weight: 600; transition: all 0.15s; grid-column: 1 / -1; }
+  .cta-link:hover { background: #BBDEFB; border-color: var(--blue-dark); }
+  .cta-link .desc { color: #0D47A1; font-weight: 400; font-size: 0.85rem; }
+  .gen-note { background: #FFF3E0; border: 1px solid #FFB74D; border-radius: 4px; padding: 0.75rem 1rem; margin: 1rem 2rem; font-size: 0.85rem; }
+  .gen-note code { background: #FFF8E1; padding: 2px 6px; border-radius: 3px; font-size: 0.8rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>rs_solar_cntrl — Wintergarden Solar Array</h1>
+  <p>Free Edition (Student Exercise) | 12x TrinaSolar TSM-620NEG19RC.20 | ESP32-P4 Controller</p>
+</header>
+
+<div class="gen-note">
+  Generate PNGs from the drawio source:<br>
+  <code>drawio --export --format png --scale 2 --page-index 0 --output panel-layout-free.png wintergarden-solar-array.drawio</code><br>
+  <code>drawio --export --format png --scale 2 --page-index 1 --output system-overview-free.png wintergarden-solar-array.drawio</code>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showSlide(0)">Panel Layout</button>
+  <button class="tab" onclick="showSlide(1)">System Overview</button>
+</div>
+
+<!-- ==================== SLIDE 0: Panel Layout (Free) ==================== -->
+<div class="slide active" id="slide-0">
+  <div class="diagram-wrapper">
+    <img src="panel-layout-free.png" alt="Panel Layout — 12 panels, 3 strings, 4 columns x 3 rows (Free Edition)">
+    <!-- String A: P1-P4 row -->
+    <a href="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_solar_cntrl__freefull/rs_solar_cntrl__free/src/adc_monitor.rs" class="overlay-link" style="left:11.7%;top:17.1%;width:45.8%;height:9.5%;" target="_blank">
+      <span class="tooltip">adc_monitor.rs — String A (TODO: implement ADC reads)</span>
+    </a>
+    <!-- String B: P5-P8 row -->
+    <a href="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_solar_cntrl__freefull/rs_solar_cntrl__free/src/adc_monitor.rs" class="overlay-link" style="left:11.7%;top:27.2%;width:45.8%;height:9.5%;" target="_blank">
+      <span class="tooltip">adc_monitor.rs — String B (TODO: implement ADC reads)</span>
+    </a>
+    <!-- String C: P9-P12 row -->
+    <a href="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_solar_cntrl__freefull/rs_solar_cntrl__free/src/adc_monitor.rs" class="overlay-link" style="left:11.7%;top:37.3%;width:45.8%;height:9.5%;" target="_blank">
+      <span class="tooltip">adc_monitor.rs — String C (TODO: implement ADC reads)</span>
+    </a>
+    <!-- System Overview Box -->
+    <a href="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_solar_cntrl__freefull/rs_solar_cntrl__free/src/config.rs" class="overlay-link" style="left:64.2%;top:14.3%;width:23.3%;height:22.9%;" target="_blank">
+      <span class="tooltip">config.rs — System constants (provided complete)</span>
+    </a>
+    <!-- CTA Box -->
+    <a href="https://Agrarobotics.com/training" class="overlay-link cta-overlay" style="left:64.2%;top:41.4%;width:23.3%;height:19.6%;" target="_blank">
+      <span class="tooltip">Join for Full Training at Agrarobotics.com/training</span>
+    </a>
+  </div>
+
+  <div class="links-panel">
+    <h3>Source Files — Panel &amp; Electrical Configuration</h3>
+    <div class="link-grid">
+      <a class="cta-link" href="https://Agrarobotics.com/training" target="_blank">
+        <span class="file">Join for Full Training</span><span class="desc">Get the complete reference solution, wiring diagrams, and expert guidance</span>
+      </a>
+      <a class="source-link" href="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_solar_cntrl__freefull/rs_solar_cntrl__free/src/config.rs" target="_blank">
+        <span class="file">config.rs</span><span class="desc">Site location, panel specs, string config (provided)</span>
+      </a>
+      <a class="source-link" href="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_solar_cntrl__freefull/rs_solar_cntrl__free/src/adc_monitor.rs" target="_blank">
+        <span class="file">adc_monitor.rs</span><span class="desc">Per-string voltage/current/power (TODO stubs)</span>
+      </a>
+      <a class="source-link" href="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_solar_cntrl__freefull/rs_solar_cntrl__free/src/types.rs" target="_blank">
+        <span class="file">types.rs</span><span class="desc">PowerReading, StringStatus types (provided)</span>
+      </a>
+      <a class="source-link" href="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_solar_cntrl__freefull/rs_solar_cntrl__free/src/telemetry_db.rs" target="_blank">
+        <span class="file">telemetry_db.rs</span><span class="desc">SQLite insert methods (TODO stubs)</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 1: System Overview (Free) ==================== -->
+<div class="slide" id="slide-1">
+  <div class="diagram-wrapper">
+    <img src="system-overview-free.png" alt="System Overview — block diagram of solar controller (Free Edition)">
+    <!-- Solar Array block -->
+    <a href="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_solar_cntrl__freefull/rs_solar_cntrl__free/src/config.rs" class="overlay-link" style="left:5%;top:15.6%;width:16.4%;height:13.3%;" target="_blank">
+      <span class="tooltip">config.rs — Panel and string specs</span>
+    </a>
+    <!-- ESP32-P4 block -->
+    <a href="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_solar_cntrl__freefull/rs_solar_cntrl__free/src/main.rs" class="overlay-link" style="left:29.1%;top:15.6%;width:14.5%;height:13.3%;" target="_blank">
+      <span class="tooltip">main.rs — ESP32-P4 orchestrator</span>
+    </a>
+    <!-- Actuator block -->
+    <a href="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_solar_cntrl__freefull/rs_solar_cntrl__free/src/actuator.rs" class="overlay-link" style="left:52.7%;top:15.6%;width:14.5%;height:13.3%;" target="_blank">
+      <span class="tooltip">actuator.rs — Linear actuator control (TODO stubs)</span>
+    </a>
+    <!-- Sensors block -->
+    <a href="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_solar_cntrl__freefull/rs_solar_cntrl__free/src/inclinometer.rs" class="overlay-link" style="left:29.1%;top:38.3%;width:14.5%;height:15%;" target="_blank">
+      <span class="tooltip">inclinometer.rs — I2C sensor (TODO stubs)</span>
+    </a>
+    <!-- SQLite block -->
+    <a href="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_solar_cntrl__freefull/rs_solar_cntrl__free/src/telemetry_db.rs" class="overlay-link" style="left:52.7%;top:39.2%;width:10.9%;height:12.5%;" target="_blank">
+      <span class="tooltip">telemetry_db.rs — SQLite telemetry (TODO stubs)</span>
+    </a>
+    <!-- Your Challenge box -->
+    <a href="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_solar_cntrl__freefull/rs_solar_cntrl__free/src/" class="overlay-link" style="left:5%;top:38.3%;width:20%;height:33.3%;" target="_blank">
+      <span class="tooltip">Browse all source files — 7 modules with TODO stubs</span>
+    </a>
+    <!-- CTA block -->
+    <a href="https://Agrarobotics.com/training" class="overlay-link cta-overlay" style="left:52.7%;top:56.7%;width:21.8%;height:22.5%;" target="_blank">
+      <span class="tooltip">Join for Full Training at Agrarobotics.com/training</span>
+    </a>
+  </div>
+
+  <div class="links-panel">
+    <h3>Source Files — Student Exercise Modules</h3>
+    <div class="link-grid">
+      <a class="cta-link" href="https://Agrarobotics.com/training" target="_blank">
+        <span class="file">Join for Full Training</span><span class="desc">Complete reference solution with all implementations and expert guidance</span>
+      </a>
+      <a class="source-link" href="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_solar_cntrl__freefull/rs_solar_cntrl__free/src/sun_position.rs" target="_blank">
+        <span class="file">sun_position.rs</span><span class="desc">Solar angle + optimal tilt (Level 1 TODO)</span>
+      </a>
+      <a class="source-link" href="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_solar_cntrl__freefull/rs_solar_cntrl__free/src/inclinometer.rs" target="_blank">
+        <span class="file">inclinometer.rs</span><span class="desc">ADXL345 I2C sensor read (Level 1 TODO)</span>
+      </a>
+      <a class="source-link" href="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_solar_cntrl__freefull/rs_solar_cntrl__free/src/adc_monitor.rs" target="_blank">
+        <span class="file">adc_monitor.rs</span><span class="desc">ADC voltage/current conversion (Level 1 TODO)</span>
+      </a>
+      <a class="source-link" href="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_solar_cntrl__freefull/rs_solar_cntrl__free/src/actuator.rs" target="_blank">
+        <span class="file">actuator.rs</span><span class="desc">PWM motor control (Level 2 TODO)</span>
+      </a>
+      <a class="source-link" href="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_solar_cntrl__freefull/rs_solar_cntrl__free/src/safety.rs" target="_blank">
+        <span class="file">safety.rs</span><span class="desc">Wind protection (Level 2 TODO)</span>
+      </a>
+      <a class="source-link" href="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_solar_cntrl__freefull/rs_solar_cntrl__free/src/scheduler.rs" target="_blank">
+        <span class="file">scheduler.rs</span><span class="desc">Tilt scheduling (Level 2 TODO)</span>
+      </a>
+      <a class="source-link" href="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_solar_cntrl__freefull/rs_solar_cntrl__free/src/telemetry_db.rs" target="_blank">
+        <span class="file">telemetry_db.rs</span><span class="desc">SQLite inserts (Level 2 TODO)</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+function showSlide(index) {
+  document.querySelectorAll('.slide').forEach((s, i) => {
+    s.classList.toggle('active', i === index);
+  });
+  document.querySelectorAll('.tab').forEach((t, i) => {
+    t.classList.toggle('active', i === index);
+  });
+}
+</script>
+</body>
+</html>
