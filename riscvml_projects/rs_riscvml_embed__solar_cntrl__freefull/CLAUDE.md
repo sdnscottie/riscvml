@@ -6,6 +6,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **rs_riscvml_embed_solar_cntrl** — A Rust solar controller for an ESP32-P4 (RISC-V) that manages a 12-panel TrinaSolar TSM-620NEG19RC.20 array on a wintergarden/greenhouse roof with actuator-driven variable tilt. Part of the RISCVML educational curriculum.
 
+## Repositories
+
+| Repo | Visibility | URL |
+|------|-----------|-----|
+| **riscvml** (monorepo) | Public | https://github.com/sdnscottie/riscvml |
+| **__free** (student exercise) | Public | https://github.com/sdnscottie/rs_riscvml_embed__solar_cntrl__free |
+| **__full** (reference solution) | Private | https://github.com/sdnscottie/rs_riscvml_embed__solar_cntrl__full |
+
 ## Repository Layout: Free/Full Pattern
 
 This directory contains two sibling Rust crates that form a **free/full exercise pair**:
@@ -54,12 +62,12 @@ The ESP32-P4 controller will:
 ## Key Files
 
 - `rs_riscvml_embed__solar_cntrl__full/svbprj.md` — Detailed project notes and architecture (the authoritative reference)
-- `rs_riscvml_embed__solar_cntrl__full/docs_about__rs_riscvml_embed__solar_cntrl/` — Draw.io diagrams (panel layout, tilt mechanism)
+- `rs_riscvml_embed__solar_cntrl__full/docs_about__rs_riscvml_embed__solar_cntrl__full/` — Draw.io diagrams (panel layout, tilt mechanism)
 
 ## Conventions
 
 - Commits use: `Co-Contributed-By: Claude Opus 4.6 <noreply@anthropic.com>`
 - Follow RISCVML patterns: SQLite for telemetry, embedded-hal traits for hardware abstraction
 - Prefer `esp-hal` (bare-metal) or `esp-idf-sys` (ESP-IDF FFI) depending on hardware feature needs
-- Diagrams go in `docs_about__rs_riscvml_embed__solar_cntrl/` directory
+- Diagrams go in `docs_about__rs_riscvml_embed__solar_cntrl__[free|full]/` directory
 - Regenerate diagram PNGs: `drawio --export --format png --scale 2 --output X.png X.drawio`
