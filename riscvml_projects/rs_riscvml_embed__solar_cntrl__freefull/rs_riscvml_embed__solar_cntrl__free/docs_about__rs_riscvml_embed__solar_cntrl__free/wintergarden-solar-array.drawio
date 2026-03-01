@@ -26,66 +26,66 @@
         </mxCell>
 
         <!-- STRING A (Row 0) — P1 to P4 — link to __free adc_monitor.rs -->
-        <UserObject label="&lt;b&gt;P1&lt;/b&gt;&lt;br&gt;620W" link="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_riscvml_embed__solar_cntrl__freefull/rs_riscvml_embed__solar_cntrl__free/src/adc_monitor.rs" id="7">
+        <UserObject label="&lt;b&gt;P1&lt;/b&gt;&lt;br&gt;620W" link="https://github.com/sdnscottie/rs_riscvml_embed__solar_cntrl__free/blob/master/src/adc_monitor.rs" id="7">
           <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0D47A1;fontColor=#FFFFFF;strokeColor=#0B3D91;fontSize=10;" vertex="1" parent="1">
             <mxGeometry x="160" y="120" width="125" height="58" as="geometry"/>
           </mxCell>
         </UserObject>
-        <UserObject label="&lt;b&gt;P2&lt;/b&gt;&lt;br&gt;620W" link="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_riscvml_embed__solar_cntrl__freefull/rs_riscvml_embed__solar_cntrl__free/src/adc_monitor.rs" id="8">
+        <UserObject label="&lt;b&gt;P2&lt;/b&gt;&lt;br&gt;620W" link="https://github.com/sdnscottie/rs_riscvml_embed__solar_cntrl__free/blob/master/src/adc_monitor.rs" id="8">
           <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0D47A1;fontColor=#FFFFFF;strokeColor=#0B3D91;fontSize=10;" vertex="1" parent="1">
             <mxGeometry x="290" y="120" width="125" height="58" as="geometry"/>
           </mxCell>
         </UserObject>
-        <UserObject label="&lt;b&gt;P3&lt;/b&gt;&lt;br&gt;620W" link="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_riscvml_embed__solar_cntrl__freefull/rs_riscvml_embed__solar_cntrl__free/src/adc_monitor.rs" id="9">
+        <UserObject label="&lt;b&gt;P3&lt;/b&gt;&lt;br&gt;620W" link="https://github.com/sdnscottie/rs_riscvml_embed__solar_cntrl__free/blob/master/src/adc_monitor.rs" id="9">
           <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0D47A1;fontColor=#FFFFFF;strokeColor=#0B3D91;fontSize=10;" vertex="1" parent="1">
             <mxGeometry x="420" y="120" width="125" height="58" as="geometry"/>
           </mxCell>
         </UserObject>
-        <UserObject label="&lt;b&gt;P4&lt;/b&gt;&lt;br&gt;620W" link="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_riscvml_embed__solar_cntrl__freefull/rs_riscvml_embed__solar_cntrl__free/src/adc_monitor.rs" id="10">
+        <UserObject label="&lt;b&gt;P4&lt;/b&gt;&lt;br&gt;620W" link="https://github.com/sdnscottie/rs_riscvml_embed__solar_cntrl__free/blob/master/src/adc_monitor.rs" id="10">
           <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0D47A1;fontColor=#FFFFFF;strokeColor=#0B3D91;fontSize=10;" vertex="1" parent="1">
             <mxGeometry x="550" y="120" width="125" height="58" as="geometry"/>
           </mxCell>
         </UserObject>
 
         <!-- STRING B — link to __free adc_monitor.rs -->
-        <UserObject label="&lt;b&gt;P5&lt;/b&gt;&lt;br&gt;620W" link="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_riscvml_embed__solar_cntrl__freefull/rs_riscvml_embed__solar_cntrl__free/src/adc_monitor.rs" id="11">
+        <UserObject label="&lt;b&gt;P5&lt;/b&gt;&lt;br&gt;620W" link="https://github.com/sdnscottie/rs_riscvml_embed__solar_cntrl__free/blob/master/src/adc_monitor.rs" id="11">
           <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1565C0;fontColor=#FFFFFF;strokeColor=#0D47A1;fontSize=10;" vertex="1" parent="1">
             <mxGeometry x="160" y="183" width="125" height="58" as="geometry"/>
           </mxCell>
         </UserObject>
-        <UserObject label="&lt;b&gt;P6&lt;/b&gt;&lt;br&gt;620W" link="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_riscvml_embed__solar_cntrl__freefull/rs_riscvml_embed__solar_cntrl__free/src/adc_monitor.rs" id="12">
+        <UserObject label="&lt;b&gt;P6&lt;/b&gt;&lt;br&gt;620W" link="https://github.com/sdnscottie/rs_riscvml_embed__solar_cntrl__free/blob/master/src/adc_monitor.rs" id="12">
           <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1565C0;fontColor=#FFFFFF;strokeColor=#0D47A1;fontSize=10;" vertex="1" parent="1">
             <mxGeometry x="290" y="183" width="125" height="58" as="geometry"/>
           </mxCell>
         </UserObject>
-        <UserObject label="&lt;b&gt;P7&lt;/b&gt;&lt;br&gt;620W" link="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_riscvml_embed__solar_cntrl__freefull/rs_riscvml_embed__solar_cntrl__free/src/adc_monitor.rs" id="13">
+        <UserObject label="&lt;b&gt;P7&lt;/b&gt;&lt;br&gt;620W" link="https://github.com/sdnscottie/rs_riscvml_embed__solar_cntrl__free/blob/master/src/adc_monitor.rs" id="13">
           <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1565C0;fontColor=#FFFFFF;strokeColor=#0D47A1;fontSize=10;" vertex="1" parent="1">
             <mxGeometry x="420" y="183" width="125" height="58" as="geometry"/>
           </mxCell>
         </UserObject>
-        <UserObject label="&lt;b&gt;P8&lt;/b&gt;&lt;br&gt;620W" link="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_riscvml_embed__solar_cntrl__freefull/rs_riscvml_embed__solar_cntrl__free/src/adc_monitor.rs" id="14">
+        <UserObject label="&lt;b&gt;P8&lt;/b&gt;&lt;br&gt;620W" link="https://github.com/sdnscottie/rs_riscvml_embed__solar_cntrl__free/blob/master/src/adc_monitor.rs" id="14">
           <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1565C0;fontColor=#FFFFFF;strokeColor=#0D47A1;fontSize=10;" vertex="1" parent="1">
             <mxGeometry x="550" y="183" width="125" height="58" as="geometry"/>
           </mxCell>
         </UserObject>
 
         <!-- STRING C — link to __free adc_monitor.rs -->
-        <UserObject label="&lt;b&gt;P9&lt;/b&gt;&lt;br&gt;620W" link="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_riscvml_embed__solar_cntrl__freefull/rs_riscvml_embed__solar_cntrl__free/src/adc_monitor.rs" id="15">
+        <UserObject label="&lt;b&gt;P9&lt;/b&gt;&lt;br&gt;620W" link="https://github.com/sdnscottie/rs_riscvml_embed__solar_cntrl__free/blob/master/src/adc_monitor.rs" id="15">
           <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1976D2;fontColor=#FFFFFF;strokeColor=#1565C0;fontSize=10;" vertex="1" parent="1">
             <mxGeometry x="160" y="246" width="125" height="58" as="geometry"/>
           </mxCell>
         </UserObject>
-        <UserObject label="&lt;b&gt;P10&lt;/b&gt;&lt;br&gt;620W" link="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_riscvml_embed__solar_cntrl__freefull/rs_riscvml_embed__solar_cntrl__free/src/adc_monitor.rs" id="16">
+        <UserObject label="&lt;b&gt;P10&lt;/b&gt;&lt;br&gt;620W" link="https://github.com/sdnscottie/rs_riscvml_embed__solar_cntrl__free/blob/master/src/adc_monitor.rs" id="16">
           <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1976D2;fontColor=#FFFFFF;strokeColor=#1565C0;fontSize=10;" vertex="1" parent="1">
             <mxGeometry x="290" y="246" width="125" height="58" as="geometry"/>
           </mxCell>
         </UserObject>
-        <UserObject label="&lt;b&gt;P11&lt;/b&gt;&lt;br&gt;620W" link="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_riscvml_embed__solar_cntrl__freefull/rs_riscvml_embed__solar_cntrl__free/src/adc_monitor.rs" id="17">
+        <UserObject label="&lt;b&gt;P11&lt;/b&gt;&lt;br&gt;620W" link="https://github.com/sdnscottie/rs_riscvml_embed__solar_cntrl__free/blob/master/src/adc_monitor.rs" id="17">
           <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1976D2;fontColor=#FFFFFF;strokeColor=#1565C0;fontSize=10;" vertex="1" parent="1">
             <mxGeometry x="420" y="246" width="125" height="58" as="geometry"/>
           </mxCell>
         </UserObject>
-        <UserObject label="&lt;b&gt;P12&lt;/b&gt;&lt;br&gt;620W" link="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_riscvml_embed__solar_cntrl__freefull/rs_riscvml_embed__solar_cntrl__free/src/adc_monitor.rs" id="18">
+        <UserObject label="&lt;b&gt;P12&lt;/b&gt;&lt;br&gt;620W" link="https://github.com/sdnscottie/rs_riscvml_embed__solar_cntrl__free/blob/master/src/adc_monitor.rs" id="18">
           <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1976D2;fontColor=#FFFFFF;strokeColor=#1565C0;fontSize=10;" vertex="1" parent="1">
             <mxGeometry x="550" y="246" width="125" height="58" as="geometry"/>
           </mxCell>
@@ -107,7 +107,7 @@
         </mxCell>
 
         <!-- System Overview Box — link to __free config.rs -->
-        <UserObject label="&lt;b&gt;System Overview&lt;/b&gt;&lt;hr&gt;&lt;b&gt;Total:&lt;/b&gt; 7,440 Wp (7.44 kWp)&lt;br&gt;12 panels x 620 Wp each&lt;br&gt;&lt;b&gt;Strings:&lt;/b&gt; 3 x 4 in series&lt;br&gt;&lt;b&gt;Tilt:&lt;/b&gt; 8 deg - 24 deg (actuator)&lt;br&gt;&lt;b&gt;Controller:&lt;/b&gt; ESP32-P4 (RISC-V)&lt;br&gt;&lt;b&gt;Firmware:&lt;/b&gt; Rust" link="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_riscvml_embed__solar_cntrl__freefull/rs_riscvml_embed__solar_cntrl__free/src/config.rs" id="23">
+        <UserObject label="&lt;b&gt;System Overview&lt;/b&gt;&lt;hr&gt;&lt;b&gt;Total:&lt;/b&gt; 7,440 Wp (7.44 kWp)&lt;br&gt;12 panels x 620 Wp each&lt;br&gt;&lt;b&gt;Strings:&lt;/b&gt; 3 x 4 in series&lt;br&gt;&lt;b&gt;Tilt:&lt;/b&gt; 8 deg - 24 deg (actuator)&lt;br&gt;&lt;b&gt;Controller:&lt;/b&gt; ESP32-P4 (RISC-V)&lt;br&gt;&lt;b&gt;Firmware:&lt;/b&gt; Rust" link="https://github.com/sdnscottie/rs_riscvml_embed__solar_cntrl__free/blob/master/src/config.rs" id="23">
           <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;strokeWidth=2;align=left;verticalAlign=top;spacingLeft=10;spacingTop=5;fontSize=10;fontColor=#1B5E20;" vertex="1" parent="1">
             <mxGeometry x="770" y="100" width="280" height="140" as="geometry"/>
           </mxCell>
@@ -141,35 +141,35 @@
         </mxCell>
 
         <!-- Solar Array Block — link to __free config.rs -->
-        <UserObject label="&lt;b&gt;Solar Array&lt;/b&gt;&lt;br&gt;12 panels, 7.44 kWp&lt;br&gt;3 strings x 4 series" link="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_riscvml_embed__solar_cntrl__freefull/rs_riscvml_embed__solar_cntrl__free/src/config.rs" id="10">
+        <UserObject label="&lt;b&gt;Solar Array&lt;/b&gt;&lt;br&gt;12 panels, 7.44 kWp&lt;br&gt;3 strings x 4 series" link="https://github.com/sdnscottie/rs_riscvml_embed__solar_cntrl__free/blob/master/src/config.rs" id="10">
           <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1565C0;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
             <mxGeometry x="60" y="100" width="160" height="70" as="geometry"/>
           </mxCell>
         </UserObject>
 
         <!-- ESP32-P4 Block — link to __free main.rs -->
-        <UserObject label="&lt;b&gt;ESP32-P4&lt;/b&gt;&lt;br&gt;RISC-V Controller&lt;br&gt;Rust Firmware" link="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_riscvml_embed__solar_cntrl__freefull/rs_riscvml_embed__solar_cntrl__free/src/main.rs" id="20">
+        <UserObject label="&lt;b&gt;ESP32-P4&lt;/b&gt;&lt;br&gt;RISC-V Controller&lt;br&gt;Rust Firmware" link="https://github.com/sdnscottie/rs_riscvml_embed__solar_cntrl__free/blob/master/src/main.rs" id="20">
           <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;strokeWidth=2;fontSize=11;fontColor=#1B5E20;" vertex="1" parent="1">
             <mxGeometry x="320" y="100" width="160" height="70" as="geometry"/>
           </mxCell>
         </UserObject>
 
         <!-- Actuator Block — link to __free actuator.rs -->
-        <UserObject label="&lt;b&gt;Linear Actuator&lt;/b&gt;&lt;br&gt;Tilt: 8 deg - 24 deg" link="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_riscvml_embed__solar_cntrl__freefull/rs_riscvml_embed__solar_cntrl__free/src/actuator.rs" id="30">
+        <UserObject label="&lt;b&gt;Linear Actuator&lt;/b&gt;&lt;br&gt;Tilt: 8 deg - 24 deg" link="https://github.com/sdnscottie/rs_riscvml_embed__solar_cntrl__free/blob/master/src/actuator.rs" id="30">
           <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#E65100;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
             <mxGeometry x="580" y="100" width="160" height="70" as="geometry"/>
           </mxCell>
         </UserObject>
 
         <!-- Sensors Block — link to __free inclinometer.rs -->
-        <UserObject label="&lt;b&gt;Sensors&lt;/b&gt;&lt;br&gt;Inclinometer (I2C)&lt;br&gt;ADC (V/I per string)&lt;br&gt;Wind switch (GPIO)" link="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_riscvml_embed__solar_cntrl__freefull/rs_riscvml_embed__solar_cntrl__free/src/inclinometer.rs" id="40">
+        <UserObject label="&lt;b&gt;Sensors&lt;/b&gt;&lt;br&gt;Inclinometer (I2C)&lt;br&gt;ADC (V/I per string)&lt;br&gt;Wind switch (GPIO)" link="https://github.com/sdnscottie/rs_riscvml_embed__solar_cntrl__free/blob/master/src/inclinometer.rs" id="40">
           <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;strokeWidth=2;fontSize=10;" vertex="1" parent="1">
             <mxGeometry x="320" y="230" width="160" height="80" as="geometry"/>
           </mxCell>
         </UserObject>
 
         <!-- Storage Block — link to __free telemetry_db.rs -->
-        <UserObject label="&lt;b&gt;SQLite DB&lt;/b&gt;&lt;br&gt;Telemetry on SD" link="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_riscvml_embed__solar_cntrl__freefull/rs_riscvml_embed__solar_cntrl__free/src/telemetry_db.rs" id="50">
+        <UserObject label="&lt;b&gt;SQLite DB&lt;/b&gt;&lt;br&gt;Telemetry on SD" link="https://github.com/sdnscottie/rs_riscvml_embed__solar_cntrl__free/blob/master/src/telemetry_db.rs" id="50">
           <mxCell style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#FFF8E1;strokeColor=#F57F17;strokeWidth=2;fontSize=10;" vertex="1" parent="1">
             <mxGeometry x="580" y="235" width="120" height="65" as="geometry"/>
           </mxCell>
@@ -205,7 +205,7 @@
         </mxCell>
 
         <!-- Your Challenge Box — link to __free src/ directory -->
-        <UserObject label="&lt;b&gt;Your Challenge&lt;/b&gt;&lt;hr&gt;Implement the TODO stubs in:&lt;br&gt; - sun_position.rs — solar angle math&lt;br&gt; - inclinometer.rs — I2C sensor read&lt;br&gt; - adc_monitor.rs — ADC conversions&lt;br&gt; - actuator.rs — motor control&lt;br&gt; - safety.rs — wind protection&lt;br&gt; - scheduler.rs — tilt scheduling&lt;br&gt; - telemetry_db.rs — SQLite inserts" link="https://github.com/sdnscottie/riscvml/blob/master/riscvml_projects/rs_riscvml_embed__solar_cntrl__freefull/rs_riscvml_embed__solar_cntrl__free/src/" id="70">
+        <UserObject label="&lt;b&gt;Your Challenge&lt;/b&gt;&lt;hr&gt;Implement the TODO stubs in:&lt;br&gt; - sun_position.rs — solar angle math&lt;br&gt; - inclinometer.rs — I2C sensor read&lt;br&gt; - adc_monitor.rs — ADC conversions&lt;br&gt; - actuator.rs — motor control&lt;br&gt; - safety.rs — wind protection&lt;br&gt; - scheduler.rs — tilt scheduling&lt;br&gt; - telemetry_db.rs — SQLite inserts" link="https://github.com/sdnscottie/rs_riscvml_embed__solar_cntrl__free/blob/master/src/" id="70">
           <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#424242;strokeWidth=1;align=left;verticalAlign=top;spacingLeft=10;spacingTop=5;fontSize=10;" vertex="1" parent="1">
             <mxGeometry x="60" y="230" width="220" height="175" as="geometry"/>
           </mxCell>
