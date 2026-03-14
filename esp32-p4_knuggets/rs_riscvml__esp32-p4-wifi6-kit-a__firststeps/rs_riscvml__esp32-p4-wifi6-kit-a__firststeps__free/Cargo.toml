@@ -1,0 +1,6 @@
+[package]
+name = "rs_riscvml__esp32_p4_wifi6_kit_a__firststeps"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
