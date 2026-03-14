@@ -18,5 +18,12 @@ Thumbs.db
 __pycache__/
 *.pyc
 
-# Exported images (regenerated from .drawio source)
-*.png
+# Private/paid content (belongs in separate private repos)
+**__full/
+
+# Node
+node_modules/
+
+# Temp/backup files
+*.bkp
+*.zip

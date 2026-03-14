@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLX90640 Thermal Viewer — RISCVML</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #1a1a2e;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        header {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #00d4ff;
+            margin-bottom: 4px;
+        }
+        .subtitle {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 20px;
+        }
+        .viewer {
+            display: flex;
+            gap: 16px;
+            align-items: stretch;
+        }
+        canvas {
+            border: 2px solid #333;
+            border-radius: 4px;
+            image-rendering: pixelated;
+        }
+        .scale-bar {
+            width: 30px;
+            border: 2px solid #333;
+            border-radius: 4px;
+            position: relative;
+        }
+        .scale-canvas { border-radius: 2px; }
+        .scale-labels {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: #aaa;
+            padding: 2px 0;
+            width: 50px;
+        }
+        .stats {
+            margin-top: 16px;
+            display: flex;
+            gap: 32px;
+            font-size: 1rem;
+        }
+        .stat-label { color: #888; font-size: 0.8rem; }
+        .stat-value { font-size: 1.3rem; font-weight: 700; }
+        .stat-min .stat-value { color: #4488ff; }
+        .stat-max .stat-value { color: #ff4444; }
+        .stat-avg .stat-value { color: #ffaa00; }
+        .status {
+            margin-top: 12px;
+            font-size: 0.75rem;
+            color: #555;
+        }
+        .crosshair-info {
+            margin-top: 8px;
+            font-size: 0.9rem;
+            color: #ccc;
+            height: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <header>MLX90640 Thermal Viewer</header>
+    <div class="subtitle">32 x 24 IR Array — RISCVML Knugget: esp32-p4__mlx90640</div>
+
+    <div class="viewer">
+        <canvas id="thermal" width="640" height="480"></canvas>
+        <canvas id="scale" class="scale-canvas" width="30" height="480"></canvas>
+        <div class="scale-labels">
+            <span id="scale-max"></span>
+            <span id="scale-mid"></span>
+            <span id="scale-min"></span>
+        </div>
+    </div>
+
+    <div class="crosshair-info" id="crosshair"></div>
+
+    <div class="stats">
+        <div class="stat-min">
+            <div class="stat-label">MIN</div>
+            <div class="stat-value" id="min-temp">--</div>
+        </div>
+        <div class="stat-avg">
+            <div class="stat-label">AVG</div>
+            <div class="stat-value" id="avg-temp">--</div>
+        </div>
+        <div class="stat-max">
+            <div class="stat-label">MAX</div>
+            <div class="stat-value" id="max-temp">--</div>
+        </div>
+    </div>
+
+    <div class="status" id="status">Connecting...</div>
+    <div class="status" id="image-ts" style="margin-top:4px;color:#00d4ff;font-size:0.85rem;"></div>
+
+    <script>
+        const COLS = 32;
+        const ROWS = 24;
+        const PX_W = 640 / COLS;  // 20
+        const PX_H = 480 / ROWS;  // 20
+
+        const canvas = document.getElementById('thermal');
+        const ctx = canvas.getContext('2d');
+        const scaleCanvas = document.getElementById('scale');
+        const scaleCtx = scaleCanvas.getContext('2d');
+
+        let lastFrame = null;
+        let lastImageTs = null;
+
+        function tempToColor(t) {
+            // t is normalized 0..1
+            // Blue (cold) -> Cyan -> Green -> Yellow -> Red (hot)
+            const clamped = Math.max(0, Math.min(1, t));
+            let r, g, b;
+            if (clamped < 0.25) {
+                const s = clamped / 0.25;
+                r = 0; g = Math.round(s * 255); b = 255;
+            } else if (clamped < 0.5) {
+                const s = (clamped - 0.25) / 0.25;
+                r = 0; g = 255; b = Math.round((1 - s) * 255);
+            } else if (clamped < 0.75) {
+                const s = (clamped - 0.5) / 0.25;
+                r = Math.round(s * 255); g = 255; b = 0;
+            } else {
+                const s = (clamped - 0.75) / 0.25;
+                r = 255; g = Math.round((1 - s) * 255); b = 0;
+            }
+            return `rgb(${r},${g},${b})`;
+        }
+
+        function renderFrame(frame) {
+            lastFrame = frame;
+            const range = frame.max_temp - frame.min_temp || 1;
+
+            for (let row = 0; row < ROWS; row++) {
+                for (let col = 0; col < COLS; col++) {
+                    const temp = frame.pixels[row * COLS + col];
+                    const t = (temp - frame.min_temp) / range;
+                    ctx.fillStyle = tempToColor(t);
+                    ctx.fillRect(col * PX_W, row * PX_H, PX_W, PX_H);
+                }
+            }
+
+            document.getElementById('min-temp').textContent = frame.min_temp.toFixed(1) + ' °C';
+            document.getElementById('max-temp').textContent = frame.max_temp.toFixed(1) + ' °C';
+            document.getElementById('avg-temp').textContent = frame.avg_temp.toFixed(1) + ' °C';
+
+            drawScale(frame.min_temp, frame.max_temp);
+        }
+
+        function drawScale(min, max) {
+            const h = scaleCanvas.height;
+            for (let y = 0; y < h; y++) {
+                const t = 1 - (y / h);
+                scaleCtx.fillStyle = tempToColor(t);
+                scaleCtx.fillRect(0, y, scaleCanvas.width, 1);
+            }
+            document.getElementById('scale-max').textContent = max.toFixed(1) + '°';
+            document.getElementById('scale-mid').textContent = ((min + max) / 2).toFixed(1) + '°';
+            document.getElementById('scale-min').textContent = min.toFixed(1) + '°';
+        }
+
+        canvas.addEventListener('mousemove', (e) => {
+            if (!lastFrame) return;
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const col = Math.floor(x / PX_W);
+            const row = Math.floor(y / PX_H);
+            if (col >= 0 && col < COLS && row >= 0 && row < ROWS) {
+                const temp = lastFrame.pixels[row * COLS + col];
+                document.getElementById('crosshair').textContent =
+                    `Pixel [${col}, ${row}]  —  ${temp.toFixed(1)} °C`;
+            }
+        });
+
+        canvas.addEventListener('mouseleave', () => {
+            document.getElementById('crosshair').textContent = '';
+        });
+
+        async function fetchThermal() {
+            try {
+                const res = await fetch('/api/thermal');
+                const frame = await res.json();
+                const ts = frame.image_ts;
+
+                const interval = frame.capture_interval_secs || '?';
+
+                if (ts !== lastImageTs) {
+                    lastImageTs = ts;
+                    renderFrame(frame);
+                    const localTs = new Date(ts).toLocaleString();
+                    document.getElementById('image-ts').textContent =
+                        `Image captured every ${interval} seconds — last: ${localTs}`;
+                    document.getElementById('status').textContent =
+                        `New frame received — polling every 2s`;
+                } else {
+                    document.getElementById('status').textContent =
+                        `Waiting for new frame (last: ${new Date(ts).toLocaleTimeString()}) — every ${interval}s`;
+                }
+            } catch (err) {
+                document.getElementById('status').textContent =
+                    `Error: ${err.message}`;
+            }
+        }
+
+        fetchThermal();
+        setInterval(fetchThermal, 2000);
+    </script>
+</body>
+</html>
