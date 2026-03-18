@@ -27,3 +27,4 @@ node_modules/
 # Temp/backup files
 *.bkp
 *.zip
+monetize_svb/
