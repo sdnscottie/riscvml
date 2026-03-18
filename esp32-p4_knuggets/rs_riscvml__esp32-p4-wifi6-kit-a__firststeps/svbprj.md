@@ -1,6 +1,6 @@
 # svbprj.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to CC (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
 
@@ -92,7 +92,7 @@ cargo fmt -- --check
 
 ## Conventions
 
-- Commits use: `Co-Contributed-By: Claude Opus 4.6 <noreply@anthropic.com>`
+- Commits use: `Co-Contributed-By: CC Opus 4.6 <noreply@anthropic.com>`
 - Follow RISCVML patterns: SQLite for telemetry, embedded-hal traits for hardware abstraction
 - Diagrams go in `docs_about__esp32-p4-wifi6-kit-a__firststeps__[free|full]/` directories
 - Regenerate diagram PNGs: `drawio --export --format png --scale 2 --output X.png X.drawio`

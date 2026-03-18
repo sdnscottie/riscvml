@@ -1,6 +1,6 @@
-# CLAUDE.md — RISCVML Monorepo
+# svbprj.md — RISCVML Monorepo
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to CC (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
 
@@ -15,27 +15,27 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```
 riscvml/                              ← you are here
-├── CLAUDE.md                         ← this file (repo-wide guidance)
-├── esp32-p4__knuggets/               ← ESP32-P4 knowledge nuggets (has its own CLAUDE.md)
+├── svbprj.md                         ← this file (repo-wide guidance)
+├── esp32-p4__knuggets/               ← ESP32-P4 knowledge nuggets (has its own svbprj.md)
 │   ├── esp32-p4__firststeps/         ← ESP-IDF C project (CMake, idf.py)
 │   └── esp32-p4__mlx90640/           ← Rust thermal camera stub (Cargo)
 ├── riscvml_projects/                 ← curriculum exercise projects
-│   └── rs_riscvml_embed__solar_cntrl__freefull/  ← solar controller (has its own CLAUDE.md)
+│   └── rs_riscvml_embed__solar_cntrl__freefull/  ← solar controller (has its own svbprj.md)
 │       ├── rs_riscvml_embed__solar_cntrl__free/  ← student scaffolding (public)
 │       └── rs_riscvml_embed__solar_cntrl__full/  ← reference solution (private)
-└── submission_europe_2026/           ← RISC-V Summit Europe 2026 submission (has its own CLAUDE.md)
+└── submission_europe_2026/           ← RISC-V Summit Europe 2026 submission (has its own svbprj.md)
     └── files/                        ← docs, diagrams, docx generator
 ```
 
-## Subproject CLAUDE.md Files
+## Subproject svbprj.md Files
 
-Each subproject has its own `CLAUDE.md` with build commands, architecture details, and conventions:
+Each subproject has its own `svbprj.md` with build commands, architecture details, and conventions:
 
-| Subproject | CLAUDE.md | Summary |
+| Subproject | svbprj.md | Summary |
 |------------|-----------|---------|
-| ESP32-P4 Knuggets | `esp32-p4__knuggets/CLAUDE.md` | P4 hardware nuggets, ESP-IDF + Rust builds, Olimex board setup |
-| Solar Controller | `riscvml_projects/rs_riscvml_embed__solar_cntrl__freefull/CLAUDE.md` | Free/full exercise pair, 12-panel solar tilt controller |
-| Summit Submission | `submission_europe_2026/CLAUDE.md` | Conference submission, curriculum overview, capstone details |
+| ESP32-P4 Knuggets | `esp32-p4__knuggets/svbprj.md` | P4 hardware nuggets, ESP-IDF + Rust builds, Olimex board setup |
+| Solar Controller | `riscvml_projects/rs_riscvml_embed__solar_cntrl__freefull/svbprj.md` | Free/full exercise pair, 12-panel solar tilt controller |
+| Summit Submission | `submission_europe_2026/svbprj.md` | Conference submission, curriculum overview, capstone details |
 
 ## Naming Conventions
 
@@ -69,7 +69,7 @@ idf.py -p /dev/ttyACM0 flash monitor   # Ctrl+] to exit monitor
 ## Commit Convention
 
 ```
-Co-Contributed-By: Claude Opus 4.6 <noreply@anthropic.com>
+Co-Contributed-By: CC Opus 4.6 <noreply@anthropic.com>
 ```
 
 ## Diagrams

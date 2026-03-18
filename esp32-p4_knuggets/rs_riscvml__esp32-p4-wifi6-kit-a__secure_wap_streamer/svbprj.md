@@ -1,6 +1,6 @@
 # svbprj.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to CC (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
 
@@ -108,7 +108,7 @@ openssl req -x509 -newkey rsa:2048 -keyout server_key.pem -out server_cert.pem -
 
 ## Conventions
 
-- Commits use: `Co-Contributed-By: Claude Opus 4.6 <noreply@anthropic.com>`
+- Commits use: `Co-Contributed-By: CC Opus 4.6 <noreply@anthropic.com>`
 - Follow RISCVML patterns: ESP-IDF C firmware, embedded HTML/JS for frontend
 - MI0802 component reused from CritterCam knugget
 - Diagrams go in `docs_about__esp32-p4-wifi6-kit-a__secure_wap_streamer__full/`

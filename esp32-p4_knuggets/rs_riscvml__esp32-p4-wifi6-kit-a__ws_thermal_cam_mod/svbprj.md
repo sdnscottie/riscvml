@@ -1,6 +1,6 @@
 # svbprj.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to CC (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
 
@@ -195,7 +195,7 @@ cargo run -- --serial /dev/ttyACM0 --baud 115200 --port 3050
 
 ## Conventions
 
-- Commits use: `Co-Contributed-By: Claude Opus 4.6 <noreply@anthropic.com>`
+- Commits use: `Co-Contributed-By: CC Opus 4.6 <noreply@anthropic.com>`
 - Follow RISCVML patterns: SQLite for telemetry, embedded-hal traits for hardware abstraction
 - Diagrams go in `docs_about__esp32-p4-wifi6-kit-a__ws_thermal_cam_mod__[free|full]/`
 - Regenerate diagram PNGs: `drawio --export --format png --scale 2 --output X.png X.drawio`

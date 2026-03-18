@@ -1,6 +1,6 @@
-# CLAUDE.md
+# svbprj.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to CC (claude.ai/code) when working with code in this repository.
 
 ## What This Repo Is
 
@@ -88,4 +88,4 @@ idf.py -p /dev/ttyACM0 flash monitor   # Ctrl+] to exit
 
 ## Commit Convention
 
-Use `Co-Contributed-By: Claude Opus 4.6 <noreply@anthropic.com>` in commits.
+Use `Co-Contributed-By: CC Opus 4.6 <noreply@anthropic.com>` in commits.

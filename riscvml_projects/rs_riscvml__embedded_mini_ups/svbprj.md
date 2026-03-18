@@ -1,6 +1,6 @@
-# CLAUDE.md
+# svbprj.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to CC (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
 
@@ -29,7 +29,7 @@ When developing: implement features in `__full` first, then create the correspon
 
 ```
 rs_riscvml__embedded_mini_ups/
-├── CLAUDE.md                                          ← this file
+├── svbprj.md                                          ← this file
 ├── rs_riscvml__embedded_mini_ups__free/
 │   └── docs_about__embedded_mini_ups__free/           ← diagrams, wiring docs (public)
 └── rs_riscvml__embedded_mini_ups__full/
@@ -76,7 +76,7 @@ The ESP32 controller will:
 
 ## Conventions
 
-- Commits use: `Co-Contributed-By: Claude Opus 4.6 <noreply@anthropic.com>`
+- Commits use: `Co-Contributed-By: CC Opus 4.6 <noreply@anthropic.com>`
 - Follow RISCVML patterns: SQLite for telemetry, embedded-hal traits for hardware abstraction
 - Prefer `esp-hal` (bare-metal) or `esp-idf-sys` (ESP-IDF FFI) depending on hardware feature needs
 - Diagrams go in `docs_about__embedded_mini_ups__[free|full]/` directories
