@@ -142,6 +142,69 @@ idf.py -p /dev/ttyACM0 flash monitor   # Ctrl+] to exit
 - Servo angle control (0–180°) on CH0 (pan) and CH1 (tilt)
 - Pulse width mapping: 1ms (0°) → 2ms (180°) at 50Hz
 
+## Use Case: Variable Speed Drill Trigger Control
+
+The IBT-2 can replace a drill's trigger to provide electronic speed control from the ESP32-P4.
+
+### Confirmed: Brushed Drill (19V Battery)
+
+Fluke measurements on the drill trigger output:
+- Trigger released: **0V DC**
+- Light press: **~1V DC**
+- Full press: **~19V DC**
+
+This confirms a **brushed motor with a variable-voltage trigger** (not a low-voltage control signal).
+The IBT-2 replaces the trigger — ESP32-P4 PWM duty cycle maps directly to motor speed.
+
+| PWM Duty | Motor Voltage | Equivalent Trigger |
+|----------|---------------|-------------------|
+| 0%       | 0V            | Released          |
+| 5%       | ~1V           | Light press       |
+| 50%      | ~9.5V         | Half pull         |
+| 100%     | ~19V          | Full press        |
+
+### Wiring (Drill Trigger Replacement)
+
+```
+Drill Battery (19V)              IBT-2              Drill Motor
+━━━━━━━━━━━━━━━━━━━    ━━━━━━━━━━━━━━━━━    ━━━━━━━━━━━━━━
+    Battery +  ──────────►  VIN                 B+  ──────────►  Motor +
+    Battery -  ──────────►  GND                 B-  ──────────►  Motor -
+
+ESP32-P4 (P6 Header)            IBT-2
+━━━━━━━━━━━━━━━━━━━━    ━━━━━━━━━━━━━━━━━
+GPIO 4   ────────────────────►  RPWM  (speed 0–100%)
+GPIO 5   ────────────────────►  LPWM  (LOW — forward only)
+GPIO 6   ────────────────────►  R_EN  (HIGH — enable)
+GPIO 22  ────────────────────►  L_EN  (HIGH — enable)
+3V3      ────────────────────►  VCC
+GND      ────────────────────►  GND   (common with drill battery -)
+```
+
+Disconnect the two wires from the trigger output to the motor. Connect them to B+/B- instead.
+Forward-only operation: RPWM = PWM, LPWM = LOW, both enables HIGH.
+
+### Quick Bench Test (No ESP32-P4 Required)
+
+To verify the IBT-2 can spin the drill motor before writing firmware:
+
+```
+1. Wire VIN/GND ◄── Drill battery (19V)
+2. Wire B+/B-   ──► Drill motor leads
+3. Wire VCC     ◄── 3.3V (or AA battery 1.5V)
+4. Wire R_EN    ◄── jumper to VCC
+5. Wire L_EN    ◄── jumper to VCC
+6. Wire LPWM    ◄── jumper to GND
+7. Touch RPWM   ◄── briefly to VCC → motor should spin
+```
+
+BTS7960 logic threshold is ~1.2V, so even a 1.5V AA battery works as a logic source.
+
+### Power Source Option: Waveshare UPS Power Module (C)
+
+The UPS Module (C) with 3S 21700 cells (9V–12.6V) can power the IBT-2 VIN for light motor loads (<2A).
+For heavy loads (drill motors at 5A+), use the drill's own battery pack directly.
+
 ## Future Integration (Secure WAP Streamer)
 
 Both knuggets will be integrated into the `secure_wap_streamer` as ESP-IDF components:

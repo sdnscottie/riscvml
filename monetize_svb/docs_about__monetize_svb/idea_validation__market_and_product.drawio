@@ -1,0 +1,281 @@
+<mxfile host="app.diagrams.net" modified="2026-03-18T00:00:00.000Z" agent="Claude Code" version="24.0.0">
+  <diagram id="idea-validation" name="Idea Validation — Market &amp; Product">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1700" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Title -->
+        <mxCell id="title" value="&lt;b&gt;Is This Idea Good? — Validation Steps&lt;/b&gt;&lt;br&gt;riscvml.org &amp; agrarobotics.com" style="text;html=1;align=center;verticalAlign=middle;fontSize=18;fontColor=#1a1a1a;" vertex="1" parent="1">
+          <mxGeometry x="530" y="20" width="480" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Legend -->
+        <mxCell id="legend_go" value="GREEN = Signal idea is good" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="20" width="180" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend_nogo" value="RED = Signal to pivot or kill" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="55" width="180" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== ROOKIE vs PRO (TOP CENTER) ==================== -->
+        <mxCell id="rookie_box" value="&lt;b&gt;ROOKIE ENTREPRENEUR&lt;/b&gt;&lt;hr&gt;Gets excited about an idea&lt;br&gt;↓&lt;br&gt;Goes all-in immediately&lt;br&gt;↓&lt;br&gt;Builds the whole thing&lt;br&gt;↓&lt;br&gt;&lt;font color=&quot;#b85450&quot;&gt;&lt;b&gt;Discovers nobody wants it&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=center;" vertex="1" parent="1">
+          <mxGeometry x="250" y="90" width="220" height="150" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="vs_label" value="&lt;b&gt;vs.&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontSize=16;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="490" y="140" width="40" height="30" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="pro_box" value="&lt;b&gt;EXPERIENCED ENTREPRENEUR&lt;/b&gt;&lt;hr&gt;Has multiple ideas&lt;br&gt;↓&lt;br&gt;&lt;b&gt;Runs fast, cheap experiments&lt;/b&gt;&lt;br&gt;↓&lt;br&gt;Lets DATA pick the winner&lt;br&gt;↓&lt;br&gt;&lt;font color=&quot;#82b366&quot;&gt;&lt;b&gt;Builds what people already want&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=center;" vertex="1" parent="1">
+          <mxGeometry x="550" y="90" width="240" height="150" as="geometry"/>
+        </mxCell>
+
+        <!-- Waiting List Case Study -->
+        <mxCell id="waitlist_case" value="&lt;b&gt;REAL EXAMPLE: The Waiting List Test&lt;/b&gt;&lt;hr&gt;&lt;table cellpadding=&quot;4&quot; style=&quot;font-size:11px;&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Idea A&lt;/b&gt; (favorite)&lt;/td&gt;&lt;td&gt;&lt;b&gt;Idea B&lt;/b&gt; (less exciting)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Waiting list sign-ups&lt;/td&gt;&lt;td align=&quot;center&quot;&gt;&lt;font color=&quot;#d6b656&quot;&gt;&lt;b&gt;750&lt;/b&gt;&lt;/font&gt;&lt;/td&gt;&lt;td align=&quot;center&quot;&gt;&lt;font color=&quot;#82b366&quot;&gt;&lt;b&gt;4,500&lt;/b&gt;&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Questionnaire data&lt;/td&gt;&lt;td align=&quot;center&quot;&gt;Collected&lt;/td&gt;&lt;td align=&quot;center&quot;&gt;Collected&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Signal strength&lt;/td&gt;&lt;td align=&quot;center&quot;&gt;Moderate&lt;/td&gt;&lt;td align=&quot;center&quot;&gt;&lt;b&gt;6x stronger&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br&gt;&lt;b&gt;Result:&lt;/b&gt; Pursued Idea B — sitting on a &lt;b&gt;much bigger need&lt;/b&gt;&lt;br&gt;even though it wasn't the founder's personal favorite.&lt;br&gt;&lt;br&gt;&lt;i&gt;Key: Your excitement ≠ market demand.&lt;br&gt;Let the numbers decide, not your gut.&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;spacingLeft=10;spacingRight=10;" vertex="1" parent="1">
+          <mxGeometry x="870" y="80" width="400" height="230" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrow from pro to case study -->
+        <mxCell id="e_pro_case" style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#82b366;" edge="1" source="pro_box" target="waitlist_case" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== START ==================== -->
+        <mxCell id="start" value="&lt;b&gt;RAW IDEA&lt;/b&gt;&lt;br&gt;&lt;i&gt;(don't fall in love yet)&lt;/i&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="620" y="290" width="200" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrow from pro to start -->
+        <mxCell id="e_pro_start" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#82b366;strokeWidth=2;" edge="1" source="pro_box" target="start" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- THE RULE callout -->
+        <mxCell id="rule_callout" value="&lt;b&gt;THE RULE:&lt;/b&gt;&lt;br&gt;Never build before you validate.&lt;br&gt;Design fast, cheap experiments&lt;br&gt;that let REAL PEOPLE tell you&lt;br&gt;if the idea is worth pursuing." style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;size=20;position=0.5;position2=1;base=20;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;align=center;" vertex="1" parent="1">
+          <mxGeometry x="370" y="270" width="220" height="110" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrow to split -->
+        <mxCell id="e_start_split" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="start" target="split" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="split" value="" style="shape=line;strokeColor=#666666;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="500" y="400" width="440" height="10" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== MARKET VALIDATION (LEFT) ==================== -->
+        <mxCell id="mv_header" value="&lt;b&gt;MARKET VALIDATION&lt;/b&gt;&lt;br&gt;&lt;i&gt;&quot;Will anyone pay for this?&quot;&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="120" y="440" width="280" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_split_mv" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="split" target="mv_header" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- MV Step 1: Problem Interview -->
+        <mxCell id="mv1" value="&lt;b&gt;1. Problem Interviews&lt;/b&gt;&lt;br&gt;Talk to 15-20 potential customers&lt;br&gt;Do they have the pain you think they do?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="120" y="520" width="280" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_mvh_mv1" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="mv_header" target="mv1" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- MV Gate 1 -->
+        <mxCell id="mv1_gate" value="&lt;b&gt;≥ 70%&lt;/b&gt; say&lt;br&gt;&quot;yes, this is&lt;br&gt;a real problem&quot;?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="185" y="620" width="150" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_mv1_g1" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="mv1" target="mv1_gate" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="mv1_go" value="&lt;b&gt;GO&lt;/b&gt;&lt;br&gt;Problem confirmed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="120" y="750" width="130" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="mv1_nogo" value="&lt;b&gt;PIVOT&lt;/b&gt;&lt;br&gt;Wrong problem" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="270" y="750" width="130" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_g1_go" value="Yes" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;" edge="1" source="mv1_gate" target="mv1_go" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_g1_nogo" value="No" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;fontColor=#b85450;" edge="1" source="mv1_gate" target="mv1_nogo" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- MV Step 2: Market Size -->
+        <mxCell id="mv2" value="&lt;b&gt;2. Market Sizing (TAM → SAM → SOM)&lt;/b&gt;&lt;br&gt;How big is the addressable market?&lt;br&gt;Can you realistically capture enough?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="120" y="820" width="280" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_mv1go_mv2" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="mv1_go" target="mv2" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- MV Gate 2 -->
+        <mxCell id="mv2_gate" value="SOM &gt; your&lt;br&gt;break-even&lt;br&gt;revenue?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="185" y="920" width="150" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_mv2_g2" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="mv2" target="mv2_gate" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="mv2_go" value="&lt;b&gt;GO&lt;/b&gt;&lt;br&gt;Market is big enough" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="120" y="1050" width="130" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="mv2_nogo" value="&lt;b&gt;PIVOT&lt;/b&gt;&lt;br&gt;Niche too small" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="270" y="1050" width="130" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_g2_go" value="Yes" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;" edge="1" source="mv2_gate" target="mv2_go" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_g2_nogo" value="No" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;fontColor=#b85450;" edge="1" source="mv2_gate" target="mv2_nogo" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- MV Step 3: Waiting List Experiment -->
+        <mxCell id="mv3" value="&lt;b&gt;3. Waiting List / Pre-Sell Experiment&lt;/b&gt;&lt;br&gt;Set up landing pages for each idea.&lt;br&gt;Invite people to join. Include a questionnaire.&lt;br&gt;&lt;b&gt;Compare sign-up volume across ideas.&lt;/b&gt;&lt;br&gt;&lt;i&gt;The numbers tell you what your gut can't.&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="100" y="1120" width="320" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_mv2go_mv3" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="mv2_go" target="mv3" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- MV Gate 3 -->
+        <mxCell id="mv3_gate" value="Got strong&lt;br&gt;sign-up volume?&lt;br&gt;Questionnaire data&lt;br&gt;confirms need?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="180" y="1250" width="160" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_mv3_g3" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="mv3" target="mv3_gate" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="mv3_go" value="&lt;b&gt;MARKET&lt;br&gt;VALIDATED&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="110" y="1400" width="140" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="mv3_nogo" value="&lt;b&gt;PIVOT&lt;/b&gt;&lt;br&gt;Interest but no commitment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="270" y="1400" width="140" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_g3_go" value="Yes" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;" edge="1" source="mv3_gate" target="mv3_go" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_g3_nogo" value="No" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;fontColor=#b85450;" edge="1" source="mv3_gate" target="mv3_nogo" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== PRODUCT VALIDATION (RIGHT) ==================== -->
+        <mxCell id="pv_header" value="&lt;b&gt;PRODUCT VALIDATION&lt;/b&gt;&lt;br&gt;&lt;i&gt;&quot;Can we build something they want?&quot;&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="440" width="280" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_split_pv" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="split" target="pv_header" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- PV Step 1: Competitor Analysis -->
+        <mxCell id="pv1" value="&lt;b&gt;1. Competitor &amp; Alternative Analysis&lt;/b&gt;&lt;br&gt;What exists today? How do people solve&lt;br&gt;this problem without you?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="520" width="280" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_pvh_pv1" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="pv_header" target="pv1" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- PV Gate 1 -->
+        <mxCell id="pv1_gate" value="Clear gap or&lt;br&gt;10x advantage&lt;br&gt;over status quo?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1105" y="620" width="150" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_pv1_g1" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="pv1" target="pv1_gate" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="pv1_go" value="&lt;b&gt;GO&lt;/b&gt;&lt;br&gt;Differentiation exists" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="750" width="130" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="pv1_nogo" value="&lt;b&gt;PIVOT&lt;/b&gt;&lt;br&gt;Too crowded / no edge" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1190" y="750" width="130" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_pg1_go" value="Yes" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;" edge="1" source="pv1_gate" target="pv1_go" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_pg1_nogo" value="No" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;fontColor=#b85450;" edge="1" source="pv1_gate" target="pv1_nogo" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- PV Step 2: MVP / Prototype -->
+        <mxCell id="pv2" value="&lt;b&gt;2. Build MVP / Prototype&lt;/b&gt;&lt;br&gt;Smallest thing that tests your core value&lt;br&gt;proposition — landing page, demo, PoC" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="820" width="280" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_pv1go_pv2" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="pv1_go" target="pv2" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- PV Gate 2 -->
+        <mxCell id="pv2_gate" value="Users engage&lt;br&gt;with MVP?&lt;br&gt;Retention &gt; 40%?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1105" y="920" width="150" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_pv2_g2" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="pv2" target="pv2_gate" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="pv2_go" value="&lt;b&gt;GO&lt;/b&gt;&lt;br&gt;Users want this" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="1050" width="130" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="pv2_nogo" value="&lt;b&gt;PIVOT&lt;/b&gt;&lt;br&gt;Wrong solution shape" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1190" y="1050" width="130" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_pg2_go" value="Yes" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;" edge="1" source="pv2_gate" target="pv2_go" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_pg2_nogo" value="No" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;fontColor=#b85450;" edge="1" source="pv2_gate" target="pv2_nogo" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- PV Step 3: Iterate with Feedback -->
+        <mxCell id="pv3" value="&lt;b&gt;3. Measure &amp; Iterate&lt;/b&gt;&lt;br&gt;Collect usage data, feedback loops&lt;br&gt;NPS score, feature requests, churn reasons" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="1120" width="280" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_pv2go_pv3" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="pv2_go" target="pv3" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- PV Gate 3 -->
+        <mxCell id="pv3_gate" value="NPS &gt; 40?&lt;br&gt;Users coming back&lt;br&gt;unprompted?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1105" y="1220" width="150" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_pv3_g3" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="pv3" target="pv3_gate" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="pv3_go" value="&lt;b&gt;PRODUCT&lt;br&gt;VALIDATED&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="1400" width="140" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="pv3_nogo" value="&lt;b&gt;ITERATE&lt;/b&gt;&lt;br&gt;Go back to Step 2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1190" y="1400" width="140" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_pg3_go" value="Yes" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;" edge="1" source="pv3_gate" target="pv3_go" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_pg3_nogo" value="No" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;fontColor=#b85450;" edge="1" source="pv3_gate" target="pv3_nogo" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== CONVERGENCE ==================== -->
+        <mxCell id="converge" value="&lt;b&gt;BOTH VALIDATED?&lt;/b&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="1400" width="180" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_mv3go_conv" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#82b366;strokeWidth=2;" edge="1" source="mv3_go" target="converge" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_pv3go_conv" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#82b366;strokeWidth=2;" edge="1" source="pv3_go" target="converge" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- FINAL: Good Idea -->
+        <mxCell id="good_idea" value="&lt;b&gt;IDEA IS GOOD&lt;/b&gt;&lt;br&gt;Now go all-in." style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="610" y="1540" width="160" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_conv_good" value="Yes" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=12;strokeWidth=2;strokeColor=#82b366;" edge="1" source="converge" target="good_idea" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Applied to riscvml/agrarobotics -->
+        <mxCell id="example_box" value="&lt;b&gt;Applied to riscvml.org / agrarobotics.com:&lt;/b&gt;&lt;hr&gt;&lt;b&gt;Fast experiment:&lt;/b&gt; Set up 2 waiting list pages:&lt;br&gt;  — riscvml.org: &quot;Learn RISC-V embedded ML with Rust&quot;&lt;br&gt;  — agrarobotics.com: &quot;Smart ag robotics for your farm&quot;&lt;br&gt;&lt;b&gt;Include questionnaire:&lt;/b&gt; role, budget, urgency, use case&lt;br&gt;&lt;b&gt;Compare:&lt;/b&gt; Which gets more sign-ups? Which has stronger need?&lt;br&gt;&lt;b&gt;Then:&lt;/b&gt; Go all-in on the winner — not your favorite." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f0f0;strokeColor=#999999;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="1640" width="540" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_good_example" style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#999999;" edge="1" source="good_idea" target="example_box" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

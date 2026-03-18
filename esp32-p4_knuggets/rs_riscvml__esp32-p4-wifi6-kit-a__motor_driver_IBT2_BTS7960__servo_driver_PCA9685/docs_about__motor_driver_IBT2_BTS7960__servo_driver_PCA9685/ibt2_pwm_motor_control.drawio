@@ -1,0 +1,330 @@
+<mxfile host="app.diagrams.net" modified="2026-03-18T00:00:00.000Z" agent="Claude Code" version="24.0.0">
+  <diagram id="ibt2-pwm" name="IBT-2 PWM Motor Control">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="2200" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- ==================== TITLE ==================== -->
+        <mxCell id="title" value="&lt;b&gt;How the IBT-2 (BTS7960) Controls a DC Motor with PWM&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontSize=20;fontColor=#1a1a1a;" vertex="1" parent="1">
+          <mxGeometry x="300" y="20" width="600" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== SECTION 1: SYSTEM OVERVIEW ==================== -->
+        <mxCell id="s1_bar" value="&lt;b&gt;1. SYSTEM OVERVIEW — What Connects to What&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="80" width="1080" height="35" as="geometry"/>
+        </mxCell>
+
+        <!-- ESP32-P4 Box -->
+        <mxCell id="esp32" value="&lt;b&gt;ESP32-P4&lt;/b&gt;&lt;br&gt;(Brain)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="60" y="150" width="180" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="esp_gpio4" value="GPIO 4 → RPWM" style="text;html=1;align=left;fontSize=10;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="75" y="195" width="150" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="esp_gpio5" value="GPIO 5 → LPWM" style="text;html=1;align=left;fontSize=10;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="75" y="220" width="150" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="esp_gpio6" value="GPIO 6 → R_EN" style="text;html=1;align=left;fontSize=10;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="75" y="245" width="150" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="esp_gpio22" value="GPIO22 → L_EN" style="text;html=1;align=left;fontSize=10;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="75" y="270" width="150" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="esp_label" value="&lt;i&gt;3.3V logic&lt;/i&gt;" style="text;html=1;align=center;fontSize=9;fontColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="90" y="305" width="120" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- IBT-2 Box -->
+        <mxCell id="ibt2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="370" y="130" width="380" height="240" as="geometry"/>
+        </mxCell>
+        <mxCell id="ibt2_title" value="&lt;b&gt;IBT-2 Module (BTS7960 × 2)&lt;/b&gt;" style="text;html=1;align=center;fontSize=14;fontColor=#1a1a1a;" vertex="1" parent="1">
+          <mxGeometry x="400" y="135" width="320" height="25" as="geometry"/>
+        </mxCell>
+
+        <!-- Half-bridge A -->
+        <mxCell id="hb_a" value="&lt;b&gt;Half-Bridge A&lt;/b&gt;&lt;br&gt;(BTS7960)&lt;br&gt;&lt;br&gt;HIGH-side&lt;br&gt;MOSFET&lt;br&gt;┃&lt;br&gt;LOW-side&lt;br&gt;MOSFET" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#e65100;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="395" y="170" width="130" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="hb_a_label" value="RPWM →" style="text;html=1;align=right;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="330" width="80" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- Half-bridge B -->
+        <mxCell id="hb_b" value="&lt;b&gt;Half-Bridge B&lt;/b&gt;&lt;br&gt;(BTS7960)&lt;br&gt;&lt;br&gt;HIGH-side&lt;br&gt;MOSFET&lt;br&gt;┃&lt;br&gt;LOW-side&lt;br&gt;MOSFET" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#e65100;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="590" y="170" width="130" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="hb_b_label" value="← LPWM" style="text;html=1;align=left;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="330" width="80" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- Motor -->
+        <mxCell id="motor" value="&lt;b&gt;DC MOTOR&lt;/b&gt;&lt;br&gt;(Drill)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="870" y="190" width="160" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- Battery -->
+        <mxCell id="battery" value="&lt;b&gt;DRILL&lt;br&gt;BATTERY&lt;br&gt;19V&lt;/b&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;align=center;" vertex="1" parent="1">
+          <mxGeometry x="470" y="390" width="150" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrows: ESP32 to IBT-2 -->
+        <mxCell id="e_esp_ibt" value="&lt;b&gt;4 control wires&lt;/b&gt;&lt;br&gt;(3.3V logic signals)" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#6c8ebf;strokeWidth=2;fontSize=10;" edge="1" source="esp32" target="ibt2" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrows: IBT-2 to Motor -->
+        <mxCell id="e_hba_motor" value="B+" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#e65100;strokeWidth=3;fontSize=11;fontStyle=1;" edge="1" source="hb_a" target="motor" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_hbb_motor" value="B-" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#e65100;strokeWidth=3;fontSize=11;fontStyle=1;" edge="1" source="hb_b" target="motor" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrow: Battery to IBT-2 -->
+        <mxCell id="e_bat_ibt" value="&lt;b&gt;VIN (power)&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#b85450;strokeWidth=3;fontSize=11;" edge="1" source="battery" target="ibt2" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Key insight -->
+        <mxCell id="insight1" value="&lt;b&gt;KEY:&lt;/b&gt; Tiny 3.3V signals from ESP32&lt;br&gt;control massive 19V / 43A power flow to motor" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;align=center;" vertex="1" parent="1">
+          <mxGeometry x="830" y="330" width="270" height="45" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== SECTION 2: WHAT IS PWM? ==================== -->
+        <mxCell id="s2_bar" value="&lt;b&gt;2. WHAT IS PWM? — Pulse Width Modulation&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="480" width="1080" height="35" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="pwm_explain" value="&lt;b&gt;PWM doesn't reduce voltage — it switches full voltage ON and OFF very fast (25,000 times/sec).&lt;/b&gt;&lt;br&gt;The motor's inertia averages it out into smooth speed control." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12;align=center;" vertex="1" parent="1">
+          <mxGeometry x="60" y="530" width="1080" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- PWM 25% -->
+        <mxCell id="pwm25_label" value="&lt;b&gt;25% Duty Cycle&lt;/b&gt;&lt;br&gt;&lt;i&gt;Light trigger press (~5V avg)&lt;/i&gt;" style="text;html=1;align=center;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="585" width="320" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="pwm25" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="60" y="625" width="320" height="80" as="geometry"/>
+        </mxCell>
+        <!-- 25% ON pulse -->
+        <mxCell id="p25_on1" value="&lt;font color=&quot;#ffffff&quot;&gt;&lt;b&gt;ON&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#82b366;strokeColor=none;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="65" y="630" width="25" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="p25_off1" value="off" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=none;fontSize=8;fontColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="90" y="665" width="75" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="p25_on2" value="&lt;font color=&quot;#ffffff&quot;&gt;&lt;b&gt;ON&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#82b366;strokeColor=none;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="145" y="630" width="25" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="p25_off2" value="off" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=none;fontSize=8;fontColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="170" y="665" width="75" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="p25_on3" value="&lt;font color=&quot;#ffffff&quot;&gt;&lt;b&gt;ON&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#82b366;strokeColor=none;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="225" y="630" width="25" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="p25_off3" value="off" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=none;fontSize=8;fontColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="250" y="665" width="75" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="p25_on4" value="&lt;font color=&quot;#ffffff&quot;&gt;&lt;b&gt;ON&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#82b366;strokeColor=none;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="305" y="630" width="25" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="p25_speed" value="&lt;b&gt;→ SLOW speed&lt;/b&gt;" style="text;html=1;align=left;fontSize=11;fontColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="65" y="690" width="120" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="p25_volts" value="19V × 25% = ~5V average to motor" style="text;html=1;align=left;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="180" y="690" width="200" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- PWM 50% -->
+        <mxCell id="pwm50_label" value="&lt;b&gt;50% Duty Cycle&lt;/b&gt;&lt;br&gt;&lt;i&gt;Half trigger (~9.5V avg)&lt;/i&gt;" style="text;html=1;align=center;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="420" y="585" width="320" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="pwm50" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="420" y="625" width="320" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="p50_on1" value="&lt;font color=&quot;#ffffff&quot;&gt;&lt;b&gt;ON&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d6b656;strokeColor=none;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="425" y="630" width="40" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="p50_off1" value="off" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=none;fontSize=8;fontColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="465" y="665" width="40" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="p50_on2" value="&lt;font color=&quot;#ffffff&quot;&gt;&lt;b&gt;ON&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d6b656;strokeColor=none;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="505" y="630" width="40" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="p50_off2" value="off" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=none;fontSize=8;fontColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="545" y="665" width="40" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="p50_on3" value="&lt;font color=&quot;#ffffff&quot;&gt;&lt;b&gt;ON&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d6b656;strokeColor=none;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="585" y="630" width="40" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="p50_off3" value="off" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=none;fontSize=8;fontColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="625" y="665" width="40" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="p50_on4" value="&lt;font color=&quot;#ffffff&quot;&gt;&lt;b&gt;ON&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d6b656;strokeColor=none;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="665" y="630" width="40" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="p50_off4" value="off" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=none;fontSize=8;fontColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="705" y="665" width="30" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="p50_speed" value="&lt;b&gt;→ MEDIUM speed&lt;/b&gt;" style="text;html=1;align=left;fontSize=11;fontColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="425" y="690" width="140" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="p50_volts" value="19V × 50% = ~9.5V average to motor" style="text;html=1;align=left;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="555" y="690" width="200" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- PWM 100% -->
+        <mxCell id="pwm100_label" value="&lt;b&gt;100% Duty Cycle&lt;/b&gt;&lt;br&gt;&lt;i&gt;Full trigger (19V)&lt;/i&gt;" style="text;html=1;align=center;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="780" y="585" width="320" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="pwm100" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="780" y="625" width="320" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="p100_on" value="&lt;font color=&quot;#ffffff&quot;&gt;&lt;b&gt;ON — ALWAYS ON — FULL 19V&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b85450;strokeColor=none;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="785" y="630" width="310" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="p100_speed" value="&lt;b&gt;→ FULL speed&lt;/b&gt;" style="text;html=1;align=left;fontSize=11;fontColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="785" y="690" width="120" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="p100_volts" value="19V × 100% = 19V continuous to motor" style="text;html=1;align=left;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="900" y="690" width="200" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- Frequency note -->
+        <mxCell id="freq_note" value="&lt;b&gt;PWM Frequency: 25 kHz&lt;/b&gt; (25,000 cycles/sec) — above human hearing, no motor whine" style="text;html=1;align=center;fontSize=11;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="250" y="720" width="600" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== SECTION 3: H-BRIDGE INSIDE ==================== -->
+        <mxCell id="s3_bar" value="&lt;b&gt;3. INSIDE THE H-BRIDGE — How Current Flows&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="760" width="1080" height="35" as="geometry"/>
+        </mxCell>
+
+        <!-- FORWARD diagram -->
+        <mxCell id="fwd_label" value="&lt;b&gt;FORWARD:&lt;/b&gt; RPWM = PWM, LPWM = LOW" style="text;html=1;align=center;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="810" width="480" height="25" as="geometry"/>
+        </mxCell>
+
+        <!-- H-bridge forward schematic -->
+        <mxCell id="fwd_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="100" y="845" width="400" height="250" as="geometry"/>
+        </mxCell>
+
+        <!-- VIN rail -->
+        <mxCell id="fwd_vin" value="&lt;b&gt;VIN (19V) ━━━━━━━━━━━━━━━━━━━━━━━━━&lt;/b&gt;" style="text;html=1;align=center;fontSize=11;fontColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="120" y="855" width="360" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- Switch A HIGH (closed) -->
+        <mxCell id="fwd_sa_hi" value="&lt;b&gt;SW A&lt;br&gt;HIGH&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#82b366&quot;&gt;CLOSED&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="140" y="885" width="70" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- Switch B HIGH (open) -->
+        <mxCell id="fwd_sb_hi" value="&lt;b&gt;SW B&lt;br&gt;HIGH&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#b85450&quot;&gt;OPEN&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="390" y="885" width="70" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- Motor in middle -->
+        <mxCell id="fwd_motor" value="&lt;b&gt;MOTOR&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="240" y="940" width="120" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Switch A LOW (open) -->
+        <mxCell id="fwd_sa_lo" value="&lt;b&gt;SW A&lt;br&gt;LOW&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#b85450&quot;&gt;OPEN&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="140" y="1000" width="70" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- Switch B LOW (closed) -->
+        <mxCell id="fwd_sb_lo" value="&lt;b&gt;SW B&lt;br&gt;LOW&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#82b366&quot;&gt;CLOSED&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="390" y="1000" width="70" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- GND rail -->
+        <mxCell id="fwd_gnd" value="&lt;b&gt;GND ━━━━━━━━━━━━━━━━━━━━━━━━━━━&lt;/b&gt;" style="text;html=1;align=center;fontSize=11;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="120" y="1065" width="360" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- Current flow arrows -->
+        <mxCell id="fwd_arrow1" value="" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=3;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="175" y="878" as="sourcePoint"/>
+            <mxPoint x="175" y="940" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fwd_arrow2" value="" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=3;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="240" y="965" as="sourcePoint"/>
+            <mxPoint x="175" y="965" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fwd_arrow3" value="" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=3;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="425" y="965" as="sourcePoint"/>
+            <mxPoint x="360" y="965" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fwd_arrow4" value="" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=3;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="425" y="1000" as="sourcePoint"/>
+            <mxPoint x="425" y="1065" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="fwd_flow" value="&lt;font color=&quot;#82b366&quot;&gt;&lt;b&gt;Current: VIN → SW_A_HI → Motor → SW_B_LO → GND&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="100" y="1090" width="400" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- BRAKE diagram -->
+        <mxCell id="brk_label" value="&lt;b&gt;BRAKE:&lt;/b&gt; RPWM = HIGH, LPWM = HIGH" style="text;html=1;align=center;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="600" y="810" width="480" height="25" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="brk_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="640" y="845" width="400" height="250" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="brk_explain" value="Both LOW-side switches CLOSED.&lt;br&gt;Motor leads shorted together.&lt;br&gt;&lt;b&gt;Motor's back-EMF brakes itself.&lt;/b&gt;&lt;br&gt;&lt;br&gt;No current from battery — &lt;br&gt;the motor's own energy &lt;br&gt;dissipates through the switches." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=center;" vertex="1" parent="1">
+          <mxGeometry x="700" y="880" width="220" height="130" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="brk_flow" value="&lt;font color=&quot;#b85450&quot;&gt;&lt;b&gt;Motor shorts through both LOW switches → rapid stop&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="640" y="1090" width="400" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== SECTION 4: CONTROL TABLE ==================== -->
+        <mxCell id="s4_bar" value="&lt;b&gt;4. CONTROL SUMMARY — ESP32-P4 Pin States&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1130" width="1080" height="35" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="table" value="&lt;table cellpadding=&quot;8&quot; style=&quot;font-size:13px;border-collapse:collapse;&quot;&gt;&lt;tr style=&quot;background:#1a1a1a;color:white;&quot;&gt;&lt;td&gt;&lt;b&gt;Action&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;RPWM (GPIO 4)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;LPWM (GPIO 5)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;R_EN (GPIO 6)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;L_EN (GPIO 22)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Motor&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#d5e8d4;&quot;&gt;&lt;td&gt;&lt;b&gt;▶ Forward (variable)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;PWM 0–100%&lt;/td&gt;&lt;td&gt;LOW&lt;/td&gt;&lt;td&gt;HIGH&lt;/td&gt;&lt;td&gt;HIGH&lt;/td&gt;&lt;td&gt;Spins CW at set speed&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#dae8fc;&quot;&gt;&lt;td&gt;&lt;b&gt;◀ Reverse (variable)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;LOW&lt;/td&gt;&lt;td&gt;PWM 0–100%&lt;/td&gt;&lt;td&gt;HIGH&lt;/td&gt;&lt;td&gt;HIGH&lt;/td&gt;&lt;td&gt;Spins CCW at set speed&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#f8cecc;&quot;&gt;&lt;td&gt;&lt;b&gt;⏹ Brake&lt;/b&gt;&lt;/td&gt;&lt;td&gt;HIGH&lt;/td&gt;&lt;td&gt;HIGH&lt;/td&gt;&lt;td&gt;HIGH&lt;/td&gt;&lt;td&gt;HIGH&lt;/td&gt;&lt;td&gt;Active stop (rapid)&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#f5f5f5;&quot;&gt;&lt;td&gt;&lt;b&gt;⏸ Coast&lt;/b&gt;&lt;/td&gt;&lt;td&gt;LOW&lt;/td&gt;&lt;td&gt;LOW&lt;/td&gt;&lt;td&gt;HIGH&lt;/td&gt;&lt;td&gt;HIGH&lt;/td&gt;&lt;td&gt;Free spin (no power)&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#fff2cc;&quot;&gt;&lt;td&gt;&lt;b&gt;⚡ Disabled&lt;/b&gt;&lt;/td&gt;&lt;td&gt;any&lt;/td&gt;&lt;td&gt;any&lt;/td&gt;&lt;td&gt;LOW&lt;/td&gt;&lt;td&gt;LOW&lt;/td&gt;&lt;td&gt;Off (safe — outputs Hi-Z)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="text;html=1;align=center;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="120" y="1180" width="960" height="200" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== SECTION 5: DRILL TRIGGER USE CASE ==================== -->
+        <mxCell id="s5_bar" value="&lt;b&gt;5. DRILL TRIGGER REPLACEMENT — Your Setup&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#9673a6;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1400" width="1080" height="35" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="drill_before" value="&lt;b&gt;BEFORE (Original Drill)&lt;/b&gt;&lt;hr&gt;&lt;br&gt;Battery 19V → &lt;b&gt;Trigger&lt;/b&gt; → Motor&lt;br&gt;&lt;br&gt;Trigger = variable resistor&lt;br&gt;Light press → 1V → slow&lt;br&gt;Full press → 19V → full speed&lt;br&gt;&lt;br&gt;&lt;i&gt;Measured with Fluke DMM&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;align=center;" vertex="1" parent="1">
+          <mxGeometry x="100" y="1460" width="250" height="170" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="drill_arrow" value="&lt;b&gt;REPLACED BY&lt;/b&gt;" style="shape=singleArrow;whiteSpace=wrap;html=1;fillColor=#9673a6;fontColor=#ffffff;fontSize=12;arrowWidth=0.4;arrowSize=0.3;" vertex="1" parent="1">
+          <mxGeometry x="380" y="1520" width="140" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="drill_after" value="&lt;b&gt;AFTER (ESP32-P4 + IBT-2)&lt;/b&gt;&lt;hr&gt;&lt;br&gt;Battery 19V → &lt;b&gt;IBT-2&lt;/b&gt; → Motor&lt;br&gt;&lt;br&gt;ESP32-P4 PWM = electronic trigger&lt;br&gt;duty  5% → ~1V avg → slow&lt;br&gt;duty 50% → ~9.5V avg → medium&lt;br&gt;duty 100% → 19V → full speed&lt;br&gt;&lt;br&gt;&lt;b&gt;Software-controlled drill speed&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;align=center;" vertex="1" parent="1">
+          <mxGeometry x="550" y="1450" width="280" height="190" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="drill_benefits" value="&lt;b&gt;Why This is Better:&lt;/b&gt;&lt;hr&gt;□ Programmable speed profiles&lt;br&gt;□ Remote control via Wi-Fi&lt;br&gt;□ Precise repeatability&lt;br&gt;□ Safety: software E-stop&lt;br&gt;□ Data logging (RPM, current)&lt;br&gt;□ Integration with other&lt;br&gt;   knuggets (servo pan/tilt)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="870" y="1460" width="220" height="170" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
