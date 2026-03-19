@@ -225,48 +225,58 @@
         <div class="container">
             <h2>Embedded Rust Training</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-                <div class="hw-card">
-                    <h3 style="color: var(--rust-orange);">Self-Paced Course</h3>
-                    <p>172 chapters across 7 modules. Start with a &euro;3 ESP32-C3 and work your way up to on-device ML inference on the ESP32-P4.</p>
+                <div class="hw-card" style="border: 2px solid var(--riscv-green);">
+                    <h3 style="color: var(--riscv-green);">__free Course</h3>
+                    <div class="price" style="color: var(--riscv-green);">Free &mdash; forever</div>
+                    <p style="margin-top: 10px;">The complete course is free. All 172 chapters across 7 modules &mdash; every topic, every hardware target, no paywall. You get student scaffolding with guided TODOs, wiring diagrams, and build instructions.</p>
                     <ul style="color: var(--text-muted); font-size: 0.9rem; margin-top: 10px; padding-left: 20px;">
+                        <li>All 7 modules, all chapters</li>
                         <li>Rust no_std from scratch</li>
-                        <li>GPIO, I2C, SPI, PWM peripherals</li>
-                        <li>Motor control (BTS7960, PCA9685)</li>
+                        <li>GPIO, I2C, SPI, PWM, motor control</li>
                         <li>Wi-Fi 6, BLE, LoRa, ESP-NOW, MQTT</li>
                         <li>On-device ML with esp-dl</li>
                         <li>Capstone: bird detection pipeline</li>
+                        <li>Guided TODOs — you write the code</li>
+                        <li>Community Discord access</li>
+                        <li>Anki flashcard deck (__free)</li>
+                        <li>Public GitHub repo</li>
                     </ul>
-                    <div style="margin-top: 15px;">
-                        <span class="price">&euro;2/chapter</span>
-                        <span style="color: var(--text-muted); font-size: 0.85rem; margin-left: 10px;">or &euro;30 complete bundle</span>
+                    <div style="margin-top: 15px; padding: 10px; background: #1a3a1a; border-radius: 6px;">
+                        <span style="color: var(--riscv-green); font-weight: 600;">Start learning now &rarr;</span>
                     </div>
                 </div>
-                <div class="hw-card">
-                    <h3 style="color: var(--ml-purple);">Corporate Training</h3>
-                    <p>Bring RISC-V + Rust embedded skills to your engineering team. Customized workshops for teams adopting RISC-V hardware.</p>
+                <div class="hw-card" style="border: 2px solid var(--ml-purple);">
+                    <h3 style="color: var(--ml-purple);">__full Course</h3>
+                    <div class="price" style="color: var(--ml-purple);">&euro;9.99/month</div>
+                    <p style="margin-top: 10px;">Unlock the full reference solutions. See how an experienced embedded engineer solves every exercise &mdash; complete working code, optimized patterns, production-quality implementations.</p>
+                    <ul style="color: var(--text-muted); font-size: 0.9rem; margin-top: 10px; padding-left: 20px;">
+                        <li>Everything in __free, plus:</li>
+                        <li style="color: var(--ml-purple);">Complete reference solutions for every chapter</li>
+                        <li style="color: var(--ml-purple);">Working code — not just scaffolding</li>
+                        <li style="color: var(--ml-purple);">Optimized patterns &amp; best practices</li>
+                        <li style="color: var(--ml-purple);">Private GitHub repo access</li>
+                        <li style="color: var(--ml-purple);">Anki flashcard deck (__full)</li>
+                        <li style="color: var(--ml-purple);">Priority Discord support</li>
+                        <li>Cancel anytime — keep what you learned</li>
+                    </ul>
+                    <div style="margin-top: 15px; padding: 10px; background: #2a1a3a; border-radius: 6px;">
+                        <span style="color: var(--ml-purple); font-weight: 600;">Subscribe &rarr;</span>
+                    </div>
+                </div>
+                <div class="hw-card" style="border: 2px solid var(--rust-orange);">
+                    <h3 style="color: var(--rust-orange);">Corporate Training</h3>
+                    <div class="price" style="color: var(--rust-orange);">Custom</div>
+                    <p style="margin-top: 10px;">Bring RISC-V + Rust embedded skills to your engineering team. Customized hands-on workshops &mdash; real hardware, real projects, not slides.</p>
                     <ul style="color: var(--text-muted); font-size: 0.9rem; margin-top: 10px; padding-left: 20px;">
                         <li>On-site or remote workshops</li>
                         <li>Hardware kits included (ESP32 dev boards)</li>
                         <li>Custom curriculum per team needs</li>
-                        <li>Hands-on projects, not slides</li>
+                        <li>__full access for all participants</li>
                         <li>Post-training Anki flashcard deck</li>
+                        <li>Follow-up support period</li>
                     </ul>
-                    <div style="margin-top: 15px;">
-                        <a href="mailto:scottie@riscvml.org" style="color: var(--ml-purple); text-decoration: none; font-weight: 600;">Contact for pricing &rarr;</a>
-                    </div>
-                </div>
-                <div class="hw-card">
-                    <h3 style="color: var(--riscv-green);">Free Intro Chapters</h3>
-                    <p>Try before you buy. The first chapters of each module are free &mdash; build real projects on real hardware, no paywall.</p>
-                    <ul style="color: var(--text-muted); font-size: 0.9rem; margin-top: 10px; padding-left: 20px;">
-                        <li>ESP32-C3 blinky in Rust</li>
-                        <li>I2C sensor reading</li>
-                        <li>PWM motor control basics</li>
-                        <li>Wi-Fi connectivity</li>
-                        <li>Community Discord access</li>
-                    </ul>
-                    <div style="margin-top: 15px;">
-                        <span style="color: var(--riscv-green); font-weight: 600;">Free &mdash; start now</span>
+                    <div style="margin-top: 15px; padding: 10px; background: #3a1a1a; border-radius: 6px;">
+                        <a href="mailto:scottie@riscvml.org" style="color: var(--rust-orange); text-decoration: none; font-weight: 600;">Contact for pricing &rarr;</a>
                     </div>
                 </div>
             </div>
