@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RISCVML — RISC-V Embedded ML with Rust</title>
+    <style>
+        :root {
+            --rust-orange: #CE422B;
+            --riscv-green: #2D9B3A;
+            --ml-purple: #7B4BB3;
+            --bg-dark: #0D0D1A;
+            --bg-card: #1A1A2E;
+            --text: #E0E0E0;
+            --text-muted: #888;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* Nav */
+        nav {
+            background: var(--bg-card);
+            border-bottom: 2px solid var(--rust-orange);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .logo-risc { color: var(--rust-orange); }
+        .logo-v { color: var(--riscv-green); }
+        .logo-ml { color: var(--ml-purple); }
+        nav a { color: var(--text-muted); text-decoration: none; margin-left: 25px; font-size: 0.9rem; }
+        nav a:hover { color: var(--text); }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 80px 0 60px;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+        }
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        .stat { text-align: center; }
+        .stat-num { font-size: 2rem; font-weight: 700; color: var(--riscv-green); }
+        .stat-label { font-size: 0.85rem; color: var(--text-muted); }
+
+        /* Hardware Ladder */
+        .section { padding: 60px 0; }
+        .section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--rust-orange);
+            padding-left: 15px;
+        }
+        .hw-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+        .hw-card {
+            background: var(--bg-card);
+            border-radius: 10px;
+            padding: 25px;
+            border: 1px solid #333;
+            transition: border-color 0.2s;
+        }
+        .hw-card:hover { border-color: var(--riscv-green); }
+        .hw-card h3 { color: var(--riscv-green); margin-bottom: 8px; }
+        .hw-card .price { color: var(--rust-orange); font-weight: 700; font-size: 1.2rem; }
+        .hw-card p { color: var(--text-muted); font-size: 0.9rem; margin-top: 8px; }
+
+        /* Modules */
+        #modules-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        .module-card {
+            background: var(--bg-card);
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid var(--ml-purple);
+        }
+        .module-card h3 { font-size: 1rem; margin-bottom: 5px; }
+        .module-card .meta { font-size: 0.85rem; color: var(--text-muted); }
+        .module-card .status {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+        .status-available { background: #1a3a1a; color: var(--riscv-green); }
+        .status-in-progress { background: #3a3a1a; color: #d6b656; }
+        .status-planned { background: #2a1a3a; color: var(--ml-purple); }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid #222;
+        }
+        footer a { color: var(--rust-orange); text-decoration: none; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">
+                <span class="logo-risc">RISC</span><span class="logo-v">V</span><span class="logo-ml">ML</span>
+            </div>
+            <div>
+                <a href="#hardware">Hardware</a>
+                <a href="#modules">Modules</a>
+                <a href="https://github.com/sdnscottie/riscvml">GitHub</a>
+                <a href="mailto:scottie@riscvml.org">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Learn <span class="logo-risc">RISC-V</span> Embedded <span class="logo-ml">ML</span> with <span class="logo-risc">Rust</span></h1>
+            <p>From a &euro;3 ESP32-C3 to on-device bird detection on the ESP32-P4 &mdash;
+               a complete, hands-on curriculum for embedded ML on open hardware.</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-num">172</div>
+                    <div class="stat-label">Chapters</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-num">7</div>
+                    <div class="stat-label">Modules</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-num">4</div>
+                    <div class="stat-label">Hardware Targets</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="hardware">
+        <div class="container">
+            <h2>Hardware Ladder</h2>
+            <div class="hw-grid">
+                <div class="hw-card">
+                    <h3>ESP32-C3</h3>
+                    <div class="price">~&euro;3</div>
+                    <p>Entry-level. Single-core 160 MHz RISC-V, BLE 5.0. Perfect for learning Rust embedded basics.</p>
+                </div>
+                <div class="hw-card">
+                    <h3>ESP32-C6</h3>
+                    <div class="price">~&euro;4</div>
+                    <p>Connectivity. Wi-Fi 6, BLE 5.3, Zigbee/Thread, Matter-ready. Multi-protocol IoT.</p>
+                </div>
+                <div class="hw-card">
+                    <h3>TTGO T-Beam</h3>
+                    <div class="price">~&euro;30</div>
+                    <p>Long-range. LoRa radio + GPS. Field deployments, agricultural sensor networks.</p>
+                </div>
+                <div class="hw-card">
+                    <h3>ESP32-P4</h3>
+                    <div class="price">~&euro;25</div>
+                    <p>High-performance. Dual-core 400 MHz, AI/vector extensions, MIPI-CSI/DSI, H.264, PPA.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="modules">
+        <div class="container">
+            <h2>Curriculum Modules</h2>
+            <div id="modules-list">
+                <p style="color: var(--text-muted);">Loading modules...</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 <a href="https://riscvml.org">riscvml.org</a> &mdash; Scottie von Bruchhausen</p>
+            <p style="margin-top: 5px;">Rust-first RISC-V embedded ML education on Espressif hardware</p>
+        </div>
+    </footer>
+
+    <script>
+        async function loadModules() {
+            try {
+                const res = await fetch('/api/modules');
+                const modules = await res.json();
+                const container = document.getElementById('modules-list');
+                container.innerHTML = modules.map(m => `
+                    <div class="module-card">
+                        <h3>Module ${m.id}: ${m.title}</h3>
+                        <div class="meta">${m.chapters} chapters &middot; ${m.hardware}</div>
+                        <span class="status status-${m.status}">${m.status.replace('-', ' ')}</span>
+                    </div>
+                `).join('');
+            } catch (e) {
+                document.getElementById('modules-list').innerHTML =
+                    '<p style="color: var(--text-muted);">Could not load modules.</p>';
+            }
+        }
+        loadModules();
+    </script>
+</body>
+</html>
