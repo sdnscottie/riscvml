@@ -29,6 +29,3 @@ node_modules/
 *.zip
 monetize_svb/
 submission_europe_2026/
-
-# Private strategy docs (not for public repo)
-docs_about__riscvml/strategy_to_monetize/
