@@ -1,0 +1,8 @@
+# Anki Flashcard References
+# Format: <flashcard_ts> | <anki_tag> | <diagram/resource>
+#
+# flashcard_ts:  YYYYMMDD_HHMMSS (Anki card creation timestamp)
+# anki_tag:      #sdnml::hardware::riscvml::esp32::esp32-p4::waveshare_esp32-p4-wifi6-kit-a::<component>
+# diagram:       filename in docs_about__*/bts7960_usecases/ or pca9685_usecases/
+
+20260319_093229 | #sdnml::hardware::riscvml::esp32::esp32-p4::waveshare_esp32-p4-wifi6-kit-a::BTS7960__dc_motor_drive | BTS7960__dc_motor_drive__20260319.drawio
