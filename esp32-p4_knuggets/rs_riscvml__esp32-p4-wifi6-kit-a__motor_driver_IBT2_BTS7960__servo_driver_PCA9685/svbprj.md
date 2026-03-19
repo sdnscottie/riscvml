@@ -123,8 +123,10 @@ V+      ◄───── 5–6V servo supply (separate from motor supply)
 
 | Diagram | Application |
 |---------|-------------|
-| `BTS7960__drill_trigger_replacement__20260319.drawio` | Variable speed drill motor — replaces mechanical trigger with PWM |
+| `BTS7960__dc_motor_drive__20260319.drawio` | **DC Motor Drive (Overview)** — parent diagram with 6 sub-applications |
+| ↳ Sub-uses: | Robot head/arm, critter scarer, drawbridge/trap-door, feed dispenser, turntable, tank steering |
 | `BTS7960__dc_motor_robot_drive__20260319.drawio` | Robot/rover tank steering — 2x BTS7960 for differential drive |
+| `BTS7960__drill_trigger_replacement__20260319.drawio` | Variable speed drill motor — replaces mechanical trigger with PWM |
 | `BTS7960__water_pump_control__20260319.drawio` | Irrigation pump — soil moisture sensor → auto pump control |
 | `BTS7960__conveyor_belt__20260319.drawio` | Industrial conveyor — fwd/rev, E-stop, soft start/stop |
 | `BTS7960__winch_hoist__20260319.drawio` | Winch/hoist — raise/lower with limit switches, overload detection |
