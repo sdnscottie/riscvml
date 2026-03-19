@@ -120,9 +120,65 @@
           <mxGeometry x="810" y="1460" width="300" height="210" as="geometry"/>
         </mxCell>
 
+        <!-- ==================== SECTION 5: PHYSICAL-DIGITAL BRIDGE ==================== -->
+        <mxCell id="s5_bar" value="&lt;b&gt;5. THE PHYSICAL-DIGITAL BRIDGE — Ikea Cabinet + Labeled Boards + Anki Photos&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1820" width="1280" height="35" as="geometry"/>
+        </mxCell>
+
+        <!-- Cabinet -->
+        <mxCell id="cabinet" value="&lt;b&gt;PHYSICAL: Ikea Wood Cabinet&lt;/b&gt;&lt;hr&gt;&lt;b&gt;Top drawer:&lt;/b&gt; Tools + components&lt;br&gt;&lt;b&gt;Upper shelves:&lt;/b&gt; Clean workspace&lt;br&gt;&lt;b&gt;Mid shelf:&lt;/b&gt; Active project boards&lt;br&gt;  with ANKi-Ref labels&lt;br&gt;&lt;b&gt;Bottom shelf:&lt;/b&gt; Cables + wiring&lt;br&gt;&lt;br&gt;&lt;b&gt;Workflow:&lt;/b&gt;&lt;br&gt;1. Each project lives on its own board&lt;br&gt;2. Board has physical ANKi-Ref label&lt;br&gt;3. Pull board to desk for active dev&lt;br&gt;4. Return to shelf when paused&lt;br&gt;&lt;br&gt;&lt;i&gt;Clear project segregation.&lt;br&gt;Multiple concurrent projects.&lt;br&gt;Grab-and-go portability.&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1880" width="260" height="300" as="geometry"/>
+        </mxCell>
+
+        <!-- Photo workflow -->
+        <mxCell id="photo" value="&lt;b&gt;PHOTOS: State Capture&lt;/b&gt;&lt;hr&gt;At each milestone, photograph the&lt;br&gt;board's exact state:&lt;br&gt;&lt;br&gt;• Wiring configuration&lt;br&gt;• Component placement&lt;br&gt;• Test setup (Fluke probes, etc.)&lt;br&gt;• LED status / display output&lt;br&gt;• Problems (burnt trace, wrong wire)&lt;br&gt;&lt;br&gt;&lt;b&gt;Photo → pics/ folder in repo&lt;/b&gt;&lt;br&gt;&lt;b&gt;Photo → Anki card attachment&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Visual benefits:&lt;/b&gt;&lt;br&gt;• &quot;What did this look like working?&quot;&lt;br&gt;• Debugging reference months later&lt;br&gt;• Evolution timeline of the build&lt;br&gt;• Teaching material for riscvml.org&lt;br&gt;• 6x stronger recall than text alone" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="360" y="1880" width="260" height="300" as="geometry"/>
+        </mxCell>
+
+        <!-- Label system -->
+        <mxCell id="label" value="&lt;b&gt;LABELS: ANKi-Ref on the Board&lt;/b&gt;&lt;hr&gt;Each physical project board has a&lt;br&gt;printed/handwritten label:&lt;br&gt;&lt;br&gt;&lt;pre style=&quot;font-size:10px;&quot;&gt;┌─────────────────────────┐&lt;br&gt;│ ANKi-Ref:               │&lt;br&gt;│ 20260319_093229         │&lt;br&gt;│ BTS7960__dc_motor_drive │&lt;br&gt;└─────────────────────────┘&lt;/pre&gt;&lt;br&gt;This label is the key that links:&lt;br&gt;• Physical board → Anki flashcard&lt;br&gt;• Physical board → Git repo folder&lt;br&gt;• Physical board → drawio diagrams&lt;br&gt;• Physical board → pics/ photos&lt;br&gt;&lt;br&gt;&lt;b&gt;One timestamp, one project,&lt;br&gt;everything connected.&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="660" y="1880" width="260" height="300" as="geometry"/>
+        </mxCell>
+
+        <!-- Full pipeline -->
+        <mxCell id="pipeline" value="&lt;b&gt;THE FULL PIPELINE:&lt;/b&gt;&lt;hr&gt;&lt;pre style=&quot;font-size:11px;line-height:1.6;&quot;&gt;Physical Project Board&lt;br&gt;  (Ikea cabinet shelf)&lt;br&gt;        │&lt;br&gt;        ▼&lt;br&gt;ANKi-Ref Label on Board&lt;br&gt;  (physical-digital link)&lt;br&gt;        │&lt;br&gt;   ┌────┼────┐&lt;br&gt;   ▼    ▼    ▼&lt;br&gt; Photo  Git  Anki&lt;br&gt; pics/  repo card&lt;br&gt;   │    │    │&lt;br&gt;   └────┼────┘&lt;br&gt;        ▼&lt;br&gt;  RISCVML Content&lt;br&gt;  (curriculum + courses)&lt;br&gt;        │&lt;br&gt;        ▼&lt;br&gt;  Student Learning&lt;br&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;align=left;spacingLeft=10;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="960" y="1880" width="240" height="340" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrows -->
+        <mxCell id="ep1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#d6b656;strokeWidth=2;dashed=1;" edge="1" source="cabinet" target="photo" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ep2" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#82b366;strokeWidth=2;dashed=1;" edge="1" source="photo" target="label" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ep3" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#6c8ebf;strokeWidth=2;dashed=1;" edge="1" source="label" target="pipeline" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- ==================== SECTION 6: THREE-BOARD SYSTEM ==================== -->
+        <mxCell id="s6_bar" value="&lt;b&gt;6. THREE-BOARD RISCVML SYSTEM — Hardware That Powers the Knuggets&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="2250" width="1280" height="35" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="board1" value="&lt;b&gt;ESP32-P4&lt;/b&gt;&lt;br&gt;(Main Controller)&lt;hr&gt;Dual-core 400MHz RISC-V&lt;br&gt;Wi-Fi 6 (via companion C6)&lt;br&gt;MIPI-CSI/DSI, H.264, PPA&lt;br&gt;AI/vector extensions&lt;br&gt;&lt;br&gt;&lt;b&gt;Role:&lt;/b&gt; Real-time control,&lt;br&gt;sensor fusion, motor PWM,&lt;br&gt;camera + ML inference&lt;br&gt;&lt;br&gt;&lt;b&gt;Runtime:&lt;/b&gt; no_std Rust,&lt;br&gt;Embassy async, esp-hal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="2310" width="250" height="210" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="board2" value="&lt;b&gt;BeagleV-Fire&lt;/b&gt;&lt;br&gt;(RISC-V Processing)&lt;hr&gt;RISC-V + FPGA (PolarFire)&lt;br&gt;Linux-capable&lt;br&gt;&lt;br&gt;&lt;b&gt;Role:&lt;/b&gt; Advanced ML,&lt;br&gt;model training, data pipeline,&lt;br&gt;heavier compute tasks&lt;br&gt;&lt;br&gt;&lt;b&gt;Runtime:&lt;/b&gt; std Rust on Linux,&lt;br&gt;Yocto / Ubuntu" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="370" y="2310" width="250" height="210" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="board3" value="&lt;b&gt;ULX3S ECP5-85&lt;/b&gt;&lt;br&gt;(FPGA Acceleration)&lt;hr&gt;Lattice ECP5-85K FPGA&lt;br&gt;Open-source toolchain&lt;br&gt;&lt;br&gt;&lt;b&gt;Role:&lt;/b&gt; Custom logic,&lt;br&gt;hardware acceleration,&lt;br&gt;RISC-V soft-core experiments&lt;br&gt;&lt;br&gt;&lt;b&gt;Runtime:&lt;/b&gt; Verilog/VHDL,&lt;br&gt;Yosys + nextpnr" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="680" y="2310" width="250" height="210" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="boards_note" value="&lt;b&gt;Each board is a shelf in the Ikea cabinet.&lt;/b&gt;&lt;br&gt;Each board has its own ANKi-Ref label.&lt;br&gt;Each board generates its own knuggets, flashcards, and mindmap nodes.&lt;br&gt;The three boards together cover: bare-metal MCU → Linux SBC → FPGA — the full RISC-V spectrum." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="60" y="2540" width="870" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Future -->
+        <mxCell id="future" value="&lt;b&gt;Future Expansions:&lt;/b&gt;&lt;hr&gt;• NFC tags on boards → tap phone → open Anki card instantly&lt;br&gt;• Automated photo capture (camera on cabinet)&lt;br&gt;• Git commits tied to ANKi timestamps&lt;br&gt;• Student kits: pre-configured cabinet + boards + Anki deck" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="980" y="2310" width="260" height="130" as="geometry"/>
+        </mxCell>
+
         <!-- Anki Ref -->
         <mxCell id="anki_ref" value="&lt;b&gt;Anki-Ref:&lt;/b&gt; 20260319_XXXXXX__riscvml__anki_mindmap_knowledge_system" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;strokeColor=#1a1a1a;fontSize=11;align=left;spacingLeft=15;fontFamily=Courier New;" vertex="1" parent="1">
-          <mxGeometry x="60" y="1820" width="550" height="30" as="geometry"/>
+          <mxGeometry x="60" y="2610" width="550" height="30" as="geometry"/>
         </mxCell>
 
       </root>
