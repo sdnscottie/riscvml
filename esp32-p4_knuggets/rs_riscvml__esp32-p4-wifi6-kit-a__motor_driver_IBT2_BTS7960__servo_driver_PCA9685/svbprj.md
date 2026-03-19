@@ -4,6 +4,35 @@
 **Board:** Waveshare ESP32-P4-WIFI6 Kit A
 **Modules:** IBT-2 (BTS7960 dual H-bridge) + PCA9685 (16-ch I2C servo driver)
 **Status:** IBT-2 firmware builds ✓ · PCA9685 firmware TODO
+**Anki-Ref:** `20260319_093229__BTS7960__dc_motor_drive`
+
+## Project Folder Structure
+
+```
+rs_riscvml__...__motor_driver_IBT2_BTS7960__servo_driver_PCA9685/
+├── svbprj.md                          ← this file
+├── anki_refs/                         ← Anki flashcard decks (.apkg exports)
+├── pics/                              ← photos of physical builds
+├── docs_about__motor_driver_.../      ← diagrams & docs
+│   ├── bts7960_usecases/              ← BTS7960 use-case diagrams + PNGs
+│   └── pca9685_usecases/              ← PCA9685 use-case diagrams + PNGs
+├── ...__free/                         ← student scaffolding (public)
+└── ...__full/                         ← reference solution (private)
+```
+
+### Anki-Ref Convention
+
+Each project/diagram has an Anki flashcard reference linking it to the Anki spaced-repetition deck:
+
+```
+Format: <YYYYMMDD>_<HHMMSS>__<component>__<use_case>
+Example: 20260319_093229__BTS7960__dc_motor_drive
+```
+
+- The `anki_refs/` folder holds exported Anki deck files (`.apkg`)
+- The `pics/` folder holds build photos used on Anki card fronts/backs
+- Each drawio diagram includes the Anki-Ref as a black label bar
+- The timestamp is the flashcard creation timestamp (not the diagram timestamp)
 
 ## Overview
 

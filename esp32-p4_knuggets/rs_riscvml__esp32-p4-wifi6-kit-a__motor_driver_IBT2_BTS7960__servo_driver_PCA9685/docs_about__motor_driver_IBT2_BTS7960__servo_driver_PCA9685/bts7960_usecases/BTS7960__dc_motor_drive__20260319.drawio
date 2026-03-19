@@ -43,8 +43,11 @@
         <!-- Safety -->
         <mxCell id="safety" value="&lt;b&gt;Universal Safety Rules:&lt;/b&gt;&lt;hr&gt;□ Limit switches on EN pins for position-limited actuators (doors, hoists)&lt;br&gt;□ Soft start/stop PWM ramp for mechanical loads (prevents slamming, cable shock)&lt;br&gt;□ Current monitoring via BTS7960 IS pins (detect stall = jam or overload)&lt;br&gt;□ Watchdog timer: if ESP32 stops responding, EN pins go LOW (motor stops)&lt;br&gt;□ E-stop button hardwired to EN pins (bypasses software entirely)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=left;spacingLeft=15;" vertex="1" parent="1"><mxGeometry x="600" y="640" width="500" height="110" as="geometry"/></mxCell>
 
+        <!-- Anki Reference -->
+        <mxCell id="anki" value="&lt;b&gt;Anki-Ref:&lt;/b&gt; 20260319_093229__BTS7960__dc_motor_drive" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;strokeColor=#1a1a1a;fontSize=11;align=left;spacingLeft=15;fontFamily=Courier New;" vertex="1" parent="1"><mxGeometry x="60" y="860" width="450" height="30" as="geometry"/></mxCell>
+
         <!-- Context -->
-        <mxCell id="ctx" value="&lt;b&gt;Applied to agrarobotics.com:&lt;/b&gt; Critter scarer (ML-triggered), chicken coop door (dawn/dusk auto), feed dispenser (scheduled), field rover (tank drive)&lt;br&gt;&lt;b&gt;Applied to riscvml.org:&lt;/b&gt; Curriculum module: &quot;DC Motor Control Patterns&quot; — one BTS7960, six real-world applications, same GPIO wiring" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;align=left;spacingLeft=15;" vertex="1" parent="1"><mxGeometry x="60" y="860" width="1040" height="50" as="geometry"/></mxCell>
+        <mxCell id="ctx" value="&lt;b&gt;Applied to agrarobotics.com:&lt;/b&gt; Critter scarer (ML-triggered), chicken coop door (dawn/dusk auto), feed dispenser (scheduled), field rover (tank drive)&lt;br&gt;&lt;b&gt;Applied to riscvml.org:&lt;/b&gt; Curriculum module: &quot;DC Motor Control Patterns&quot; — one BTS7960, six real-world applications, same GPIO wiring" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;align=left;spacingLeft=15;" vertex="1" parent="1"><mxGeometry x="60" y="900" width="1040" height="50" as="geometry"/></mxCell>
 
       </root>
     </mxGraphModel>
