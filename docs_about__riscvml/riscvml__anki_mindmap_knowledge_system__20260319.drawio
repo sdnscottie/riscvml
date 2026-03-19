@@ -1,0 +1,131 @@
+<mxfile host="app.diagrams.net" modified="2026-03-19T00:00:00.000Z" agent="CC" version="24.0.0">
+  <diagram id="knowledge-system" name="RISCVML — Anki + Mindmaps + Knuggets Knowledge System">
+    <mxGraphModel dx="1800" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="2400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/><mxCell id="1" parent="0"/>
+
+        <!-- ==================== TITLE ==================== -->
+        <mxCell id="title" value="&lt;b&gt;RISCVML Knowledge System&lt;/b&gt;&lt;br&gt;How Anki Flashcards, Mindmaps &amp; Knuggets Work Together to Expand Knowledge" style="text;html=1;align=center;verticalAlign=middle;fontSize=20;fontColor=#1a1a1a;" vertex="1" parent="1">
+          <mxGeometry x="350" y="20" width="700" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitle" value="&lt;i&gt;riscvml.org — Rust-first RISC-V Embedded ML Education&lt;/i&gt;" style="text;html=1;align=center;fontSize=12;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="500" y="65" width="400" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== SECTION 1: THE THREE PILLARS ==================== -->
+        <mxCell id="s1_bar" value="&lt;b&gt;1. THE THREE PILLARS — Knuggets, Anki, Mindmaps&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="100" width="1280" height="35" as="geometry"/>
+        </mxCell>
+
+        <!-- Knugget -->
+        <mxCell id="knugget" value="&lt;b&gt;KNUGGET&lt;/b&gt;&lt;br&gt;(Knowledge Nugget)&lt;hr&gt;A self-contained hardware project&lt;br&gt;with code, wiring, diagrams, and docs.&lt;br&gt;&lt;br&gt;&lt;b&gt;Structure:&lt;/b&gt;&lt;br&gt;├── svbprj.md&lt;br&gt;├── docs_about__*/  (drawio + PNG)&lt;br&gt;├── pics/  (build photos)&lt;br&gt;├── anki_refs/  (flashcard links)&lt;br&gt;├── ...__free/  (student scaffold)&lt;br&gt;└── ...__full/  (reference solution)&lt;br&gt;&lt;br&gt;&lt;b&gt;Examples:&lt;/b&gt;&lt;br&gt;• BTS7960 motor driver&lt;br&gt;• PCA9685 servo driver&lt;br&gt;• MLX90640 thermal camera&lt;br&gt;• Solar controller" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="160" width="280" height="310" as="geometry"/>
+        </mxCell>
+
+        <!-- Anki -->
+        <mxCell id="anki" value="&lt;b&gt;ANKI FLASHCARDS&lt;/b&gt;&lt;br&gt;(Spaced Repetition)&lt;hr&gt;Each knugget has flashcards that&lt;br&gt;quiz you on GPIO pins, wiring,&lt;br&gt;specs, safety rules, use cases.&lt;br&gt;&lt;br&gt;&lt;b&gt;Card anatomy:&lt;/b&gt;&lt;br&gt;• Front: question + diagram PNG&lt;br&gt;• Back: answer + build photo&lt;br&gt;• Anki-Ref: timestamp cross-link&lt;br&gt;• Tag: hierarchical taxonomy&lt;br&gt;&lt;br&gt;&lt;b&gt;Tag hierarchy:&lt;/b&gt;&lt;br&gt;#sdnml&lt;br&gt;  ::hardware&lt;br&gt;    ::riscvml__free&lt;br&gt;      ::esp32::esp32-p4&lt;br&gt;        ::waveshare_..._kit-a&lt;br&gt;          ::BTS7960__dc_motor_drive&lt;br&gt;&lt;br&gt;&lt;b&gt;Decks:&lt;/b&gt;&lt;br&gt;• __free → public repo (.apkg)&lt;br&gt;• __full → private repo (.apkg)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="400" y="160" width="280" height="340" as="geometry"/>
+        </mxCell>
+
+        <!-- Mindmap -->
+        <mxCell id="mindmap" value="&lt;b&gt;MINDMAPS&lt;/b&gt;&lt;br&gt;(Big Picture Navigation)&lt;hr&gt;Visual map showing how all knuggets&lt;br&gt;connect — hardware dependencies,&lt;br&gt;curriculum sequence, skill trees.&lt;br&gt;&lt;br&gt;&lt;b&gt;Mindmap layers:&lt;/b&gt;&lt;br&gt;• &lt;b&gt;Hardware tree:&lt;/b&gt; ESP32-C3 → C6 → P4&lt;br&gt;  and peripherals (BTS7960, PCA9685...)&lt;br&gt;• &lt;b&gt;Curriculum tree:&lt;/b&gt; Module 1–7 sequence&lt;br&gt;  with prerequisite links&lt;br&gt;• &lt;b&gt;Use-case tree:&lt;/b&gt; agrarobotics applications&lt;br&gt;  mapped to knuggets that implement them&lt;br&gt;• &lt;b&gt;Skill tree:&lt;/b&gt; Rust, I2C, PWM, ML, async...&lt;br&gt;  what each knugget teaches&lt;br&gt;&lt;br&gt;&lt;b&gt;Format:&lt;/b&gt; drawio (exportable as PNG/SVG)&lt;br&gt;Can be interactive in diagrams.net" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="740" y="160" width="280" height="340" as="geometry"/>
+        </mxCell>
+
+        <!-- How they connect -->
+        <mxCell id="connect_box" value="&lt;b&gt;HOW THEY CONNECT&lt;/b&gt;&lt;hr&gt;&lt;b&gt;Knugget → Anki:&lt;/b&gt;&lt;br&gt;Every knugget generates flashcards.&lt;br&gt;anki-refs.txt cross-references them.&lt;br&gt;&lt;br&gt;&lt;b&gt;Knugget → Mindmap:&lt;/b&gt;&lt;br&gt;Every knugget is a node on the&lt;br&gt;hardware/curriculum mindmap.&lt;br&gt;&lt;br&gt;&lt;b&gt;Anki → Mindmap:&lt;/b&gt;&lt;br&gt;The Anki tag hierarchy mirrors&lt;br&gt;the mindmap tree structure.&lt;br&gt;Reviewing cards = traversing the map.&lt;br&gt;&lt;br&gt;&lt;b&gt;Mindmap → Anki:&lt;/b&gt;&lt;br&gt;Mindmap reveals gaps — nodes with&lt;br&gt;no flashcards = knowledge you haven't&lt;br&gt;committed to long-term memory yet." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="160" width="260" height="310" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrows between pillars -->
+        <mxCell id="ea1" value="generates&lt;br&gt;flashcards" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#6c8ebf;strokeWidth=2;fontSize=9;fontStyle=1;" edge="1" source="knugget" target="anki" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ea2" value="maps to&lt;br&gt;node" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#d6b656;strokeWidth=2;fontSize=9;fontStyle=1;" edge="1" source="knugget" target="mindmap" parent="1">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="200" y="530"/><mxPoint x="880" y="530"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="ea3" value="tags mirror&lt;br&gt;tree" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#82b366;strokeWidth=2;fontSize=9;fontStyle=1;" edge="1" source="anki" target="mindmap" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== SECTION 2: THE LEARNING LOOP ==================== -->
+        <mxCell id="s2_bar" value="&lt;b&gt;2. THE LEARNING LOOP — How Knowledge Expands Over Time&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="560" width="1280" height="35" as="geometry"/>
+        </mxCell>
+
+        <!-- Step 1: Build -->
+        <mxCell id="loop1" value="&lt;b&gt;1. BUILD&lt;/b&gt;&lt;br&gt;a Knugget&lt;hr&gt;Wire it, code it,&lt;br&gt;document it.&lt;br&gt;Take pics.&lt;br&gt;Create diagrams." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;align=center;" vertex="1" parent="1">
+          <mxGeometry x="60" y="620" width="170" height="140" as="geometry"/>
+        </mxCell>
+
+        <!-- Step 2: Card -->
+        <mxCell id="loop2" value="&lt;b&gt;2. CARD IT&lt;/b&gt;&lt;br&gt;in Anki&lt;hr&gt;Create flashcards:&lt;br&gt;• GPIO pins?&lt;br&gt;• Wiring diagram?&lt;br&gt;• Safety rules?&lt;br&gt;• Use cases?&lt;br&gt;Add pics + PNGs." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=center;" vertex="1" parent="1">
+          <mxGeometry x="290" y="620" width="170" height="140" as="geometry"/>
+        </mxCell>
+
+        <!-- Step 3: Map -->
+        <mxCell id="loop3" value="&lt;b&gt;3. MAP IT&lt;/b&gt;&lt;br&gt;on Mindmap&lt;hr&gt;Place knugget on&lt;br&gt;hardware tree.&lt;br&gt;Link prerequisites.&lt;br&gt;Connect to&lt;br&gt;curriculum module." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=center;" vertex="1" parent="1">
+          <mxGeometry x="520" y="620" width="170" height="140" as="geometry"/>
+        </mxCell>
+
+        <!-- Step 4: Review -->
+        <mxCell id="loop4" value="&lt;b&gt;4. REVIEW&lt;/b&gt;&lt;br&gt;daily in Anki&lt;hr&gt;Spaced repetition&lt;br&gt;surfaces cards&lt;br&gt;before you forget.&lt;br&gt;&lt;b&gt;10 min/day&lt;/b&gt; keeps&lt;br&gt;ALL projects alive." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=center;" vertex="1" parent="1">
+          <mxGeometry x="750" y="620" width="170" height="140" as="geometry"/>
+        </mxCell>
+
+        <!-- Step 5: Connect -->
+        <mxCell id="loop5" value="&lt;b&gt;5. CONNECT&lt;/b&gt;&lt;br&gt;new ideas&lt;hr&gt;Reviewing old cards&lt;br&gt;sparks new ideas:&lt;br&gt;&quot;BTS7960 + PCA9685&lt;br&gt;= robotic arm on&lt;br&gt;a rover!&quot;&lt;br&gt;→ new knugget born" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;align=center;" vertex="1" parent="1">
+          <mxGeometry x="980" y="620" width="170" height="140" as="geometry"/>
+        </mxCell>
+
+        <!-- Loop arrow back -->
+        <mxCell id="loop_back" value="&lt;b&gt;REPEAT →&lt;/b&gt;" style="shape=singleArrow;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;fontSize=11;arrowWidth=0.4;arrowSize=0.3;" vertex="1" parent="1">
+          <mxGeometry x="1190" y="670" width="120" height="35" as="geometry"/>
+        </mxCell>
+
+        <!-- Loop arrows -->
+        <mxCell id="el1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#333333;strokeWidth=2;" edge="1" source="loop1" target="loop2" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="el2" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#333333;strokeWidth=2;" edge="1" source="loop2" target="loop3" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="el3" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#333333;strokeWidth=2;" edge="1" source="loop3" target="loop4" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="el4" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#333333;strokeWidth=2;" edge="1" source="loop4" target="loop5" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- Compound note -->
+        <mxCell id="compound" value="&lt;b&gt;THE COMPOUNDING EFFECT:&lt;/b&gt; After 6 months, you know every GPIO pin, every safety rule, every use case&lt;br&gt;across ALL your projects — without re-reading docs. The mindmap shows the big picture. Anki keeps the details sharp." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;align=center;" vertex="1" parent="1">
+          <mxGeometry x="60" y="790" width="1280" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== SECTION 3: ANKI TAG TREE = MINDMAP ==================== -->
+        <mxCell id="s3_bar" value="&lt;b&gt;3. THE ANKI TAG TREE IS THE MINDMAP&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="860" width="1280" height="35" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="tree" value="&lt;pre style=&quot;font-size:12px;line-height:1.6;&quot;&gt;#sdnml&lt;br&gt;  ::hardware&lt;br&gt;    ::riscvml__free                          ← PUBLIC deck&lt;br&gt;      ::esp32&lt;br&gt;        ::esp32-c3                            ← Module 1–3 cards&lt;br&gt;        ::esp32-c6                            ← Module 4–5 cards&lt;br&gt;        ::esp32-p4                            ← Module 6 cards&lt;br&gt;          ::waveshare_esp32-p4-wifi6-kit-a&lt;br&gt;            ::BTS7960__dc_motor_drive          ← 6 sub-applications&lt;br&gt;            ::BTS7960__drill_trigger            ← 19V drill bench test&lt;br&gt;            ::BTS7960__water_pump              ← solar irrigation&lt;br&gt;            ::PCA9685__camera_pan_tilt          ← bird detection tracking&lt;br&gt;            ::PCA9685__robotic_arm_4dof         ← pick and place&lt;br&gt;            ::PCA9685__hexapod                  ← 2x daisy-chain gait&lt;br&gt;            ::PCA9685__solar_tracker            ← dual-axis LDR&lt;br&gt;            ::PCA9685__greenhouse               ← vents + water valves&lt;br&gt;            ::MLX90640__thermal_cam             ← thermal imaging&lt;br&gt;            ::secure_wap_streamer               ← crittercam Wi-Fi AP&lt;br&gt;      ::solar_controller                        ← 12-panel tilt system&lt;br&gt;      ::mini_ups                                ← battery backup&lt;br&gt;    ::riscvml__full                          ← PRIVATE deck&lt;br&gt;      ::esp32::esp32-p4::...                  ← reference solution cards&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#333333;fontSize=10;align=left;spacingLeft=10;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="60" y="910" width="700" height="470" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="tree_explain" value="&lt;b&gt;Why the tag tree = the mindmap:&lt;/b&gt;&lt;hr&gt;&lt;b&gt;1. Same hierarchy, two views&lt;/b&gt;&lt;br&gt;The drawio mindmap is the visual view.&lt;br&gt;The Anki tag tree is the quizzable view.&lt;br&gt;Same structure, different purposes.&lt;br&gt;&lt;br&gt;&lt;b&gt;2. Browsable at any level&lt;/b&gt;&lt;br&gt;Filter &lt;code&gt;::esp32-p4&lt;/code&gt; → see all P4 cards.&lt;br&gt;Filter &lt;code&gt;::BTS7960*&lt;/code&gt; → see all motor driver cards.&lt;br&gt;Filter &lt;code&gt;::riscvml__free&lt;/code&gt; → entire public deck.&lt;br&gt;&lt;br&gt;&lt;b&gt;3. Gap detection&lt;/b&gt;&lt;br&gt;Mindmap node with no Anki cards =&lt;br&gt;knowledge you haven't locked in yet.&lt;br&gt;The map shows what to learn next.&lt;br&gt;&lt;br&gt;&lt;b&gt;4. Exportable per branch&lt;/b&gt;&lt;br&gt;Export just &lt;code&gt;::esp32-p4&lt;/code&gt; as a deck →&lt;br&gt;give to a student starting Module 6.&lt;br&gt;They get exactly the cards they need.&lt;br&gt;&lt;br&gt;&lt;b&gt;5. Grows with the curriculum&lt;/b&gt;&lt;br&gt;New knugget → new tag branch →&lt;br&gt;new mindmap node → new cards.&lt;br&gt;The system scales without redesign." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="810" y="910" width="280" height="430" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== SECTION 4: REPO STRUCTURE ==================== -->
+        <mxCell id="s4_bar" value="&lt;b&gt;4. REPO STRUCTURE — Where Everything Lives&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1410" width="1280" height="35" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="repo" value="&lt;pre style=&quot;font-size:11px;line-height:1.5;&quot;&gt;riscvml/  (PUBLIC — github.com/sdnscottie/riscvml)&lt;br&gt;├── docs_about__riscvml/                   ← THIS diagram lives here&lt;br&gt;├── anki_deck_exports__free/               ← public .apkg deck exports&lt;br&gt;├── anki_deck_exports__full/               ← PRIVATE repo (gitignored)&lt;br&gt;│   └── .git → sdnscottie/anki_deck_exports__full&lt;br&gt;├── esp32-p4_knuggets/&lt;br&gt;│   └── ...motor_driver.../&lt;br&gt;│       ├── svbprj.md                      ← project docs + anki-ref&lt;br&gt;│       ├── anki_refs/anki-refs.txt        ← flashcard cross-references&lt;br&gt;│       ├── pics/                          ← build photos (Anki card images)&lt;br&gt;│       ├── docs_about__.../&lt;br&gt;│       │   ├── bts7960_usecases/           ← drawio + PNG (Anki card images)&lt;br&gt;│       │   └── pca9685_usecases/           ← drawio + PNG (Anki card images)&lt;br&gt;│       ├── ...__free/                     ← student code (public)&lt;br&gt;│       └── ...__full/                     ← reference code (private repo)&lt;br&gt;└── riscvml_projects/                      ← curriculum exercises&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#333333;fontSize=10;align=left;spacingLeft=10;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1460" width="700" height="330" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="flow_summary" value="&lt;b&gt;The Knowledge Flow:&lt;/b&gt;&lt;hr&gt;&lt;b&gt;Build&lt;/b&gt; knugget → &lt;b&gt;Document&lt;/b&gt; (svbprj.md + drawio + pics)&lt;br&gt;→ &lt;b&gt;Card&lt;/b&gt; (Anki flashcard + tag + anki-ref)&lt;br&gt;→ &lt;b&gt;Map&lt;/b&gt; (mindmap node + links)&lt;br&gt;→ &lt;b&gt;Review&lt;/b&gt; (10 min/day, spaced repetition)&lt;br&gt;→ &lt;b&gt;Connect&lt;/b&gt; (new ideas spark new knuggets)&lt;br&gt;→ &lt;b&gt;Export&lt;/b&gt; (.apkg to repo, shareable)&lt;br&gt;&lt;br&gt;&lt;b&gt;Result:&lt;/b&gt; Permanent, compounding,&lt;br&gt;navigable, shareable knowledge&lt;br&gt;that grows with every project." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="810" y="1460" width="300" height="210" as="geometry"/>
+        </mxCell>
+
+        <!-- Anki Ref -->
+        <mxCell id="anki_ref" value="&lt;b&gt;Anki-Ref:&lt;/b&gt; 20260319_XXXXXX__riscvml__anki_mindmap_knowledge_system" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;strokeColor=#1a1a1a;fontSize=11;align=left;spacingLeft=15;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1820" width="550" height="30" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
