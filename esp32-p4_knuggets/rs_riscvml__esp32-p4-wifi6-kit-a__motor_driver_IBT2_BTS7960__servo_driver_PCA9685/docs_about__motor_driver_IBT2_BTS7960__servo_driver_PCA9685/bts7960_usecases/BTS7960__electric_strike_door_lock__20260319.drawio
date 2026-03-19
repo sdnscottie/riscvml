@@ -1,0 +1,118 @@
+<mxfile host="app.diagrams.net" modified="2026-03-19T00:00:00.000Z" agent="CC" version="24.0.0">
+  <diagram id="door-lock" name="BTS7960 — Electric Strike Door Lock">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="2000" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Title -->
+        <mxCell id="title" value="&lt;b&gt;BTS7960 Use Case: 12V Electric Strike Door Lock&lt;/b&gt;&lt;br&gt;ESP32-P4 Access Control System" style="text;html=1;align=center;verticalAlign=middle;fontSize=18;fontColor=#1a1a1a;" vertex="1" parent="1">
+          <mxGeometry x="350" y="20" width="500" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== SECTION 1: WHY BTS7960 vs PCA9685 ==================== -->
+        <mxCell id="s1_bar" value="&lt;b&gt;1. BTS7960 vs PCA9685 vs Relay — Which Controls an Electric Strike?&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="80" width="1100" height="35" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="cmp_table" value="&lt;table cellpadding=&quot;8&quot; style=&quot;font-size:12px;border-collapse:collapse;&quot;&gt;&lt;tr style=&quot;background:#1a1a1a;color:white;&quot;&gt;&lt;td&gt;&lt;b&gt;Method&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;How It Works&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Pros&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Cons&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Best For&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#fff2cc;&quot;&gt;&lt;td&gt;&lt;b&gt;BTS7960 (H-Bridge)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;PWM switches 12V to strike coil.&lt;br&gt;Can reverse polarity for&lt;br&gt;fail-secure/fail-safe toggle.&lt;/td&gt;&lt;td&gt;Variable voltage control&lt;br&gt;Soft-start (reduce inrush)&lt;br&gt;Bi-directional (motorized locks)&lt;br&gt;Current sensing built in&lt;/td&gt;&lt;td&gt;Overkill for simple on/off&lt;br&gt;43A capacity wasted on 0.5A strike&lt;/td&gt;&lt;td&gt;&lt;b&gt;Motorized deadbolts&lt;/b&gt;&lt;br&gt;that need fwd/rev rotation&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#d5e8d4;&quot;&gt;&lt;td&gt;&lt;b&gt;PCA9685 + Servo&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Servo physically turns a&lt;br&gt;deadbolt or latch mechanism.&lt;br&gt;Position control (0–180°).&lt;/td&gt;&lt;td&gt;Precise angle control&lt;br&gt;Multi-lock from one PCA9685&lt;br&gt;No high-voltage needed&lt;/td&gt;&lt;td&gt;Mechanical linkage required&lt;br&gt;Servo torque limits&lt;br&gt;Not for electric strikes&lt;/td&gt;&lt;td&gt;&lt;b&gt;Retrofit deadbolts&lt;/b&gt;&lt;br&gt;Cabinet locks, multi-door&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#dae8fc;&quot;&gt;&lt;td&gt;&lt;b&gt;Simple Relay&lt;/b&gt;&lt;/td&gt;&lt;td&gt;GPIO → relay → 12V on/off&lt;br&gt;to electric strike coil.&lt;/td&gt;&lt;td&gt;Simplest wiring&lt;br&gt;Cheapest ($2 relay module)&lt;br&gt;Clean on/off switching&lt;/td&gt;&lt;td&gt;No speed/voltage control&lt;br&gt;No current sensing&lt;br&gt;Audible click&lt;/td&gt;&lt;td&gt;&lt;b&gt;Standard electric strikes&lt;/b&gt;&lt;br&gt;(EL902, Dorma 117, Dorcas)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="text;html=1;align=center;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="60" y="130" width="1100" height="220" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="verdict" value="&lt;b&gt;VERDICT:&lt;/b&gt; For a standard 12V electric strike (EL902, Dorma 117, Dorcas DR-99NF), a &lt;b&gt;simple relay&lt;/b&gt; is the right tool.&lt;br&gt;Use &lt;b&gt;BTS7960&lt;/b&gt; only if you have a &lt;b&gt;motorized deadbolt&lt;/b&gt; that needs forward/reverse rotation.&lt;br&gt;Use &lt;b&gt;PCA9685 + servo&lt;/b&gt; for &lt;b&gt;retrofit mechanical locks&lt;/b&gt; or &lt;b&gt;multi-door cabinets&lt;/b&gt;." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="60" y="360" width="1100" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== SECTION 2: ELECTRIC STRIKE COMPARISON ==================== -->
+        <mxCell id="s2_bar" value="&lt;b&gt;2. Electric Strike Comparison — EL902 vs Dorma 117 vs Dorcas DR-99NF&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="440" width="1100" height="35" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="strike_table" value="&lt;table cellpadding=&quot;8&quot; style=&quot;font-size:12px;border-collapse:collapse;&quot;&gt;&lt;tr style=&quot;background:#1a1a1a;color:white;&quot;&gt;&lt;td&gt;&lt;b&gt;Feature&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;EL902&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Dorma 117&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Dorcas DR-99NF&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#f5f5f5;&quot;&gt;&lt;td&gt;&lt;b&gt;Voltage&lt;/b&gt;&lt;/td&gt;&lt;td&gt;12V DC&lt;/td&gt;&lt;td&gt;12V DC / 24V DC&lt;/td&gt;&lt;td&gt;12V DC (305 series)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Current Draw&lt;/b&gt;&lt;/td&gt;&lt;td&gt;~200-500mA&lt;/td&gt;&lt;td&gt;~150-300mA&lt;/td&gt;&lt;td&gt;~180-350mA&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#f5f5f5;&quot;&gt;&lt;td&gt;&lt;b&gt;Fail Mode&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Fail-secure (locked when no power)&lt;/td&gt;&lt;td&gt;Fail-secure or fail-safe options&lt;/td&gt;&lt;td&gt;&lt;b&gt;NF = Fail-safe&lt;/b&gt; (unlocked when no power)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Holding Force&lt;/b&gt;&lt;/td&gt;&lt;td&gt;~1000 lbs&lt;/td&gt;&lt;td&gt;~800-1000 lbs&lt;/td&gt;&lt;td&gt;~330 kg (727 lbs)&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#f5f5f5;&quot;&gt;&lt;td&gt;&lt;b&gt;Mount Type&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Surface / mortise&lt;/td&gt;&lt;td&gt;Surface / mortise&lt;/td&gt;&lt;td&gt;Flush mount, adjustable radial bolt&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Brand Tier&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Professional grade&lt;/td&gt;&lt;td&gt;Premium (dormakaba)&lt;/td&gt;&lt;td&gt;European standard&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#f5f5f5;&quot;&gt;&lt;td&gt;&lt;b&gt;Price Range&lt;/b&gt;&lt;/td&gt;&lt;td&gt;€50–80&lt;/td&gt;&lt;td&gt;€80–150&lt;/td&gt;&lt;td&gt;€40–70&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Best For&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Commercial, high security&lt;/td&gt;&lt;td&gt;Premium installations&lt;/td&gt;&lt;td&gt;EU residential/light commercial&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="text;html=1;align=center;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="60" y="490" width="1100" height="260" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="fail_note" value="&lt;b&gt;FAIL-SECURE vs FAIL-SAFE:&lt;/b&gt;&lt;hr&gt;&lt;b&gt;Fail-Secure&lt;/b&gt; (EL902, Dorma default): Door stays &lt;b&gt;LOCKED&lt;/b&gt; when power is off. Apply 12V to unlock.&lt;br&gt;→ Best for: security doors, server rooms, exterior doors&lt;br&gt;&lt;br&gt;&lt;b&gt;Fail-Safe / NF&lt;/b&gt; (Dorcas DR-99NF): Door stays &lt;b&gt;UNLOCKED&lt;/b&gt; when power is off. Apply 12V to lock.&lt;br&gt;→ Best for: fire exits, emergency egress (building code requirement)&lt;br&gt;&lt;br&gt;&lt;b&gt;For ESP32-P4 projects:&lt;/b&gt; Fail-secure is safer — if your MCU crashes, the door stays locked." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="60" y="760" width="1100" height="120" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== SECTION 3: WIRING DIAGRAM ==================== -->
+        <mxCell id="s3_bar" value="&lt;b&gt;3. Wiring — ESP32-P4 → Relay → 12V Electric Strike (Recommended)&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="900" width="1100" height="35" as="geometry"/>
+        </mxCell>
+
+        <!-- ESP32-P4 -->
+        <mxCell id="esp32" value="&lt;b&gt;ESP32-P4&lt;/b&gt;&lt;br&gt;&lt;br&gt;GPIO 23 → Relay IN&lt;br&gt;3V3 → Relay VCC&lt;br&gt;GND → Relay GND&lt;br&gt;&lt;br&gt;&lt;i&gt;Access logic:&lt;br&gt;RFID / Keypad / Wi-Fi&lt;br&gt;→ GPIO HIGH = unlock&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="960" width="200" height="170" as="geometry"/>
+        </mxCell>
+
+        <!-- Relay -->
+        <mxCell id="relay" value="&lt;b&gt;5V Relay Module&lt;/b&gt;&lt;br&gt;&lt;br&gt;IN ← GPIO 23&lt;br&gt;VCC ← 3V3&lt;br&gt;GND ← GND&lt;br&gt;&lt;br&gt;COM → 12V supply +&lt;br&gt;NO → Strike + wire" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="400" y="960" width="200" height="170" as="geometry"/>
+        </mxCell>
+
+        <!-- 12V Supply -->
+        <mxCell id="psu" value="&lt;b&gt;12V DC&lt;br&gt;Power Supply&lt;/b&gt;&lt;br&gt;(1A min)" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;align=center;" vertex="1" parent="1">
+          <mxGeometry x="400" y="1160" width="200" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Electric Strike -->
+        <mxCell id="strike" value="&lt;b&gt;12V Electric Strike&lt;/b&gt;&lt;br&gt;(EL902 / Dorma 117 /&lt;br&gt;Dorcas DR-99NF)&lt;br&gt;&lt;br&gt;+ wire ← Relay NO&lt;br&gt;- wire ← 12V supply GND" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="960" width="220" height="170" as="geometry"/>
+        </mxCell>
+
+        <!-- Door -->
+        <mxCell id="door" value="&lt;b&gt;DOOR&lt;/b&gt;&lt;br&gt;🚪" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=14;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="990" width="100" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrows -->
+        <mxCell id="e_esp_relay" value="GPIO 23" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#6c8ebf;strokeWidth=2;fontSize=10;fontStyle=1;" edge="1" source="esp32" target="relay" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_relay_strike" value="12V switched" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#d6b656;strokeWidth=2;fontSize=10;fontStyle=1;" edge="1" source="relay" target="strike" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_strike_door" value="" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#82b366;strokeWidth=3;" edge="1" source="strike" target="door" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_psu_relay" value="12V" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#b85450;strokeWidth=2;fontSize=10;fontStyle=1;" edge="1" source="psu" target="relay" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Access methods -->
+        <mxCell id="access" value="&lt;b&gt;Access Methods (→ ESP32-P4):&lt;/b&gt;&lt;hr&gt;□ RFID reader (RC522 / PN532) via SPI&lt;br&gt;□ Keypad (4x4 matrix)&lt;br&gt;□ Wi-Fi API endpoint (/api/unlock)&lt;br&gt;□ BLE proximity (phone)&lt;br&gt;□ Fingerprint sensor (R307)&lt;br&gt;□ Face recognition (MIPI-CSI camera + esp-dl)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1160" width="260" height="130" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== SECTION 4: BTS7960 MOTORIZED DEADBOLT ==================== -->
+        <mxCell id="s4_bar" value="&lt;b&gt;4. Alternative: BTS7960 for Motorized Deadbolt (Forward/Reverse Rotation)&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d6b656;fontColor=#1a1a1a;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1320" width="1100" height="35" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="bts_usecase" value="&lt;b&gt;When to use BTS7960 for door locks:&lt;/b&gt;&lt;hr&gt;A &lt;b&gt;motorized deadbolt&lt;/b&gt; (like Samsung SHP-DP609 or Yale Assure) has a small DC motor&lt;br&gt;that physically rotates the bolt. It needs:&lt;br&gt;&lt;br&gt;• &lt;b&gt;Forward&lt;/b&gt; (RPWM) = Extend bolt → LOCK&lt;br&gt;• &lt;b&gt;Reverse&lt;/b&gt; (LPWM) = Retract bolt → UNLOCK&lt;br&gt;• &lt;b&gt;Current sensing&lt;/b&gt; = detect when bolt has fully extended/retracted (stall current spike)&lt;br&gt;• &lt;b&gt;PWM soft-start&lt;/b&gt; = quieter, less mechanical stress&lt;br&gt;&lt;br&gt;This is where BTS7960 shines — a simple relay can't do forward/reverse on a DC motor." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1375" width="530" height="180" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="pca_usecase" value="&lt;b&gt;When to use PCA9685 + Servo for door locks:&lt;/b&gt;&lt;hr&gt;A &lt;b&gt;servo-actuated retrofit lock&lt;/b&gt; physically turns an existing deadbolt thumb-turn:&lt;br&gt;&lt;br&gt;• Servo at &lt;b&gt;0°&lt;/b&gt; = LOCKED position&lt;br&gt;• Servo at &lt;b&gt;90°&lt;/b&gt; = UNLOCKED position&lt;br&gt;• PCA9685 CH0 drives the servo&lt;br&gt;• Mechanical bracket clamps over existing thumb-turn&lt;br&gt;• &lt;b&gt;Multi-door:&lt;/b&gt; PCA9685 has 16 channels = control 16 locks from one module&lt;br&gt;&lt;br&gt;Best for: cabinet locks, internal doors, retrofit without changing hardware." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="630" y="1375" width="530" height="180" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== SECTION 5: YOUTUBE REFERENCES ==================== -->
+        <mxCell id="s5_bar" value="&lt;b&gt;5. YouTube / Tutorial References&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1580" width="1100" height="35" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="yt_refs" value="&lt;b&gt;BTS7960 Motor Driver with Arduino:&lt;/b&gt;&lt;br&gt;• Robojax: &quot;BTS7960 DC Motor Driver with Arduino&quot; — robojax.com/learn/arduino/?vid=robojax_BTS7960_motor_driver&lt;br&gt;• Robojax: &quot;Multiple DC Motors with BTS7960&quot; — robojax.com/learn/arduino/?vid=robojax_BTS7960_multiple&lt;br&gt;• DeepBlue Embedded: &quot;Arduino BTS7960 DC Motor Driver&quot; — deepbluembedded.com/arduino-bts7960-dc-motor-driver/&lt;br&gt;&lt;br&gt;&lt;b&gt;PCA9685 Servo Control with Arduino:&lt;/b&gt;&lt;br&gt;• Instructables: &quot;Mastering Servo Control With PCA9685 and Arduino&quot;&lt;br&gt;• Arduino Project Hub: &quot;Servo Motor Using Arduino &amp; PCA9685 16 Channel Module&quot;&lt;br&gt;&lt;br&gt;&lt;b&gt;Arduino Door Lock Projects:&lt;/b&gt;&lt;br&gt;• Arduino Getting Started: &quot;Arduino Solenoid Lock&quot; — arduinogetstarted.com/tutorials/arduino-solenoid-lock&lt;br&gt;• Hackster.io: &quot;Arduino Controlled Servo Door Lock&quot;&lt;br&gt;• Arduino Project Hub: &quot;Secure RFID Door Access System Using Arduino with Servo Motor&quot;&lt;br&gt;• Circuit Digest: &quot;Arduino Solenoid Door Lock using RFID&quot;&lt;br&gt;• SURTR Technology: &quot;Arduino Door Lock with Keypad + Solenoid / Relay&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1630" width="1100" height="210" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== SECTION 6: CONTEXT ==================== -->
+        <mxCell id="context" value="&lt;b&gt;Applied to agrarobotics.com / riscvml.org:&lt;/b&gt;&lt;hr&gt;&lt;b&gt;Barn/greenhouse access control:&lt;/b&gt; ESP32-P4 + 12V electric strike on barn door, unlocked via Wi-Fi API or RFID tag.&lt;br&gt;&lt;b&gt;Equipment shed:&lt;/b&gt; PCA9685 + servo on multiple cabinet/tool-locker doors (16 locks, one I2C bus).&lt;br&gt;&lt;b&gt;Curriculum module:&lt;/b&gt; Access control project combines GPIO, relay/servo, Wi-Fi API, and optional ML (face recognition via esp-dl)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1860" width="1100" height="90" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

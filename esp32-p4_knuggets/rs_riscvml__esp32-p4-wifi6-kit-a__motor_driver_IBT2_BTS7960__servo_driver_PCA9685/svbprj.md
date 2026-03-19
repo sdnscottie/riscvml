@@ -117,6 +117,31 @@ V+      ◄───── 5–6V servo supply (separate from motor supply)
 
 - `docs_about__motor_driver_IBT2_BTS7960__servo_driver_PCA9685/esp32p4-to-ibt2-bts7960-wiring.drawio` — detailed wiring diagram
 - `docs_about__motor_driver_IBT2_BTS7960__servo_driver_PCA9685/knugget-puzzle-pieces-architecture.drawio` — high-level puzzle-piece architecture with WebApp console
+- `docs_about__motor_driver_IBT2_BTS7960__servo_driver_PCA9685/ibt2_pwm_motor_control.drawio` — PWM motor control explained (H-bridge, duty cycle waveforms, control table)
+
+### BTS7960 Application Use Cases (`bts7960_usecases/`)
+
+| Diagram | Application |
+|---------|-------------|
+| `BTS7960__drill_trigger_replacement__20260319.drawio` | Variable speed drill motor — replaces mechanical trigger with PWM |
+| `BTS7960__dc_motor_robot_drive__20260319.drawio` | Robot/rover tank steering — 2x BTS7960 for differential drive |
+| `BTS7960__water_pump_control__20260319.drawio` | Irrigation pump — soil moisture sensor → auto pump control |
+| `BTS7960__conveyor_belt__20260319.drawio` | Industrial conveyor — fwd/rev, E-stop, soft start/stop |
+| `BTS7960__winch_hoist__20260319.drawio` | Winch/hoist — raise/lower with limit switches, overload detection |
+| `BTS7960__electric_vehicle_throttle__20260319.drawio` | E-bike/go-kart throttle — analog input, regen braking, speed limiting |
+| `BTS7960__electric_strike_door_lock__20260319.drawio` | Door lock — BTS7960 vs PCA9685 vs Relay comparison, electric strike specs |
+
+### PCA9685 Application Use Cases (`pca9685_usecases/`)
+
+| Diagram | Application |
+|---------|-------------|
+| `PCA9685__camera_pan_tilt__20260319.drawio` | Camera pan/tilt mount — bird detection tracking, crittercam integration |
+| `PCA9685__robotic_arm_4dof__20260319.drawio` | 4-DOF robotic arm — base, shoulder, elbow, gripper with IK |
+| `PCA9685__hexapod_walking_robot__20260319.drawio` | Hexapod — 2x PCA9685 daisy-chained, tripod gait pattern |
+| `PCA9685__solar_panel_tracker__20260319.drawio` | Dual-axis solar tracker — LDR quadrant sensing, sun-following |
+| `PCA9685__automated_greenhouse__20260319.drawio` | Greenhouse automation — vents, louvers, water valves (9 servos) |
+| `PCA9685__led_lighting_controller__20260319.drawio` | 16-ch LED dimmer — grow lights, MOSFET drivers, 12-bit dimming |
+| `PCA9685__servo_door_lock_multi__20260319.drawio` | Multi-door servo lock — 16 locks from one module, retrofit deadbolts |
 
 Regenerate PNGs: `drawio --export --format png --scale 2 --output X.png X.drawio`
 

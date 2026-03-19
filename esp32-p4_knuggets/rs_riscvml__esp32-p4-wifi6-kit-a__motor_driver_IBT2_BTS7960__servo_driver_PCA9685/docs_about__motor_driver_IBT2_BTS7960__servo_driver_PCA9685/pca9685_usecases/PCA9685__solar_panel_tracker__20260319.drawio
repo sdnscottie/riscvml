@@ -1,0 +1,21 @@
+<mxfile host="app.diagrams.net" modified="2026-03-19T00:00:00.000Z" agent="CC" version="24.0.0">
+  <diagram id="solar" name="PCA9685 — Solar Panel Tracker">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/><mxCell id="1" parent="0"/>
+        <mxCell id="t" value="&lt;b&gt;PCA9685: Dual-Axis Solar Panel Tracker&lt;/b&gt;&lt;br&gt;4-quadrant LDR sensors → ESP32-P4 → PCA9685 → azimuth + elevation servos" style="text;html=1;align=center;fontSize=16;" vertex="1" parent="1"><mxGeometry x="250" y="20" width="600" height="40" as="geometry"/></mxCell>
+        <mxCell id="ldrs" value="&lt;b&gt;4x LDR Sensors&lt;/b&gt;&lt;br&gt;(light quadrants)&lt;br&gt;TL | TR&lt;br&gt;BL | BR&lt;br&gt;→ 4 ADC inputs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;align=center;" vertex="1" parent="1"><mxGeometry x="80" y="90" width="130" height="90" as="geometry"/></mxCell>
+        <mxCell id="esp" value="&lt;b&gt;ESP32-P4&lt;/b&gt;&lt;br&gt;4x ADC ← LDRs&lt;br&gt;I2C → PCA9685&lt;br&gt;&lt;br&gt;Sun-tracking algo" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;align=left;spacingLeft=10;" vertex="1" parent="1"><mxGeometry x="290" y="90" width="170" height="90" as="geometry"/></mxCell>
+        <mxCell id="pca" value="&lt;b&gt;PCA9685&lt;/b&gt;&lt;br&gt;CH0 = Azimuth&lt;br&gt;CH1 = Elevation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=center;" vertex="1" parent="1"><mxGeometry x="550" y="90" width="150" height="70" as="geometry"/></mxCell>
+        <mxCell id="az" value="&lt;b&gt;Azimuth Servo&lt;/b&gt;&lt;br&gt;(East↔West)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1"><mxGeometry x="790" y="75" width="130" height="40" as="geometry"/></mxCell>
+        <mxCell id="el" value="&lt;b&gt;Elevation Servo&lt;/b&gt;&lt;br&gt;(Up↔Down)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1"><mxGeometry x="790" y="130" width="130" height="40" as="geometry"/></mxCell>
+        <mxCell id="e1" style="strokeColor=#9673a6;strokeWidth=2;" edge="1" source="ldrs" target="esp" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" style="strokeColor=#6c8ebf;strokeWidth=2;" edge="1" source="esp" target="pca" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" style="strokeColor=#82b366;strokeWidth=2;" edge="1" source="pca" target="az" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" style="strokeColor=#82b366;strokeWidth=2;" edge="1" source="pca" target="el" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="algo" value="&lt;b&gt;Sun-Tracking Algorithm:&lt;/b&gt;&lt;hr&gt;1. Read 4 LDRs: top_left, top_right, bottom_left, bottom_right&lt;br&gt;2. avg_top = (TL + TR) / 2, avg_bottom = (BL + BR) / 2&lt;br&gt;3. avg_left = (TL + BL) / 2, avg_right = (TR + BR) / 2&lt;br&gt;4. If avg_left &gt; avg_right + threshold → azimuth servo turn left&lt;br&gt;5. If avg_right &gt; avg_left + threshold → azimuth servo turn right&lt;br&gt;6. If avg_top &gt; avg_bottom + threshold → elevation servo tilt up&lt;br&gt;7. If avg_bottom &gt; avg_top + threshold → elevation servo tilt down&lt;br&gt;8. When all 4 quadrants balanced → panel faces sun directly&lt;br&gt;9. Night: park at east-facing default for sunrise" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;spacingLeft=10;" vertex="1" parent="1"><mxGeometry x="80" y="240" width="560" height="170" as="geometry"/></mxCell>
+        <mxCell id="ctx" value="&lt;b&gt;Applied to agrarobotics.com / riscvml.org:&lt;/b&gt; Ties into solar controller curriculum (Module 3). 15–30% efficiency gain over fixed panels." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;align=left;spacingLeft=10;" vertex="1" parent="1"><mxGeometry x="80" y="430" width="560" height="30" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

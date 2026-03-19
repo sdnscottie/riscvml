@@ -1,0 +1,113 @@
+<mxfile host="app.diagrams.net" modified="2026-03-19T00:00:00.000Z" agent="CC" version="24.0.0">
+  <diagram id="servo-door-lock" name="PCA9685 — Multi-Door Servo Lock System">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Title -->
+        <mxCell id="title" value="&lt;b&gt;PCA9685 Use Case: Multi-Door Servo Lock System&lt;/b&gt;&lt;br&gt;ESP32-P4 — 16 Locks from One I2C Module" style="text;html=1;align=center;verticalAlign=middle;fontSize=18;fontColor=#1a1a1a;" vertex="1" parent="1">
+          <mxGeometry x="350" y="20" width="500" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== CONCEPT ==================== -->
+        <mxCell id="s1_bar" value="&lt;b&gt;1. Concept — Servo Physically Turns a Deadbolt Thumb-Turn&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="80" width="1100" height="35" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="concept" value="&lt;b&gt;How it works:&lt;/b&gt; A standard servo motor (SG90 or MG996R) is bracket-mounted over an existing&lt;br&gt;deadbolt thumb-turn or latch lever. No wiring into the lock itself — purely mechanical actuation.&lt;br&gt;&lt;br&gt;&lt;b&gt;Lock:&lt;/b&gt; Servo rotates to 0° → thumb-turn turns → bolt extends&lt;br&gt;&lt;b&gt;Unlock:&lt;/b&gt; Servo rotates to 90° → thumb-turn turns back → bolt retracts&lt;br&gt;&lt;br&gt;&lt;b&gt;Advantage over electric strikes:&lt;/b&gt; No door frame modification. Works with ANY existing lock.&lt;br&gt;&lt;b&gt;Advantage of PCA9685:&lt;/b&gt; One module = 16 servo channels = &lt;b&gt;16 independent door locks&lt;/b&gt; on one I2C bus." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="60" y="130" width="1100" height="130" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== WIRING ==================== -->
+        <mxCell id="s2_bar" value="&lt;b&gt;2. Wiring — ESP32-P4 → PCA9685 → Up to 16 Servo Door Locks&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="280" width="1100" height="35" as="geometry"/>
+        </mxCell>
+
+        <!-- ESP32-P4 -->
+        <mxCell id="esp" value="&lt;b&gt;ESP32-P4&lt;/b&gt;&lt;br&gt;&lt;br&gt;GPIO 21 → SDA&lt;br&gt;GPIO 20 → SCL&lt;br&gt;3V3 → VCC&lt;br&gt;GND → GND&lt;br&gt;&lt;br&gt;&lt;i&gt;I2C Bus 1&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="340" width="170" height="150" as="geometry"/>
+        </mxCell>
+
+        <!-- PCA9685 -->
+        <mxCell id="pca" value="&lt;b&gt;PCA9685&lt;/b&gt;&lt;br&gt;(addr 0x40)&lt;br&gt;&lt;br&gt;V+ ← 5V servo supply&lt;br&gt;&lt;br&gt;CH0 → Door 1 servo&lt;br&gt;CH1 → Door 2 servo&lt;br&gt;CH2 → Door 3 servo&lt;br&gt;...&lt;br&gt;CH15 → Door 16 servo" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="370" y="330" width="200" height="180" as="geometry"/>
+        </mxCell>
+
+        <!-- Servo cluster -->
+        <mxCell id="srv1" value="&lt;b&gt;Door 1&lt;/b&gt;&lt;br&gt;Servo + Bracket&lt;br&gt;on Deadbolt" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="680" y="330" width="120" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="srv2" value="&lt;b&gt;Door 2&lt;/b&gt;&lt;br&gt;Servo + Bracket&lt;br&gt;on Cabinet" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="680" y="395" width="120" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="srv3" value="&lt;b&gt;Door 3&lt;/b&gt;&lt;br&gt;Servo + Bracket&lt;br&gt;on Tool Locker" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="680" y="460" width="120" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="srv_dots" value="&lt;b&gt;...up to 16 doors&lt;/b&gt;" style="text;html=1;align=center;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="690" y="520" width="100" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- 5V supply -->
+        <mxCell id="v5" value="&lt;b&gt;5V Servo&lt;br&gt;Supply&lt;/b&gt;&lt;br&gt;(2A per 4 servos)" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="370" y="540" width="200" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrows -->
+        <mxCell id="e1" value="I2C" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#6c8ebf;strokeWidth=2;fontSize=10;fontStyle=1;" edge="1" source="esp" target="pca" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#82b366;strokeWidth=2;" edge="1" source="pca" target="srv1" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#82b366;strokeWidth=2;" edge="1" source="pca" target="srv2" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#82b366;strokeWidth=2;" edge="1" source="pca" target="srv3" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" value="V+" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#b85450;strokeWidth=2;fontSize=10;" edge="1" source="v5" target="pca" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== CHANNEL TABLE ==================== -->
+        <mxCell id="s3_bar" value="&lt;b&gt;3. Channel Assignment — Example Multi-Room Layout&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="620" width="1100" height="35" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ch_table" value="&lt;table cellpadding=&quot;6&quot; style=&quot;font-size:11px;border-collapse:collapse;&quot;&gt;&lt;tr style=&quot;background:#1a1a1a;color:white;&quot;&gt;&lt;td&gt;&lt;b&gt;CH&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Location&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Lock Type&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Servo&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Lock Angle&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Unlock Angle&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#d5e8d4;&quot;&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;Front door&lt;/td&gt;&lt;td&gt;Deadbolt thumb-turn&lt;/td&gt;&lt;td&gt;MG996R (high torque)&lt;/td&gt;&lt;td&gt;0°&lt;/td&gt;&lt;td&gt;90°&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;Barn door&lt;/td&gt;&lt;td&gt;Slide bolt latch&lt;/td&gt;&lt;td&gt;MG996R&lt;/td&gt;&lt;td&gt;0°&lt;/td&gt;&lt;td&gt;180°&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#d5e8d4;&quot;&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;Tool shed&lt;/td&gt;&lt;td&gt;Padlock shackle release&lt;/td&gt;&lt;td&gt;SG90 (light duty)&lt;/td&gt;&lt;td&gt;0°&lt;/td&gt;&lt;td&gt;90°&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;Equipment cabinet&lt;/td&gt;&lt;td&gt;Cam lock&lt;/td&gt;&lt;td&gt;SG90&lt;/td&gt;&lt;td&gt;0°&lt;/td&gt;&lt;td&gt;90°&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#d5e8d4;&quot;&gt;&lt;td&gt;4–7&lt;/td&gt;&lt;td&gt;Greenhouse sections&lt;/td&gt;&lt;td&gt;Vent latches&lt;/td&gt;&lt;td&gt;SG90&lt;/td&gt;&lt;td&gt;0°&lt;/td&gt;&lt;td&gt;90°&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;8–15&lt;/td&gt;&lt;td&gt;Available&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="text;html=1;align=center;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="60" y="670" width="1100" height="200" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== SERVO SELECTION ==================== -->
+        <mxCell id="s4_bar" value="&lt;b&gt;4. Servo Selection for Door Locks&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="890" width="1100" height="35" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="servo_table" value="&lt;table cellpadding=&quot;6&quot; style=&quot;font-size:11px;border-collapse:collapse;&quot;&gt;&lt;tr style=&quot;background:#1a1a1a;color:white;&quot;&gt;&lt;td&gt;&lt;b&gt;Servo&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Torque&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Voltage&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Price&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Best For&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#f5f5f5;&quot;&gt;&lt;td&gt;&lt;b&gt;SG90&lt;/b&gt; (micro)&lt;/td&gt;&lt;td&gt;1.8 kg·cm&lt;/td&gt;&lt;td&gt;4.8V&lt;/td&gt;&lt;td&gt;~€2&lt;/td&gt;&lt;td&gt;Cabinet latches, light locks&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;MG996R&lt;/b&gt; (standard)&lt;/td&gt;&lt;td&gt;11 kg·cm&lt;/td&gt;&lt;td&gt;6V&lt;/td&gt;&lt;td&gt;~€5&lt;/td&gt;&lt;td&gt;Deadbolts, heavy latches&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#f5f5f5;&quot;&gt;&lt;td&gt;&lt;b&gt;DS3218&lt;/b&gt; (high torque)&lt;/td&gt;&lt;td&gt;21 kg·cm&lt;/td&gt;&lt;td&gt;6.8V&lt;/td&gt;&lt;td&gt;~€12&lt;/td&gt;&lt;td&gt;Heavy deadbolts, gate locks&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="text;html=1;align=center;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="60" y="940" width="1100" height="120" as="geometry"/>
+        </mxCell>
+
+        <!-- Safety -->
+        <mxCell id="safety" value="&lt;b&gt;Safety Note:&lt;/b&gt; Servo locks are NOT fail-secure. If power is lost, the servo holds position (lock stays as-is),&lt;br&gt;but can be manually overridden by turning the thumb-turn. For high-security applications, use an electric strike instead." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1070" width="1100" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== YOUTUBE ==================== -->
+        <mxCell id="s5_bar" value="&lt;b&gt;5. YouTube / Tutorial References&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1140" width="1100" height="35" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="yt" value="&lt;b&gt;PCA9685 + Servo Lock:&lt;/b&gt;&lt;br&gt;• Hackster.io: &quot;Arduino Controlled Servo Door Lock&quot; — hackster.io/raghavdaboss/arduino-controlled-servo-door-lock-1c2239&lt;br&gt;• Instructables: &quot;Mastering Servo Control With PCA9685 and Arduino&quot; (8-step guide)&lt;br&gt;• Arduino Project Hub: &quot;Secure RFID Door Access System Using Arduino with Servo Motor&quot;&lt;br&gt;&lt;br&gt;&lt;b&gt;Electric Strike / Solenoid:&lt;/b&gt;&lt;br&gt;• Arduino Getting Started: &quot;Arduino Solenoid Lock&quot; — arduinogetstarted.com/tutorials/arduino-solenoid-lock&lt;br&gt;• Circuit Digest: &quot;Arduino Solenoid Door Lock using RFID&quot;&lt;br&gt;• SURTR Technology: &quot;Arduino Door Lock with Keypad + Solenoid / Relay&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1190" width="1100" height="140" as="geometry"/>
+        </mxCell>
+
+        <!-- Context -->
+        <mxCell id="ctx" value="&lt;b&gt;Applied to agrarobotics.com:&lt;/b&gt; Multi-zone farm access — front gate, barn, greenhouse sections, equipment shed — all from one ESP32-P4 + PCA9685.&lt;br&gt;&lt;b&gt;Applied to riscvml.org:&lt;/b&gt; Curriculum project combining I2C (PCA9685), servo control, Wi-Fi API, and RFID authentication." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1350" width="1100" height="60" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
