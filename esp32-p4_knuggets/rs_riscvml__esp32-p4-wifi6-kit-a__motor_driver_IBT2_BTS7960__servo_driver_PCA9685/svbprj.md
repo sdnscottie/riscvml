@@ -68,23 +68,23 @@ GPIO assignments are locked for puzzle-piece compatibility across all knuggets o
 - **Used channels:** CH0 = Pan, CH1 = Tilt
 - **Power:** Separate 5–6V servo supply via V+ screw terminal
 
-## GPIO Pin Assignments (Waveshare P6 Header)
+## GPIO Pin Assignments (Waveshare 40-Pin Header)
 
 ### IBT-2 Motor Driver
 
-| GPIO | Function | P6 Header |
+| GPIO | Function | 40-Pin Header |
 |------|----------|-----------|
 | 4    | RPWM     | Top row   |
 | 5    | LPWM     | Top row   |
-| 6    | R_EN     | Bottom row|
+| 27   | R_EN     | Right side|
 | 22   | L_EN     | Top row   |
 
 ### PCA9685 Servo Driver (I2C Bus 1)
 
-| GPIO | Function | P6 Header |
+| GPIO | Function | 40-Pin Header |
 |------|----------|-----------|
-| 21   | SDA      | Bottom row|
-| 20   | SCL      | Bottom row|
+| SDA  | SDA      | Left side (labeled SDA pad) |
+| SCL  | SCL      | Left side (labeled SCL pad) |
 
 ### GPIOs Reserved by Other Puzzle Pieces (DO NOT USE)
 
@@ -98,19 +98,19 @@ GPIO assignments are locked for puzzle-piece compatibility across all knuggets o
 
 ### GPIO Budget Summary
 
-- **Used:** 4, 5, 6, 7, 8, 14–19, 20, 21, 22, 54
-- **Available:** 0, 1, 2, 3, 23, 24, 25, 26, 27, 32, 33, 36, 45, 46, 47, 48, 53
+- **Used:** 4, 5, 7, 8, 14–19, 20, 21, 22, 27, 54
+- **Available:** 0, 1, 2, 3, 23, 24, 25, 26, 28, 29, 30, 31, 32, 33, 36, 46, 47, 48
 
 ## Wiring
 
 ### IBT-2 Motor Driver
 
 ```
-ESP32-P4 (P6 Header)         IBT-2 Module
+ESP32-P4 (40-Pin Header)         IBT-2 Module
 ─────────────────────         ────────────
 GPIO 4  ──────────────────►   RPWM
 GPIO 5  ──────────────────►   LPWM
-GPIO 6  ──────────────────►   R_EN
+GPIO 27  ──────────────────►   R_EN
 GPIO 22 ──────────────────►   L_EN
 3V3     ──────────────────►   VCC
 GND     ──────────────────►   GND
@@ -126,7 +126,7 @@ GND ◄───── 6–27V supply - (shared with ESP32 GND)
 ### PCA9685 Servo Driver
 
 ```
-ESP32-P4 (P6 Header)         PCA9685 Module
+ESP32-P4 (40-Pin Header)         PCA9685 Module
 ─────────────────────         ──────────────
 GPIO 21 ──────────────────►   SDA
 GPIO 20 ──────────────────►   SCL
@@ -227,11 +227,11 @@ Drill Battery (19V)              IBT-2              Drill Motor
     Battery +  ──────────►  VIN                 B+  ──────────►  Motor +
     Battery -  ──────────►  GND                 B-  ──────────►  Motor -
 
-ESP32-P4 (P6 Header)            IBT-2
+ESP32-P4 (40-Pin Header)            IBT-2
 ━━━━━━━━━━━━━━━━━━━━    ━━━━━━━━━━━━━━━━━
 GPIO 4   ────────────────────►  RPWM  (speed 0–100%)
 GPIO 5   ────────────────────►  LPWM  (LOW — forward only)
-GPIO 6   ────────────────────►  R_EN  (HIGH — enable)
+GPIO 27   ────────────────────►  R_EN  (HIGH — enable)
 GPIO 22  ────────────────────►  L_EN  (HIGH — enable)
 3V3      ────────────────────►  VCC
 GND      ────────────────────►  GND   (common with drill battery -)

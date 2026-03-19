@@ -7,7 +7,7 @@
         <mxCell id="t" value="&lt;b&gt;BTS7960: DC Motor Drive — Application Use Cases&lt;/b&gt;&lt;br&gt;One H-bridge, many applications. Forward/reverse, variable speed, brake/coast." style="text;html=1;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="300" y="20" width="600" height="45" as="geometry"/></mxCell>
 
         <!-- Core block -->
-        <mxCell id="core" value="&lt;b&gt;CORE: ESP32-P4 + BTS7960&lt;/b&gt;&lt;hr&gt;GPIO 4 → RPWM (forward)&lt;br&gt;GPIO 5 → LPWM (reverse)&lt;br&gt;GPIO 6 → R_EN&lt;br&gt;GPIO 22 → L_EN&lt;br&gt;VIN ← 6–27V supply&lt;br&gt;B+/B- → DC motor&lt;br&gt;&lt;br&gt;&lt;b&gt;43A continuous, PWM 25kHz&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;spacingLeft=15;" vertex="1" parent="1"><mxGeometry x="530" y="100" width="240" height="170" as="geometry"/></mxCell>
+        <mxCell id="core" value="&lt;b&gt;CORE: ESP32-P4 + BTS7960&lt;/b&gt;&lt;hr&gt;GPIO 4 → RPWM (forward)&lt;br&gt;GPIO 5 → LPWM (reverse)&lt;br&gt;GPIO 27 → R_EN&lt;br&gt;GPIO 22 → L_EN&lt;br&gt;VIN ← 6–27V supply&lt;br&gt;B+/B- → DC motor&lt;br&gt;&lt;br&gt;&lt;b&gt;43A continuous, PWM 25kHz&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;spacingLeft=15;" vertex="1" parent="1"><mxGeometry x="530" y="100" width="240" height="170" as="geometry"/></mxCell>
 
         <!-- ==================== SUB USE CASES ==================== -->
 

@@ -26,50 +26,50 @@
           <mxGeometry x="210" y="108" width="140" height="40" as="geometry" />
         </mxCell>
 
-        <!-- ═══ P6 Header — IBT-2 Section ═══ -->
+        <!-- ═══ 40-Pin Header — IBT-2 Section ═══ -->
         <mxCell id="p6_ibt2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;" vertex="1" parent="1">
           <mxGeometry x="50" y="165" width="300" height="250" as="geometry" />
         </mxCell>
-        <mxCell id="p6_ibt2_title" value="&lt;b&gt;P6 Header — IBT-2 Pins&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=12;" vertex="1" parent="1">
+        <mxCell id="p6_ibt2_title" value="&lt;b&gt;40-Pin Header — IBT-2 Pins&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=12;" vertex="1" parent="1">
           <mxGeometry x="105" y="170" width="190" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="pin_gpio4" value="&lt;b&gt;GPIO 4&lt;/b&gt;  →  RPWM" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontSize=12;align=left;spacingLeft=10;" vertex="1" parent="1">
-          <mxGeometry x="70" y="198" width="190" height="28" as="geometry" />
+        <mxCell id="pin_gpio4" value="&lt;b&gt;GPIO 4&lt;/b&gt; &lt;font color=&quot;#6c8ebf&quot;&gt;(Left)&lt;/font&gt;  →  RPWM" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="70" y="198" width="250" height="28" as="geometry" />
         </mxCell>
-        <mxCell id="pin_gpio5" value="&lt;b&gt;GPIO 5&lt;/b&gt;  →  LPWM" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontSize=12;align=left;spacingLeft=10;" vertex="1" parent="1">
-          <mxGeometry x="70" y="232" width="190" height="28" as="geometry" />
+        <mxCell id="pin_gpio5" value="&lt;b&gt;GPIO 5&lt;/b&gt; &lt;font color=&quot;#6c8ebf&quot;&gt;(Left)&lt;/font&gt;  →  LPWM" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="70" y="232" width="250" height="28" as="geometry" />
         </mxCell>
-        <mxCell id="pin_gpio6" value="&lt;b&gt;GPIO 6&lt;/b&gt;  →  R_EN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=12;align=left;spacingLeft=10;" vertex="1" parent="1">
-          <mxGeometry x="70" y="266" width="190" height="28" as="geometry" />
+        <mxCell id="pin_gpio6" value="&lt;b&gt;GPIO 27&lt;/b&gt; &lt;font color=&quot;#b85450&quot;&gt;(Right)&lt;/font&gt;  →  R_EN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="70" y="266" width="250" height="28" as="geometry" />
         </mxCell>
-        <mxCell id="pin_gpio22" value="&lt;b&gt;GPIO 22&lt;/b&gt;  →  L_EN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=12;align=left;spacingLeft=10;" vertex="1" parent="1">
-          <mxGeometry x="70" y="300" width="190" height="28" as="geometry" />
+        <mxCell id="pin_gpio22" value="&lt;b&gt;GPIO 22&lt;/b&gt; &lt;font color=&quot;#b85450&quot;&gt;(Right)&lt;/font&gt;  →  L_EN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="70" y="300" width="250" height="28" as="geometry" />
         </mxCell>
-        <mxCell id="pin_3v3" value="&lt;b&gt;3V3&lt;/b&gt;  →  VCC (IBT-2)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontSize=12;align=left;spacingLeft=10;" vertex="1" parent="1">
-          <mxGeometry x="70" y="334" width="190" height="28" as="geometry" />
+        <mxCell id="pin_3v3" value="&lt;b&gt;3V3&lt;/b&gt; &lt;font color=&quot;#b85450&quot;&gt;(Right)&lt;/font&gt;  →  VCC (IBT-2)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="70" y="334" width="250" height="28" as="geometry" />
         </mxCell>
-        <mxCell id="pin_gnd" value="&lt;b&gt;GND&lt;/b&gt;  →  GND (shared)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;fontSize=12;align=left;spacingLeft=10;" vertex="1" parent="1">
-          <mxGeometry x="70" y="368" width="190" height="28" as="geometry" />
+        <mxCell id="pin_gnd" value="&lt;b&gt;GND&lt;/b&gt; &lt;font color=&quot;#666&quot;&gt;(both sides)&lt;/font&gt;  →  GND" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="70" y="368" width="250" height="28" as="geometry" />
         </mxCell>
 
-        <!-- ═══ P6 Header — PCA9685 Section ═══ -->
+        <!-- ═══ 40-Pin Header — PCA9685 Section ═══ -->
         <mxCell id="p6_pca" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d4e1f5;strokeColor=#4472C4;strokeWidth=2;" vertex="1" parent="1">
           <mxGeometry x="50" y="430" width="300" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="p6_pca_title" value="&lt;b&gt;P6 Header — PCA9685 Pins (I2C Bus 1)&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=12;" vertex="1" parent="1">
+        <mxCell id="p6_pca_title" value="&lt;b&gt;40-Pin Header — PCA9685 Pins (I2C Bus 1)&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=12;" vertex="1" parent="1">
           <mxGeometry x="75" y="435" width="250" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="pin_gpio21" value="&lt;b&gt;GPIO 21&lt;/b&gt;  →  SDA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B4C7E7;strokeColor=#4472C4;strokeWidth=2;fontSize=12;align=left;spacingLeft=10;" vertex="1" parent="1">
-          <mxGeometry x="70" y="463" width="190" height="28" as="geometry" />
+        <mxCell id="pin_gpio21" value="&lt;b&gt;SDA&lt;/b&gt; &lt;font color=&quot;#6c8ebf&quot;&gt;(Left)&lt;/font&gt;  →  SDA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B4C7E7;strokeColor=#4472C4;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="70" y="463" width="250" height="28" as="geometry" />
         </mxCell>
-        <mxCell id="pin_gpio20" value="&lt;b&gt;GPIO 20&lt;/b&gt;  →  SCL" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B4C7E7;strokeColor=#4472C4;strokeWidth=2;fontSize=12;align=left;spacingLeft=10;" vertex="1" parent="1">
-          <mxGeometry x="70" y="497" width="190" height="28" as="geometry" />
+        <mxCell id="pin_gpio20" value="&lt;b&gt;SCL&lt;/b&gt; &lt;font color=&quot;#6c8ebf&quot;&gt;(Left)&lt;/font&gt;  →  SCL" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B4C7E7;strokeColor=#4472C4;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="70" y="497" width="250" height="28" as="geometry" />
         </mxCell>
-        <mxCell id="pin_3v3_pca" value="&lt;b&gt;3V3&lt;/b&gt;  →  VCC (PCA9685)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontSize=12;align=left;spacingLeft=10;" vertex="1" parent="1">
-          <mxGeometry x="70" y="531" width="190" height="28" as="geometry" />
+        <mxCell id="pin_3v3_pca" value="&lt;b&gt;3V3&lt;/b&gt; &lt;font color=&quot;#b85450&quot;&gt;(Right)&lt;/font&gt;  →  VCC (PCA9685)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="70" y="531" width="250" height="28" as="geometry" />
         </mxCell>
-        <mxCell id="pin_gnd_pca" value="&lt;b&gt;GND&lt;/b&gt;  →  GND (PCA9685)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;fontSize=12;align=left;spacingLeft=10;" vertex="1" parent="1">
-          <mxGeometry x="70" y="565" width="190" height="28" as="geometry" />
+        <mxCell id="pin_gnd_pca" value="&lt;b&gt;GND&lt;/b&gt; &lt;font color=&quot;#666&quot;&gt;(both sides)&lt;/font&gt;  →  GND" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="70" y="565" width="250" height="28" as="geometry" />
         </mxCell>
 
         <!-- Reserved pins -->
