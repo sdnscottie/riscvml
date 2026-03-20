@@ -86,7 +86,7 @@ GPIO assignments are locked for puzzle-piece compatibility across all knuggets o
 | SDA  | SDA      | Left side (labeled SDA pad) |
 | SCL  | SCL      | Left side (labeled SCL pad) |
 
-### GPIOs Reserved by Other Puzzle Pieces (DO NOT USE)
+### GPIOs Reserved (DO NOT USE)
 
 | GPIO             | Used By                   |
 |------------------|---------------------------|
@@ -94,35 +94,93 @@ GPIO assignments are locked for puzzle-piece compatibility across all knuggets o
 | 14, 15, 16, 17   | SDIO D0–D3 (C6 Wi-Fi)    |
 | 18               | SDIO CLK (C6 Wi-Fi)      |
 | 19               | SDIO CMD (C6 Wi-Fi)      |
+| 26, 27           | USB OTG D-/D+ — DO NOT USE while USB connected |
 | 54               | C6 Reset                  |
+
+### GPIO Bench Test Results (2026-03-20)
+
+Tested every GPIO on the 40-pin header with Fluke DMM. Many GPIOs labeled on the
+board silkscreen do NOT output 3.3V when driven HIGH from firmware.
+
+| GPIO | Side  | Fluke Result | Status |
+|------|-------|-------------|--------|
+| 2    | Left  | 1.8V (unstable) | **UNRELIABLE** — has onboard pull |
+| 3    | Left  | 0V | **DEAD** |
+| 4    | Left  | 0V | **DEAD** |
+| 5    | Left  | 0V | **DEAD** |
+| 20   | Right | 0V | **DEAD** |
+| 21   | Right | 0V | **DEAD** |
+| 22   | Right | 3.3V cycles | **WORKS** |
+| 23   | Right | 0V | **DEAD** |
+| 25   | Left  | 3.3V cycles | **WORKS** |
+| 26   | Right | 0V | Reserved USB D- |
+| 27   | Right | 0V | Reserved USB D+ |
+| 32   | Right | 3.3V cycles | **WORKS** |
+| 33   | Right | 0V | **DEAD** |
+| 46   | Right | 0V | **DEAD** |
+| 47   | Right | 0V | **DEAD** |
+| 48   | Right | 0V | **DEAD** |
+
+**Only 3 confirmed working GPIOs: 22, 25, 32**
+
+> **Note:** The silkscreen pin numbers may not match ESP32-P4 GPIO numbers.
+> Further investigation needed — may need Waveshare schematic to find true GPIO mapping.
 
 ### GPIO Budget Summary
 
-- **Used:** 4, 5, 7, 8, 14–19, 20, 21, 22, 32, 54
-- **Reserved (USB OTG):** 26 (D-), 27 (D+) — DO NOT USE while USB connected
-- **Available:** 0, 1, 2, 3, 23, 24, 25, 28, 29, 30, 31, 33, 36, 46, 47, 48
+- **Confirmed working:** 22 (Right), 25 (Left), 32 (Right)
+- **Reserved:** 7, 8, 14–19, 26, 27, 54
+- **Untested:** 24, 28, 29, 30, 31, 34, 36, 49, 50, 51, 52
+- **Tested dead:** 2, 3, 4, 5, 20, 21, 23, 33, 46, 47, 48
 
-## Wiring
+## Wiring (Verified Working — 2026-03-20)
 
 ### IBT-2 Motor Driver
 
 ```
-ESP32-P4 (40-Pin Header)         IBT-2 Module
-─────────────────────         ────────────
-GPIO 4  ──────────────────►   RPWM
-GPIO 5  ──────────────────►   LPWM
-GPIO 32  ──────────────────►   R_EN
-GPIO 22 ──────────────────►   L_EN
-3V3     ──────────────────►   VCC
-GND     ──────────────────►   GND
+ESP32-P4 (40-Pin Header)              IBT-2 8-Pin Connector
+─────────────────────────              ─────────────────────
+GPIO 25 (Left)  ──────────────────►   Pin 7: RPWM (PWM speed)
+                                       Pin 8: LPWM (disconnected — forward only)
+GPIO 32 (Right) ──────────────────►   Pin 5: R_EN (enable)
+GPIO 22 (Right) ──────────────────►   Pin 6: L_EN (enable)
+3V3     (Right) ──────────────────►   Pin 1: VCC
+GND     (both)  ──────────────────►   Pin 2: GND
+                                       Pin 3: R_IS (not connected — current sense)
+                                       Pin 4: L_IS (not connected — current sense)
 
-Motor Power (separate supply!)
-─────────────────────────────
-B+  ◄───── Motor +
-B-  ◄───── Motor -
-VIN ◄───── 6–27V supply +
-GND ◄───── 6–27V supply - (shared with ESP32 GND)
+IBT-2 4-Pin Screw Terminal            External
+───────────────────────────            ────────
+Pin 1: B+  ◄──────────────────────   Battery/PSU + (6–27V)
+Pin 2: B-  ◄──────────────────────   Battery/PSU - (GND, shared with ESP32)
+Pin 3: M+  ──────────────────────►   Motor +
+Pin 4: M-  ──────────────────────►   Motor -
 ```
+
+### Bench Test Verification (2026-03-20)
+
+| Test | Result |
+|------|--------|
+| Fluke on B+/B- | **20V** — battery connected, power confirmed |
+| Fluke on GPIO 25 (RPWM) | **3.3V cycling** — firmware PWM output confirmed |
+| Fluke on GPIO 32 (R_EN) | **3.3V cycling** — enable pin confirmed |
+| Fluke on GPIO 22 (L_EN) | **3.3V cycling** — enable pin confirmed |
+| Fluke on BTS7960 pin 5 (R_EN) | **3.3V cycling** — signal reaching module confirmed |
+| Fluke on BTS7960 pin 6 (L_EN) | **3.3V cycling** — signal reaching module confirmed |
+| Fluke on M+/M- (all signals ON) | **20V** — H-bridge passing battery voltage to motor terminals |
+| Serial monitor port | **/dev/ttyACM1** (not ACM0 — ACM0 is flash/JTAG) |
+
+### Troubleshooting Log
+
+1. **GPIO 6 (original R_EN):** Not on 40-pin header → reassigned to GPIO 27
+2. **GPIO 27 (second attempt):** Reserved for USB D+ → reads 0V → reassigned to GPIO 32
+3. **GPIO 4, 5 (original RPWM/LPWM):** Read 0V on header → may be wrong GPIO mapping
+4. **GPIO 33, 46, 48 (attempted RPWM):** All read 0V → dead on this board
+5. **GPIO 25:** Confirmed working → assigned to RPWM
+6. **GPIO 32:** Confirmed working → assigned to R_EN
+7. **GPIO 22:** Confirmed working → assigned to L_EN
+8. **LEDC PWM at 25kHz:** Works but Fluke reads peak (20V) not average → lowered to 100Hz for bench testing
+9. **Serial monitor:** Console output is on /dev/ttyACM1, flash via /dev/ttyACM0
 
 ### PCA9685 Servo Driver
 
@@ -183,15 +241,20 @@ Regenerate PNGs: `drawio --export --format png --scale 2 --output X.png X.drawio
 source ~/Dropbox/scottsoft_sdn/esp-idf/export.sh
 cd rs_riscvml__esp32-p4-wifi6-kit-a__motor_driver_IBT2_BTS7960__servo_driver_PCA9685__full/esp_idf_ws
 idf.py build
-idf.py -p /dev/ttyACM0 flash monitor   # Ctrl+] to exit
+idf.py -p /dev/ttyACM0 flash        # flash via ACM0 (JTAG)
+# Serial monitor on /dev/ttyACM1 (UART console) at 115200 baud
 ```
+
+**Important:** Flash on `/dev/ttyACM0`, serial monitor on `/dev/ttyACM1`.
 
 ## Firmware Features (IBT-2 — implemented)
 
-- PWM motor control via LEDC peripheral (25 kHz, 10-bit resolution)
-- Forward / reverse / brake / coast commands
-- Variable speed (0–100%)
-- Demo task: ramp forward, brake, ramp reverse, coast, repeat
+- LEDC PWM motor control on GPIO 25 (RPWM), 10-bit resolution (0–1023 duty)
+- Enable pins: GPIO 32 (R_EN), GPIO 22 (L_EN)
+- Forward only (LPWM disconnected) — reverse requires 4th working GPIO (TBD)
+- Voltage ramp test: 1V→15V→1V in 1-sec bursts with random 1-5 sec OFF gaps
+- GPIO troubleshooting messages on serial: pin states printed every cycle
+- PWM frequency: 100Hz (bench test — Fluke readable) / 25kHz (motor production)
 
 ## Firmware Features (PCA9685 — TODO)
 
@@ -230,12 +293,12 @@ Drill Battery (19V)              IBT-2              Drill Motor
 
 ESP32-P4 (40-Pin Header)            IBT-2
 ━━━━━━━━━━━━━━━━━━━━    ━━━━━━━━━━━━━━━━━
-GPIO 4   ────────────────────►  RPWM  (speed 0–100%)
-GPIO 5   ────────────────────►  LPWM  (LOW — forward only)
-GPIO 32   ────────────────────►  R_EN  (HIGH — enable)
-GPIO 22  ────────────────────►  L_EN  (HIGH — enable)
-3V3      ────────────────────►  VCC
-GND      ────────────────────►  GND   (common with drill battery -)
+GPIO 25 (Left)  ─────────────►  RPWM  (speed 0–100%)
+                                LPWM  (disconnected — forward only)
+GPIO 32 (Right) ─────────────►  R_EN  (HIGH — enable)
+GPIO 22 (Right) ─────────────►  L_EN  (HIGH — enable)
+3V3     (Right) ─────────────►  VCC
+GND     (both)  ─────────────►  GND   (common with drill battery -)
 ```
 
 Disconnect the two wires from the trigger output to the motor. Connect them to B+/B- instead.
