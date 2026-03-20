@@ -1,0 +1,126 @@
+<mxfile host="app.diagrams.net" modified="2026-03-20T00:00:00.000Z" agent="CC" version="24.0.0">
+  <diagram id="flash-c6" name="Flash ESP32-C6 Companion via FTDI">
+    <mxGraphModel dx="1800" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="2400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/><mxCell id="1" parent="0"/>
+
+        <!-- Title -->
+        <mxCell id="t" value="&lt;b&gt;How to Flash the ESP32-C6 Companion Chip via FTDI&lt;/b&gt;&lt;br&gt;Waveshare ESP32-P4-WIFI6 Kit A — esp_hosted slave firmware" style="text;html=1;align=center;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="300" y="20" width="700" height="45" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== SECTION 1: WHY ==================== -->
+        <mxCell id="s1" value="&lt;b&gt;1. WHY — The C6 Needs esp_hosted Slave Firmware&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="80" width="1180" height="35" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="why" value="&lt;b&gt;The ESP32-P4 has NO built-in Wi-Fi or Bluetooth.&lt;/b&gt;&lt;br&gt;&lt;br&gt;The Waveshare board has a companion &lt;b&gt;ESP32-C6&lt;/b&gt; chip connected via &lt;b&gt;SDIO&lt;/b&gt; bus.&lt;br&gt;The C6 runs &lt;b&gt;esp_hosted slave firmware&lt;/b&gt; — it acts as a Wi-Fi/BLE modem for the P4.&lt;br&gt;&lt;br&gt;The P4 sends Wi-Fi commands to the C6 over SDIO. The C6 handles the radio.&lt;br&gt;&lt;br&gt;&lt;b&gt;If the C6 firmware is missing, corrupted, or wrong version:&lt;/b&gt;&lt;br&gt;→ &lt;font color=&quot;#CE422B&quot;&gt;&lt;b&gt;wifi=FAIL&lt;/b&gt;&lt;/font&gt; — no SSID broadcast, no Wi-Fi AP, no SPA access.&lt;br&gt;&lt;br&gt;&lt;b&gt;Solution:&lt;/b&gt; Reflash the C6 with the correct esp_hosted slave firmware using an FTDI serial adapter." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="60" y="130" width="700" height="180" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="arch" value="&lt;b&gt;Board Architecture:&lt;/b&gt;&lt;hr&gt;&lt;pre style=&quot;font-size:11px;&quot;&gt;┌──────────────┐    SDIO Bus     ┌──────────────┐&lt;br&gt;│  ESP32-P4    │ ◄────────────► │  ESP32-C6    │&lt;br&gt;│  (main CPU)  │  GPIO 14–19    │  (Wi-Fi/BLE) │&lt;br&gt;│              │                │              │&lt;br&gt;│  Your app    │  Reset: GPIO54 │  esp_hosted  │&lt;br&gt;│  runs here   │                │  slave FW    │&lt;br&gt;└──────────────┘                └──────────────┘&lt;br&gt;    400MHz RISC-V                  160MHz RISC-V&lt;br&gt;    no Wi-Fi                       Wi-Fi 6 + BLE 5&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;align=left;spacingLeft=10;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="800" y="130" width="340" height="180" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== SECTION 2: WHAT YOU NEED ==================== -->
+        <mxCell id="s2" value="&lt;b&gt;2. WHAT YOU NEED&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="340" width="1180" height="35" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="parts" value="&lt;table cellpadding=&quot;6&quot; style=&quot;font-size:11px;border-collapse:collapse;&quot;&gt;&lt;tr style=&quot;background:#1a1a1a;color:white;&quot;&gt;&lt;td&gt;&lt;b&gt;Item&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Details&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Purpose&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#fff2cc;&quot;&gt;&lt;td&gt;&lt;b&gt;FTDI USB-to-Serial&lt;/b&gt;&lt;/td&gt;&lt;td&gt;FT232RL, CP2102, or CH340 (3.3V!)&lt;/td&gt;&lt;td&gt;Serial connection to C6 UART&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Jumper wires&lt;/b&gt;&lt;/td&gt;&lt;td&gt;4x female-to-female (or male depending on headers)&lt;/td&gt;&lt;td&gt;Connect FTDI to C6 pins&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#fff2cc;&quot;&gt;&lt;td&gt;&lt;b&gt;esp_hosted firmware binary&lt;/b&gt;&lt;/td&gt;&lt;td&gt;From Espressif esp_hosted GitHub releases&lt;/td&gt;&lt;td&gt;The C6 slave firmware to flash&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;esptool.py&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Included with ESP-IDF (already installed)&lt;/td&gt;&lt;td&gt;Flash tool&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#f8cecc;&quot;&gt;&lt;td&gt;&lt;b&gt;⚠ IMPORTANT&lt;/b&gt;&lt;/td&gt;&lt;td&gt;FTDI must be &lt;b&gt;3.3V logic&lt;/b&gt;, NOT 5V!&lt;/td&gt;&lt;td&gt;ESP32-C6 is 3.3V — 5V will damage it&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="text;html=1;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="60" y="390" width="800" height="180" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== SECTION 3: WIRING ==================== -->
+        <mxCell id="s3" value="&lt;b&gt;3. WIRING — FTDI to ESP32-C6 on the Waveshare Board&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="600" width="1180" height="35" as="geometry"/>
+        </mxCell>
+
+        <!-- FTDI box -->
+        <mxCell id="ftdi" value="&lt;b&gt;FTDI Adapter&lt;/b&gt;&lt;br&gt;(USB-to-Serial 3.3V)&lt;hr&gt;&lt;br&gt;TXD  →&lt;br&gt;RXD  ←&lt;br&gt;GND  ─&lt;br&gt;3V3  ─ (or use board power)&lt;br&gt;&lt;br&gt;&lt;i&gt;USB side plugs into PC&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="60" y="660" width="250" height="160" as="geometry"/>
+        </mxCell>
+
+        <!-- C6 on board -->
+        <mxCell id="c6" value="&lt;b&gt;ESP32-C6 on Waveshare Board&lt;/b&gt;&lt;hr&gt;&lt;br&gt;RXD  ← (FTDI TXD)&lt;br&gt;TXD  → (FTDI RXD)&lt;br&gt;GND  ─ (shared)&lt;br&gt;IO9  ─ (BOOT — pull LOW to flash)&lt;br&gt;&lt;br&gt;&lt;b&gt;H4 header on board:&lt;/b&gt;&lt;br&gt;IO9 | GND | RXD | TXD&lt;br&gt;&lt;br&gt;&lt;i&gt;Look for the 4-pin header&lt;br&gt;near the bottom of the board,&lt;br&gt;labeled H4&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="480" y="660" width="280" height="200" as="geometry"/>
+        </mxCell>
+
+        <!-- Wiring diagram -->
+        <mxCell id="wiring" value="&lt;pre style=&quot;font-size:12px;line-height:1.8;&quot;&gt;&lt;b&gt;FTDI              H4 Header (C6)&lt;/b&gt;&lt;br&gt;════              ══════════════&lt;br&gt;TXD  ─────────►  RXD&lt;br&gt;RXD  ◄─────────  TXD&lt;br&gt;GND  ──────────  GND&lt;br&gt;&lt;br&gt;To enter BOOT mode:&lt;br&gt;IO9  ──────────  GND (jumper wire)&lt;br&gt;Then press RESET or power cycle&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=left;spacingLeft=15;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="860" y="660" width="300" height="200" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrow -->
+        <mxCell id="ew1" value="TX → RX" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#d6b656;strokeWidth=3;fontSize=10;fontStyle=1;" edge="1" source="ftdi" target="c6" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- ==================== SECTION 4: FLASH STEPS ==================== -->
+        <mxCell id="s4" value="&lt;b&gt;4. STEP-BY-STEP FLASH PROCEDURE&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="900" width="1180" height="35" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="step1" value="&lt;b&gt;Step 1: Get the Firmware&lt;/b&gt;&lt;hr&gt;&lt;pre style=&quot;font-size:10px;&quot;&gt;# Clone esp_hosted repo&lt;br&gt;git clone https://github.com/espressif/esp-hosted.git&lt;br&gt;cd esp-hosted&lt;br&gt;&lt;br&gt;# Or download pre-built binary from:&lt;br&gt;# esp-hosted/esp_hosted_fg/esp/&lt;br&gt;#   esp32c6/sdio/esp_hosted_firmware.bin&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;align=left;spacingLeft=10;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="60" y="960" width="350" height="140" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="step2" value="&lt;b&gt;Step 2: Wire FTDI to H4 Header&lt;/b&gt;&lt;hr&gt;1. Connect FTDI TXD → H4 RXD&lt;br&gt;2. Connect FTDI RXD → H4 TXD&lt;br&gt;3. Connect FTDI GND → H4 GND&lt;br&gt;4. Jumper H4 IO9 → GND (boot mode)&lt;br&gt;5. Power the board via USB-C&lt;br&gt;&lt;br&gt;&lt;font color=&quot;#CE422B&quot;&gt;&lt;b&gt;⚠ FTDI must be 3.3V!&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="430" y="960" width="250" height="140" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="step3" value="&lt;b&gt;Step 3: Put C6 in Boot Mode&lt;/b&gt;&lt;hr&gt;1. Hold IO9 → GND (keep jumper on)&lt;br&gt;2. Press RESET button on board&lt;br&gt;   (or power cycle)&lt;br&gt;3. C6 enters download mode&lt;br&gt;&lt;br&gt;&lt;i&gt;FTDI should show on PC as&lt;br&gt;/dev/ttyUSB0 (Linux)&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="700" y="960" width="250" height="140" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="step4" value="&lt;b&gt;Step 4: Flash with esptool&lt;/b&gt;&lt;hr&gt;&lt;pre style=&quot;font-size:10px;&quot;&gt;source ~/esp-idf/export.sh&lt;br&gt;&lt;br&gt;python -m esptool \&lt;br&gt;  --chip esp32c6 \&lt;br&gt;  -p /dev/ttyUSB0 \&lt;br&gt;  -b 460800 \&lt;br&gt;  write_flash 0x0 \&lt;br&gt;  esp_hosted_firmware.bin&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=left;spacingLeft=10;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="970" y="960" width="250" height="140" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="es1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#333;strokeWidth=2;" edge="1" source="step1" target="step2" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="es2" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#333;strokeWidth=2;" edge="1" source="step2" target="step3" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="es3" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#333;strokeWidth=2;" edge="1" source="step3" target="step4" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- Step 5 -->
+        <mxCell id="step5" value="&lt;b&gt;Step 5: Remove Boot Jumper &amp; Verify&lt;/b&gt;&lt;hr&gt;1. Remove IO9→GND jumper&lt;br&gt;2. Press RESET (or power cycle)&lt;br&gt;3. C6 boots esp_hosted slave firmware&lt;br&gt;4. P4 should now see C6 via SDIO&lt;br&gt;&lt;br&gt;&lt;b&gt;Verify:&lt;/b&gt; Flash P4 with Phase 2 firmware&lt;br&gt;Serial monitor should show:&lt;br&gt;&lt;font color=&quot;#2D9B3A&quot;&gt;&lt;b&gt;[STATUS] wifi=AP_OK&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;br&gt;Connect phone to &lt;b&gt;RISCVML-Motor&lt;/b&gt; Wi-Fi&lt;br&gt;Open &lt;b&gt;http://192.168.4.1&lt;/b&gt; — SPA loads!" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1130" width="400" height="200" as="geometry"/>
+        </mxCell>
+
+        <!-- Troubleshooting -->
+        <mxCell id="tshoot" value="&lt;b&gt;Troubleshooting:&lt;/b&gt;&lt;hr&gt;&lt;table cellpadding=&quot;4&quot; style=&quot;font-size:10px;&quot;&gt;&lt;tr style=&quot;background:#1a1a1a;color:white;&quot;&gt;&lt;td&gt;&lt;b&gt;Problem&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Cause&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Fix&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#f8cecc;&quot;&gt;&lt;td&gt;esptool: can't connect&lt;/td&gt;&lt;td&gt;TX/RX swapped or IO9 not grounded&lt;/td&gt;&lt;td&gt;Swap TX↔RX, verify IO9→GND&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;esptool: wrong chip&lt;/td&gt;&lt;td&gt;FTDI connected to P4 not C6&lt;/td&gt;&lt;td&gt;Use H4 header, not main USB&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#f8cecc;&quot;&gt;&lt;td&gt;wifi=FAIL after flash&lt;/td&gt;&lt;td&gt;Wrong firmware version&lt;/td&gt;&lt;td&gt;Match esp_hosted version to ESP-IDF version&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;C6 not responding&lt;/td&gt;&lt;td&gt;IO9 jumper still connected&lt;/td&gt;&lt;td&gt;Remove jumper, press RESET&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#f8cecc;&quot;&gt;&lt;td&gt;FTDI not detected on PC&lt;/td&gt;&lt;td&gt;Driver missing or bad cable&lt;/td&gt;&lt;td&gt;Check dmesg, install ftdi_sio driver&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="text;html=1;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="500" y="1130" width="600" height="200" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== SECTION 5: H4 HEADER CLOSE-UP ==================== -->
+        <mxCell id="s5" value="&lt;b&gt;5. H4 HEADER LOCATION ON BOARD (C6 UART + BOOT)&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1370" width="1180" height="35" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="board_layout" value="&lt;pre style=&quot;font-size:11px;line-height:1.5;&quot;&gt;Waveshare ESP32-P4-WIFI6 Kit A — PCB Layout (front)&lt;br&gt;&lt;br&gt;         ┌────────────────────────────┐&lt;br&gt;  52 ──  │  [MIC]           [PWR]     │  ── VBUS&lt;br&gt;  51 ──  │                            │  ── VSYS&lt;br&gt;  GND ── │                            │  ── GND&lt;br&gt;  31 ──  │                            │  ── EN&lt;br&gt;  30 ──  │  [BOOT]    [RESET]         │  ── 3V3&lt;br&gt;  29 ──  │                            │  ── 20&lt;br&gt;  28 ──  │                            │  ── 21&lt;br&gt;  GND ── │                            │  ── GND&lt;br&gt;  50 ──  │     [DISPLAY]              │  ── 22&lt;br&gt;  49 ──  │                            │  ── 23&lt;br&gt;   5 ──  │                            │  ── RUN&lt;br&gt;   4 ──  │                            │  ── 26&lt;br&gt;  GND ── │     [CAMERA]               │  ── GND&lt;br&gt;   3 ──  │                            │  ── 27&lt;br&gt;   2 ──  │                            │  ── 32&lt;br&gt;  SCL ── │  ┌──────────────┐          │  ── 33&lt;br&gt;  SDA ── │  │ &lt;b&gt;H4: C6 UART&lt;/b&gt;  │          │  ── 46&lt;br&gt;  GND ── │  │ IO9 GND RXD TXD │        │  ── GND&lt;br&gt;  24 ──  │  └──────────────┘          │  ── 47&lt;br&gt;  25 ──  │     [USB]                  │  ── 48&lt;br&gt;         └────────────────────────────┘&lt;br&gt;&lt;br&gt;  &lt;b&gt;H4 is the 4-pin header near the bottom-left,&lt;br&gt;  between SDA and pin 24.&lt;/b&gt;&lt;br&gt;&lt;br&gt;  Pin order: IO9 | GND | RXD | TXD&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#333;fontSize=10;align=left;spacingLeft=10;overflow=fill;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1420" width="500" height="480" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="h4_wiring" value="&lt;b&gt;H4 Header Wiring to FTDI:&lt;/b&gt;&lt;hr&gt;&lt;pre style=&quot;font-size:12px;line-height:2;&quot;&gt;H4 Pin    Wire Color    FTDI Pin&lt;br&gt;══════    ══════════    ════════&lt;br&gt;&lt;b&gt;IO9&lt;/b&gt;       &lt;font color=&quot;#CE422B&quot;&gt;RED&lt;/font&gt;          → GND (boot mode)&lt;br&gt;&lt;b&gt;GND&lt;/b&gt;       &lt;font color=&quot;#333&quot;&gt;BLACK&lt;/font&gt;        → GND&lt;br&gt;&lt;b&gt;RXD&lt;/b&gt;       &lt;font color=&quot;#2D9B3A&quot;&gt;GREEN&lt;/font&gt;        → FTDI TXD&lt;br&gt;&lt;b&gt;TXD&lt;/b&gt;       &lt;font color=&quot;#d6b656&quot;&gt;YELLOW&lt;/font&gt;       → FTDI RXD&lt;/pre&gt;&lt;br&gt;&lt;b&gt;Remember: TX↔RX crossover!&lt;/b&gt;&lt;br&gt;C6 RXD receives from FTDI TXD&lt;br&gt;C6 TXD transmits to FTDI RXD&lt;br&gt;&lt;br&gt;&lt;b&gt;Boot mode:&lt;/b&gt; IO9 jumpered to GND&lt;br&gt;&lt;b&gt;Normal mode:&lt;/b&gt; IO9 floating (remove jumper)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=left;spacingLeft=15;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="620" y="1420" width="380" height="300" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== SECTION 6: COMMANDS ==================== -->
+        <mxCell id="s6" value="&lt;b&gt;6. FLASH COMMANDS (Copy-Paste Ready)&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1930" width="1180" height="35" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="cmds" value="&lt;pre style=&quot;font-size:11px;line-height:1.6;color:#2D9B3A;&quot;&gt;&lt;b&gt;# 1. Activate ESP-IDF&lt;/b&gt;&lt;br&gt;source ~/Dropbox/scottsoft_sdn/esp-idf/export.sh&lt;br&gt;&lt;br&gt;&lt;b&gt;# 2. Clone esp_hosted (if not already)&lt;/b&gt;&lt;br&gt;git clone --recursive https://github.com/espressif/esp-hosted.git&lt;br&gt;cd esp-hosted/esp_hosted_fg/esp/esp32c6&lt;br&gt;&lt;br&gt;&lt;b&gt;# 3. Build the C6 slave firmware&lt;/b&gt;&lt;br&gt;idf.py set-target esp32c6&lt;br&gt;idf.py build&lt;br&gt;&lt;br&gt;&lt;b&gt;# 4. Flash to C6 via FTDI (IO9 must be grounded!)&lt;/b&gt;&lt;br&gt;idf.py -p /dev/ttyUSB0 flash&lt;br&gt;&lt;br&gt;&lt;b&gt;# 5. Remove IO9→GND jumper, press RESET&lt;/b&gt;&lt;br&gt;&lt;b&gt;# 6. Verify: flash P4 with Phase 2, check serial for wifi=AP_OK&lt;/b&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0D0D1A;strokeColor=#2D9B3A;fontSize=10;align=left;spacingLeft=10;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1980" width="700" height="260" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="alt" value="&lt;b&gt;Alternative: Pre-built Binary&lt;/b&gt;&lt;hr&gt;If you don't want to build from source:&lt;br&gt;&lt;br&gt;1. Download pre-built binary from:&lt;br&gt;   &lt;b&gt;esp-hosted GitHub releases&lt;/b&gt;&lt;br&gt;   Match your ESP-IDF version&lt;br&gt;&lt;br&gt;2. Flash directly:&lt;br&gt;&lt;pre style=&quot;font-size:10px;&quot;&gt;python -m esptool \&lt;br&gt;  --chip esp32c6 \&lt;br&gt;  -p /dev/ttyUSB0 \&lt;br&gt;  -b 460800 \&lt;br&gt;  write_flash 0x0 \&lt;br&gt;  network_adapter.bin&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;spacingLeft=10;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="800" y="1980" width="300" height="230" as="geometry"/>
+        </mxCell>
+
+        <!-- Anki Ref -->
+        <mxCell id="anki" value="&lt;b&gt;Anki-Ref:&lt;/b&gt; 20260320_XXXXXX__esp32-p4-wifi6-kit-a__flash_c6_with_ftdi" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;strokeColor=#1a1a1a;fontSize=11;align=left;spacingLeft=15;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="60" y="2260" width="550" height="30" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
