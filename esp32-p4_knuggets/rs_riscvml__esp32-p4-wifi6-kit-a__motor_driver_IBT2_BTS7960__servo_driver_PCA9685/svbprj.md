@@ -76,7 +76,7 @@ GPIO assignments are locked for puzzle-piece compatibility across all knuggets o
 |------|----------|-----------|
 | 4    | RPWM     | Top row   |
 | 5    | LPWM     | Top row   |
-| 27   | R_EN     | Right side|
+| 32   | R_EN     | Right side|
 | 22   | L_EN     | Top row   |
 
 ### PCA9685 Servo Driver (I2C Bus 1)
@@ -98,8 +98,9 @@ GPIO assignments are locked for puzzle-piece compatibility across all knuggets o
 
 ### GPIO Budget Summary
 
-- **Used:** 4, 5, 7, 8, 14–19, 20, 21, 22, 27, 54
-- **Available:** 0, 1, 2, 3, 23, 24, 25, 26, 28, 29, 30, 31, 32, 33, 36, 46, 47, 48
+- **Used:** 4, 5, 7, 8, 14–19, 20, 21, 22, 32, 54
+- **Reserved (USB OTG):** 26 (D-), 27 (D+) — DO NOT USE while USB connected
+- **Available:** 0, 1, 2, 3, 23, 24, 25, 28, 29, 30, 31, 33, 36, 46, 47, 48
 
 ## Wiring
 
@@ -110,7 +111,7 @@ ESP32-P4 (40-Pin Header)         IBT-2 Module
 ─────────────────────         ────────────
 GPIO 4  ──────────────────►   RPWM
 GPIO 5  ──────────────────►   LPWM
-GPIO 27  ──────────────────►   R_EN
+GPIO 32  ──────────────────►   R_EN
 GPIO 22 ──────────────────►   L_EN
 3V3     ──────────────────►   VCC
 GND     ──────────────────►   GND
@@ -231,7 +232,7 @@ ESP32-P4 (40-Pin Header)            IBT-2
 ━━━━━━━━━━━━━━━━━━━━    ━━━━━━━━━━━━━━━━━
 GPIO 4   ────────────────────►  RPWM  (speed 0–100%)
 GPIO 5   ────────────────────►  LPWM  (LOW — forward only)
-GPIO 27   ────────────────────►  R_EN  (HIGH — enable)
+GPIO 32   ────────────────────►  R_EN  (HIGH — enable)
 GPIO 22  ────────────────────►  L_EN  (HIGH — enable)
 3V3      ────────────────────►  VCC
 GND      ────────────────────►  GND   (common with drill battery -)

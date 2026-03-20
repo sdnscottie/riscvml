@@ -39,7 +39,7 @@
         <mxCell id="pin_gpio5" value="&lt;b&gt;GPIO 5&lt;/b&gt; &lt;font color=&quot;#6c8ebf&quot;&gt;(Left)&lt;/font&gt;  →  LPWM" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
           <mxGeometry x="70" y="232" width="250" height="28" as="geometry" />
         </mxCell>
-        <mxCell id="pin_gpio6" value="&lt;b&gt;GPIO 27&lt;/b&gt; &lt;font color=&quot;#b85450&quot;&gt;(Right)&lt;/font&gt;  →  R_EN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+        <mxCell id="pin_gpio6" value="&lt;b&gt;GPIO 32&lt;/b&gt; &lt;font color=&quot;#b85450&quot;&gt;(Right)&lt;/font&gt;  →  R_EN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
           <mxGeometry x="70" y="266" width="250" height="28" as="geometry" />
         </mxCell>
         <mxCell id="pin_gpio22" value="&lt;b&gt;GPIO 22&lt;/b&gt; &lt;font color=&quot;#b85450&quot;&gt;(Right)&lt;/font&gt;  →  L_EN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
