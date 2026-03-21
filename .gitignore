@@ -29,3 +29,6 @@ node_modules/
 *.zip
 monetize_svb/
 submission_europe_2026/
+
+# Archive folders (not for public repo)
+**__archive/
