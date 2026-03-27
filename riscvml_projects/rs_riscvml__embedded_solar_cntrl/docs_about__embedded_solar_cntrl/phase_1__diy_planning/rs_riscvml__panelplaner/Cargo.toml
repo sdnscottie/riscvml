@@ -1,0 +1,14 @@
+[package]
+name = "rs_riscvml__panelplaner"
+version = "0.1.0"
+edition = "2021"
+authors = ["Scottie von Bruchhausen <scottie@riscvml.org>"]
+description = "Solar panel layout + engineering planner — computes layout, strings, voltage/current, energy yield"
+
+# Primary target: ESP32-P4-WIFI6 Kit A (no_std, no alloc)
+# Optional: Raspberry Pi, desktop (std)
+# Zero dependencies — all integer math, no floating point needed on embedded
+
+[features]
+default = ["std"]
+std = []

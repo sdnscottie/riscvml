@@ -1,0 +1,318 @@
+<mxfile host="app.diagrams.net" agent="Claude Code" version="26.0.0">
+  <diagram id="mounting-overview" name="Mounting Overview">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="&lt;b&gt;DIY Mounting Brackets — Wintergarden Solar Array&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=20;fontColor=#1a1a2e;" vertex="1" parent="1">
+          <mxGeometry x="150" y="20" width="1100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="12× TrinaSolar TSM-620NEG19RC.20 (2278×1134×30mm, 29.5 kg each) — 4 across × 3 rows, landscape&lt;br&gt;Bad Schwalbach, Germany (~50.1°N) — South-facing wintergarden roof — Tilt: 8° (roof) to 24° (actuator max)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=11;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="200" y="55" width="1000" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- ========== CHALLENGE BOX ========== -->
+        <mxCell id="challenge-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#c62828;strokeWidth=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="40" y="110" width="1320" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="challenge-title" value="&lt;b&gt;The Biggest Problem: How to Easily Mount Solar Panels on a Wintergarden Roof?&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;fontSize=14;fontColor=#c62828;" vertex="1" parent="1">
+          <mxGeometry x="60" y="118" width="700" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="challenge-text" value="&lt;div style=&quot;text-align:left;font-size:11px;line-height:1.6;&quot;&gt;• &lt;b&gt;Weight:&lt;/b&gt; Each panel is 29.5 kg — total array weight ~354 kg + brackets + actuator hardware. Wintergarden glass roof not designed for this!&lt;br&gt;• &lt;b&gt;Glass roof:&lt;/b&gt; Cannot drill through glass panels — must clamp to aluminum frame profiles without penetrating the glazing seal&lt;br&gt;• &lt;b&gt;Wind load:&lt;/b&gt; Panels act as sails — brackets must resist uplift at 24° tilt without ripping off the frame&lt;br&gt;• &lt;b&gt;Variable tilt:&lt;/b&gt; Pivot point needed — panels must rotate 8°→24° via linear actuator without binding or rubbing&lt;br&gt;• &lt;b&gt;Waterproofing:&lt;/b&gt; No new holes in roof — all attachments must use existing frame bolts or non-penetrating clamps&lt;br&gt;• &lt;b&gt;Access:&lt;/b&gt; Working at height on a sloped glass roof — everything must be pre-assembled on the ground where possible&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="60" y="140" width="1280" height="95" as="geometry" />
+        </mxCell>
+
+        <!-- ========== TOP VIEW: PANEL LAYOUT ========== -->
+        <mxCell id="topview-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6f3ff;strokeColor=#4a86c8;strokeWidth=2;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="40" y="260" width="650" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="topview-title" value="&lt;b&gt;Top View — Panel Layout on Wintergarden Roof&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontColor=#4a86c8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="268" width="400" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="topview-dims" value="~9.53m wide × ~3.40m deep (south-facing)" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="60" y="290" width="300" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Row labels -->
+        <mxCell id="row3-label" value="Row 3&lt;br&gt;(top/ridge)" style="text;html=1;align=center;verticalAlign=middle;fontSize=9;fontColor=#4a86c8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="320" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="row2-label" value="Row 2&lt;br&gt;(middle)" style="text;html=1;align=center;verticalAlign=middle;fontSize=9;fontColor=#4a86c8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="400" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="row1-label" value="Row 1&lt;br&gt;(eaves)" style="text;html=1;align=center;verticalAlign=middle;fontSize=9;fontColor=#4a86c8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="480" width="60" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Panels Row 3 (top) -->
+        <mxCell id="p9" value="P9" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1;fontSize=10;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="130" y="315" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="p10" value="P10" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1;fontSize=10;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="260" y="315" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="p11" value="P11" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1;fontSize=10;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="390" y="315" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="p12" value="P12" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1;fontSize=10;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="520" y="315" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Panels Row 2 (middle) -->
+        <mxCell id="p5" value="P5" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1;fontSize=10;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="130" y="395" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="p6" value="P6" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1;fontSize=10;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="260" y="395" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="p7" value="P7" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1;fontSize=10;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="390" y="395" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="p8" value="P8" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1;fontSize=10;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="520" y="395" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Panels Row 1 (bottom/eaves) -->
+        <mxCell id="p1" value="P1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1;fontSize=10;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="130" y="475" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="p2" value="P2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1;fontSize=10;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="260" y="475" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="p3" value="P3" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1;fontSize=10;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="390" y="475" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="p4" value="P4" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1;fontSize=10;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="520" y="475" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Mounting rail indicators -->
+        <mxCell id="rail-top" value="── mounting rail (aluminum 40×40 profile) ──" style="text;html=1;align=center;verticalAlign=middle;fontSize=9;fontColor=#cc0000;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="130" y="372" width="510" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="rail-mid" value="── mounting rail (aluminum 40×40 profile) ──" style="text;html=1;align=center;verticalAlign=middle;fontSize=9;fontColor=#cc0000;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="130" y="452" width="510" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="rail-bot" value="── mounting rail (aluminum 40×40 profile) ──" style="text;html=1;align=center;verticalAlign=middle;fontSize=9;fontColor=#cc0000;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="130" y="530" width="510" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="rail-ridge" value="── mounting rail + PIVOT POINT (hinge) ──" style="text;html=1;align=center;verticalAlign=middle;fontSize=9;fontColor=#cc0000;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="130" y="300" width="510" height="15" as="geometry" />
+        </mxCell>
+
+        <!-- Bracket positions (red dots) -->
+        <mxCell id="brk1" value="" style="ellipse;fillColor=#cc0000;strokeColor=#990000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="126" y="310" width="8" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="brk2" value="" style="ellipse;fillColor=#cc0000;strokeColor=#990000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="246" y="310" width="8" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="brk3" value="" style="ellipse;fillColor=#cc0000;strokeColor=#990000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="376" y="310" width="8" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="brk4" value="" style="ellipse;fillColor=#cc0000;strokeColor=#990000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="506" y="310" width="8" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="brk5" value="" style="ellipse;fillColor=#cc0000;strokeColor=#990000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="636" y="310" width="8" height="8" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: south -->
+        <mxCell id="south-arrow" value="" style="endArrow=classic;html=1;strokeColor=#333333;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="660" y="580" as="sourcePoint" />
+            <mxPoint x="660" y="620" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="south-label" value="SOUTH (sun)" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;fontColor=#333333;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="625" width="100" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- String wiring note -->
+        <mxCell id="string-note" value="&lt;div style=&quot;font-size:9px;text-align:left;line-height:1.5;&quot;&gt;&lt;b&gt;Strings (4S × 3 strings):&lt;/b&gt;&lt;br&gt;String A: P1→P2→P3→P4&lt;br&gt;String B: P5→P6→P7→P8&lt;br&gt;String C: P9→P10→P11→P12&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="130" y="555" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Actuator position -->
+        <mxCell id="actuator-pos" value="&lt;b&gt;LINEAR ACTUATOR&lt;/b&gt;&lt;br&gt;(center of eaves rail)&lt;br&gt;pushes bottom edge up&lt;br&gt;8°→24° tilt" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=9;fontColor=#333333;align=center;" vertex="1" parent="1">
+          <mxGeometry x="370" y="555" width="130" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- ========== SIDE VIEW: BRACKET DETAIL ========== -->
+        <mxCell id="sideview-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="710" y="260" width="650" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="sideview-title" value="&lt;b&gt;Side View — DIY Bracket &amp;amp; Pivot Mechanism&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontColor=#2d6a2d;" vertex="1" parent="1">
+          <mxGeometry x="730" y="268" width="400" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- Wintergarden roof profile (glass) -->
+        <mxCell id="roof-glass" value="" style="endArrow=none;html=1;strokeColor=#4a86c8;strokeWidth=3;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="750" y="560" as="sourcePoint" />
+            <mxPoint x="1300" y="480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="roof-label" value="&lt;b&gt;Wintergarden glass roof (8° incline)&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#4a86c8;" vertex="1" parent="1">
+          <mxGeometry x="900" y="565" width="250" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Aluminum frame profile at ridge -->
+        <mxCell id="frame-ridge" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#999999;strokeColor=#666666;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="472" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="frame-ridge-label" value="frame&lt;br&gt;profile" style="text;html=1;align=center;fontSize=8;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1290" y="470" width="40" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- Hinge bracket at ridge (PIVOT) -->
+        <mxCell id="hinge-bracket" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#cc0000;strokeColor=#990000;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="455" width="50" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="hinge-pin" value="" style="ellipse;fillColor=#ff6600;strokeColor=#cc5500;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1258" y="447" width="14" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="hinge-label" value="&lt;b&gt;HINGE / PIVOT&lt;/b&gt;&lt;br&gt;M10 bolt through&lt;br&gt;bracket + rail clamp&lt;br&gt;(allows rotation)" style="text;html=1;align=left;verticalAlign=top;fontSize=9;fontColor=#cc5500;" vertex="1" parent="1">
+          <mxGeometry x="1295" y="430" width="110" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Solar panel (tilted at ~18° from roof) -->
+        <mxCell id="panel-side" value="" style="endArrow=none;html=1;strokeColor=#6c8ebf;strokeWidth=6;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="820" y="510" as="sourcePoint" />
+            <mxPoint x="1260" y="455" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="panel-side-label" value="&lt;b&gt;Solar panel (30mm thick)&lt;/b&gt;" style="text;html=1;align=center;fontSize=10;fontColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="950" y="460" width="200" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Linear actuator -->
+        <mxCell id="actuator-line" value="" style="endArrow=none;html=1;strokeColor=#d6b656;strokeWidth=4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="860" y="555" as="sourcePoint" />
+            <mxPoint x="860" y="515" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="actuator-body" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="845" y="520" width="30" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="actuator-label" value="&lt;b&gt;Linear&lt;br&gt;Actuator&lt;/b&gt;&lt;br&gt;12/24V DC&lt;br&gt;200mm stroke" style="text;html=1;align=left;verticalAlign=top;fontSize=9;fontColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="730" y="515" width="100" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Tilt angle arc -->
+        <mxCell id="angle-8" value="8°" style="text;html=1;align=center;fontSize=9;fontColor=#82b366;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="475" width="30" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="angle-24" value="24°" style="text;html=1;align=center;fontSize=9;fontColor=#82b366;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="445" width="30" height="15" as="geometry" />
+        </mxCell>
+
+        <!-- Eaves clamp bracket -->
+        <mxCell id="frame-eaves" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#999999;strokeColor=#666666;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="790" y="548" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eaves-bracket" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#cc0000;strokeColor=#990000;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="775" y="535" width="60" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="eaves-label" value="&lt;b&gt;CLAMP BRACKET&lt;/b&gt;&lt;br&gt;U-bolt clamps to&lt;br&gt;aluminum frame —&lt;br&gt;no holes in roof!" style="text;html=1;align=left;verticalAlign=top;fontSize=9;fontColor=#990000;" vertex="1" parent="1">
+          <mxGeometry x="730" y="572" width="120" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Dimension annotations -->
+        <mxCell id="dim-stroke" value="↕ 200mm actuator stroke = 16° tilt change" style="text;html=1;align=center;fontSize=9;fontColor=#d6b656;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="860" y="590" width="250" height="15" as="geometry" />
+        </mxCell>
+
+        <!-- ========== BRACKET TYPES BOM ========== -->
+        <mxCell id="bom-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="40" y="720" width="650" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="bom-title" value="&lt;b&gt;DIY Bracket Types &amp;amp; Bill of Materials&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontColor=#7a5200;" vertex="1" parent="1">
+          <mxGeometry x="60" y="728" width="400" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- Type A: Hinge bracket -->
+        <mxCell id="typeA-box" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="760" width="300" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="typeA-title" value="&lt;b&gt;Type A: Ridge Hinge Bracket (×5)&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;fontColor=#7a5200;" vertex="1" parent="1">
+          <mxGeometry x="70" y="765" width="280" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="typeA-detail" value="&lt;div style=&quot;text-align:left;font-size:10px;line-height:1.6;&quot;&gt;• &lt;b&gt;Material:&lt;/b&gt; 5mm galvanized steel L-bracket, 100×80mm&lt;br&gt;• &lt;b&gt;Top:&lt;/b&gt; Bolts to mounting rail (M8 T-bolt in rail slot)&lt;br&gt;• &lt;b&gt;Bottom:&lt;/b&gt; Clamps to roof frame with U-bolt&lt;br&gt;• &lt;b&gt;Pivot:&lt;/b&gt; M10×80 bolt acts as hinge pin&lt;br&gt;• &lt;b&gt;Placement:&lt;/b&gt; Ridge rail, between each panel pair + ends&lt;br&gt;• &lt;b&gt;Key:&lt;/b&gt; Nylon washer between bracket faces for smooth rotation&lt;br&gt;• &lt;b&gt;Cost:&lt;/b&gt; ~€3/bracket + €2 hardware = ~€25 total&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="70" y="788" width="280" height="115" as="geometry" />
+        </mxCell>
+
+        <!-- Type B: Actuator mount -->
+        <mxCell id="typeB-box" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="370" y="760" width="300" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="typeB-title" value="&lt;b&gt;Type B: Actuator Mount Bracket (×2)&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;fontColor=#7a5200;" vertex="1" parent="1">
+          <mxGeometry x="380" y="765" width="280" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="typeB-detail" value="&lt;div style=&quot;text-align:left;font-size:10px;line-height:1.6;&quot;&gt;• &lt;b&gt;Material:&lt;/b&gt; 5mm galvanized steel U-bracket, 120×60mm&lt;br&gt;• &lt;b&gt;Upper:&lt;/b&gt; Pivots on eaves mounting rail (actuator rod end)&lt;br&gt;• &lt;b&gt;Lower:&lt;/b&gt; Fixed to roof frame (actuator body end)&lt;br&gt;• &lt;b&gt;Pivot:&lt;/b&gt; M10 clevis pin + R-clip on both ends&lt;br&gt;• &lt;b&gt;Placement:&lt;/b&gt; Center of eaves rail, one pair per actuator&lt;br&gt;• &lt;b&gt;Key:&lt;/b&gt; Must allow slight angular misalignment (±3°)&lt;br&gt;• &lt;b&gt;Cost:&lt;/b&gt; ~€5/bracket + €3 hardware = ~€16 total&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="380" y="788" width="280" height="115" as="geometry" />
+        </mxCell>
+
+        <!-- Type C: Mid-span clamps -->
+        <mxCell id="typeC-box" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="920" width="300" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="typeC-title" value="&lt;b&gt;Type C: Panel Mid-Clamp (×20)&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;fontColor=#7a5200;" vertex="1" parent="1">
+          <mxGeometry x="70" y="925" width="280" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="typeC-detail" value="&lt;div style=&quot;text-align:left;font-size:10px;line-height:1.6;&quot;&gt;• &lt;b&gt;Material:&lt;/b&gt; Aluminum solar mid-clamp (off-the-shelf)&lt;br&gt;• &lt;b&gt;Size:&lt;/b&gt; Fits 30mm panel frame + 40×40 rail&lt;br&gt;• &lt;b&gt;Function:&lt;/b&gt; Clamps adjacent panels to shared rail&lt;br&gt;• &lt;b&gt;Placement:&lt;/b&gt; Between every panel pair on all 4 rails&lt;br&gt;• &lt;b&gt;Key:&lt;/b&gt; EPDM rubber pad prevents galvanic corrosion&lt;br&gt;• &lt;b&gt;Torque:&lt;/b&gt; 12 Nm (do not overtighten — cracks glass!)&lt;br&gt;• &lt;b&gt;Cost:&lt;/b&gt; ~€1.50/clamp = ~€30 total&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="70" y="948" width="280" height="115" as="geometry" />
+        </mxCell>
+
+        <!-- Type D: End clamps -->
+        <mxCell id="typeD-box" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="370" y="920" width="300" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="typeD-title" value="&lt;b&gt;Type D: Panel End-Clamp (×8)&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;fontColor=#7a5200;" vertex="1" parent="1">
+          <mxGeometry x="380" y="925" width="280" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="typeD-detail" value="&lt;div style=&quot;text-align:left;font-size:10px;line-height:1.6;&quot;&gt;• &lt;b&gt;Material:&lt;/b&gt; Aluminum solar end-clamp (off-the-shelf)&lt;br&gt;• &lt;b&gt;Size:&lt;/b&gt; Fits 30mm panel frame + 40×40 rail&lt;br&gt;• &lt;b&gt;Function:&lt;/b&gt; Secures outer panels at array edges&lt;br&gt;• &lt;b&gt;Placement:&lt;/b&gt; Both ends of each row (4 rows × 2 ends)&lt;br&gt;• &lt;b&gt;Key:&lt;/b&gt; Critical for wind uplift resistance at edges&lt;br&gt;• &lt;b&gt;Torque:&lt;/b&gt; 12 Nm — same as mid-clamps&lt;br&gt;• &lt;b&gt;Cost:&lt;/b&gt; ~€2/clamp = ~€16 total&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="380" y="948" width="280" height="115" as="geometry" />
+        </mxCell>
+
+        <!-- ========== ASSEMBLY STEPS ========== -->
+        <mxCell id="steps-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;strokeWidth=2;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="710" y="720" width="650" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="steps-title" value="&lt;b&gt;Assembly Sequence — Ground-First Strategy&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontColor=#7b1fa2;" vertex="1" parent="1">
+          <mxGeometry x="730" y="728" width="400" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="steps-text" value="&lt;div style=&quot;text-align:left;font-size:10px;line-height:1.8;&quot;&gt;&lt;b style=&quot;color:#7b1fa2;&quot;&gt;Phase 1: Ground Assembly (safe, no ladders)&lt;/b&gt;&lt;br&gt;1. Lay out 4× aluminum rails on ground, cut to 9.53m&lt;br&gt;2. Pre-attach all Type C mid-clamps and Type D end-clamps to rails&lt;br&gt;3. Slide panels into clamps, row by row (4 panels per rail pair)&lt;br&gt;4. Wire each string (MC4 connectors between panels)&lt;br&gt;5. Finger-tighten clamps — do NOT torque yet (needs alignment on roof)&lt;br&gt;&lt;br&gt;&lt;b style=&quot;color:#7b1fa2;&quot;&gt;Phase 2: Roof Preparation&lt;/b&gt;&lt;br&gt;6. Attach Type A hinge brackets to ridge frame profile using U-bolts&lt;br&gt;7. Attach Type B actuator mount (lower) to eaves frame profile&lt;br&gt;8. Run actuator cable + string cables through roof frame channel&lt;br&gt;&lt;br&gt;&lt;b style=&quot;color:#7b1fa2;&quot;&gt;Phase 3: Lift &amp;amp; Attach (needs 2–3 people per row)&lt;/b&gt;&lt;br&gt;9. Lift pre-assembled row onto roof — ridge end first into hinge brackets&lt;br&gt;10. Insert M10 hinge pins through brackets + rail&lt;br&gt;11. Temporarily prop eaves end (wooden blocks at 8°)&lt;br&gt;12. Repeat for all 3 rows&lt;br&gt;&lt;br&gt;&lt;b style=&quot;color:#7b1fa2;&quot;&gt;Phase 4: Actuator &amp;amp; Final&lt;/b&gt;&lt;br&gt;13. Mount linear actuator between Type B brackets (body→roof, rod→rail)&lt;br&gt;14. Test tilt range: fully retracted = 8°, fully extended = 24°&lt;br&gt;15. Torque all clamps to 12 Nm&lt;br&gt;16. Connect strings to inverter, actuator to ESP32-P4 controller&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="730" y="755" width="610" height="335" as="geometry" />
+        </mxCell>
+
+        <!-- ========== TOTAL COST ========== -->
+        <mxCell id="cost-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1120" width="650" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="cost-title" value="&lt;b&gt;Estimated DIY Bracket Cost (excl. panels, actuator, ESP32)&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontColor=#2d6a2d;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1128" width="500" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="cost-table" value="&lt;div style=&quot;font-size:11px;line-height:1.6;text-align:left;&quot;&gt;• 4× Aluminum mounting rails (40×40, 9.53m) — ~€120&lt;br&gt;• 5× Type A hinge brackets + hardware — ~€25&lt;br&gt;• 2× Type B actuator mount brackets — ~€16&lt;br&gt;• 20× Type C mid-clamps — ~€30&lt;br&gt;• 8× Type D end-clamps — ~€16&lt;br&gt;• U-bolts, M10 hinge pins, nylon washers, R-clips — ~€20&lt;br&gt;&lt;b&gt;Total bracket/rail cost: ~€227&lt;/b&gt; (vs. €500+ for commercial mounting system)&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1150" width="610" height="85" as="geometry" />
+        </mxCell>
+
+        <!-- ========== SAFETY WARNINGS ========== -->
+        <mxCell id="safety-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#c62828;strokeWidth=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="710" y="1120" width="650" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="safety-title" value="&lt;b&gt;Safety &amp;amp; Structural Warnings&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontColor=#c62828;" vertex="1" parent="1">
+          <mxGeometry x="730" y="1128" width="300" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="safety-text" value="&lt;div style=&quot;font-size:10px;line-height:1.6;text-align:left;&quot;&gt;• &lt;b&gt;Structural engineer:&lt;/b&gt; Get the wintergarden frame rated for 354 kg + wind load before mounting!&lt;br&gt;• &lt;b&gt;Wind:&lt;/b&gt; At 24° tilt, panels catch wind — calculate uplift for your region (DIN EN 1991-1-4)&lt;br&gt;• &lt;b&gt;Insurance:&lt;/b&gt; Notify your building insurance (Wohngebäudeversicherung) about rooftop PV&lt;br&gt;• &lt;b&gt;Electrical:&lt;/b&gt; String Vmp = 165.6V — requires qualified electrician for inverter connection&lt;br&gt;• &lt;b&gt;Fall protection:&lt;/b&gt; Use harness + rope when working on glass roof — no walking on glass panels!&lt;br&gt;• &lt;b&gt;Grounding:&lt;/b&gt; All rails and frames must be bonded to building ground (PA rail + 6mm² Cu)&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="730" y="1150" width="610" height="85" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

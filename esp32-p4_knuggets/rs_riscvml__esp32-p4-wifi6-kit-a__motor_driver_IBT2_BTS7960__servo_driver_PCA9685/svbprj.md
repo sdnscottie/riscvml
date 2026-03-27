@@ -3,7 +3,7 @@
 **Author:** Scottie von Bruchhausen (scottie@riscvml.org)
 **Board:** Waveshare ESP32-P4-WIFI6 Kit A
 **Modules:** IBT-2 (BTS7960 dual H-bridge) + PCA9685 (16-ch I2C servo driver)
-**Status:** IBT-2 firmware builds ✓ · PCA9685 firmware TODO
+**Status:** IBT-2 PWM ramp test verified ✓ · ON/OFF field test verified ✓ · PCA9685 firmware TODO
 **Anki-Ref:** `20260319_093229__BTS7960__dc_motor_drive`
 
 ## Project Folder Structure
@@ -15,9 +15,21 @@ rs_riscvml__...__motor_driver_IBT2_BTS7960__servo_driver_PCA9685/
 ├── pics/                              ← photos of physical builds
 ├── docs_about__motor_driver_.../      ← diagrams & docs
 │   ├── bts7960_usecases/              ← BTS7960 use-case diagrams + PNGs
-│   └── pca9685_usecases/              ← PCA9685 use-case diagrams + PNGs
+│   ├── pca9685_usecases/              ← PCA9685 use-case diagrams + PNGs
+│   ├── firmware_phase_1/              ← Phase 1: GPIO troubleshooting diagram
+│   ├── firmware_phase_2__tst__motor_on_off/    ← Phase 2 TST: ON/OFF puzzle-piece test
+│   │   ├── pin_connections__motor_on_off__20260324.drawio
+│   │   └── firmware_phase_2__tst__motor_on_off__puzzle_piece_test__20260324.drawio
+│   └── firmware_phase_2__tst__motor_pwd_FWD_REV/  ← Phase 2 TST: PWM ramp puzzle-piece test
+│       ├── pin_connections__motor_pwm_FWD_REV__20260324.drawio
+│       └── firmware_phase_2__tst__motor_pwm_FWD_REV__puzzle_piece_test__20260324.drawio
 ├── ...__free/                         ← student scaffolding (public)
 └── ...__full/                         ← reference solution (private)
+    ├── firmware_phase_1/              ← Phase 1: GPIO sweep + Fluke bench test (100Hz)
+    ├── firmware_phase_2/              ← Phase 2: SPA Web Control (Wi-Fi AP + HTTP API)
+    ├── firmware_phase_2__on_off_test/ ← Phase 2 TST: 3s ON/3s OFF motor cycle
+    ├── firmware_phase_2__tst__motor_pwm_FWD_REV/  ← Phase 2 TST: PWM ramp 0→100→0%
+    └── firmware_phase_3/              ← Phase 3: PCA9685 servo driver (TODO)
 ```
 
 ### Anki-Ref Convention
@@ -44,12 +56,29 @@ Two "puzzle-piece" knuggets for the ESP32-P4, designed to integrate into the
 
 GPIO assignments are locked for puzzle-piece compatibility across all knuggets on this board.
 
+### Puzzle-Piece Phase Testing
+
+Each knugget is an input or output sensor/actuator tested in isolation. Phase testing
+verifies raw I/O capability — the specific application (use case) comes later.
+
+| Phase | Purpose | Proves |
+|-------|---------|--------|
+| Phase 1 | GPIO + electrical | Pins output correct voltage (Fluke verified) |
+| Phase 2 | Feature firmware | I/O firmware works (SPA, HTTP API, auto mode) |
+| Phase 2 TST ON/OFF | Physical field test | Motor spins/stops reliably in real environment |
+| Phase 2 TST PWM | PWM ramp test | Variable speed control works (0→25→50→75→100→down) |
+| Phase 3 | Next puzzle piece | PCA9685 servo driver I/O works standalone |
+| Integration | All pieces combined | All I/O works together in secure_wap_streamer |
+
+Use cases (what the I/O is used for) are documented separately in `bts7960_usecases/` and `pca9685_usecases/`.
+
 ## IBT-2 BTS7960 Motor Driver
 
 - **Max current:** 43A continuous
 - **Voltage:** 6–27V motor supply, 3.3V logic
 - **Control:** PWM 25 kHz for speed, direction via RPWM/LPWM selection
 - **Pins:** RPWM, LPWM, R_EN, L_EN, VCC, GND
+- **Current wiring:** GPIO 25→RPWM, GPIO 32→R_EN, GPIO 22→L_EN (forward only, LPWM needs 4th GPIO)
 
 ### Control Logic
 
@@ -70,14 +99,14 @@ GPIO assignments are locked for puzzle-piece compatibility across all knuggets o
 
 ## GPIO Pin Assignments (Waveshare 40-Pin Header)
 
-### IBT-2 Motor Driver
+### IBT-2 Motor Driver (Verified Working — 2026-03-20)
 
-| GPIO | Function | 40-Pin Header |
-|------|----------|-----------|
-| 4    | RPWM     | Top row   |
-| 5    | LPWM     | Top row   |
-| 32   | R_EN     | Right side|
-| 22   | L_EN     | Top row   |
+| GPIO | Function | 40-Pin Header | Status |
+|------|----------|-----------|--------|
+| 25   | RPWM     | Left side | ✓ Confirmed |
+| ??   | LPWM     | TBD       | Needs 4th GPIO (untested set) |
+| 32   | R_EN     | Right side| ✓ Confirmed |
+| 22   | L_EN     | Right side| ✓ Confirmed |
 
 ### PCA9685 Servo Driver (I2C Bus 1)
 
@@ -203,9 +232,17 @@ V+      ◄───── 5–6V servo supply (separate from motor supply)
 
 ## Diagrams
 
-- `docs_about__motor_driver_IBT2_BTS7960__servo_driver_PCA9685/esp32p4-to-ibt2-bts7960-wiring.drawio` — detailed wiring diagram
-- `docs_about__motor_driver_IBT2_BTS7960__servo_driver_PCA9685/knugget-puzzle-pieces-architecture.drawio` — high-level puzzle-piece architecture with WebApp console
-- `docs_about__motor_driver_IBT2_BTS7960__servo_driver_PCA9685/ibt2_pwm_motor_control.drawio` — PWM motor control explained (H-bridge, duty cycle waveforms, control table)
+### General
+- `esp32p4-to-ibt2-bts7960-wiring.drawio` — detailed wiring diagram
+- `knugget-puzzle-pieces-architecture.drawio` — high-level puzzle-piece architecture with WebApp console
+- `ibt2_pwm_motor_control.drawio` — PWM motor control explained (H-bridge, duty cycle waveforms, control table)
+
+### Phase Test Diagrams (puzzle-piece I/O verification)
+- `firmware_phase_1/firmware_phase_1__gpio_troubleshooting__20260320.drawio` — GPIO pin troubleshooting journey
+- `firmware_phase_2__tst__motor_on_off/pin_connections__motor_on_off__20260324.drawio` — pin connection diagram (3 GPIOs, forward only)
+- `firmware_phase_2__tst__motor_on_off/firmware_phase_2__tst__motor_on_off__puzzle_piece_test__20260324.drawio` — ON/OFF test architecture
+- `firmware_phase_2__tst__motor_pwd_FWD_REV/pin_connections__motor_pwm_FWD_REV__20260324.drawio` — pin connection diagram (4 GPIOs, LPWM TBD)
+- `firmware_phase_2__tst__motor_pwd_FWD_REV/firmware_phase_2__tst__motor_pwm_FWD_REV__puzzle_piece_test__20260324.drawio` — PWM ramp test architecture
 
 ### BTS7960 Application Use Cases (`bts7960_usecases/`)
 
@@ -239,22 +276,42 @@ Regenerate PNGs: `drawio --export --format png --scale 2 --output X.png X.drawio
 
 ```bash
 source ~/Dropbox/scottsoft_sdn/esp-idf/export.sh
-cd rs_riscvml__esp32-p4-wifi6-kit-a__motor_driver_IBT2_BTS7960__servo_driver_PCA9685__full/esp_idf_ws
+
+# Choose firmware variant:
+cd rs_riscvml__...__full/firmware_phase_2__on_off_test       # simple ON/OFF
+cd rs_riscvml__...__full/firmware_phase_2__tst__motor_pwm_FWD_REV  # PWM ramp
+cd rs_riscvml__...__full/firmware_phase_2                     # SPA web control
+
 idf.py build
-idf.py -p /dev/ttyACM0 flash        # flash via ACM0 (JTAG)
-# Serial monitor on /dev/ttyACM1 (UART console) at 115200 baud
+idf.py -p /dev/ttyACM0 flash
 ```
 
-**Important:** Flash on `/dev/ttyACM0`, serial monitor on `/dev/ttyACM1`.
+**USB ports:** Flash on `/dev/ttyACM0`. Serial monitor on `/dev/ttyACM0` or `/dev/ttyACM1` (board-dependent — CH9102 chip provides single port).
 
-## Firmware Features (IBT-2 — implemented)
+## Firmware Variants (IBT-2)
 
-- LEDC PWM motor control on GPIO 25 (RPWM), 10-bit resolution (0–1023 duty)
-- Enable pins: GPIO 32 (R_EN), GPIO 22 (L_EN)
-- Forward only (LPWM disconnected) — reverse requires 4th working GPIO (TBD)
-- Voltage ramp test: 1V→15V→1V in 1-sec bursts with random 1-5 sec OFF gaps
-- GPIO troubleshooting messages on serial: pin states printed every cycle
-- PWM frequency: 100Hz (bench test — Fluke readable) / 25kHz (motor production)
+### firmware_phase_1 — GPIO Sweep + Bench Test
+- GPIO sweep firmware to find working pins (Fluke DMM verification)
+- LEDC PWM at 100Hz (Fluke readable), voltage ramp 1V→15V→1V
+- Result: only 3 working GPIOs found (22, 25, 32)
+
+### firmware_phase_2 — SPA Web Control
+- Wi-Fi AP via esp_hosted (SDIO to C6), SSID: `RISCVML-Motor`
+- Embedded SPA (index.html in flash), HTTP REST API
+- Endpoints: `GET /api/status`, `POST /api/motor`, `POST /api/auto`
+- Auto mode with random burst pattern (FreeRTOS task)
+- 25 kHz PWM, 10-bit resolution
+
+### firmware_phase_2__on_off_test — Motor ON/OFF (Field Test ✓)
+- Minimal: 3s ON at 50% / 3s OFF, repeating forever
+- No Wi-Fi — standalone motor cycling
+- Verified working on balcony deployment (2026-03-23)
+
+### firmware_phase_2__tst__motor_pwm_FWD_REV — PWM Ramp (Field Test ✓)
+- PWM ramp: 0% → 25% → 50% → 75% → 100% → back down
+- 3 seconds per step, 25 kHz PWM
+- Verified working — variable speed confirmed (2026-03-24)
+- Forward only (LPWM disconnected — reverse requires 4th GPIO)
 
 ## Firmware Features (PCA9685 — TODO)
 

@@ -1,0 +1,92 @@
+<mxfile host="app.diagrams.net" modified="2026-03-24T00:00:00.000Z" agent="CC" version="24.0.0">
+  <diagram id="p2-fwdrev" name="Firmware Phase 2 TST -- Motor PWM FWD/REV Puzzle-Piece Test">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/><mxCell id="1" parent="0"/>
+
+        <mxCell id="t" value="&lt;b&gt;Firmware Phase 2 TST -- Motor PWM FWD/REV Puzzle-Piece Test&lt;/b&gt;&lt;br&gt;BTS7960 IBT-2 Motor Driver -- Bidirectional I/O Verification" style="text;html=1;align=center;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="250" y="20" width="700" height="45" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== PUZZLE-PIECE TESTING ==================== -->
+        <mxCell id="s0" value="&lt;b&gt;PUZZLE-PIECE TESTING -- Verifying Input/Output Sensors for All-Purpose Use&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#CE422B;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="80" width="1100" height="35" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="puzzle_concept" value="&lt;b&gt;The Puzzle-Piece Architecture&lt;/b&gt;&lt;hr&gt;Each knugget is an &lt;b&gt;input or output sensor/actuator&lt;/b&gt;&lt;br&gt;tested in isolation as a standalone puzzle piece.&lt;br&gt;&lt;br&gt;Phase testing verifies the &lt;b&gt;raw I/O capability&lt;/b&gt; --&lt;br&gt;can the sensor read? Can the actuator drive?&lt;br&gt;The specific application (what it does) comes later.&lt;br&gt;&lt;br&gt;A tested puzzle piece is &lt;b&gt;all-purpose&lt;/b&gt; -- it can be&lt;br&gt;used in any project that needs that I/O capability.&lt;br&gt;&lt;br&gt;&lt;font color=&quot;#CE422B&quot;&gt;&lt;b&gt;Phase tests prove the I/O works.&lt;br&gt;Use cases decide what it's for.&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#CE422B;strokeWidth=2;fontSize=10;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="130" width="340" height="190" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="puzzle_phases" value="&lt;b&gt;Phase Testing Strategy&lt;/b&gt;&lt;hr&gt;&lt;table cellpadding=&quot;4&quot; style=&quot;font-size:10px;border-collapse:collapse;&quot;&gt;&lt;tr style=&quot;background:#1a1a1a;color:white;&quot;&gt;&lt;td&gt;&lt;b&gt;Phase&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Tests&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Proves&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#dae8fc;&quot;&gt;&lt;td&gt;&lt;b&gt;Phase 1&lt;/b&gt;&lt;/td&gt;&lt;td&gt;GPIO + electrical&lt;/td&gt;&lt;td&gt;Pins output correct voltage&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#d5e8d4;&quot;&gt;&lt;td&gt;&lt;b&gt;TST ON/OFF&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Motor cycling&lt;/td&gt;&lt;td&gt;Motor spins, stops, repeats&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#f8cecc;&quot;&gt;&lt;td&gt;&lt;b&gt;TST FWD/REV&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Bidirectional PWM&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;H-bridge drives both directions&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#fff2cc;&quot;&gt;&lt;td&gt;&lt;b&gt;Phase 3+&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Next puzzle piece&lt;/td&gt;&lt;td&gt;Next sensor/actuator I/O works&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#e1d5e7;&quot;&gt;&lt;td&gt;&lt;b&gt;Integration&lt;/b&gt;&lt;/td&gt;&lt;td&gt;All pieces combined&lt;/td&gt;&lt;td&gt;All I/O works together in one system&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br&gt;&lt;b&gt;Use cases&lt;/b&gt; (what the I/O is used for) are documented&lt;br&gt;separately in &lt;b&gt;bts7960_usecases/&lt;/b&gt; and &lt;b&gt;pca9685_usecases/&lt;/b&gt;." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666;fontSize=10;align=left;spacingLeft=10;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="430" y="130" width="360" height="190" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="puzzle_io" value="&lt;b&gt;This Puzzle Piece: BTS7960 Output&lt;/b&gt;&lt;hr&gt;&lt;b&gt;Type:&lt;/b&gt; Output actuator (DC motor driver)&lt;br&gt;&lt;b&gt;I/O:&lt;/b&gt; RPWM + LPWM + enable pins&lt;br&gt;&lt;b&gt;Range:&lt;/b&gt; 0-20V, 0-43A continuous&lt;br&gt;&lt;br&gt;&lt;b&gt;This test adds:&lt;/b&gt;&lt;br&gt;-- Forward (RPWM=PWM, LPWM=LOW)&lt;br&gt;-- Reverse (RPWM=LOW, LPWM=PWM)&lt;br&gt;-- Brake (RPWM=HIGH, LPWM=HIGH)&lt;br&gt;-- Coast (RPWM=LOW, LPWM=LOW)&lt;br&gt;&lt;br&gt;&lt;font color=&quot;#CE422B&quot;&gt;&lt;b&gt;Requires 4th GPIO for LPWM&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="820" y="130" width="240" height="190" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== SECTION 1: WHAT THIS TEST DOES ==================== -->
+        <mxCell id="s1" value="&lt;b&gt;1. WHAT THIS TEST DOES -- PWM Forward + Reverse Cycle&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="340" width="1100" height="35" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="test_desc" value="&lt;b&gt;firmware_phase_2__pwm_fwd_rev_test&lt;/b&gt;&lt;hr&gt;Bidirectional motor test:&lt;br&gt;&lt;br&gt;1. Init RPWM + LPWM as LEDC channels&lt;br&gt;2. Init R_EN + L_EN as GPIO output&lt;br&gt;3. Loop forever:&lt;br&gt;   -- FORWARD at 50% for 3s&lt;br&gt;   -- BRAKE for 1s&lt;br&gt;   -- REVERSE at 50% for 3s&lt;br&gt;   -- COAST for 1s&lt;br&gt;&lt;br&gt;&lt;b&gt;No Wi-Fi, no SPA, no HTTP.&lt;/b&gt;&lt;br&gt;Just raw bidirectional I/O test." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="390" width="250" height="200" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="control_table" value="&lt;b&gt;BTS7960 H-Bridge Control Logic&lt;/b&gt;&lt;hr&gt;&lt;table cellpadding=&quot;5&quot; style=&quot;font-size:11px;border-collapse:collapse;&quot;&gt;&lt;tr style=&quot;background:#1a1a1a;color:white;&quot;&gt;&lt;td&gt;&lt;b&gt;RPWM&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;LPWM&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;R_EN&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;L_EN&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Action&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#d5e8d4;&quot;&gt;&lt;td&gt;PWM&lt;/td&gt;&lt;td&gt;LOW&lt;/td&gt;&lt;td&gt;HIGH&lt;/td&gt;&lt;td&gt;HIGH&lt;/td&gt;&lt;td&gt;FORWARD&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#dae8fc;&quot;&gt;&lt;td&gt;LOW&lt;/td&gt;&lt;td&gt;PWM&lt;/td&gt;&lt;td&gt;HIGH&lt;/td&gt;&lt;td&gt;HIGH&lt;/td&gt;&lt;td&gt;REVERSE&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#f8cecc;&quot;&gt;&lt;td&gt;HIGH&lt;/td&gt;&lt;td&gt;HIGH&lt;/td&gt;&lt;td&gt;HIGH&lt;/td&gt;&lt;td&gt;HIGH&lt;/td&gt;&lt;td&gt;BRAKE&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#fff2cc;&quot;&gt;&lt;td&gt;LOW&lt;/td&gt;&lt;td&gt;LOW&lt;/td&gt;&lt;td&gt;HIGH&lt;/td&gt;&lt;td&gt;HIGH&lt;/td&gt;&lt;td&gt;COAST&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br&gt;&lt;b&gt;Key:&lt;/b&gt; RPWM and LPWM each need their own&lt;br&gt;GPIO with LEDC PWM capability." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666;fontSize=10;align=left;spacingLeft=10;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="340" y="390" width="300" height="200" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="gpio_challenge" value="&lt;b&gt;GPIO Challenge: Need 4th Pin&lt;/b&gt;&lt;hr&gt;ON/OFF test used 3 GPIOs:&lt;br&gt;-- GPIO 25: RPWM (forward only)&lt;br&gt;-- GPIO 32: R_EN&lt;br&gt;-- GPIO 22: L_EN&lt;br&gt;&lt;br&gt;FWD/REV test needs 4 GPIOs:&lt;br&gt;-- GPIO 25: RPWM (forward PWM)&lt;br&gt;-- GPIO ??: LPWM (reverse PWM)&lt;br&gt;-- GPIO 32: R_EN&lt;br&gt;-- GPIO 22: L_EN&lt;br&gt;&lt;br&gt;&lt;b&gt;Confirmed working:&lt;/b&gt; 22, 25, 32&lt;br&gt;&lt;b&gt;Untested:&lt;/b&gt; 24, 28-31, 34, 36, 49-52&lt;br&gt;&lt;br&gt;&lt;font color=&quot;#CE422B&quot;&gt;&lt;b&gt;Must find + verify a 4th GPIO&lt;br&gt;before this test can run.&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="670" y="390" width="250" height="230" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== SECTION 2: TIMING ==================== -->
+        <mxCell id="s2" value="&lt;b&gt;2. TIMING DIAGRAM -- FWD / BRAKE / REV / COAST Cycle&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="650" width="1100" height="35" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="timing" value="&lt;pre style=&quot;font-size:11px;line-height:1.5;font-family:monospace;&quot;&gt;RPWM  50% |  ___________                                       ___________&lt;br&gt;       0% |_|           |______________________________________|           |__&lt;br&gt;&lt;br&gt;LPWM  50% |                           ___________&lt;br&gt;       0% |__________________________|           |______________________________&lt;br&gt;&lt;br&gt;Action:    |-- FORWARD --|-- BRAKE --|-- REVERSE --|-- COAST --|-- FORWARD --|&lt;br&gt;              3 sec         1 sec       3 sec        1 sec       3 sec&lt;br&gt;&lt;br&gt;R_EN:        HIGH          HIGH        HIGH         HIGH        HIGH&lt;br&gt;L_EN:        HIGH          HIGH        HIGH         HIGH        HIGH&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0D0D1A;fontColor=#2D9B3A;strokeColor=#333;fontSize=10;align=left;spacingLeft=10;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="60" y="700" width="800" height="190" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="timing_params" value="&lt;b&gt;Test Parameters&lt;/b&gt;&lt;hr&gt;&lt;table cellpadding=&quot;3&quot; style=&quot;font-size:10px;&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Speed:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;50% (duty 511/1023)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;FWD time:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;3000 ms&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;BRAKE time:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;1000 ms&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;REV time:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;3000 ms&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;COAST time:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;1000 ms&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;PWM freq:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;25 kHz&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Resolution:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;10-bit (0-1023)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Motor V:&lt;/b&gt;&lt;/td&gt;&lt;td&gt;~10V (50% of 20V)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;align=left;spacingLeft=10;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="890" y="700" width="200" height="190" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== SECTION 3: GPIO WIRING ==================== -->
+        <mxCell id="s3" value="&lt;b&gt;3. GPIO WIRING -- 4-Pin Configuration for Bidirectional Control&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#82b366;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="920" width="1100" height="35" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="wiring" value="&lt;pre style=&quot;font-size:11px;line-height:1.6;&quot;&gt;ESP32-P4 (40-Pin Header)              BTS7960 IBT-2 Module&lt;br&gt;========================              ===================&lt;br&gt;&lt;br&gt;&lt;b&gt;GPIO 25 (Left)&lt;/b&gt;  --- LEDC CH0 ---&gt;  Pin 7: RPWM (forward PWM)&lt;br&gt;&lt;b&gt;GPIO ??         &lt;/b&gt;  --- LEDC CH1 ---&gt;  Pin 8: LPWM (reverse PWM)&lt;br&gt;&lt;b&gt;GPIO 32 (Right)&lt;/b&gt; --- HIGH -------&gt;  Pin 5: R_EN (enable)&lt;br&gt;&lt;b&gt;GPIO 22 (Right)&lt;/b&gt; --- HIGH -------&gt;  Pin 6: L_EN (enable)&lt;br&gt;&lt;b&gt;3V3     (Right)&lt;/b&gt; ----------------&gt;  Pin 1: VCC&lt;br&gt;&lt;b&gt;GND     (both)&lt;/b&gt;  ----------------&gt;  Pin 2: GND&lt;br&gt;&lt;br&gt;&lt;b&gt;20V Battery +&lt;/b&gt;   ----------------&gt;  Screw: B+&lt;br&gt;&lt;b&gt;20V Battery -&lt;/b&gt;   ----------------&gt;  Screw: B- (common GND)&lt;br&gt;&lt;b&gt;Motor +&lt;/b&gt;         &lt;----------------  Screw: M+&lt;br&gt;&lt;b&gt;Motor -&lt;/b&gt;         &lt;----------------  Screw: M-&lt;/pre&gt;&lt;br&gt;&lt;font color=&quot;#CE422B&quot;&gt;&lt;b&gt;GPIO ?? = TBD -- must Fluke-verify a 4th GPIO from the untested set&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=left;spacingLeft=10;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="60" y="970" width="600" height="260" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="gpio_lock" value="&lt;b&gt;Puzzle-Piece GPIO Lock&lt;/b&gt;&lt;hr&gt;&lt;table cellpadding=&quot;3&quot; style=&quot;font-size:10px;&quot;&gt;&lt;tr style=&quot;background:#1a1a1a;color:white;&quot;&gt;&lt;td&gt;&lt;b&gt;GPIO&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;I/O&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Status&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#d5e8d4;&quot;&gt;&lt;td&gt;25&lt;/td&gt;&lt;td&gt;OUT: RPWM&lt;/td&gt;&lt;td&gt;Confirmed&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#fff2cc;&quot;&gt;&lt;td&gt;??&lt;/td&gt;&lt;td&gt;OUT: LPWM&lt;/td&gt;&lt;td&gt;&lt;b&gt;TBD -- needs Fluke test&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#d5e8d4;&quot;&gt;&lt;td&gt;32&lt;/td&gt;&lt;td&gt;OUT: R_EN&lt;/td&gt;&lt;td&gt;Confirmed&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#d5e8d4;&quot;&gt;&lt;td&gt;22&lt;/td&gt;&lt;td&gt;OUT: L_EN&lt;/td&gt;&lt;td&gt;Confirmed&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br&gt;&lt;b&gt;Candidates for LPWM (untested):&lt;/b&gt;&lt;br&gt;GPIO 24, 28, 29, 30, 31, 34,&lt;br&gt;36, 49, 50, 51, 52&lt;br&gt;&lt;br&gt;&lt;b&gt;Tested dead:&lt;/b&gt;&lt;br&gt;2 (unstable), 3, 4, 5, 20, 21,&lt;br&gt;23, 33, 46, 47, 48&lt;br&gt;&lt;br&gt;&lt;b&gt;Reserved:&lt;/b&gt;&lt;br&gt;7, 8 (I2C), 14-19 (SDIO),&lt;br&gt;26, 27 (USB), 54 (C6 reset)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;spacingLeft=10;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="700" y="970" width="260" height="310" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== SECTION 4: FIELD TEST CHECKLIST ==================== -->
+        <mxCell id="s4" value="&lt;b&gt;4. FIELD TEST CHECKLIST&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1310" width="1100" height="35" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="checklist" value="&lt;b&gt;Pre-Test (GPIO Discovery)&lt;/b&gt;&lt;hr&gt;&lt;table cellpadding=&quot;3&quot; style=&quot;font-size:10px;&quot;&gt;&lt;tr&gt;&lt;td&gt;[ ]&lt;/td&gt;&lt;td&gt;Run GPIO sweep on untested pins&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;[ ]&lt;/td&gt;&lt;td&gt;Fluke-verify 4th GPIO outputs 3.3V&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;[ ]&lt;/td&gt;&lt;td&gt;Confirm LEDC PWM works on 4th GPIO&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;[ ]&lt;/td&gt;&lt;td&gt;Wire LPWM to BTS7960 pin 8&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;[ ]&lt;/td&gt;&lt;td&gt;Update svbprj.md with new GPIO assignment&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;align=left;spacingLeft=10;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1360" width="300" height="140" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="checklist2" value="&lt;b&gt;FWD/REV Test Verification&lt;/b&gt;&lt;hr&gt;&lt;table cellpadding=&quot;3&quot; style=&quot;font-size:10px;&quot;&gt;&lt;tr&gt;&lt;td&gt;[ ]&lt;/td&gt;&lt;td&gt;Motor spins forward at 50%&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;[ ]&lt;/td&gt;&lt;td&gt;Motor brakes (stops quickly)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;[ ]&lt;/td&gt;&lt;td&gt;Motor spins reverse at 50%&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;[ ]&lt;/td&gt;&lt;td&gt;Motor coasts (spins down slowly)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;[ ]&lt;/td&gt;&lt;td&gt;Direction change is clean (no sparking)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;[ ]&lt;/td&gt;&lt;td&gt;No BTS7960 overheating on direction change&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;[ ]&lt;/td&gt;&lt;td&gt;Runs 10+ cycles without failure&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=left;spacingLeft=10;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="390" y="1360" width="310" height="160" as="geometry"/>
+        </mxCell>
+
+        <!-- Anki Ref -->
+        <mxCell id="anki" value="&lt;b&gt;Anki-Ref:&lt;/b&gt; 20260324_XXXXXX__BTS7960__firmware_phase_2__tst__motor_pwm_FWD_REV" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;strokeColor=#1a1a1a;fontSize=11;align=left;spacingLeft=15;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1560" width="650" height="30" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
