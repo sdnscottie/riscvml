@@ -1,6 +1,6 @@
 # svbprj.md — RISCVML Monorepo
 
-This file provides guidance to CC (claude.ai/code) when working with code in this repository.
+This file provides guidance to CC (svbprj) when working with code in this repository.
 
 ## Project Overview
 
