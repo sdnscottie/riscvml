@@ -1,0 +1,253 @@
+<mxfile host="app.diagrams.net" modified="2026-04-10T00:00:00.000Z" agent="riscvml" version="24.0.0">
+  <diagram id="combined_wiring" name="OV5647 + MI0802 + Servo + WiFi Wiring">
+    <mxGraphModel dx="1600" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="ESP32-P4-WIFI6 Kit A — Full CritterCam Pinout&#10;OV5647 CSI Camera + MI0802 Thermal + SPT17HV-180 Servo + Wi-Fi AP" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="15" width="1520" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ankiref" value="Anki-Ref: 20260409__ws_thermal_cam_w_servo__combined_pinout  |  Updated 2026-04-10" style="text;html=1;strokeColor=none;fillColor=#000000;fontColor=#FFFFFF;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="58" width="1520" height="22" as="geometry" />
+        </mxCell>
+
+        <!-- ═══════ ESP32-P4 CENTER BLOCK ═══════ -->
+        <mxCell id="p4" value="ESP32-P4-WIFI6 Kit A&#10;(Waveshare)&#10;&#10;USB-C to PC (CH9102 UART)&#10;DTR=true, RTS=false" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="560" y="110" width="380" height="740" as="geometry" />
+        </mxCell>
+
+        <!-- CSI Camera pins -->
+        <mxCell id="p4_hdr_csi" value="── OV5647 CSI Camera (Pi5 22-pin ribbon) ──" style="text;html=1;align=center;fontSize=11;fontStyle=5;fontColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="580" y="165" width="340" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_g0" value="GPIO 0  (PWDN → LOW)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0e6ff;strokeColor=#9673a6;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="190" width="170" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_g1" value="GPIO 1  (MCLK 24 MHz)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0e6ff;strokeColor=#9673a6;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="222" width="170" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_g7" value="GPIO 7  (I2C SDA, shared)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="254" width="170" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_g8" value="GPIO 8  (I2C SCL, shared)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="286" width="170" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_csi_mipi" value="22-pin Pi5 CSI ribbon&#10;(MIPI 2-lane, dedicated analog)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="580" y="318" width="170" height="32" as="geometry" />
+        </mxCell>
+
+        <!-- MI0802 Thermal pins -->
+        <mxCell id="p4_hdr_mi" value="── MI0802 Thermal Camera (SPI + I2C) ──" style="text;html=1;align=center;fontSize=11;fontStyle=5;fontColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="580" y="365" width="340" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_g20" value="GPIO 20 (SPI CLK, 8 MHz)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="388" width="170" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_g21" value="GPIO 21 (SPI MOSI)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="420" width="170" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_g22" value="GPIO 22 (SPI MISO)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="452" width="170" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_g23" value="GPIO 23 (SPI CS)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="484" width="170" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_g4" value="GPIO 4  (nRESET)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="516" width="170" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_g5" value="GPIO 5  (DATA_READY IRQ)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="548" width="170" height="28" as="geometry" />
+        </mxCell>
+
+        <!-- Servo pin -->
+        <mxCell id="p4_hdr_servo" value="── Servo (Direct LEDC PWM) ──" style="text;html=1;align=center;fontSize=11;fontStyle=5;fontColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="580" y="590" width="340" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_g25" value="GPIO 25 (LEDC 50 Hz PWM)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="612" width="170" height="28" as="geometry" />
+        </mxCell>
+
+        <!-- C6 Wi-Fi SDIO pins -->
+        <mxCell id="p4_hdr_wifi" value="── C6 Wi-Fi (SDIO, esp_hosted) ──" style="text;html=1;align=center;fontSize=11;fontStyle=5;fontColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="580" y="655" width="340" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_sdio" value="GPIO 14-17 (SDIO D0-D3)&#10;GPIO 18 (SDIO CLK)&#10;GPIO 19 (SDIO CMD)&#10;GPIO 54 (C6 Reset)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="678" width="170" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Power pins -->
+        <mxCell id="p4_3v3" value="3V3" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="770" y="190" width="150" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_gnd" value="GND (multiple pins)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5d5d5;strokeColor=#666666;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="770" y="222" width="150" height="28" as="geometry" />
+        </mxCell>
+
+        <!-- ═══════ OV5647 CAMERA BLOCK (top left) ═══════ -->
+        <mxCell id="ov" value="OV5647 CSI Camera&#10;(Raspberry Pi Camera B Rev 2.0)&#10;&#10;800x640 RAW8 @ 50fps&#10;I2C addr: 0x36&#10;PID: 0x5647&#10;&#10;No onboard oscillator!&#10;Needs external MCLK." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0e6ff;strokeColor=#9673a6;fontSize=12;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="50" y="110" width="320" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="ov_mclk" value="XVCLK (needs 24 MHz)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0e6ff;strokeColor=#9673a6;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="222" width="150" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="ov_pwdn" value="PWDN (active HIGH)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0e6ff;strokeColor=#9673a6;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="190" width="150" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="ov_sda" value="SCCB SDA (I2C 0x36)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="254" width="150" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="ov_scl" value="SCCB SCL" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="286" width="150" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="ov_mipi" value="MIPI CSI 2-lane (ribbon)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="210" y="318" width="150" height="32" as="geometry" />
+        </mxCell>
+
+        <!-- ═══════ MI0802 THERMAL BLOCK (mid left) ═══════ -->
+        <mxCell id="mi" value="MI0802 Thermal Camera&#10;(Waveshare, 80x62 LWIR)&#10;&#10;I2C addr: 0x40&#10;SPI2_HOST @ 8 MHz&#10;~4 FPS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="50" y="390" width="320" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="mi_clk" value="SCLK" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="388" width="120" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="mi_mosi" value="MOSI" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="420" width="120" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="mi_miso" value="MISO" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="452" width="120" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="mi_cs" value="CS" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="484" width="120" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="mi_rst" value="nRESET" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="516" width="120" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="mi_dr" value="DATA_READY" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="548" width="120" height="28" as="geometry" />
+        </mxCell>
+
+        <!-- ═══════ SERVO BLOCK (right upper) ═══════ -->
+        <mxCell id="spt" value="SPT17HV-180 Servo&#10;(6 kg, HV digital)&#10;&#10;50 Hz PWM, 0.5-2.5 ms&#10;Stall ~3-5 A" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="110" width="280" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="spt_sig" value="Signal (orange)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1130" y="180" width="130" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="spt_vcc" value="V+ (red) 6-8.4V" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1130" y="212" width="130" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="spt_gnd" value="GND (brown)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5d5d5;strokeColor=#666666;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1130" y="244" width="130" height="28" as="geometry" />
+        </mxCell>
+
+        <!-- ═══════ 2S 21700 PACK (right mid) ═══════ -->
+        <mxCell id="pack" value="2S 21700 Battery Pack&#10;7.4V nom / 7.6V measured&#10;&#10;Direct to servo — no buck!" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="340" width="280" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="pack_vcc" value="+ (7.6V)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1130" y="400" width="100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="pack_gnd" value="- (GND)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5d5d5;strokeColor=#666666;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="400" width="100" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="pack_note" value="Common GND with P4 is SAFE&#10;(battery is isolated from mains)" style="text;html=1;align=center;fontSize=10;fontStyle=1;fontColor=#B85450;" vertex="1" parent="1">
+          <mxGeometry x="1125" y="440" width="270" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- ═══════ C6 + WIFI BLOCK (right lower) ═══════ -->
+        <mxCell id="c6" value="ESP32-C6 Companion Chip&#10;(onboard, esp_hosted-mcu v2.12.3)&#10;&#10;Wi-Fi 6 + BLE 5 + Thread&#10;SDIO transport to P4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="540" width="280" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="c6_wifi" value="AP: riscvml_cam&#10;Pass: !!scottie!!&#10;IP: 192.168.4.1&#10;http://192.168.4.1/" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="620" width="240" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- ═══════ BROWSER/PHONE (bottom right) ═══════ -->
+        <mxCell id="phone" value="Phone / Laptop (Browser)&#10;&#10;http://192.168.4.1/&#10;&#10;Auto-refresh /camera.jpg&#10;every 5 seconds via JS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="740" width="280" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- ═══════ CONNECTIONS ═══════ -->
+        <!-- OV5647 → P4 -->
+        <mxCell id="w_pwdn" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#9673A6;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="p4_g0" target="ov_pwdn"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="w_mclk" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#9673A6;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="p4_g1" target="ov_mclk"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="w_sda1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#82B366;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="p4_g7" target="ov_sda"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="w_scl1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#82B366;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="p4_g8" target="ov_scl"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="w_mipi" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#6c8ebf;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="p4_csi_mipi" target="ov_mipi"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- MI0802 → P4 -->
+        <mxCell id="w_sclk" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D6B656;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="p4_g20" target="mi_clk"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="w_mosi" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D6B656;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="p4_g21" target="mi_mosi"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="w_miso" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D6B656;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="p4_g22" target="mi_miso"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="w_cs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D6B656;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="p4_g23" target="mi_cs"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="w_rst" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D6B656;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="p4_g4" target="mi_rst"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="w_dr" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D6B656;strokeWidth=2;endArrow=classic;" edge="1" parent="1" source="p4_g5" target="mi_dr"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- Servo → P4 -->
+        <mxCell id="w_servo" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D79B00;strokeWidth=3;endArrow=classic;" edge="1" parent="1" source="p4_g25" target="spt_sig"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- Pack → Servo -->
+        <mxCell id="w_sv" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#B85450;strokeWidth=3;endArrow=classic;" edge="1" parent="1" source="pack_vcc" target="spt_vcc"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="w_sg" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#333333;strokeWidth=3;endArrow=classic;" edge="1" parent="1" source="pack_gnd" target="spt_gnd"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- Common GND: P4 ↔ Pack -->
+        <mxCell id="w_cgnd" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#333333;strokeWidth=3;dashed=1;endArrow=classic;" edge="1" parent="1" source="p4_gnd" target="pack_gnd"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="w_cgnd_lbl" value="COMMON GND (single wire)" style="text;html=1;align=center;fontSize=10;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="930" y="255" width="200" height="16" as="geometry" />
+        </mxCell>
+
+        <!-- P4 SDIO ↔ C6 -->
+        <mxCell id="w_sdio" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#B85450;strokeWidth=2;endArrow=classic;dashed=1;" edge="1" parent="1" source="p4_sdio" target="c6"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="w_sdio_lbl" value="SDIO 4-bit (onboard)" style="text;html=1;align=center;fontSize=10;fontStyle=2;fontColor=#B85450;" vertex="1" parent="1">
+          <mxGeometry x="960" y="700" width="160" height="16" as="geometry" />
+        </mxCell>
+
+        <!-- C6 ↔ Phone (Wi-Fi) -->
+        <mxCell id="w_wifi" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#9673A6;strokeWidth=3;endArrow=classic;dashed=1;" edge="1" parent="1" source="c6_wifi" target="phone"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="w_wifi_lbl" value="Wi-Fi 6 (2.4 GHz)" style="text;html=1;align=center;fontSize=10;fontStyle=1;fontColor=#9673A6;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="700" width="140" height="16" as="geometry" />
+        </mxCell>
+
+        <!-- ═══════ LEGEND + GPIO SUMMARY (bottom) ═══════ -->
+        <mxCell id="legend" value="Color Legend" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=12;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="50" y="920" width="500" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="l1" value="Purple — OV5647 CSI Camera (GPIO 0, 1 + I2C 7/8 + MIPI ribbon)" style="text;html=1;align=left;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="70" y="945" width="460" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="l2" value="Green — Shared I2C bus (GPIO 7 SDA, GPIO 8 SCL) — OV5647 + MI0802" style="text;html=1;align=left;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="70" y="970" width="460" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="l3" value="Yellow — MI0802 Thermal Camera SPI + control (GPIO 20-23, 4, 5)" style="text;html=1;align=left;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="70" y="995" width="460" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="l4" value="Orange — Servo PWM signal (GPIO 25, LEDC 50 Hz)" style="text;html=1;align=left;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="70" y="1020" width="460" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="l5" value="Red — C6 Wi-Fi SDIO bus (GPIO 14-19, 54) + servo V+ power" style="text;html=1;align=left;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="70" y="1045" width="460" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="l6" value="Black dashed — Common ground bond (ESP32-P4 GND ↔ 2S pack GND)" style="text;html=1;align=left;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="70" y="1070" width="460" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="l7" value="Purple dashed — Wi-Fi 6 wireless link (C6 AP → phone browser)" style="text;html=1;align=left;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="70" y="1095" width="460" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="l8" value="CRITICAL: MCLK on GPIO 1, PWDN on GPIO 0 (NOT the other way around!)" style="text;html=1;align=left;fontSize=11;fontStyle=1;fontColor=#B85450;" vertex="1" parent="1">
+          <mxGeometry x="70" y="1125" width="460" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="summary" value="GPIO Summary (all 15 pins used)&#10;─────────────────────────&#10;GPIO  0 → OV5647 PWDN (drive LOW)&#10;GPIO  1 → OV5647 MCLK (24 MHz clock)&#10;GPIO  4 → MI0802 nRESET&#10;GPIO  5 → MI0802 DATA_READY (IRQ)&#10;GPIO  7 → Shared I2C SDA (OV5647 0x36 + MI0802 0x40)&#10;GPIO  8 → Shared I2C SCL&#10;GPIO 14-17 → C6 SDIO D0-D3&#10;GPIO 18 → C6 SDIO CLK&#10;GPIO 19 → C6 SDIO CMD&#10;GPIO 20 → MI0802 SPI CLK&#10;GPIO 21 → MI0802 SPI MOSI&#10;GPIO 22 → MI0802 SPI MISO&#10;GPIO 23 → MI0802 SPI CS&#10;GPIO 25 → Servo PWM (LEDC 50 Hz)&#10;GPIO 54 → C6 Reset" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;fontFamily=Courier New;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="580" y="920" width="440" height="240" as="geometry" />
+        </mxCell>
+
+        <mxCell id="status" value="Status (2026-04-10)&#10;──────────────&#10;OV5647 CSI: WORKING (detected + 1st frame)&#10;MI0802 I2C: BROKEN (shared bus conflict)&#10;Servo pan:  WORKING (55-100 deg sweep)&#10;Wi-Fi AP:   WORKING (phone connects)&#10;HTTP /camera.jpg: 1st frame served OK&#10;CSI loop:   IN PROGRESS (stuck at frame 1)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontFamily=Courier New;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="920" width="340" height="240" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

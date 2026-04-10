@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-04-01T00:00:00.000Z" version="21.0.0" type="device">
+  <diagram name="Flash ESP32-C6 via FTDI" id="flash-c6-ftdi">
+    <mxGraphModel dx="1500" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="1200" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="&lt;b&gt;Flashing ESP32-C6 Companion Chip via FTDI&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px;color:#666&quot;&gt;Waveshare ESP32-P4-WIFI6 Kit A — esp_hosted slave firmware&lt;/font&gt;" style="text;html=1;fontSize=18;fontColor=#333333;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="350" y="10" width="600" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- ===== SECTION 1: Hardware Overview ===== -->
+        <mxCell id="hw_header" value="&lt;b&gt;1. Hardware Overview — Two USB-C Cables to One Linux PC&lt;/b&gt;" style="text;html=1;fontSize=16;fontColor=#6c8ebf;align=center;" vertex="1" parent="1">
+          <mxGeometry x="100" y="70" width="600" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- ====== LINUX PC (bottom center) ====== -->
+        <mxCell id="linux_pc" value="&lt;b&gt;Linux PC&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;esptool.py / idf.py&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#333333;fontSize=14;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="220" y="530" width="360" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- USB-C Cable 1: P4 board -->
+        <mxCell id="usb1_label" value="&lt;font style=&quot;font-size:10px&quot;&gt;&lt;b&gt;USB-C Cable 1&lt;/b&gt;&lt;br&gt;/dev/ttyACM0&lt;br&gt;(flash + monitor P4)&lt;/font&gt;" style="text;html=1;fontSize=10;fontColor=#6c8ebf;align=center;" vertex="1" parent="1">
+          <mxGeometry x="120" y="460" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="e_pc_to_p4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;strokeColor=#6c8ebf;strokeWidth=3;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.25;exitY=0;exitDx=0;exitDy=0;" edge="1" source="linux_pc" target="p4_board" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- USB-C Cable 2: FTDI -->
+        <mxCell id="usb2_label" value="&lt;font style=&quot;font-size:10px&quot;&gt;&lt;b&gt;USB-C Cable 2&lt;/b&gt;&lt;br&gt;/dev/ttyUSB0&lt;br&gt;(flash C6 via FTDI)&lt;/font&gt;" style="text;html=1;fontSize=10;fontColor=#9673a6;align=center;" vertex="1" parent="1">
+          <mxGeometry x="530" y="460" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="e_pc_to_ftdi" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;strokeColor=#9673a6;strokeWidth=3;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.75;exitY=0;exitDx=0;exitDy=0;" edge="1" source="linux_pc" target="ftdi_box" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ====== WAVESHARE P4 BOARD (large container, left) ====== -->
+        <mxCell id="p4_board" value="&lt;b&gt;Waveshare ESP32-P4-WIFI6 Kit A&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;verticalAlign=top;spacingTop=5;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="60" y="110" width="380" height="330" as="geometry" />
+        </mxCell>
+
+        <!-- P4 chip inside board -->
+        <mxCell id="p4_chip" value="&lt;b&gt;ESP32-P4&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Main MCU&lt;br&gt;Dual RISC-V @ 400 MHz&lt;br&gt;No built-in Wi-Fi&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="150" width="170" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- P4 USB-C port -->
+        <mxCell id="p4_usbc" value="&lt;b&gt;USB-C&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;USB-Serial/JTAG&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="100" y="390" width="130" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- C6 chip inside board -->
+        <mxCell id="c6_chip" value="&lt;b&gt;ESP32-C6&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Companion chip&lt;br&gt;Wi-Fi 6 + BLE 5&lt;br&gt;+ Thread/Zigbee&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="270" y="150" width="150" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- SDIO bus between P4 and C6 -->
+        <mxCell id="sdio_bus" value="&lt;font style=&quot;font-size:9px&quot;&gt;&lt;b&gt;SDIO&lt;/b&gt;&lt;br&gt;GPIO 14-19&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;html=1;strokeColor=#82b366;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="p4_chip" target="c6_chip" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- C6 Soldered Header (on edge of board) -->
+        <mxCell id="c6_header_box" value="&lt;b&gt;Soldered Header&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;color:#666&quot;&gt;(C6 UART0 pads)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;verticalAlign=top;spacingTop=3;" vertex="1" parent="1">
+          <mxGeometry x="270" y="250" width="150" height="170" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c6_rxd" value="&lt;b&gt;RXD&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="285" width="55" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="c6_txd" value="&lt;b&gt;TXD&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="315" width="55" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="c6_gnd" value="&lt;b&gt;GND&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="350" y="345" width="55" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="c6_io9" value="&lt;b&gt;IO9&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="375" width="55" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- IO9 to GND jumper wire -->
+        <mxCell id="io9_jumper" value="&lt;font style=&quot;font-size:8px;color:#b85450&quot;&gt;&lt;b&gt;Jumper&lt;br&gt;(boot mode)&lt;/b&gt;&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;strokeColor=#b85450;strokeWidth=2;dashed=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="c6_io9" target="c6_gnd" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="330" y="388" />
+              <mxPoint x="330" y="358" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- C6 chip to header connection -->
+        <mxCell id="e_c6_to_header" value="&lt;font style=&quot;font-size:8px&quot;&gt;UART0&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;html=1;strokeColor=#82b366;strokeWidth=1;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="c6_chip" target="c6_header_box" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ====== FTDI ADAPTER (right side) ====== -->
+        <mxCell id="ftdi_box" value="&lt;b&gt;FTDI Adapter&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#666&quot;&gt;USB-to-Serial (3.3V TTL)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;verticalAlign=top;spacingTop=5;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="510" y="250" width="180" height="190" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ftdi_tx" value="&lt;b&gt;TX&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="290" width="55" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="ftdi_rx" value="&lt;b&gt;RX&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="320" width="55" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="ftdi_gnd" value="&lt;b&gt;GND&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="520" y="350" width="55" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ftdi_usbc" value="&lt;b&gt;USB-C&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="540" y="395" width="100" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Jumper wires: FTDI ↔ C6 header -->
+        <mxCell id="wire_tx_rxd" value="&lt;font style=&quot;font-size:9px;color:#d6b656&quot;&gt;&lt;b&gt;TX→RXD&lt;/b&gt;&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;strokeColor=#d6b656;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="ftdi_tx" target="c6_rxd" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="460" y="303" />
+              <mxPoint x="460" y="298" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="wire_rx_txd" value="&lt;font style=&quot;font-size:9px;color:#d6b656&quot;&gt;&lt;b&gt;RX←TXD&lt;/b&gt;&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;strokeColor=#d6b656;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="ftdi_rx" target="c6_txd" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="475" y="333" />
+              <mxPoint x="475" y="328" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="wire_gnd" value="&lt;font style=&quot;font-size:9px;color:#666&quot;&gt;&lt;b&gt;GND&lt;/b&gt;&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;strokeColor=#666666;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="ftdi_gnd" target="c6_gnd" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="490" y="363" />
+              <mxPoint x="490" y="358" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Jumper wire label -->
+        <mxCell id="jumper_label" value="&lt;font style=&quot;font-size:10px;color:#666&quot;&gt;&lt;b&gt;Dupont jumper wires&lt;/b&gt;&lt;/font&gt;" style="text;html=1;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="430" y="232" width="140" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- ===== SECTION 2: Wiring Summary Table ===== -->
+        <mxCell id="wire_table" value="&lt;b&gt;Wiring Summary&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px;font-family:monospace&quot;&gt;FTDI Adapter     C6 Soldered Header&lt;br&gt;────────────     ──────────────────&lt;br&gt;TX          ───→ RXD&lt;br&gt;RX          ←─── TXD&lt;br&gt;GND         ───→ GND&lt;br&gt;(no VCC!)        IO9 → GND (boot mode)&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px;font-family:monospace&quot;&gt;Linux PC Ports&lt;br&gt;──────────────&lt;br&gt;/dev/ttyACM0  ← P4 board USB-C&lt;br&gt;/dev/ttyUSB0  ← FTDI adapter USB-C&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;align=left;spacingLeft=12;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="60" y="610" width="340" height="210" as="geometry" />
+        </mxCell>
+
+        <!-- ===== SECTION 2: Boot Mode ===== -->
+        <mxCell id="boot_note" value="&lt;b&gt;Download Mode Sequence&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;&lt;b&gt;IO9 = LOW&lt;/b&gt; at boot → UART download mode&lt;br&gt;&lt;b&gt;IO9 = HIGH&lt;/b&gt; at boot → normal run mode&lt;br&gt;&lt;br&gt;&lt;b&gt;To flash:&lt;/b&gt;&lt;br&gt;1. Jumper IO9 → GND on C6 header&lt;br&gt;2. Reset C6 (power cycle board, or P4&lt;br&gt;   toggles GPIO 54 = C6 reset line)&lt;br&gt;3. Flash via FTDI (idf.py -p /dev/ttyUSB0 flash)&lt;br&gt;4. Remove IO9 jumper&lt;br&gt;5. Reset C6 → boots esp_hosted slave&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="420" y="610" width="290" height="210" as="geometry" />
+        </mxCell>
+
+        <!-- ===== RIGHT COLUMN: Flash Process ===== -->
+        <mxCell id="flash_header" value="&lt;b&gt;2. Flash Process&lt;/b&gt;" style="text;html=1;fontSize=16;fontColor=#82b366;align=center;" vertex="1" parent="1">
+          <mxGeometry x="770" y="70" width="300" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step_idf" value="&lt;b&gt;Activate ESP-IDF&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;source ~/Dropbox/scottsoft_sdn/&lt;br&gt;esp-idf/export.sh&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="770" y="110" width="300" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step_clone" value="&lt;b&gt;Get esp_hosted firmware&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;git clone --recursive&lt;br&gt;espressif/esp-hosted&lt;br&gt;cd esp_hosted_fg/esp/esp_driver/&lt;br&gt;network_adapter&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="770" y="180" width="300" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step_build" value="&lt;b&gt;Build for ESP32-C6 (SDIO)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;idf.py set-target esp32c6&lt;br&gt;idf.py menuconfig → Transport: SDIO&lt;br&gt;idf.py build&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="770" y="275" width="300" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step_boot" value="&lt;b&gt;Enter Download Mode&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;1. Jumper IO9 → GND on C6 header&lt;br&gt;2. Power cycle board (or reset C6)&lt;br&gt;3. Verify: ls /dev/ttyUSB0&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="770" y="360" width="300" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step_flash" value="&lt;b&gt;Flash C6 via FTDI&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;idf.py -p /dev/ttyUSB0 flash&lt;br&gt;&lt;br&gt;Note: P4 uses /dev/ttyACM0&lt;br&gt;FTDI uses /dev/ttyUSB0 — don't mix them!&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="770" y="445" width="300" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step_remove" value="&lt;b&gt;Remove IO9 Jumper&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Disconnect IO9 from GND&lt;br&gt;(IO9 floats HIGH = normal boot)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="770" y="540" width="300" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step_run" value="&lt;b&gt;Reset C6 → esp_hosted boots!&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Power cycle or reset via P4 GPIO 54&lt;br&gt;C6 runs esp_hosted slave on SDIO bus&lt;br&gt;P4 now has Wi-Fi 6 + BLE 5!&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="770" y="610" width="300" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Flash process arrows -->
+        <mxCell id="e_f1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;html=1;" edge="1" source="step_idf" target="step_clone" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_f2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;html=1;" edge="1" source="step_clone" target="step_build" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_f3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;html=1;" edge="1" source="step_build" target="step_boot" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_f4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;html=1;" edge="1" source="step_boot" target="step_flash" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_f5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;html=1;" edge="1" source="step_flash" target="step_remove" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_f6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;html=1;" edge="1" source="step_remove" target="step_run" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ===== BOTTOM: Important Notes ===== -->
+        <mxCell id="notes_header" value="&lt;b&gt;Important Notes&lt;/b&gt;" style="text;html=1;fontSize=16;fontColor=#b85450;align=center;" vertex="1" parent="1">
+          <mxGeometry x="770" y="700" width="300" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="note1" value="&lt;b&gt;FTDI must be set to 3.3V!&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;ESP32-C6 is 3.3V logic.&lt;br&gt;5V will damage the chip.&lt;br&gt;Check jumper/switch on adapter.&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="770" y="735" width="140" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="note2" value="&lt;b&gt;Do NOT connect FTDI VCC&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;C6 is already powered&lt;br&gt;by the P4 board.&lt;br&gt;Only TX, RX, GND.&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="925" y="735" width="140" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Unblocks callout -->
+        <mxCell id="unblocks" value="&lt;b&gt;This unblocks:&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;• Motor driver Wi-Fi STA (Phase 3)&lt;br&gt;• Secure WAP Streamer Wi-Fi AP&lt;br&gt;• CritterCam network streaming&lt;br&gt;• Any P4 project needing Wi-Fi/BLE&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="840" width="650" height="80" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

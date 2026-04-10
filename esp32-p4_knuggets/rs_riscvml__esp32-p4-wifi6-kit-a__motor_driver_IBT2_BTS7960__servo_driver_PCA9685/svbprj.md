@@ -3,7 +3,7 @@
 **Author:** Scottie von Bruchhausen (scottie@riscvml.org)
 **Board:** Waveshare ESP32-P4-WIFI6 Kit A
 **Modules:** IBT-2 (BTS7960 dual H-bridge) + PCA9685 (16-ch I2C servo driver)
-**Status:** IBT-2 PWM ramp test verified ✓ · ON/OFF field test verified ✓ · PCA9685 firmware TODO
+**Status:** IBT-2 PWM ramp test verified ✓ · ON/OFF field test verified ✓ · Two-speed random test verified ✓ · Rust SPA controller built ✓ · C6 Wi-Fi STA pending (needs slave flash) · PCA9685 firmware TODO
 **Anki-Ref:** `20260319_093229__BTS7960__dc_motor_drive`
 
 ## Project Folder Structure
@@ -29,6 +29,11 @@ rs_riscvml__...__motor_driver_IBT2_BTS7960__servo_driver_PCA9685/
     ├── firmware_phase_2/              ← Phase 2: SPA Web Control (Wi-Fi AP + HTTP API)
     ├── firmware_phase_2__on_off_test/ ← Phase 2 TST: 3s ON/3s OFF motor cycle
     ├── firmware_phase_2__tst__motor_pwm_FWD_REV/  ← Phase 2 TST: PWM ramp 0→100→0%
+    ├── firmware_phase_2__tst__motor_pwm_FWD_REV__two_speed_rnd/  ← Phase 2 TST: random 25%/50% bursts
+    ├── firmware_phase_3__tst__motor_pwd_FWD_REV__rs_app_cntrl/   ← Phase 3: Rust SPA + Wi-Fi STA
+    │   ├── esp_idf_fw/               ← ESP-IDF firmware (serial JSON + Wi-Fi STA via C6)
+    │   ├── rs_motor_cntrl/           ← Rust axum SPA on port 3044 (LAN-accessible)
+    │   └── esp_idf_fw/main/wifi_secrets.h  ← Wi-Fi credentials (gitignored)
     └── firmware_phase_3/              ← Phase 3: PCA9685 servo driver (TODO)
 ```
 
@@ -67,6 +72,9 @@ verifies raw I/O capability — the specific application (use case) comes later.
 | Phase 2 | Feature firmware | I/O firmware works (SPA, HTTP API, auto mode) |
 | Phase 2 TST ON/OFF | Physical field test | Motor spins/stops reliably in real environment |
 | Phase 2 TST PWM | PWM ramp test | Variable speed control works (0→25→50→75→100→down) |
+| Phase 2 TST Two Speed Rnd | Random burst test | Random 25%/50% bursts with 1-20s pauses (pigeon scarer) |
+| Phase 3 RS App Cntrl | Rust SPA controller | Motor control via browser (axum port 3044, LAN-accessible) |
+| Phase 3 Wi-Fi STA | C6 joins home Wi-Fi | ESP32-P4 gets DHCP IP, controllable from tablet (BLOCKED: C6 needs esp_hosted slave flash) |
 | Phase 3 | Next puzzle piece | PCA9685 servo driver I/O works standalone |
 | Integration | All pieces combined | All I/O works together in secure_wap_streamer |
 
@@ -312,6 +320,27 @@ idf.py -p /dev/ttyACM0 flash
 - 3 seconds per step, 25 kHz PWM
 - Verified working — variable speed confirmed (2026-03-24)
 - Forward only (LPWM disconnected — reverse requires 4th GPIO)
+
+### firmware_phase_2__tst__motor_pwm_FWD_REV__two_speed_rnd — Two Speed Random (2026-03-27)
+- Pigeon scarer mode: randomly picks 25% or 50% speed
+- Motor runs 2-5 seconds, then off for 1-20 seconds random pause
+- Uses ESP32 hardware RNG (`esp_random()`)
+- Standalone — no Wi-Fi, no serial commands, just runs forever
+- 25 kHz PWM, forward only
+
+### firmware_phase_3__tst__motor_pwd_FWD_REV__rs_app_cntrl — Rust SPA Controller (2026-03-27)
+- **ESP-IDF firmware:** Serial JSON command listener + Wi-Fi STA via C6 esp_hosted
+  - Commands: `{"cmd":"speed","val":50}`, `{"cmd":"on"}`, `{"cmd":"off"}`, `{"cmd":"status"}`
+  - Responds with JSON: `{"speed":50,"on":true,"voltage":"10.0V","ip":"192.168.x.x"}`
+  - Heartbeat: prints human-readable status every 30 seconds
+  - Wi-Fi STA: joins home network via C6 SDIO, prints DHCP IP
+- **Rust SPA (rs_motor_cntrl):** axum web server on port 3044
+  - Embedded HTML SPA (include_str!), accessible from any LAN device
+  - ON/OFF power buttons, PWM speed slider (0-100%), preset buttons
+  - Serial mode: connects to ESP32-P4 via USB `/dev/ttyACM0`
+  - Wi-Fi mode: enter ESP32's IP, commands go directly to device
+  - BLOCKED: C6 needs esp_hosted slave firmware flashed first
+  - C6 USB pads are `V D- D+ G` (no connector, no BOOT button — needs solder job)
 
 ## Firmware Features (PCA9685 — TODO)
 
