@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-04-05T00:00:00.000Z" version="21.0.0" type="device">
+  <diagram name="A121 to ESP32-P4 Wiring" id="a121-wiring">
+    <mxGraphModel dx="1400" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1000" background="#1a1a2e" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="&lt;b&gt;A121 Range Sensor → ESP32-P4 Wiring&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px;color:#888&quot;&gt;Waveshare A121 (MX1.25 10-pin) to Waveshare ESP32-P4-WIFI6 Kit A (40-pin header)&lt;br&gt;SvBlock by SVB — riscvml.org&lt;/font&gt;" style="text;html=1;fontSize=18;fontColor=#00ff88;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="250" y="10" width="700" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- ===== A121 MODULE (LEFT) ===== -->
+        <mxCell id="a121_box" value="&lt;b style=&quot;font-size:14px&quot;&gt;Waveshare A121&lt;br&gt;Range Sensor&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#888&quot;&gt;60GHz mmWave Radar&lt;br&gt;MX1.25 10-pin connector&lt;br&gt;Range: 3cm — 23m&lt;br&gt;Resolution: ~2.5mm&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f3460;strokeColor=#ff8800;strokeWidth=3;fontSize=12;fontColor=#eee;verticalAlign=top;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="50" y="90" width="280" height="460" as="geometry" />
+        </mxCell>
+
+        <!-- A121 Pins (right edge of module box) -->
+        <mxCell id="a1" value="&lt;b&gt;1  5V&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#cc0000;strokeColor=#333;fontSize=12;fontColor=#fff;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="175" width="120" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" value="&lt;b&gt;2  GND&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#333;strokeColor=#555;fontSize=12;fontColor=#fff;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="208" width="120" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" value="&lt;b&gt;3  RXD&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#2244aa;strokeColor=#333;fontSize=12;fontColor=#fff;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="241" width="120" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="a4" value="&lt;b&gt;4  TXD&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#2266cc;strokeColor=#333;fontSize=12;fontColor=#fff;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="274" width="120" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="a5" value="&lt;b&gt;5  SDA&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008844;strokeColor=#333;fontSize=12;fontColor=#fff;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="307" width="120" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="a6" value="&lt;b&gt;6  SCL&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#00aa55;strokeColor=#333;fontSize=12;fontColor=#fff;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="340" width="120" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="a7" value="&lt;b&gt;7  MCU_INT&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#cc6600;strokeColor=#333;fontSize=12;fontColor=#fff;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="373" width="120" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="a8" value="&lt;b&gt;8  WAKE_UP&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#cc8800;strokeColor=#333;fontSize=12;fontColor=#fff;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="406" width="120" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="a9" value="&lt;b&gt;9  GPIO0&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#555;strokeColor=#333;fontSize=12;fontColor=#aaa;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="439" width="120" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="a10" value="&lt;b&gt;10 GPIO1&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#555;strokeColor=#333;fontSize=12;fontColor=#aaa;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="472" width="120" height="28" as="geometry" />
+        </mxCell>
+
+        <!-- Fresnel lens indicator -->
+        <mxCell id="lens" value="&lt;font style=&quot;font-size:10px&quot;&gt;◉ Fresnel Lens&lt;br&gt;(60GHz beam)&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#16213e;strokeColor=#ff8800;strokeWidth=2;fontSize=10;fontColor=#ff8800;" vertex="1" parent="1">
+          <mxGeometry x="80" y="280" width="100" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- ===== ESP32-P4 BOARD (RIGHT) ===== -->
+        <mxCell id="p4_box" value="&lt;b style=&quot;font-size:14px&quot;&gt;ESP32-P4-WIFI6&lt;br&gt;Kit A&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#888&quot;&gt;Waveshare board&lt;br&gt;40-pin GPIO header&lt;br&gt;USB-C: /dev/ttyACM0&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f3460;strokeColor=#4488ff;strokeWidth=3;fontSize=12;fontColor=#eee;verticalAlign=top;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="870" y="90" width="280" height="460" as="geometry" />
+        </mxCell>
+
+        <!-- P4 Pins (left edge of P4 box) -->
+        <mxCell id="p1" value="&lt;b&gt;5V&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#cc0000;strokeColor=#333;fontSize=12;fontColor=#fff;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="880" y="175" width="120" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="p2" value="&lt;b&gt;GND&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#333;strokeColor=#555;fontSize=12;fontColor=#fff;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="880" y="208" width="120" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="p3" value="&lt;b&gt;UART TX (GPIO ??)&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#2244aa;strokeColor=#333;fontSize=11;fontColor=#fff;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="880" y="241" width="150" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="p4" value="&lt;b&gt;UART RX (GPIO ??)&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#2266cc;strokeColor=#333;fontSize=11;fontColor=#fff;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="880" y="274" width="150" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="p5" value="&lt;b&gt;GPIO 7 (SDA)&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008844;strokeColor=#333;fontSize=11;fontColor=#fff;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="880" y="307" width="150" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="p6" value="&lt;b&gt;GPIO 8 (SCL)&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#00aa55;strokeColor=#333;fontSize=11;fontColor=#fff;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="880" y="340" width="150" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="p7" value="&lt;b&gt;GPIO ?? (INT in)&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#cc6600;strokeColor=#333;fontSize=11;fontColor=#fff;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="880" y="373" width="150" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="p8" value="&lt;b&gt;GPIO ?? (WAKE out)&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#cc8800;strokeColor=#333;fontSize=11;fontColor=#fff;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="880" y="406" width="150" height="28" as="geometry" />
+        </mxCell>
+
+        <!-- ===== WIRES ===== -->
+        <!-- 5V — red -->
+        <mxCell id="w1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;strokeColor=#cc0000;strokeWidth=3;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="a1" target="p1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="w1_label" value="&lt;font color=&quot;#cc0000&quot;&gt;&lt;b&gt;5V (red)&lt;/b&gt;&lt;/font&gt;" style="text;html=1;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="540" y="170" width="80" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- GND — black -->
+        <mxCell id="w2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;strokeColor=#666;strokeWidth=3;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="a2" target="p2" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="w2_label" value="&lt;font color=&quot;#888&quot;&gt;&lt;b&gt;GND (black)&lt;/b&gt;&lt;/font&gt;" style="text;html=1;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="535" y="203" width="90" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- RXD ← TX — blue (crossed) -->
+        <mxCell id="w3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;strokeColor=#2244aa;strokeWidth=3;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="a3" target="p3" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="500" y="255" />
+              <mxPoint x="500" y="255" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="w3_label" value="&lt;font color=&quot;#4488ff&quot;&gt;&lt;b&gt;A121 RXD ← P4 TX&lt;/b&gt;&lt;/font&gt;" style="text;html=1;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="490" y="236" width="140" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- TXD → RX — light blue (crossed) -->
+        <mxCell id="w4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;strokeColor=#2266cc;strokeWidth=3;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="a4" target="p4" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="520" y="288" />
+              <mxPoint x="520" y="288" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="w4_label" value="&lt;font color=&quot;#4488ff&quot;&gt;&lt;b&gt;A121 TXD → P4 RX&lt;/b&gt;&lt;/font&gt;" style="text;html=1;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="490" y="269" width="140" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- SDA — green -->
+        <mxCell id="w5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;strokeColor=#008844;strokeWidth=3;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="a5" target="p5" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="w5_label" value="&lt;font color=&quot;#00ff88&quot;&gt;&lt;b&gt;SDA (green)&lt;/b&gt;&lt;/font&gt;" style="text;html=1;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="535" y="302" width="90" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- SCL — green -->
+        <mxCell id="w6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;strokeColor=#00aa55;strokeWidth=3;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="a6" target="p6" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="w6_label" value="&lt;font color=&quot;#00ff88&quot;&gt;&lt;b&gt;SCL (green)&lt;/b&gt;&lt;/font&gt;" style="text;html=1;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="535" y="335" width="90" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- MCU_INT — orange -->
+        <mxCell id="w7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;strokeColor=#cc6600;strokeWidth=3;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="a7" target="p7" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="w7_label" value="&lt;font color=&quot;#ff8800&quot;&gt;&lt;b&gt;INT (orange)&lt;/b&gt;&lt;/font&gt;" style="text;html=1;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="535" y="368" width="90" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- WAKE_UP — yellow -->
+        <mxCell id="w8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;strokeColor=#cc8800;strokeWidth=3;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="a8" target="p8" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="w8_label" value="&lt;font color=&quot;#ffaa00&quot;&gt;&lt;b&gt;WAKE (yellow)&lt;/b&gt;&lt;/font&gt;" style="text;html=1;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="530" y="401" width="100" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- GPIO0/1 not connected -->
+        <mxCell id="nc_label" value="&lt;font style=&quot;font-size:10px;color:#555&quot;&gt;GPIO0, GPIO1 — not connected (reserved)&lt;/font&gt;" style="text;html=1;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="400" y="455" width="280" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- ===== INTERFACE NOTE ===== -->
+        <mxCell id="if_note" value="&lt;b&gt;Interface Options&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;&lt;b style=&quot;color:#4488ff&quot;&gt;Option A: UART&lt;/b&gt; (recommended)&lt;br&gt;Connect RXD/TXD — simple serial protocol&lt;br&gt;Register read/write commands&lt;br&gt;&lt;br&gt;&lt;b style=&quot;color:#00ff88&quot;&gt;Option B: I2C&lt;/b&gt;&lt;br&gt;Connect SDA/SCL to GPIO 7/8&lt;br&gt;Shared bus with touch display backlight&lt;br&gt;&lt;br&gt;&lt;b style=&quot;color:#ff8800&quot;&gt;Both need:&lt;/b&gt; 5V + GND + MCU_INT&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#16213e;strokeColor=#555;strokeWidth=1;fontSize=11;fontColor=#eee;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="400" y="500" width="300" height="170" as="geometry" />
+        </mxCell>
+
+        <!-- ===== KEY SPECS BOX ===== -->
+        <mxCell id="specs_box" value="&lt;b&gt;Key Specs&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Range: &lt;b&gt;3cm — 23m&lt;/b&gt;&lt;br&gt;Resolution: &lt;b&gt;~2.5mm&lt;/b&gt;&lt;br&gt;Frequency: &lt;b&gt;60.5 GHz&lt;/b&gt;&lt;br&gt;Power: &lt;b&gt;5V&lt;/b&gt; (onboard reg)&lt;br&gt;Standby: &lt;b&gt;&amp;lt;1 uA&lt;/b&gt;&lt;br&gt;Use case: &lt;b&gt;3cm—100cm detection&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#16213e;strokeColor=#00ff88;strokeWidth=2;fontSize=11;fontColor=#eee;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="750" y="500" width="200" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- GPIO note -->
+        <mxCell id="gpio_note" value="&lt;font style=&quot;font-size:10px;color:#ff4444&quot;&gt;&lt;b&gt;GPIO ?? = TBD&lt;/b&gt; — needs bench test to find&lt;br&gt;working UART + INT + WAKE pins on P4 40-pin header&lt;br&gt;(Only GPIO 22, 25, 32 confirmed working for output)&lt;/font&gt;" style="text;html=1;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="750" y="640" width="280" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Branding -->
+        <mxCell id="brand" value="&lt;b&gt;riscvml.org — SvBlocks by SVB&lt;/b&gt;" style="text;html=1;fontSize=12;fontColor=#00ff88;align=center;" vertex="1" parent="1">
+          <mxGeometry x="50" y="700" width="280" height="25" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

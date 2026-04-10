@@ -1,0 +1,130 @@
+<mxfile host="app.diagrams.net" modified="2026-03-20T00:00:00.000Z" agent="CC" version="24.0.0">
+  <diagram id="gpio-tshoot" name="Firmware Phase 1 — GPIO Troubleshooting Journey">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/><mxCell id="1" parent="0"/>
+
+        <mxCell id="t" value="&lt;b&gt;Firmware Phase 1 — GPIO Pin Troubleshooting Journey&lt;/b&gt;&lt;br&gt;Waveshare ESP32-P4-WIFI6 Kit A + BTS7960 IBT-2 Motor Driver" style="text;html=1;align=center;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="300" y="20" width="600" height="45" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== TIMELINE ==================== -->
+        <mxCell id="s1" value="&lt;b&gt;1. THE PROBLEM — GPIO Pins Don't Match Board Silkscreen&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="80" width="1100" height="35" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="problem" value="&lt;b&gt;Expectation:&lt;/b&gt; The numbers printed on the Waveshare ESP32-P4-WIFI6 40-pin header are ESP32-P4 GPIO numbers.&lt;br&gt;&lt;b&gt;Reality:&lt;/b&gt; Most pins labeled on the header silkscreen do NOT respond when driven as GPIO output.&lt;br&gt;Only &lt;b&gt;3 out of 16+ tested GPIOs&lt;/b&gt; actually output 3.3V when set HIGH from firmware.&lt;br&gt;&lt;br&gt;&lt;b&gt;Root cause (suspected):&lt;/b&gt; Header labels may be physical pin positions, not GPIO numbers.&lt;br&gt;Or many GPIOs are used internally by the board (display, codec, PSRAM, flash)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="60" y="130" width="1100" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== ATTEMPT TIMELINE ==================== -->
+        <mxCell id="s2" value="&lt;b&gt;2. THE JOURNEY — 7 GPIO Reassignments Before Motor Spun&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="250" width="1100" height="35" as="geometry"/>
+        </mxCell>
+
+        <!-- Attempt 1 -->
+        <mxCell id="a1" value="&lt;b&gt;Attempt 1: GPIO 6 (R_EN)&lt;/b&gt;&lt;hr&gt;&lt;b&gt;Problem:&lt;/b&gt; GPIO 6 not on 40-pin header&lt;br&gt;&lt;b&gt;Fluke:&lt;/b&gt; Can't even probe it&lt;br&gt;&lt;b&gt;Fix:&lt;/b&gt; Reassign to GPIO 27" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="310" width="200" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- Attempt 2 -->
+        <mxCell id="a2" value="&lt;b&gt;Attempt 2: GPIO 27 (R_EN)&lt;/b&gt;&lt;hr&gt;&lt;b&gt;Problem:&lt;/b&gt; Reserved for USB D+&lt;br&gt;&lt;b&gt;Fluke:&lt;/b&gt; 0V on header pin&lt;br&gt;&lt;b&gt;Fix:&lt;/b&gt; Reassign to GPIO 32" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="280" y="310" width="200" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- Attempt 3 -->
+        <mxCell id="a3" value="&lt;b&gt;Attempt 3: GPIO 32 (R_EN)&lt;/b&gt;&lt;hr&gt;&lt;b&gt;Result:&lt;/b&gt; 3.3V on Fluke!&lt;br&gt;&lt;b&gt;Status:&lt;/b&gt; R_EN WORKS&lt;br&gt;&lt;font color=&quot;#82b366&quot;&gt;&lt;b&gt;✓ CONFIRMED&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="500" y="310" width="200" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- Attempt 4 -->
+        <mxCell id="a4" value="&lt;b&gt;Attempt 4: GPIO 4 (RPWM)&lt;/b&gt;&lt;hr&gt;&lt;b&gt;Problem:&lt;/b&gt; 0V on header pin&lt;br&gt;&lt;b&gt;Tried also:&lt;/b&gt; GPIO 5, 33, 46, 48&lt;br&gt;&lt;b&gt;All dead:&lt;/b&gt; 0V on every one" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="440" width="200" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- Attempt 5 -->
+        <mxCell id="a5" value="&lt;b&gt;Attempt 5: GPIO 2 (RPWM)&lt;/b&gt;&lt;hr&gt;&lt;b&gt;Problem:&lt;/b&gt; 1.8V unstable&lt;br&gt;&lt;b&gt;Cause:&lt;/b&gt; Onboard pull resistor&lt;br&gt;&lt;b&gt;Status:&lt;/b&gt; Unreliable — skip" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="280" y="440" width="200" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- Attempt 6 -->
+        <mxCell id="a6" value="&lt;b&gt;Attempt 6: GPIO 25 (RPWM)&lt;/b&gt;&lt;hr&gt;&lt;b&gt;Result:&lt;/b&gt; 3.3V on Fluke!&lt;br&gt;&lt;b&gt;Status:&lt;/b&gt; RPWM WORKS&lt;br&gt;&lt;font color=&quot;#82b366&quot;&gt;&lt;b&gt;✓ CONFIRMED&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="500" y="440" width="200" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- Attempt 7 -->
+        <mxCell id="a7" value="&lt;b&gt;GPIO 22 (L_EN)&lt;/b&gt;&lt;hr&gt;&lt;b&gt;Result:&lt;/b&gt; 3.3V on Fluke!&lt;br&gt;&lt;b&gt;Status:&lt;/b&gt; L_EN WORKS&lt;br&gt;&lt;font color=&quot;#82b366&quot;&gt;&lt;b&gt;✓ CONFIRMED&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="720" y="440" width="200" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrows -->
+        <mxCell id="ea1" value="FAIL" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#b85450;strokeWidth=2;fontSize=9;fontStyle=1;fontColor=#b85450;" edge="1" source="a1" target="a2" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ea2" value="FAIL" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#b85450;strokeWidth=2;fontSize=9;fontStyle=1;fontColor=#b85450;" edge="1" source="a2" target="a3" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ea4" value="ALL FAIL" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#b85450;strokeWidth=2;fontSize=9;fontStyle=1;fontColor=#b85450;" edge="1" source="a4" target="a5" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ea5" value="UNSTABLE" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#d6b656;strokeWidth=2;fontSize=9;fontStyle=1;fontColor=#d6b656;" edge="1" source="a5" target="a6" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- ==================== SWEEP RESULTS ==================== -->
+        <mxCell id="s3" value="&lt;b&gt;3. GPIO SWEEP TEST — Full Header Scan Results&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="570" width="1100" height="35" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="sweep" value="&lt;table cellpadding=&quot;5&quot; style=&quot;font-size:11px;border-collapse:collapse;&quot;&gt;&lt;tr style=&quot;background:#1a1a1a;color:white;&quot;&gt;&lt;td&gt;&lt;b&gt;GPIO&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Side&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Fluke&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Status&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Why&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#fff2cc;&quot;&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;Left&lt;/td&gt;&lt;td&gt;1.8V&lt;/td&gt;&lt;td&gt;Unreliable&lt;/td&gt;&lt;td&gt;Onboard pull resistor&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#f8cecc;&quot;&gt;&lt;td&gt;3, 4, 5&lt;/td&gt;&lt;td&gt;Left&lt;/td&gt;&lt;td&gt;0V&lt;/td&gt;&lt;td&gt;Dead&lt;/td&gt;&lt;td&gt;Unknown — may not be GPIOs&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#f8cecc;&quot;&gt;&lt;td&gt;6&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;td&gt;Not on header&lt;/td&gt;&lt;td&gt;Not exposed on 40-pin&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#f8cecc;&quot;&gt;&lt;td&gt;20, 21, 23&lt;/td&gt;&lt;td&gt;Right&lt;/td&gt;&lt;td&gt;0V&lt;/td&gt;&lt;td&gt;Dead&lt;/td&gt;&lt;td&gt;May be I2C or other function&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#d5e8d4;&quot;&gt;&lt;td&gt;&lt;b&gt;22&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Right&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;3.3V ✓&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;WORKS&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;→ L_EN&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#d5e8d4;&quot;&gt;&lt;td&gt;&lt;b&gt;25&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Left&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;3.3V ✓&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;WORKS&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;→ RPWM&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#f8cecc;&quot;&gt;&lt;td&gt;26, 27&lt;/td&gt;&lt;td&gt;Right&lt;/td&gt;&lt;td&gt;0V&lt;/td&gt;&lt;td&gt;Reserved&lt;/td&gt;&lt;td&gt;USB D-/D+&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#d5e8d4;&quot;&gt;&lt;td&gt;&lt;b&gt;32&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Right&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;3.3V ✓&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;WORKS&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;→ R_EN&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#f8cecc;&quot;&gt;&lt;td&gt;33, 46, 47, 48&lt;/td&gt;&lt;td&gt;Right&lt;/td&gt;&lt;td&gt;0V&lt;/td&gt;&lt;td&gt;Dead&lt;/td&gt;&lt;td&gt;Unknown&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="text;html=1;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="60" y="620" width="600" height="280" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="method" value="&lt;b&gt;Test Method:&lt;/b&gt;&lt;hr&gt;1. Firmware drives each GPIO HIGH for 5s&lt;br&gt;2. Serial monitor prints which GPIO is active&lt;br&gt;3. Fluke DMM: pos probe on header pin,&lt;br&gt;   neg probe on ESP32 GND&lt;br&gt;4. Record 3.3V (works) or 0V (dead)&lt;br&gt;&lt;br&gt;&lt;b&gt;Tools:&lt;/b&gt;&lt;br&gt;• Fluke multimeter (DC voltage mode)&lt;br&gt;• rs_serialmon on /dev/ttyACM1&lt;br&gt;• ESP-IDF GPIO sweep firmware&lt;br&gt;&lt;br&gt;&lt;b&gt;Key discovery:&lt;/b&gt;&lt;br&gt;Serial console = /dev/ttyACM1&lt;br&gt;Flash port = /dev/ttyACM0&lt;br&gt;(NOT the same port!)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="700" y="620" width="260" height="280" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== FINAL WIRING ==================== -->
+        <mxCell id="s4" value="&lt;b&gt;4. FINAL VERIFIED WIRING — Phase 1 Complete&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#82b366;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="930" width="1100" height="35" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="final_wiring" value="&lt;pre style=&quot;font-size:12px;line-height:1.6;&quot;&gt;ESP32-P4 (40-Pin Header)              BTS7960 IBT-2 Module&lt;br&gt;════════════════════════              ═══════════════════&lt;br&gt;&lt;br&gt;&lt;b&gt;GPIO 25 (Left)&lt;/b&gt;  ─── PWM 100Hz ───►  Pin 7: RPWM&lt;br&gt;                                        Pin 8: LPWM (disconnected)&lt;br&gt;&lt;b&gt;GPIO 32 (Right)&lt;/b&gt; ─── HIGH ────────►  Pin 5: R_EN&lt;br&gt;&lt;b&gt;GPIO 22 (Right)&lt;/b&gt; ─── HIGH ────────►  Pin 6: L_EN&lt;br&gt;&lt;b&gt;3V3     (Right)&lt;/b&gt; ──────────────────►  Pin 1: VCC&lt;br&gt;&lt;b&gt;GND     (both)&lt;/b&gt;  ──────────────────►  Pin 2: GND&lt;br&gt;                                        Pin 3: R_IS (n/c)&lt;br&gt;                                        Pin 4: L_IS (n/c)&lt;br&gt;&lt;br&gt;&lt;b&gt;20V Battery +&lt;/b&gt;   ──────────────────►  Screw: B+&lt;br&gt;&lt;b&gt;20V Battery -&lt;/b&gt;   ──────────────────►  Screw: B- (shared GND)&lt;br&gt;&lt;b&gt;Motor +&lt;/b&gt;         ◄──────────────────  Screw: M+&lt;br&gt;&lt;b&gt;Motor -&lt;/b&gt;         ◄──────────────────  Screw: M-&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=left;spacingLeft=10;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="60" y="980" width="620" height="280" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="verified" value="&lt;b&gt;Fluke Verification (2026-03-20):&lt;/b&gt;&lt;hr&gt;&lt;table cellpadding=&quot;4&quot; style=&quot;font-size:10px;&quot;&gt;&lt;tr style=&quot;background:#82b366;color:white;&quot;&gt;&lt;td&gt;&lt;b&gt;Measurement&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Result&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;B+ / B-&lt;/td&gt;&lt;td&gt;&lt;b&gt;20V&lt;/b&gt; ✓&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#f5f5f5;&quot;&gt;&lt;td&gt;GPIO 25 (RPWM)&lt;/td&gt;&lt;td&gt;&lt;b&gt;3.3V cycling&lt;/b&gt; ✓&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;GPIO 32 (R_EN)&lt;/td&gt;&lt;td&gt;&lt;b&gt;3.3V cycling&lt;/b&gt; ✓&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#f5f5f5;&quot;&gt;&lt;td&gt;GPIO 22 (L_EN)&lt;/td&gt;&lt;td&gt;&lt;b&gt;3.3V cycling&lt;/b&gt; ✓&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;BTS7960 pin 5&lt;/td&gt;&lt;td&gt;&lt;b&gt;3.3V cycling&lt;/b&gt; ✓&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background:#f5f5f5;&quot;&gt;&lt;td&gt;BTS7960 pin 6&lt;/td&gt;&lt;td&gt;&lt;b&gt;3.3V cycling&lt;/b&gt; ✓&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;M+ / M- (all ON)&lt;/td&gt;&lt;td&gt;&lt;b&gt;20V&lt;/b&gt; ✓&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=left;spacingLeft=10;overflow=fill;" vertex="1" parent="1">
+          <mxGeometry x="720" y="980" width="260" height="250" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== FIRMWARE PHASES ==================== -->
+        <mxCell id="s5" value="&lt;b&gt;5. FIRMWARE TEST SEQUENCE — What Phase 1 Proved&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;fontSize=14;align=left;spacingLeft=20;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1290" width="1100" height="35" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="fw1" value="&lt;b&gt;Test 1: GPIO Toggle&lt;/b&gt;&lt;hr&gt;R_EN ON/OFF every 10s&lt;br&gt;Serial: GPIO_32 state=ON/OFF&lt;br&gt;Fluke: 3.3V / 0V cycling&lt;br&gt;&lt;br&gt;&lt;font color=&quot;#82b366&quot;&gt;&lt;b&gt;✓ GPIO output works&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1350" width="200" height="130" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="fw2" value="&lt;b&gt;Test 2: All Pins ON&lt;/b&gt;&lt;hr&gt;RPWM+R_EN+L_EN all HIGH&lt;br&gt;Fluke on M+/M-: 20V&lt;br&gt;&lt;br&gt;&lt;font color=&quot;#82b366&quot;&gt;&lt;b&gt;✓ H-bridge passes&lt;br&gt;   battery voltage&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="280" y="1350" width="200" height="130" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="fw3" value="&lt;b&gt;Test 3: PWM Ramp&lt;/b&gt;&lt;hr&gt;LEDC PWM 100Hz on RPWM&lt;br&gt;Duty 5%→75% (1V→15V)&lt;br&gt;1s ON, random 1-5s OFF&lt;br&gt;&lt;br&gt;&lt;font color=&quot;#82b366&quot;&gt;&lt;b&gt;✓ Variable speed&lt;br&gt;   control working&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="500" y="1350" width="200" height="130" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="fw4" value="&lt;b&gt;Next: Connect Motor&lt;/b&gt;&lt;hr&gt;All electrical tests pass.&lt;br&gt;M+/M- confirmed 20V.&lt;br&gt;PWM ramp confirmed.&lt;br&gt;&lt;br&gt;&lt;font color=&quot;#d6b656&quot;&gt;&lt;b&gt;→ Phase 2: Rust firmware&lt;br&gt;   with Wi-Fi speed control&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="720" y="1350" width="200" height="130" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ef1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#333;strokeWidth=2;" edge="1" source="fw1" target="fw2" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ef2" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#333;strokeWidth=2;" edge="1" source="fw2" target="fw3" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ef3" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#333;strokeWidth=2;" edge="1" source="fw3" target="fw4" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- Lessons -->
+        <mxCell id="lessons" value="&lt;b&gt;Lessons Learned:&lt;/b&gt;&lt;hr&gt;1. Never trust board silkscreen — always verify with Fluke before wiring&lt;br&gt;2. USB D+/D- (GPIO 26/27) are unusable while USB is connected&lt;br&gt;3. ESP-IDF flash port ≠ serial console port (ACM0 vs ACM1)&lt;br&gt;4. Fluke can't read 25kHz PWM average — use 100Hz for bench testing&lt;br&gt;5. Systematic GPIO sweep firmware saves hours of guessing&lt;br&gt;6. Print GPIO states in every serial message — invaluable for debugging" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1510" width="860" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- Anki Ref -->
+        <mxCell id="anki" value="&lt;b&gt;Anki-Ref:&lt;/b&gt; 20260320_XXXXXX__BTS7960__firmware_phase_1__gpio_troubleshooting" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1a1a1a;fontColor=#ffffff;strokeColor=#1a1a1a;fontSize=11;align=left;spacingLeft=15;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1630" width="600" height="30" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
